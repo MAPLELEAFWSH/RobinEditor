@@ -1,6 +1,6 @@
 {
   "name": "robin-editor",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "MMD 贴图与渲染包整理工具",
   "type": "module",
   "scripts": {

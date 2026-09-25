@@ -3,9 +3,12 @@
 格式照 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，
 版本号照 [语义化版本](https://semver.org/lang/zh-CN/)。
 
-**这个工程 2026-09-25 之前没有版本控制**，所以 `0.1.0` 不是"第一版做了什么"，
+**这个工程 2026-09-25 之前没有版本控制**，所以 `1.0.0` 不是"第一版做了什么"，
 而是"到这一天为止攒下来的东西"。逐条的来路和实测数字在 `PROGRESS.md`，
 用户提的每一条在 `docs/整改清单.md`。
+
+版本号以 `src-tauri/tauri.conf.json` 与 `src-tauri/Cargo.toml` 为准（都是 `1.0.0`，
+安装包文件名也用这个）。`package.json` 原来写 `0.1.0`，2026-09-26 对齐成 `1.0.0`。
 
 ## [Unreleased]
 
@@ -13,17 +16,22 @@
 
 - 目录落点：拖文件夹 = 点那一页的「选目录」。⑦ 批量 / ⑦ 批量提取 / ⑤ 配对检查三页原来
   一个落点都没有，现在整页就是落点（`src/lib/dirdrop.ts`）
-- 三份规范文件：`LICENSE`（MIT）、`.editorconfig`、`CONTRIBUTING.md`、本文件
+- 四份规范文件：`LICENSE`（MIT）、`.editorconfig`、`CONTRIBUTING.md`、本文件
 
 ### 修
 
+- **`dist/说明.txt` 与实现打架**：第三节把「分块定档」「画笔」当成 ⑦ 的第一页写着，
+  而那一页 2026-09-23 就删了 —— 同一篇文件上面还写着"这一页删掉了"。
+  换成真页面表，并把通篇的"七个功能"改成八个、补上从来没写过的 ⑨ 工程迁移
+- **版本号三处不一致**：`tauri.conf.json` / `Cargo.toml` 是 `1.0.0`，`package.json` 是 `0.1.0`
 - **拖放高亮**：`is-drop` 原来要求元素同时带 `data-drop-target`，而全库只有 ⑥ 和 ③ 的行写了
   这个属性 —— 其余落点拖上去一点反馈都没有。放宽到 `.is-drop`（`src/styles/wb.css`）
 - **⑨ 搬模式先删后校验**：`搬` 原来先删原件再校验，一拒绝原件就没了、工程也没改。
   删除挪到"改路径成功之后"，加了守卫测试
 - **③ 整段重写丢 BOM**：带 BOM 的 `.fx` 改一行存一次，头三字节 `EF BB BF` 就没了
-- **⑥ 产物互相覆盖**：产物名用 PMX 内部名，`贴图样本\木偶` 那 5 个 pmx 内部名全叫
-  `sandrone` → 5 份产物写同一个路径，日志还每条 ok。重名的补 pmx 文件名区分
+- **⑥ 产物互相覆盖**：产物名取的是 PMX 内部名，而多个 .pmx 内部名重名很常见 ——
+  它们写的是同一个路径，后一个盖掉前一个、日志还每条报成功。重名的补 pmx 文件名区分。
+  （这条**只做了代码复核，没拿重名的样本真跑一遍数产物个数**）
 - **⑦ 批量扫目录失败一句话不说**，且 `batchRoot` 已换、`batchFiles` 还是旧的 →
   再点开跑就往新目录里写旧文件名的产物。改成先清状态、失败报话
 - **⑨ 相对路径工程表 0 行**：`"补上 .emm 没列全的对象"` 那段是死代码（条件恒真）。
@@ -48,7 +56,7 @@
 - ④ B 窗口的 `hi` 导出跟预览传同一个值（原来只作用于预览，产物和预览不一致）
 - 收窄「放宽后缀」的扫描：排除自己的 `.bak`，非文本后缀默认不勾
 
-## [0.1.0] - 2026-09-25
+## [1.0.0] - 2026-09-26
 
 到这一天为止已有的八个模块：
 
@@ -64,7 +72,8 @@
 ⑧ Ramp 生成已删（2026-09-23），号留着不补。
 
 体积：首屏 204.3 KB / 22 个 js，按需 chunk 25/25 取得到。
-打包：安装包 4.84 MB、绿色版 7.49 MB。
+打包：安装包 5.13 MB、绿色版 8.10 MB（2026-09-26 重打，
+`node tools/exe-frontend-check.mjs` 核过包里嵌的前端就是刚构建那一份：42/42 chunk 命中）。
 
-[Unreleased]: https://github.com/MAPLELEAFWSH/RobinEditor/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/MAPLELEAFWSH/RobinEditor/releases/tag/v0.1.0
+[Unreleased]: https://github.com/MAPLELEAFWSH/RobinEditor/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/MAPLELEAFWSH/RobinEditor/releases/tag/v1.0.0
