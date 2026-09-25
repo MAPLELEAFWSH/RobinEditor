@@ -6,7 +6,99 @@
 > 本文件只写**已验证的事实**，不写"应该没问题"。
 > 架构复查（34 组发现，含已确认的真 bug）：[`docs/架构复查-20260919.md`](docs/架构复查-20260919.md)
 
-## 本轮：① 整段还原 / 名字顺手还原 / 警告框能关 + ⑦ 删「分块定档」+ ⑦ 拖拽判定
+## 本轮：子代理报的 19 条过完一遍 + 工程规范化 + 初始化 git
+
+用户：「按你的建议改，最后再按照完整软件开发流程对该项目规范化处理，
+写好简洁友好开发者风格使用说明，源代码上传到我提供的 gitee 与 github 仓库」。
+
+### 一、`§J-10` 子代理报的那批：19 条逐条对代码复核，修了 18 条、1 条判定不是 bug
+
+**全部修完的（14 条"确定" + 4 条"可疑"）**，逐条的改法与依据见 `docs\整改清单.md` §J-10 那张表。
+这里只记**这一轮真正量到的**：
+
+- **拖放高亮（`wb.css` 的选择器）** —— 新量具 `tmp\probe-拖放高亮.mjs` **11/11**。
+  这条原来是"类加上了、样式一条都匹配不到"，因为规则写成 `[data-drop-target].is-drop`，
+  而全库只有 ⑥ 和 ③ 的行写了 `data-drop-target`。
+  探针做的是**真 A/B**：先把现规则从样式表里 `deleteRule` 摘掉（只带 `is-drop` 的确实熄），
+  再把旧选择器注进来（还是熄；带 `data-drop-target` 的才亮），最后装回去（又亮）。
+  **第一版探针是假的绿** —— 现规则还在，它先把元素点亮了，"旧规则认不认"根本看不出来。
+  真页面上也量了：`/tools/channels?panel=pipeline` 的 `.wb__main`，加类前 `none`、加类后 `solid`。
+- **③ 整段重写丢 BOM** —— 加了 `接回BOM()`。**顺手纠了一条误报**：说它"行尾被统一"是错的，
+  `ray/ops.ts:343` 的 `applyEditsToText` 里有 `detectEol`，行尾本来就跟着原文。
+- **⑨ 相对路径工程表 0 行** —— `"补上 .emm 没列全的对象"` 那段是**死代码**：
+  筛的就是 `e.objects` 自己那份清单，条件恒真，一行都出不来。
+  改成真去读 `.pmm`（`project::找字段` 的 `Pmm命中` 里就有 `path`），
+  顺带把"落在哪个旧根"抽成 `算根` 闭包给两处共用。
+- **`migrate/Migrate.svelte:222` 判定不是 bug** —— 量过：`清结果()` 里就是
+  `输出 = ''` + `输出手动 = false`，三个调用点（273 / 303 / 322）都会走到。子代理看漏了。
+
+**没量到的（只能说改完读着对，不能说验过了）**：
+
+- **⑥ 产物互相覆盖**（`yaku/Yaku.svelte` 加 `去重文件名()`）：判重逻辑在组件里、没导出，
+  没有探针。**要真验得拿 `贴图样本\木偶`（5 个 pmx 内部名都叫 `sandrone`）跑一遍数产物个数** ——
+  这一轮没跑。
+- ① 的 `textenc.rs` UTF-16LE `lossy` 如实报：只过了 `cargo test --lib`（137 passed），
+  没造那个"`FF FE` + 奇数字节"的文件真跑一遍。
+- ⑤ 浏览器版 `browserFiles`、`Slot` 按组数着撤、`Preview` 宽预览数着摘、
+  `drag-dom` 判 `defaultPrevented`：都只有代码复核 + 原有那几套单测，没各自专用探针。
+
+### 二、基线（改完之后跑的真数）
+
+```
+pnpm test                                    40/40
+  ├ tmp/*.test.mjs                           37 套全绿
+  ├ tmp/ilmcheck（⑤ 真实配对）                全绿
+  └ cargo test --lib                          137 passed
+pnpm exec svelte-check --threshold error      0 errors / 0 warnings
+node tools/ui-audit.mjs --all（CDP 9500）     见下
+```
+
+### 三、工程规范化
+
+原来这个工程**没有版本控制**，一切靠文档。这一轮按常规工程补齐：
+
+| 文件 | 内容 |
+|---|---|
+| `LICENSE` | MIT（跟 `package.json` 的 `license` 字段一致）。另起一段写明**只覆盖本仓库自己的代码**、不含任何第三方渲染包 |
+| `.editorconfig` | 全库 UTF-8 + LF。写死是因为**改文本文件绝不能用 PowerShell 的 `Set-Content` / `Out-File`**（会给 `.svelte` 加 BOM —— 踩过） |
+| `CONTRIBUTING.md` | 基线怎么跑、六条硬规矩、提交格式。规矩都是从"这个工程自己吃过的亏"里来的 |
+| `CHANGELOG.md` | Keep a Changelog 格式。`0.1.0` 不是"第一版做了什么"，是"到这一天为止攒下来的东西" |
+| `docs\开发者指南.md` | **新写的**：跑起来 / 代码在哪 / 界面规矩 / 拖放 / 怎么验 / 改文本文件 / 发版 / 不许做的事 / 留痕 |
+| `docs\推送说明.md` | 两个远端已经配好，push 由用户自己敲（这台机器上没有凭据） |
+
+`README.md` 顺手纠了三处**已经过时**的：写"做九件事"但表里只有 8 行；
+⑧ Ramp 早删了（2026-09-23）却还列着；`pnpm test` 期望写成 26/26（现在是 40/40）。
+
+### 四、初始化 git
+
+`git init -b main` + `.gitignore` + 一笔初始提交（562 个文件、12.25 MB）。
+两个远端都配好了（只 add、没 push —— 这台机器上**没有 `credential.helper`、
+没有 SSH key、没有 `gh` CLI**，所以最后那一下必须用户自己敲）：
+
+```
+github  https://github.com/MAPLELEAFWSH/RobinEditor.git
+gitee   https://gitee.com/mapleleafwsh/robin-editor.git
+```
+
+**真客户端量过**：`git ls-remote --heads gitee` 退出码 0、无输出 → **通，而且仓库是空的**
+（正是首推想要的状态）。`git ls-remote github` 在 120 s 上超时 —— 按规矩**不下"连不通"的结论**，
+交给用户自己推一次看。
+
+`.gitignore` 按体积与版权排掉的（逐条都有理由，写在文件里）：
+
+| 排掉的 | 体积 | 为什么 |
+|---|---|---|
+| `src-tauri/target/` | 11 GB | Rust 构建目录 |
+| `tmp/chrome-audit/` | 190 MB | CDP 探针的 Chrome 用户目录 |
+| `tmp/ilmcheck/data/` | 136 MB | ⑤ 探针从**第三方素材**转储的原始像素，**不许发布** |
+| `tmp/素材-*.png` | 4.5 MB | 从语料复制的**游戏贴图**，第三方素材 |
+| `tmp/ripple/*.png` | 7.9 MB | 涟漪探针截图，跑一次工具就重新出（`rects.json` 留着） |
+| `dist/*.exe`、`dist/*.msi` | 13 MB | 构建产物；`dist/` 里的 `.txt` 留着了 |
+
+> `tmp/素材-②真图.png` 被排掉了，但 `probe-②原分辨率.mjs` 和 `量-②真图编码.mjs` 要用它 ——
+> 要在本地跑那两条探针，自己从语料拷一份过去。这一条写进了 `.gitignore` 的注释和 `docs\推送说明.md`。
+
+## 上一轮：① 整段还原 / 名字顺手还原 / 警告框能关 + ⑦ 删「分块定档」+ ⑦ 拖拽判定
 
 用户在一次里提了五条，逐条做完并验过。全程无头。
 
