@@ -45,13 +45,30 @@
 ### 二、基线（改完之后跑的真数）
 
 ```
-pnpm test                                    40/40
+pnpm test                                    40/40，退出码 0
   ├ tmp/*.test.mjs                           37 套全绿
   ├ tmp/ilmcheck（⑤ 真实配对）                全绿
   └ cargo test --lib                          137 passed
 pnpm exec svelte-check --threshold error      0 errors / 0 warnings
-node tools/ui-audit.mjs --all（CDP 9500）     见下
+node tools/probe-拖放高亮.mjs（CDP 9500）      11 过 / 0 红
+node tools/ui-audit.mjs --all（CDP 9500）     有工作区版面的页全部通过，退出码 0
+pnpm tauri build                              退出码 0（前端 11.4s + Rust 3m17s）
 ```
+
+**改了源码就该重打包** —— 上一版 `dist\` 里那两个 exe 是 09-25 23:52 的，
+之后的改动它里面没有。这一轮重打了：
+
+```
+src-tauri\target\release\robin-editor.exe                        8.10 MB → dist\RobinEditor-免安装版.exe
+src-tauri\target\release\bundle\nsis\RobinEditor_1.0.0_x64-setup.exe  5.13 MB → dist\RobinEditor_1.0.0_x64-setup.exe
+node tools\exe-frontend-check.mjs    拿 build\ 里 42 个 chunk 名去包里找：命中 42 个
+                                     → 包里嵌的前端就是刚构建那一份
+```
+
+> **`dist\说明.txt` 没跟着改**：它里面那段"这一版改了什么"写的还是 **2026-09-24** 那一版，
+> 现在是 09-26 的包。那个文件是 **GBK** 的，用 `write` 工具改会把整篇编码弄坏 ——
+> 要更新得用能保编码的办法（参考 `tmp\摘BOM.mjs` 那种字节级做法）。
+> **公开这个包之前先把这段补上。**
 
 ### 三、工程规范化
 
