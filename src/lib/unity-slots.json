@@ -1,0 +1,7918 @@
+{
+  "slots": {
+    "_BumpMap": {
+      "Avatar_Girl_Sword_Vesna_Tex_Hair_Normalmap": 4,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body_Normalmap": 2,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body01_Normalmap": 2,
+      "Avatar_Girl_Sword_Odette_Tex_Body01_Normalmap": 2,
+      "Avatar_Girl_Sword_Odette_Tex_Hair_Normalmap": 2,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Body_Normalmap": 2,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Body01_Normalmap": 2,
+      "Avatar_Girl_Sword_Vesna_Tex_Body_Normalmap": 1,
+      "Avatar_Girl_Sword_Vesna_Tex_Dress_Normalmap": 1,
+      "Avatar_Girl_Sword_Vesna_Tex_Crystal_Normalmap": 1,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Hair_Normalmap": 1,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Tail_Normalmap": 1
+    },
+    "_LightMapTex": {
+      "Avatar_Tex_Face01_Shadow": 6,
+      "Avatar_Girl_Sword_Vesna_Tex_Hair_Lightmap": 4,
+      "Avatar_Girl_Sword_Vesna_Tex_Dress_Lightmap": 2,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body_Lightmap": 2,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body01_Lightmap": 2,
+      "Avatar_Girl_Sword_Odette_Tex_Body01_Lightmap": 2,
+      "Avatar_Tex_Face02_Shadow": 2,
+      "Avatar_Girl_Sword_Odette_Tex_Hair_Lightmap": 2,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Body_Lightmap": 2,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Body01_Lightmap": 2,
+      "Avatar_Girl_Sword_Vesna_Tex_Body_Lightmap": 1,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Hair_Lightmap": 1
+    },
+    "_MTMap": {
+      "Avatar_Tex_MetalMap": 21
+    },
+    "_MainTex": {
+      "Avatar_Sparxie_01_Body_Color_A_L": 8,
+      "Avatar_Evanescia_00_Body_Color_A_L": 6,
+      "Claret_Face_D": 6,
+      "Sigrid_Face_D": 6,
+      "Avatar_Girl_Sword_Vesna_Tex_Hair_Diffuse": 4,
+      "Avatar_YaoGuang_00_Body_Color_A_L": 4,
+      "Claret_Body_Map1_D": 4,
+      "Claret_Body_Map2_D": 4,
+      "Claret_Hair_D": 4,
+      "Sigrid_Body_Map2_D": 4,
+      "Avatar_Girl_Sword_Vesna_Tex_Face_Diffuse": 3,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body_Diffuse": 3
+    },
+    "_PackedShadowRampTex": {
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Body_Shadow_Ramp": 4,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body01_Shadow_Ramp": 3,
+      "Avatar_Girl_Sword_Vesna_Tex_Dress_Shadow_Ramp": 2,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body_Shadow_Ramp": 2,
+      "Avatar_Girl_Sword_Odette_Tex_Body01_Shadow_Ramp": 2,
+      "Avatar_Girl_Sword_Odette_Tex_Hair_Shadow_Ramp": 2,
+      "Avatar_Girl_Sword_Vesna_Tex_Body_Shadow_Ramp": 1,
+      "Avatar_Girl_Sword_Vesna_Tex_Hair_Shadow_Ramp": 1,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Hair_Shadow_Ramp": 1,
+      "Avatar_Girl_Sword_Odette_Tex_Body_Shadow_Ramp": 1,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Hair_Shadow_Ramp": 1
+    },
+    "_StockingsDetailTex": {
+      "Avatar_Girl_Pole_Escoffier_Tex_Stockings_Detailmap": 7,
+      "Avatar_Girl_Sword_Vesna_Tex_Stockings_Detailmap": 1
+    },
+    "_FaceMapTex": {
+      "Avatar_Girl01_Tex_FaceLightmap": 6
+    },
+    "_NormalTex": {
+      "Avatar_Tex_Facet_Normalmap": 3,
+      "Avatar_Tex_Leather_Reflectmap": 2
+    },
+    "_FaceSdfMap": {
+      "Avatar_Girl_Tex_FaceSDF": 10
+    },
+    "_FacialExpAtlasTex": {
+      "Avatar_Tex_Eye_BlendShape_Diffuse": 3
+    },
+    "_EyeMaskWithMatcap": {
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil_Matcap_Mask": 2,
+      "Avatar_Tex_Leather_Reflectmap": 1,
+      "Avatar_Girl_Sword_Odette_Tex_Pupil_Matcap_Mask": 1
+    },
+    "_ParallaxLayer1Tex": {
+      "Avatar_Girl_Sword_Vesna_Tex_Pupil02_Diffuse": 1,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Pupil02_Diffuse": 1,
+      "Avatar_Girl_Sword_Odette_Tex_Pupil_02_Diffuse": 1,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil02_Diffuse": 1
+    },
+    "_SDFGradientMap": {
+      "Avatar_Girl_Sword_Vesna_Tex_EyeHighlight_Diffuse": 1,
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_EyeHighlight_Diffuse": 1,
+      "Avatar_Girl_Sword_Odette_Tex_EyeHighlight_Diffuse": 1,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_EyeHighlight_Diffuse": 1
+    },
+    "_MatCap": {
+      "Eff_Sc_Matcap_16": 1,
+      "Avatar_Tex_Crystal_Diffuse": 1
+    },
+    "_ParallaxTex": {
+      "Avatar_Tex_Facet_Normalmap": 1,
+      "Eff_Stages_MagForce_13_Mask": 1
+    },
+    "_PackedHighlightRampTex": {
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body_Packed_Ramp": 1,
+      "Avatar_Girl_Sword_Odette_Tex_Pupil_Packed_Ramp": 1,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil_Packed_Ramp": 1
+    },
+    "_ParallaxLayer2Tex": {
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Pupil03_Diffuse": 1,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil04_Diffuse": 1
+    },
+    "_GelPlaneTex": {
+      "Avatar_Girl_Catalyst_Vodyanitsa_Tex_Tail_Mask": 1
+    },
+    "_AnisoSilkThreadMap": {
+      "Avatar_Girl_Sword_Odette_Tex_Stockings_Detailmap": 1
+    },
+    "_MTSpecularRamp": {
+      "Avatar_Tex_Specular_Ramp": 10
+    },
+    "_ShiningCustomIDMask_V2": {
+      "Avatar_Girl_Sword_Odette_Tex_Stockings": 3
+    },
+    "_BaseMatcapPackedTex": {
+      "Avatar_Girl_Sword_Odette_Tex_Pupil_Normalmap": 1
+    },
+    "_ParallaxLayer3Tex": {
+      "Avatar_Girl_Sword_Odette_Tex_Pupil_03_Diffuse": 1,
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil03_Diffuse": 1
+    },
+    "_BaseRampTex": {
+      "Eff_Avatra_Odette_Ramp_01": 1
+    },
+    "_BaseTex": {
+      "Eff_Noise_28_01": 1
+    },
+    "_DissolveTex": {
+      "Eff_Blur_Multi_01": 1,
+      "Eff_Universe_03": 1
+    },
+    "_MaskTex": {
+      "Eff_Avatra_Odette_Symbol_01": 1,
+      "Eff_Sc_TrailMulti_05": 1
+    },
+    "_NoiseTex": {
+      "Eff_Noise_13": 1
+    },
+    "_VertexAnimeMaskTex": {
+      "Eff_Mask_60": 1
+    },
+    "_VertexAnimeTex": {
+      "Eff_Normal_Fluid_02": 1
+    },
+    "_BaseOneTexture": {
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Body01_Normalmap": 1
+    },
+    "_EyeMask": {
+      "Avatar_Tex_Appear_Face_Mask": 3
+    },
+    "_PackedParallaxLayerRampTex": {
+      "Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil_Blend_Ramp": 1
+    },
+    "_DiffuseCoolRampMultiTex": {
+      "Avatar_Sparxie_01_Body_Cool_Ramp": 10,
+      "Avatar_YaoGuang_00_Body_Cool_Ramp": 6,
+      "Avatar_Evanescia_00_Body_Cool_Ramp": 6,
+      "Avatar_Mar_7th_10_Body_Cool_Ramp": 2,
+      "Avatar_Sparxie_01_Hair_Cool_Ramp": 2,
+      "Avatar_YaoGuang_00_Hair_Cool_Ramp": 2,
+      "Avatar_Mar_7th_10_Hair_Cool_Ramp": 1,
+      "Avatar_Mar_7th_10_Weapon_Ramp": 1,
+      "Avatar_Evanescia_00_Hair_Cool_Ramp": 1
+    },
+    "_DiffuseRampMultiTex": {
+      "Avatar_Sparxie_01_Body_Warm_Ramp": 8,
+      "Avatar_YaoGuang_00_Body_Warm_Ramp": 6,
+      "Avatar_Evanescia_00_Body_Warm_Ramp": 6,
+      "Avatar_Mar_7th_10_Body_Warm_Ramp": 2,
+      "Avatar_Sparxie_01_Hair_Warm_Ramp": 2,
+      "Avatar_Sparxie_01_Weapon_Ramp": 2,
+      "Avatar_YaoGuang_00_Hair_Warm_Ramp": 2,
+      "Avatar_Mar_7th_10_Hair_Warm_Ramp": 1,
+      "Avatar_Mar_7th_10_Weapon_Ramp": 1,
+      "Avatar_Evanescia_00_Hair_Warm_Ramp": 1
+    },
+    "_LightMap": {
+      "Avatar_Sparxie_01_Body_LightMap_L": 8,
+      "Avatar_Evanescia_00_Body_LightMap_L": 6,
+      "Avatar_YaoGuang_00_Body_LightMap_L": 4,
+      "Avatar_Mar_7th_10_Body_LightMap_L": 2,
+      "Avatar_Sparxie_01_Hair_LightMap": 2,
+      "Avatar_Sparxie_00_Weapon_LightMap": 2,
+      "Avatar_YaoGuang_00_Hair_LightMap": 2,
+      "Avatar_Mar_7th_10_Hair_LightMap": 1,
+      "Avatar_Mar_7th_10_Weapon_LightMap": 1,
+      "Avatar_YaoGuang_00_Shawl_LightMap": 1,
+      "Avatar_YaoGuang_00_Weapon_LightMap": 1,
+      "Avatar_Evanescia_00_Hair_LightMap": 1
+    },
+    "_StockRangeTex": {
+      "Avatar_Mar_7th_01_Body_Stockings": 2,
+      "Avatar_Evanescia_00_Body_Stockings": 1
+    },
+    "_FaceExpression": {
+      "W_140_Girl_Face_ExpressionMap_00": 2,
+      "W_160_Maid_Face_ExpressionMap_00": 2
+    },
+    "_FaceMap": {
+      "W_140_Girl_FaceMap_00": 2,
+      "W_160_Maid_FaceMap_00": 2
+    },
+    "_GlintMask": {
+      "Avatar_Sparxie_01_Body_Mask2": 2,
+      "Avatar_YaoGuang_00_Glint_Mask_L": 1
+    },
+    "_MatCapMaskTex": {
+      "Avatar_Sparxie_01_Body_Mask_L": 6,
+      "Avatar_YaoGuang_00_Body_Mask_L": 4,
+      "Avatar_Evanescia_00_Body_Mask_L": 2,
+      "Avatar_YaoGuang_00_Shawl_Mask": 1,
+      "Avatar_YaoGuang_00_Weapon_Mask": 1
+    },
+    "_MatCapTex": {
+      "Eff_Matcap_092": 9,
+      "Matcap_30": 6,
+      "Matcap_38": 4,
+      "Matcap_14": 2,
+      "Matcap_50": 2,
+      "Eff_MatCap_073": 2,
+      "Eff_MatCap_072": 2,
+      "Eff_MatCap_019": 2,
+      "MatCap_17": 1,
+      "Matcap_29": 1,
+      "Matcap_34": 1,
+      "Matcap_22": 1
+    },
+    "_MaterialValuesPackLUT": {
+      "MaterialIDValuesLUTSparkle_00_Mat_Body_D": 8,
+      "MaterialIDValuesLUTRen_00_Mat_Body1": 6,
+      "MaterialIDValuesLUTTheHerta_00_Mat_Body_D": 5,
+      "MaterialIDValuesLUTSparxie_00_Mat_Weapon": 2,
+      "MaterialIDValuesLUTFugue_00_Mat_Body_Trans": 1
+    },
+    "_SkyStarMaskTex": {
+      "UI3D_Eff_Sc_NoiseMulti_04": 6
+    },
+    "_SkyStarTex": {
+      "UI3D_Enviro_Stars_Big_2Channel": 6
+    },
+    "_FlipBookAutoPlayCurveMap": {
+      "Eff_Avatar_Evanescia_00_Body_Color_Curve_Ramp": 1
+    },
+    "_LightTex": {
+      "Female_Face_Lightmap": 23,
+      "Female_Face_Lightmap_02": 10,
+      "Claret_Body_Map1_N": 4,
+      "Claret_Body_Map2_N": 4,
+      "Claret_Hair_N": 4,
+      "Sigrid_Body_Map2_N": 4,
+      "Lindverne_Body_Map1_N": 3,
+      "Velina_Leisure_Hair_N": 3,
+      "Vivian_Body_2_N": 3,
+      "Sigrid_Body_Map1_N": 2,
+      "Sigrid_Traversing_Body_Map1_N": 2,
+      "Sigrid_Traversing_Weapon_N": 2
+    },
+    "_MatCapTex2": {
+      "Eff_MatCap_073": 12,
+      "Eff_MatCap_037": 4,
+      "Eff_MatCap_007": 4,
+      "Eff_MatCap_019": 4,
+      "Eff_MatCap_043": 2,
+      "Eff_Matcap_084": 2,
+      "Eff_MatCap_088": 2,
+      "Eff_MatCap_021": 1,
+      "Eff_MatCap_074": 1,
+      "Eff_MatCap_027": 1,
+      "Eff_Matcap_023": 1,
+      "Eff_MatCap_065": 1
+    },
+    "_MatCapTex3": {
+      "Eff_MatCap_074": 8,
+      "Eff_MatCap_073": 6,
+      "Eff_MatCap_021": 5,
+      "Eff_Matcap_Socks_04": 3,
+      "Eff_MatCap_078": 2,
+      "Eff_MatCap_001": 2,
+      "Eff_MatCap_083": 2,
+      "Eff_MatCap_019": 2,
+      "Eff_Matcap_092": 1,
+      "Eff_MatCap_016": 1,
+      "Eff_MatCap_063": 1,
+      "Eff_MatCap_079": 1
+    },
+    "_MatCapTex4": {
+      "Eff_MatCap_019": 10,
+      "Eff_MatCap_021": 3,
+      "Eff_MatCap_056": 2,
+      "Eff_Matcap_025": 2,
+      "Eff_MatCap_043": 2,
+      "Eff_Matcap_092": 2,
+      "Eff_Matcap_047": 2,
+      "Eff_MatCap_130": 1,
+      "Eff_MatCap_107": 1,
+      "Eff_MatCap_123": 1,
+      "Eff_MatCap_073": 1,
+      "Eff_MatCap_128": 1
+    },
+    "_OtherDataTex": {
+      "Claret_Body_Map1_M": 4,
+      "Claret_Body_Map2_M": 4,
+      "Claret_Hair_M": 4,
+      "Sigrid_Body_Map2_M": 4,
+      "Lindverne_Body_Map1_M": 3,
+      "Velina_Leisure_Hair_M": 3,
+      "Vivian_Body_2_M": 3,
+      "Sigrid_Body_Map1_M": 2,
+      "Sigrid_Traversing_Body_Map1_M": 2,
+      "Sigrid_Traversing_Weapon_M": 2,
+      "CampusLead_Body_Map1_M": 2,
+      "Lindverne_Body_Map2_M": 2
+    },
+    "_OtherDataTex2": {
+      "Claret_Body_Map1_A": 4,
+      "Claret_Body_Map2_A": 4,
+      "Claret_Hair_A": 4,
+      "Sigrid_Body_Map2_A": 4,
+      "Lindverne_Body_Map1_A": 3,
+      "Velina_Leisure_Hair_A": 3,
+      "Vivian_Body_2_A": 3,
+      "Sigrid_Body_Map1_A": 2,
+      "Sigrid_Traversing_Body_Map1_A": 2,
+      "Sigrid_Traversing_Weapon_A": 2,
+      "CampusLead_Body_Map1_A": 2,
+      "Lindverne_Body_Map2_A": 2
+    },
+    "_MatCapTex5": {
+      "Eff_MatCap_021": 12,
+      "Eff_Matcap_092": 4,
+      "Eff_MatCap_075": 2,
+      "Eff_Matcap_115": 2,
+      "Eff_MatCap_055": 1,
+      "Eff_MatCap_077": 1,
+      "Eff_Matcap_025": 1,
+      "Eff_MatCap_019": 1
+    },
+    "_EyeColorMap": {
+      "Eye_E": 9,
+      "Eye_E_02": 2
+    },
+    "_TransmissionTexture": {
+      "Remielle_Wings_T": 1
+    }
+  },
+  "families": {
+    "other": [
+      "_AnisoSilkThreadMap",
+      "_AuraNoise",
+      "_BaseMatcapPackedTex",
+      "_BaseRampTex",
+      "_BaseTex",
+      "_BumpMap",
+      "_ChannelMixTex",
+      "_CharacterRampTex",
+      "_CubeMap",
+      "_Detail2Tex",
+      "_DetailTex",
+      "_DiffuseColorRampTex",
+      "_DiffuseCoolRampMultiTex",
+      "_DiffuseRampMultiTex",
+      "_DirectionGradientTex",
+      "_DissolveEdgeColorRampTex",
+      "_DissolveTex",
+      "_EyeMask",
+      "_EyeMaskWithMatcap",
+      "_FaceMapTex",
+      "_FaceSdfMap",
+      "_FakePointNoiseTex",
+      "_FlipbookMap",
+      "_FlowGlowTex",
+      "_FresnelRampTex",
+      "_GlintMask",
+      "_LightMap",
+      "_LightMapBlueNoise",
+      "_LightMapTex",
+      "_LightTex",
+      "_MTMap",
+      "_MTSpecularRamp",
+      "_MainTex",
+      "_MaskTex",
+      "_MatCap",
+      "_MatCap2DArray",
+      "_MatCapMaskTex",
+      "_MatCapTex",
+      "_MatCapTex2",
+      "_MatCapTex3",
+      "_MatCapTex4",
+      "_MatCapTex5",
+      "_MatCapTexFallback",
+      "_MaterialMasksTex",
+      "_MaterialValuesPackLUT",
+      "_NoiseRadialCausticMap",
+      "_NoiseTex",
+      "_NormalPackageMap",
+      "_NormalTex",
+      "_NyxStateOutlineColorRamp",
+      "_NyxStateOutlineNoise",
+      "_OtherDataTex",
+      "_OtherDataTex2",
+      "_OverrideRimGlowTexFX",
+      "_PVMask1",
+      "_PVMask2",
+      "_PackageLightMap",
+      "_PackedHighlightRampTex",
+      "_PackedParallaxLayerRampTex",
+      "_PackedShadowRampTex",
+      "_Parallax2Tex",
+      "_ParallaxLayer1Tex",
+      "_ParallaxLayer2Tex",
+      "_ParallaxLayer3Tex",
+      "_ParallaxTex",
+      "_RefractionTex",
+      "_SDFGradientMap",
+      "_ScreenMask",
+      "_ScreenTex",
+      "_SecondCubeMap",
+      "_SecondaryEmissionMaskTex",
+      "_SecondaryEmissionTex",
+      "_ShaderLerpCharAvatarDie_DissolveNoise",
+      "_ShaderLerpCharFrozen_CubeMap",
+      "_ShaderLerpCharFrozen_IceBumpTex",
+      "_ShaderLerpCharFrozen_TillingNormal",
+      "_ShaderLerpCharFrozen_TriplanarTex",
+      "_ShiningCustomIDMask_V2",
+      "_SkyStarMaskTex",
+      "_SkyStarTex",
+      "_StockRangeTex",
+      "_StockingsDetailTex",
+      "_StockingsShadowRamp",
+      "_TempNyxStatePaintMaskTex",
+      "_TextureLinePackageMap",
+      "_ThirdCubeMap",
+      "_ThreadMap",
+      "_TransmissionTexture",
+      "_VSSKinningPoseTex",
+      "_VertexAnimeMaskTex",
+      "_VertexAnimeTex"
+    ],
+    "Body": [
+      "_AnisoSilkThreadMap",
+      "_BaseOneRamp",
+      "_BaseOneTexture",
+      "_BlockMaskTex",
+      "_BumpMap",
+      "_ChannelMixTex",
+      "_CharacterRampTex",
+      "_CrystalTex",
+      "_CubeMap",
+      "_DiffuseCoolRampMultiTex",
+      "_DiffuseRampMultiTex",
+      "_DissolveMap",
+      "_DissolveMask",
+      "_EmissionTex",
+      "_EyeMask",
+      "_FaceMapTex",
+      "_FaceSdfMap",
+      "_FakePointNoiseTex",
+      "_FlameTex",
+      "_FlipBookAutoPlayCurveMap",
+      "_FlowGlowTex",
+      "_FurTex",
+      "_GlintMask",
+      "_LightMap",
+      "_LightMapBlueNoise",
+      "_LightMapTex",
+      "_LightTex",
+      "_MTMap",
+      "_MTSpecularRamp",
+      "_MainTex",
+      "_MatCap",
+      "_MatCap2DArray",
+      "_MatCapBumpMapFx",
+      "_MatCapMaskTex",
+      "_MatCapTex",
+      "_MatCapTex2",
+      "_MatCapTex3",
+      "_MatCapTex4",
+      "_MatCapTex5",
+      "_MatCapTexFallback",
+      "_MatCapTexFx",
+      "_MaterialMasksTex",
+      "_MaterialValuesPackLUT",
+      "_NormalMap",
+      "_NormalPackageMap",
+      "_NormalTex",
+      "_NyxStateOutlineColorRamp",
+      "_NyxStateOutlineNoise",
+      "_OtherDataTex",
+      "_OtherDataTex2",
+      "_OverrideOutlineTex",
+      "_OverrideRimGlowTexFX",
+      "_PVMask1",
+      "_PVMask2",
+      "_PackageLightMap",
+      "_PackedShadowRampTex",
+      "_Parallax2Tex",
+      "_ParallaxTex",
+      "_RefractionTex",
+      "_ScreenMask",
+      "_ScreenTex",
+      "_SecondCubeMap",
+      "_SecondaryEmissionMaskTex",
+      "_SecondaryEmissionMaskTexForCGLighting",
+      "_SecondaryEmissionTex",
+      "_SecondaryEmissionTexForCGLighting",
+      "_ShaderLerpCharAvatarDie_DissolveNoise",
+      "_ShaderLerpCharFrozen_CubeMap",
+      "_ShaderLerpCharFrozen_IceBumpTex",
+      "_ShaderLerpCharFrozen_TillingNormal",
+      "_ShaderLerpCharFrozen_TriplanarTex",
+      "_ShiningCustomIDMask_V2",
+      "_SkyMask",
+      "_SkyStarMaskTex",
+      "_SkyStarTex",
+      "_SkyTex",
+      "_SpecialWeaponEmissionMaskTex",
+      "_SpecialWeaponEmissionTex",
+      "_StockRangeTex",
+      "_StockingsDetailTex",
+      "_StockingsShadowRamp",
+      "_StretchMask",
+      "_TangentDirTex",
+      "_TempNyxStatePaintMaskTex",
+      "_TextureLinePackageMap",
+      "_ThirdCubeMap",
+      "_ThreadMap",
+      "_TransitionTex",
+      "_TransmissionTexture",
+      "_VSSKinningPoseTex"
+    ],
+    "Brow": [
+      "_BumpMap",
+      "_EyeMask",
+      "_FaceMapTex",
+      "_FaceSdfMap",
+      "_FakePointNoiseTex",
+      "_LightMapBlueNoise",
+      "_LightMapTex",
+      "_MTMap",
+      "_MTSpecularRamp",
+      "_MainTex",
+      "_MaterialMasksTex",
+      "_NormalPackageMap",
+      "_NyxStateOutlineColorRamp",
+      "_NyxStateOutlineNoise",
+      "_PVMask1",
+      "_PVMask2",
+      "_PackageLightMap",
+      "_PackedShadowRampTex",
+      "_TempNyxStatePaintMaskTex",
+      "_TextureLinePackageMap",
+      "_VSSKinningPoseTex"
+    ],
+    "Eye": [
+      "_BlockMaskTex",
+      "_BlushTexture",
+      "_ChannelMixTex",
+      "_CharacterRampTex",
+      "_EyeColorMap",
+      "_EyeMask",
+      "_FaceMapTex",
+      "_FaceSdfMap",
+      "_FacialExpAtlasTex",
+      "_FakePointNoiseTex",
+      "_LightMapBlueNoise",
+      "_LightMapTex",
+      "_LightTex",
+      "_MainTex",
+      "_MatCapBumpMapFx",
+      "_MatCapTexFx",
+      "_NormalPackageMap",
+      "_NyxStateOutlineColorRamp",
+      "_NyxStateOutlineNoise",
+      "_OverrideOutlineTex",
+      "_OverrideRimGlowTexFX",
+      "_PVMask1",
+      "_PVMask2",
+      "_PackageLightMap",
+      "_PackedShadowRampTex",
+      "_ScreenMask",
+      "_ScreenTex",
+      "_SecondaryEmissionMaskTex",
+      "_SecondaryEmissionMaskTexForCGLighting",
+      "_SecondaryEmissionTex",
+      "_SecondaryEmissionTexForCGLighting",
+      "_SpecialWeaponEmissionMaskTex",
+      "_SpecialWeaponEmissionTex",
+      "_StretchMask",
+      "_TempNyxStatePaintMaskTex",
+      "_TextureLinePackageMap",
+      "_TransitionTex",
+      "_VSSKinningPoseTex"
+    ],
+    "Face": [
+      "_BlockMaskTex",
+      "_BlushTexture",
+      "_BumpMap",
+      "_ChannelMixTex",
+      "_CharacterRampTex",
+      "_DissolveMap",
+      "_DissolveMask",
+      "_EyeMask",
+      "_FaceExpression",
+      "_FaceMap",
+      "_FaceMapTex",
+      "_FaceSdfMap",
+      "_FakePointNoiseTex",
+      "_LightMapBlueNoise",
+      "_LightMapTex",
+      "_LightTex",
+      "_MTMap",
+      "_MTSpecularRamp",
+      "_MainTex",
+      "_MatCapBumpMapFx",
+      "_MatCapTexFx",
+      "_MaterialMasksTex",
+      "_NormalPackageMap",
+      "_NyxStateOutlineColorRamp",
+      "_NyxStateOutlineNoise",
+      "_OverrideOutlineTex",
+      "_OverrideRimGlowTexFX",
+      "_PVMask1",
+      "_PVMask2",
+      "_PackageLightMap",
+      "_PackedShadowRampTex",
+      "_ScreenMask",
+      "_ScreenTex",
+      "_SecondaryEmissionMaskTex",
+      "_SecondaryEmissionMaskTexForCGLighting",
+      "_SecondaryEmissionTex",
+      "_SecondaryEmissionTexForCGLighting",
+      "_SpecialEyeShapeTexture",
+      "_SpecialWeaponEmissionMaskTex",
+      "_SpecialWeaponEmissionTex",
+      "_StretchMask",
+      "_TempNyxStatePaintMaskTex",
+      "_TextureLinePackageMap",
+      "_TransitionTex",
+      "_VSSKinningPoseTex"
+    ],
+    "Hair": [
+      "_BlockMaskTex",
+      "_BumpMap",
+      "_ChannelMixTex",
+      "_CharacterRampTex",
+      "_CubeMap",
+      "_DiffuseCoolRampMultiTex",
+      "_DiffuseRampMultiTex",
+      "_DissolveMap",
+      "_DissolveMask",
+      "_EyeMask",
+      "_FaceMapTex",
+      "_FaceSdfMap",
+      "_FakePointNoiseTex",
+      "_FlowGlowTex",
+      "_LightMap",
+      "_LightMapBlueNoise",
+      "_LightMapTex",
+      "_LightTex",
+      "_MTMap",
+      "_MTSpecularRamp",
+      "_MainTex",
+      "_MatCap",
+      "_MatCap2DArray",
+      "_MatCapBumpMapFx",
+      "_MatCapTex",
+      "_MatCapTex2",
+      "_MatCapTex3",
+      "_MatCapTex4",
+      "_MatCapTex5",
+      "_MatCapTexFallback",
+      "_MatCapTexFx",
+      "_MaterialMasksTex",
+      "_NormalPackageMap",
+      "_NormalTex",
+      "_NyxStateOutlineColorRamp",
+      "_NyxStateOutlineNoise",
+      "_OtherDataTex",
+      "_OtherDataTex2",
+      "_OverrideOutlineTex",
+      "_OverrideRimGlowTexFX",
+      "_PVMask1",
+      "_PVMask2",
+      "_PackageLightMap",
+      "_PackedShadowRampTex",
+      "_Parallax2Tex",
+      "_ParallaxTex",
+      "_RefractionTex",
+      "_ScreenMask",
+      "_ScreenTex",
+      "_SecondCubeMap",
+      "_SecondaryEmissionMaskTex",
+      "_SecondaryEmissionMaskTexForCGLighting",
+      "_SecondaryEmissionTex",
+      "_SecondaryEmissionTexForCGLighting",
+      "_ShaderLerpCharAvatarDie_DissolveNoise",
+      "_ShaderLerpCharFrozen_CubeMap",
+      "_ShaderLerpCharFrozen_IceBumpTex",
+      "_ShaderLerpCharFrozen_TillingNormal",
+      "_ShaderLerpCharFrozen_TriplanarTex",
+      "_SpecialWeaponEmissionMaskTex",
+      "_SpecialWeaponEmissionTex",
+      "_StockingsDetailTex",
+      "_StockingsShadowRamp",
+      "_StretchMask",
+      "_TangentShifterTex",
+      "_TempNyxStatePaintMaskTex",
+      "_TextureLinePackageMap",
+      "_ThirdCubeMap",
+      "_ThreadMap",
+      "_TransitionTex",
+      "_TransmissionTexture",
+      "_VSSKinningPoseTex"
+    ],
+    "Wing": [
+      "_BumpMap",
+      "_ChannelMixTex",
+      "_CharacterRampTex",
+      "_CubeMap",
+      "_EyeMask",
+      "_FaceMapTex",
+      "_FakePointNoiseTex",
+      "_FlowGlowTex",
+      "_LightMapBlueNoise",
+      "_LightMapTex",
+      "_LightTex",
+      "_MTMap",
+      "_MTSpecularRamp",
+      "_MainTex",
+      "_MatCap",
+      "_MatCap2DArray",
+      "_MatCapTex",
+      "_MatCapTex2",
+      "_MatCapTex3",
+      "_MatCapTex4",
+      "_MatCapTex5",
+      "_MatCapTexFallback",
+      "_MaterialMasksTex",
+      "_NormalPackageMap",
+      "_NormalTex",
+      "_NyxStateOutlineColorRamp",
+      "_NyxStateOutlineNoise",
+      "_OtherDataTex",
+      "_OtherDataTex2",
+      "_OverrideRimGlowTexFX",
+      "_PVMask1",
+      "_PVMask2",
+      "_PackageLightMap",
+      "_PackedShadowRampTex",
+      "_Parallax2Tex",
+      "_ParallaxTex",
+      "_RefractionTex",
+      "_ScreenMask",
+      "_ScreenTex",
+      "_SecondCubeMap",
+      "_SecondaryEmissionMaskTex",
+      "_SecondaryEmissionTex",
+      "_ShaderLerpCharAvatarDie_DissolveNoise",
+      "_ShaderLerpCharFrozen_CubeMap",
+      "_ShaderLerpCharFrozen_IceBumpTex",
+      "_ShaderLerpCharFrozen_TillingNormal",
+      "_ShaderLerpCharFrozen_TriplanarTex",
+      "_TempNyxStatePaintMaskTex",
+      "_TextureLinePackageMap",
+      "_ThirdCubeMap",
+      "_ThreadMap",
+      "_TransmissionTexture",
+      "_VSSKinningPoseTex"
+    ],
+    "Tail": [
+      "_BumpMap",
+      "_CubeMap",
+      "_EyeMask",
+      "_FaceMapTex",
+      "_FakePointNoiseTex",
+      "_GelPlaneTex",
+      "_LightMapBlueNoise",
+      "_LightMapTex",
+      "_MTMap",
+      "_MTSpecularRamp",
+      "_MainTex",
+      "_MatCap",
+      "_MaterialMasksTex",
+      "_NormalPackageMap",
+      "_NyxStateOutlineColorRamp",
+      "_NyxStateOutlineNoise",
+      "_PVMask1",
+      "_PVMask2",
+      "_PackageLightMap",
+      "_PackedShadowRampTex",
+      "_ShaderLerpCharAvatarDie_DissolveNoise",
+      "_ShaderLerpCharFrozen_CubeMap",
+      "_ShaderLerpCharFrozen_IceBumpTex",
+      "_ShaderLerpCharFrozen_TillingNormal",
+      "_ShaderLerpCharFrozen_TriplanarTex",
+      "_ShiningCustomIDMask_V2",
+      "_TempNyxStatePaintMaskTex",
+      "_TextureLinePackageMap",
+      "_VSSKinningPoseTex"
+    ],
+    "Weapon": [
+      "_BlockMaskTex",
+      "_ChannelMixTex",
+      "_CharacterRampTex",
+      "_CrystalTex",
+      "_DiffuseCoolRampMultiTex",
+      "_DiffuseRampMultiTex",
+      "_DissolveMap",
+      "_DissolveMask",
+      "_EmissionTex",
+      "_FlameTex",
+      "_FurTex",
+      "_LightMap",
+      "_LightTex",
+      "_MainTex",
+      "_MatCap2DArray",
+      "_MatCapBumpMapFx",
+      "_MatCapMaskTex",
+      "_MatCapTex",
+      "_MatCapTex2",
+      "_MatCapTex3",
+      "_MatCapTex4",
+      "_MatCapTex5",
+      "_MatCapTexFallback",
+      "_MatCapTexFx",
+      "_MaterialValuesPackLUT",
+      "_NormalMap",
+      "_OtherDataTex",
+      "_OtherDataTex2",
+      "_OverrideOutlineTex",
+      "_OverrideRimGlowTexFX",
+      "_ScreenMask",
+      "_ScreenTex",
+      "_SecondaryEmissionMaskTex",
+      "_SecondaryEmissionMaskTexForCGLighting",
+      "_SecondaryEmissionTex",
+      "_SecondaryEmissionTexForCGLighting",
+      "_SkyMask",
+      "_SkyStarMaskTex",
+      "_SkyStarTex",
+      "_SkyTex",
+      "_SpecialWeaponEmissionMaskTex",
+      "_SpecialWeaponEmissionTex",
+      "_StockRangeTex",
+      "_StretchMask",
+      "_TangentDirTex",
+      "_ThreadMap",
+      "_TransitionTex",
+      "_TransmissionTexture"
+    ]
+  },
+  "floats": {
+    "Emission_Type": {
+      "0.0": 4
+    },
+    "_BumpScale": {
+      "1.0": 108,
+      "0.5": 9,
+      "0.271": 2,
+      "0.9": 1,
+      "0.1": 1,
+      "0.3": 1
+    },
+    "_Cutoff": {
+      "0.5": 115,
+      "1.0": 1,
+      "0.1": 1,
+      "0.629": 1
+    },
+    "_DetailNormalMapScale": {
+      "1.0": 64
+    },
+    "_DstBlend": {
+      "0.0": 53,
+      "10.0": 34,
+      "1.0": 19
+    },
+    "_ElementViewEleID": {
+      "0.0": 43
+    },
+    "_EmissionStrength": {
+      "10.0": 4
+    },
+    "_GlossMapScale": {
+      "1.0": 64
+    },
+    "_Glossiness": {
+      "1.0": 62,
+      "0.5": 49
+    },
+    "_GlossyReflections": {
+      "1.0": 64
+    },
+    "_MaterialShadowBias": {
+      "0.0": 4
+    },
+    "_Metallic": {
+      "1.0": 62,
+      "0.0": 41,
+      "0.5": 4,
+      "0.3": 3,
+      "0.2": 2,
+      "0.4": 2
+    },
+    "_Mode": {
+      "0.0": 64
+    },
+    "_OcclusionStrength": {
+      "1.0": 64
+    },
+    "_Parallax": {
+      "0.02": 64
+    },
+    "_SmoothnessTextureChannel": {
+      "0.0": 64
+    },
+    "_SpecularHighlights": {
+      "1.0": 64
+    },
+    "_SrcBlend": {
+      "1.0": 88,
+      "5.0": 6
+    },
+    "_UVSec": {
+      "0.0": 64
+    },
+    "_ZWrite": {
+      "1.0": 138,
+      "0.0": 4
+    },
+    "_enableVertexColor": {
+      "0.0": 4
+    },
+    "_AOShadowWarpScale": {
+      "1.0": 31,
+      "0.56": 2,
+      "0.2": 1
+    },
+    "_Alpha": {
+      "1.0": 7,
+      "0.5": 4,
+      "0.0": 2,
+      "0.85": 2,
+      "0.75": 1
+    },
+    "_AlphaCutCH": {
+      "0.0": 8,
+      "2.0": 4
+    },
+    "_BackFaceAlphaClipWithUV1": {
+      "0.0": 39
+    },
+    "_BackFaceLighting": {
+      "0.0": 38,
+      "1.0": 1
+    },
+    "_BaseOneRamp_SamplerType": {
+      "0.0": 13
+    },
+    "_BaseOneSwitchTex": {
+      "0.0": 13
+    },
+    "_BaseOneTexture_SamplerType": {
+      "0.0": 13
+    },
+    "_BaseOneUSpeed": {
+      "0.0": 13
+    },
+    "_BaseOneUVSwitch": {
+      "0.0": 13
+    },
+    "_BaseOneVSpeed": {
+      "0.0": 13
+    },
+    "_BlendMode": {
+      "2.0": 9,
+      "1.0": 2,
+      "0.0": 2,
+      "8.0": 1
+    },
+    "_BlendOP": {
+      "0.0": 43
+    },
+    "_CharacterAmbientSensorColorOn": {
+      "0.0": 41
+    },
+    "_CharacterAmbientSensorForceShadowOn": {
+      "0.0": 41
+    },
+    "_CharacterAmbientSensorShadowOn": {
+      "0.0": 41
+    },
+    "_CharacterEmission": {
+      "0.0": 39
+    },
+    "_CharacterEyeTransBangShadow": {
+      "0.0": 38
+    },
+    "_CharacterMainTex": {
+      "0.0": 39
+    },
+    "_CharacterShadow": {
+      "0.0": 39
+    },
+    "_ContrastScale": {
+      "0.0": 38
+    },
+    "_CrystalMaskCH": {
+      "0.0": 12
+    },
+    "_CubeMapBrightness": {
+      "3.0": 3,
+      "1.0": 3,
+      "10.0": 2,
+      "1.3": 2,
+      "0.4": 1,
+      "0.6": 1
+    },
+    "_CubeMapDirInverseToggle": {
+      "0.0": 13,
+      "1.0": 1
+    },
+    "_CubeMap_SamplerType": {
+      "0.0": 14
+    },
+    "_CullMode": {
+      "2.0": 31,
+      "0.0": 28
+    },
+    "_DesaturateScale": {
+      "0.0": 39
+    },
+    "_Dgree0": {
+      "0.0": 14
+    },
+    "_Dgree1": {
+      "0.0": 14
+    },
+    "_Dgree2": {
+      "0.0": 14
+    },
+    "_DitherAlpha": {
+      "1.0": 156,
+      "0.0": 1,
+      "0.088": 1,
+      "0.995": 1
+    },
+    "_DrawBackFace": {
+      "0.0": 26,
+      "1.0": 13
+    },
+    "_DstBlendMode": {
+      "0.0": 39,
+      "10.0": 4
+    },
+    "_DummyFixedForNormal": {
+      "1.0": 29,
+      "0.0": 10
+    },
+    "_DummyHitColor": {
+      "0.0": 41
+    },
+    "_DummyMainSettings": {
+      "0.0": 39
+    },
+    "_DummyMaterial2": {
+      "0.0": 39
+    },
+    "_DummyMaterial3": {
+      "0.0": 39
+    },
+    "_DummyMaterial4": {
+      "0.0": 39
+    },
+    "_DummyMaterial5": {
+      "0.0": 39
+    },
+    "_DummyOutline": {
+      "0.0": 39
+    },
+    "_DummyTextureLine": {
+      "0.0": 25
+    },
+    "_DummyUseDither": {
+      "0.0": 41
+    },
+    "_Dx11ShaderPsScore": {
+      "0.0": 39
+    },
+    "_Dx11ShaderScore": {
+      "-2.0": 33,
+      "-1.0": 4
+    },
+    "_Dx11ShaderVsScore": {
+      "0.0": 39
+    },
+    "_EmissionBloomScale": {
+      "1.3": 37,
+      "0.97": 2
+    },
+    "_EmissionFix": {
+      "1.0": 9,
+      "0.0": 3
+    },
+    "_EmissionScaler": {
+      "1.0": 27,
+      "0.0": 3,
+      "1.5": 3,
+      "3.5": 2,
+      "1.3": 1,
+      "2.0": 1
+    },
+    "_EmissionScaler1": {
+      "1.0": 39
+    },
+    "_EmissionScaler2": {
+      "1.0": 37,
+      "0.0": 2
+    },
+    "_EmissionScaler3": {
+      "1.0": 39
+    },
+    "_EmissionScaler4": {
+      "1.0": 38,
+      "0.0": 1
+    },
+    "_EmissionScaler5": {
+      "1.0": 39
+    },
+    "_EmissionStrengthLerp": {
+      "0.0": 41
+    },
+    "_EnableAvatarDie": {
+      "0.0": 21
+    },
+    "_EnableBaseOne": {
+      "1.0": 9,
+      "0.0": 5
+    },
+    "_EnableCharacterDissolve": {
+      "0.0": 19
+    },
+    "_EnableCharacterFrozen": {
+      "0.0": 21
+    },
+    "_EnableColorBlend": {
+      "0.0": 10,
+      "1.0": 4
+    },
+    "_EnableCubeMap": {
+      "1.0": 11,
+      "0.0": 3
+    },
+    "_EnableCustomParams": {
+      "0.0": 39
+    },
+    "_EnableDistanceLerp": {
+      "0.0": 39
+    },
+    "_EnableEmissionBloom": {
+      "0.0": 39
+    },
+    "_EnableFakeDiamondInternalLight": {
+      "1.0": 8,
+      "0.0": 6
+    },
+    "_EnableFakePoint": {
+      "0.0": 33
+    },
+    "_EnableFresnel": {
+      "1.0": 13,
+      "0.0": 5
+    },
+    "_EnableMatCap": {
+      "1.0": 11,
+      "0.0": 3
+    },
+    "_EnablePBRLighting": {
+      "1.0": 10,
+      "0.0": 4
+    },
+    "_EnableParallax": {
+      "0.0": 13,
+      "1.0": 1
+    },
+    "_EnablePerformance": {
+      "0.0": 33
+    },
+    "_EnableRefraction": {
+      "1.0": 9,
+      "0.0": 5
+    },
+    "_ExactSphereMappingToggle": {
+      "0.0": 14
+    },
+    "_ExactSphereScale": {
+      "1.0": 14
+    },
+    "_F0": {
+      "0.5": 9,
+      "0.2": 2,
+      "0.04": 2,
+      "0.258": 1
+    },
+    "_FaceBlushStrength": {
+      "0.0": 39
+    },
+    "_FaceMapRotateOffset": {
+      "0.0": 31,
+      "0.073": 1
+    },
+    "_FaceMapSoftness": {
+      "0.0": 28,
+      "0.001": 4
+    },
+    "_FaceToCamToggle": {
+      "1.0": 8,
+      "0.0": 6
+    },
+    "_FakePointFrequency": {
+      "0.0": 33
+    },
+    "_FakePointFrequencyMin": {
+      "0.0": 33
+    },
+    "_FakePointIntensity": {
+      "1.0": 33
+    },
+    "_FakePointRange": {
+      "1.0": 33
+    },
+    "_FakePointReflection": {
+      "1.0": 33
+    },
+    "_FakePointSkinIntensity": {
+      "1.0": 33
+    },
+    "_FakePointSkinSaturate": {
+      "0.0": 33
+    },
+    "_FlareType": {
+      "0.0": 41
+    },
+    "_FresnelAlpha": {
+      "0.0": 15,
+      "1.0": 1
+    },
+    "_FresnelColorAdditive": {
+      "0.0": 8,
+      "1.0": 8
+    },
+    "_FresnelInvert": {
+      "0.0": 16
+    },
+    "_FresnelPower": {
+      "5.0": 7,
+      "10.0": 4,
+      "4.0": 2,
+      "8.0": 1,
+      "3.0": 1,
+      "4.8": 1
+    },
+    "_FresnelScale": {
+      "10.0": 7,
+      "1.0": 4,
+      "12.6": 2,
+      "1.5": 1,
+      "7.0": 1,
+      "2.0": 1
+    },
+    "_HairBlendOP": {
+      "0.0": 39
+    },
+    "_HairDstBlendMode": {
+      "10.0": 39
+    },
+    "_HairMapAntiAlias": {
+      "0.0": 29,
+      "1.0": 5
+    },
+    "_HairShadowExtrusion": {
+      "1.0": 32,
+      "0.95": 4,
+      "0.98": 2,
+      "0.92": 1
+    },
+    "_HairShadowLightShift": {
+      "0.7": 33,
+      "0.0": 4,
+      "0.3": 1,
+      "0.4": 1
+    },
+    "_HairShadowViewDirOffset": {
+      "0.0": 37
+    },
+    "_HairSrcBlendMode": {
+      "5.0": 39
+    },
+    "_HairTransparentValue": {
+      "0.5": 38,
+      "0.6": 1
+    },
+    "_HitColorFresnelPower": {
+      "1.5": 41
+    },
+    "_HitColorScaler": {
+      "6.0": 41
+    },
+    "_LightArea": {
+      "0.5": 37,
+      "0.619": 2
+    },
+    "_LightMapBlurSize": {
+      "1.0": 33
+    },
+    "_LightMapLayerEnum": {
+      "0.0": 33
+    },
+    "_MHYZBias": {
+      "0.0": 43
+    },
+    "_MTMapBrightness": {
+      "3.0": 23,
+      "1.0": 7,
+      "6.0": 3,
+      "4.0": 2
+    },
+    "_MTMapTileScale": {
+      "1.0": 35
+    },
+    "_MTSharpLayerOffset": {
+      "0.95": 25,
+      "1.0": 10
+    },
+    "_MTShininess": {
+      "4.0": 21,
+      "11.0": 7,
+      "65.0": 3,
+      "6.0": 3,
+      "7.0": 1
+    },
+    "_MTSpecularAO": {
+      "0.0": 20,
+      "1.0": 14
+    },
+    "_MTSpecularAttenInShadow": {
+      "0.2": 34,
+      "0.844": 1
+    },
+    "_MTSpecularOffset": {
+      "0.0": 35
+    },
+    "_MTSpecularScale": {
+      "1.0": 13,
+      "1.2": 10,
+      "60.0": 7,
+      "25.0": 3,
+      "1.1": 2
+    },
+    "_MTSpecularShadowScale": {
+      "0.0": 35
+    },
+    "_MTUseSpecularRamp": {
+      "1.0": 25,
+      "0.0": 10
+    },
+    "_MainSettingsGroup": {
+      "0.0": 41
+    },
+    "_MainTexAlphaCutoff": {
+      "0.5": 39
+    },
+    "_MainTexAlphaUse": {
+      "0.0": 17,
+      "2.0": 13,
+      "3.0": 9
+    },
+    "_MainTexColoring": {
+      "0.0": 39
+    },
+    "_MatCapHueShift": {
+      "0.0": 5,
+      "-2.06": 3,
+      "-1.0": 2,
+      "4.3": 1,
+      "-0.5": 1
+    },
+    "_MatCapIntensity": {
+      "1.0": 11,
+      "0.6": 1,
+      "0.3": 1,
+      "0.2": 1
+    },
+    "_MatCapSize": {
+      "1.0": 7,
+      "1.5": 3,
+      "2.0": 2,
+      "0.6": 1,
+      "0.754": 1
+    },
+    "_MatCap_SamplerType": {
+      "0.0": 14
+    },
+    "_MaxOutlineZOffset": {
+      "0.01": 84,
+      "1.0": 28,
+      "0.0": 6,
+      "100.0": 5,
+      "0.067": 1
+    },
+    "_MetalMaterial": {
+      "1.0": 18,
+      "0.0": 17
+    },
+    "_NPCMultiEyeSize": {
+      "0.0": 38
+    },
+    "_NormalMapLayerEnum": {
+      "0.0": 33
+    },
+    "_NormalMapOffset": {
+      "0.0": 33
+    },
+    "_NormalMapScale": {
+      "0.0": 33
+    },
+    "_NormalTex_SamplerType": {
+      "0.0": 14
+    },
+    "_NyxStateEnableOutlineVertAnimScaleHeightLerp": {
+      "0.0": 33,
+      "1.0": 6
+    },
+    "_NyxStateEnableOutlineWidthScaleHeightLerp": {
+      "0.0": 33,
+      "1.0": 6
+    },
+    "_NyxStateOutlineColorNoiseTurbulence": {
+      "0.25": 39
+    },
+    "_NyxStateOutlineColorOnBodyOpacity": {
+      "1.0": 39
+    },
+    "_NyxStateOutlineColorScale": {
+      "1.0": 37,
+      "3.0": 2
+    },
+    "_NyxStateOutlineVertAnimScale": {
+      "30.0": 33,
+      "1.0": 6
+    },
+    "_NyxStateOutlineWidthScale": {
+      "5.0": 33,
+      "1.0": 6
+    },
+    "_OutLineIntensity": {
+      "0.0": 32,
+      "0.5": 5,
+      "1.0": 2
+    },
+    "_OutLineIntensity2": {
+      "0.0": 39
+    },
+    "_OutLineIntensity3": {
+      "0.0": 38,
+      "0.5": 1
+    },
+    "_OutLineIntensity4": {
+      "0.0": 36,
+      "1.0": 2,
+      "0.3": 1
+    },
+    "_OutLineIntensity5": {
+      "0.0": 39
+    },
+    "_OutLineZOffset": {
+      "0.0": 39
+    },
+    "_OutlineGroup": {
+      "0.0": 39
+    },
+    "_OutlineMotionVectorsCull": {
+      "1.0": 39
+    },
+    "_OutlineOffsetBlockBChannel": {
+      "0.0": 37,
+      "1.0": 2
+    },
+    "_OutlinePolygonOffsetFactor": {
+      "0.0": 35,
+      "4.0": 9,
+      "1.8": 5,
+      "5.0": 2,
+      "0.3": 2,
+      "0.5": 2
+    },
+    "_OutlinePolygonOffsetUnit": {
+      "0.0": 30,
+      "1.0": 9
+    },
+    "_OutlineVertexColorPassthrough": {
+      "0.0": 33
+    },
+    "_OutlineWidth": {
+      "1.0": 84,
+      "0.03": 39,
+      "0.045": 14,
+      "0.04": 9,
+      "0.035": 6,
+      "0.06": 5
+    },
+    "_PackageLightMapToggle": {
+      "0.0": 33
+    },
+    "_PackageNormalMapToggle": {
+      "0.0": 33
+    },
+    "_ParallaxBlendAmount": {
+      "0.0": 8,
+      "0.5": 4,
+      "0.1": 1,
+      "1.0": 1
+    },
+    "_ParallaxDispersion": {
+      "0.0": 12,
+      "0.002": 1,
+      "0.008": 1
+    },
+    "_ParallaxFlowDistortionCorrect": {
+      "0.5": 10,
+      "0.402": 4
+    },
+    "_ParallaxFlowSpeed": {
+      "0.1": 10,
+      "0.0": 4
+    },
+    "_ParallaxFlowUVSwitch": {
+      "0.0": 14
+    },
+    "_ParallaxHeight": {
+      "0.1": 7,
+      "0.25": 4,
+      "0.29": 1,
+      "1.0": 1,
+      "0.224": 1
+    },
+    "_ParallaxMaskHeight": {
+      "0.1": 10,
+      "0.0": 4
+    },
+    "_ParallaxTexColorChannelSwitch": {
+      "0.0": 13,
+      "3.0": 1
+    },
+    "_ParallaxTexFlowChannelSwitch": {
+      "0.0": 14
+    },
+    "_ParallaxTex_SamplerType": {
+      "0.0": 14
+    },
+    "_PolygonOffsetFactor": {
+      "0.0": 52,
+      "0.82": 1
+    },
+    "_PolygonOffsetUnit": {
+      "0.0": 43
+    },
+    "_PowerExponent": {
+      "1.0": 7,
+      "8.0": 3,
+      "3.5": 2,
+      "4.0": 1,
+      "2.0": 1
+    },
+    "_RampID": {
+      "0.0": 13
+    },
+    "_RefractionBlendAmount": {
+      "1.0": 14
+    },
+    "_RefractionIOR": {
+      "1.4": 7,
+      "5.0": 4,
+      "1.214": 1,
+      "4.0": 1,
+      "3.0": 1
+    },
+    "_RefractionTex_SamplerType": {
+      "0.0": 14
+    },
+    "_RefractionxHeight": {
+      "1.0": 14
+    },
+    "_Roughness": {
+      "0.5": 9,
+      "0.1": 2,
+      "0.3": 2,
+      "0.14": 1
+    },
+    "_SHADER_LERP_MATERIAL_ID": {
+      "0.0": 21
+    },
+    "_Scale": {
+      "0.01": 39
+    },
+    "_SecondCubeMapBrightness": {
+      "1.0": 14
+    },
+    "_SecondCubeMap_SamplerType": {
+      "0.0": 14
+    },
+    "_SecondExactSphereScale": {
+      "1.0": 14
+    },
+    "_SecondTexToggle": {
+      "0.0": 14
+    },
+    "_SelectMatID": {
+      "0.0": 25,
+      "1.0": 5,
+      "3.0": 3,
+      "5.0": 1
+    },
+    "_ShaderLerpCharAvatarDie_DissolveColorScaler": {
+      "1.0": 21
+    },
+    "_ShaderLerpCharAvatarDie_DissolveEdgeWidth": {
+      "1.1": 21
+    },
+    "_ShaderLerpCharAvatarDie_DissolveValue": {
+      "0.0": 21
+    },
+    "_ShaderLerpCharDissolve_Value": {
+      "0.03": 16,
+      "0.051": 3
+    },
+    "_ShaderLerpCharFrozen_FrozenIntensity": {
+      "0.9": 21
+    },
+    "_ShadowRampWidth": {
+      "1.0": 34,
+      "0.5": 4,
+      "1.3": 1
+    },
+    "_ShadowTransitionRange": {
+      "0.01": 37,
+      "0.078": 2
+    },
+    "_ShadowTransitionRange2": {
+      "0.01": 39
+    },
+    "_ShadowTransitionRange3": {
+      "0.01": 39
+    },
+    "_ShadowTransitionRange4": {
+      "0.01": 39
+    },
+    "_ShadowTransitionRange5": {
+      "0.01": 39
+    },
+    "_ShadowTransitionSoftness": {
+      "0.5": 37,
+      "0.643": 2
+    },
+    "_ShadowTransitionSoftness2": {
+      "0.5": 39
+    },
+    "_ShadowTransitionSoftness3": {
+      "0.5": 39
+    },
+    "_ShadowTransitionSoftness4": {
+      "0.5": 39
+    },
+    "_ShadowTransitionSoftness5": {
+      "0.5": 39
+    },
+    "_Shininess": {
+      "10.0": 25,
+      "6.0": 2,
+      "5.0": 2,
+      "1.7": 2,
+      "50.0": 2,
+      "2.6": 2
+    },
+    "_Shininess2": {
+      "10.0": 36,
+      "22.0": 2,
+      "15.0": 1
+    },
+    "_Shininess3": {
+      "10.0": 36,
+      "24.8": 2,
+      "29.4": 1
+    },
+    "_Shininess4": {
+      "10.0": 39
+    },
+    "_Shininess5": {
+      "10.0": 38,
+      "12.0": 1
+    },
+    "_ShiningColorBlend": {
+      "0.0": 11,
+      "1.0": 9,
+      "0.25": 2,
+      "0.8": 2,
+      "0.3": 1
+    },
+    "_ShiningDensity": {
+      "0.3": 9,
+      "1.0": 5,
+      "0.66": 2,
+      "0.6": 1,
+      "0.05": 1,
+      "0.09": 1
+    },
+    "_ShiningFarNearBlend": {
+      "1.0": 20,
+      "0.3": 3,
+      "0.0": 2
+    },
+    "_ShiningFrequencncy": {
+      "0.0": 10,
+      "0.7": 5,
+      "4.0": 3,
+      "0.5": 1,
+      "1.3": 1,
+      "2.5": 1
+    },
+    "_ShiningIntensity": {
+      "3.0": 11,
+      "5.0": 4,
+      "1.68": 4,
+      "2.0": 3,
+      "1.6": 1,
+      "4.06": 1
+    },
+    "_ShiningMaxDistance": {
+      "1.0": 15,
+      "0.0": 3,
+      "20.0": 3,
+      "13.0": 3,
+      "10.0": 1
+    },
+    "_ShiningNotUseMask": {
+      "0.0": 24,
+      "1.0": 1
+    },
+    "_ShiningSize": {
+      "0.05": 10,
+      "0.03": 3,
+      "0.2": 2,
+      "0.009": 2,
+      "0.025": 1,
+      "0.6": 1
+    },
+    "_ShiningSizeFar": {
+      "1.0": 10,
+      "0.8": 8,
+      "0.3": 3,
+      "0.5": 2,
+      "0.6": 1,
+      "0.835": 1
+    },
+    "_ShiningSizeNear": {
+      "1.0": 13,
+      "0.8": 4,
+      "0.05": 3,
+      "0.15": 2,
+      "0.12": 1,
+      "0.079": 1
+    },
+    "_ShiningTiling": {
+      "40.0": 11,
+      "75.0": 3,
+      "200.0": 2,
+      "50.0": 2,
+      "90.0": 1,
+      "380.0": 1
+    },
+    "_SpecMulti": {
+      "0.1": 16,
+      "0.0": 9,
+      "0.3": 3,
+      "0.2": 3,
+      "0.13": 2,
+      "0.6": 2
+    },
+    "_SpecMulti2": {
+      "0.1": 33,
+      "0.0": 3,
+      "0.129": 2,
+      "0.3": 1
+    },
+    "_SpecMulti3": {
+      "0.1": 35,
+      "0.0": 3,
+      "0.15": 1
+    },
+    "_SpecMulti4": {
+      "0.1": 37,
+      "0.15": 1,
+      "0.0": 1
+    },
+    "_SpecMulti5": {
+      "0.1": 38,
+      "0.3": 1
+    },
+    "_SpecOpacity": {
+      "0.0": 38,
+      "0.8": 1
+    },
+    "_SpecOpacity2": {
+      "0.0": 39
+    },
+    "_SpecOpacity3": {
+      "0.0": 39
+    },
+    "_SpecOpacity4": {
+      "0.0": 39
+    },
+    "_SpecOpacity5": {
+      "0.0": 39
+    },
+    "_SpecualrInShaow": {
+      "0.0": 19,
+      "0.15": 7,
+      "0.1": 5,
+      "0.5": 5,
+      "0.348": 2,
+      "0.2": 1
+    },
+    "_SrcBlendMode": {
+      "1.0": 39,
+      "5.0": 4
+    },
+    "_StockingsDetailPattenScale": {
+      "0.2": 5,
+      "0.0": 4,
+      "0.5": 1,
+      "1.0": 1,
+      "0.1": 1
+    },
+    "_StockingsDetailPattenTiling": {
+      "250.0": 5,
+      "10.0": 3,
+      "177.8": 2,
+      "200.0": 1,
+      "500.0": 1
+    },
+    "_StockingsDetailScale": {
+      "5.0": 4,
+      "0.3": 2,
+      "1.0": 2,
+      "2.04": 2,
+      "2.0": 1,
+      "0.0": 1
+    },
+    "_StockingsDetailTilingNear": {
+      "50.0": 5,
+      "1.0": 2,
+      "12.0": 2,
+      "30.0": 1,
+      "20.0": 1,
+      "100.0": 1
+    },
+    "_StockingsGradientLength": {
+      "1.0": 12
+    },
+    "_StockingsGradientStrength": {
+      "0.5": 8,
+      "0.2": 3,
+      "0.125": 1
+    },
+    "_StockingsGradientTypeChoose": {
+      "0.0": 9,
+      "1.0": 3
+    },
+    "_StockingsLightRange": {
+      "1.0": 4,
+      "3.17": 3,
+      "2.0": 2,
+      "3.0": 1,
+      "3.92": 1,
+      "6.08": 1
+    },
+    "_StockingsLightScale": {
+      "1.0": 6,
+      "1.3": 4,
+      "2.1": 2
+    },
+    "_StockingsLightScaleInShadow": {
+      "1.0": 6,
+      "0.5": 3,
+      "0.975": 3
+    },
+    "_StockingsSecondShadowRange": {
+      "0.5": 7,
+      "2.49": 2,
+      "13.69": 2,
+      "1.0": 1
+    },
+    "_StockingsSecondShadowSoft": {
+      "0.01": 12
+    },
+    "_StockingsShadowRange": {
+      "1.6": 3,
+      "12.51": 3,
+      "1.0": 2,
+      "2.76": 2,
+      "10.0": 1,
+      "1.8": 1
+    },
+    "_StockingsSpecularDetailRange": {
+      "5.0": 6,
+      "50.0": 2,
+      "106.1": 2,
+      "68.8": 1,
+      "4.5": 1
+    },
+    "_StockingsSpecularDetailScale": {
+      "0.4": 6,
+      "0.0": 2,
+      "0.391": 2,
+      "0.3": 1,
+      "0.399": 1
+    },
+    "_StockingsSpecularDetailSharpe": {
+      "0.773": 6,
+      "0.8": 2,
+      "1.0": 2,
+      "0.984": 2
+    },
+    "_StockingsSpecularDistance": {
+      "3.0": 10,
+      "3.4": 2
+    },
+    "_StockingsSpecularFade": {
+      "1.0": 10,
+      "3.54": 2
+    },
+    "_StockingsSpecularRange": {
+      "6.4": 7,
+      "50.0": 2,
+      "77.7": 2,
+      "18.0": 1
+    },
+    "_StockingsSpecularScale": {
+      "0.099": 7,
+      "0.0": 2,
+      "1.0": 2,
+      "0.15": 1
+    },
+    "_StockingsSpecularSharpe": {
+      "0.844": 7,
+      "0.85": 3,
+      "1.0": 2
+    },
+    "_StockingsSpecularShift": {
+      "-0.06": 7,
+      "-0.5": 2,
+      "1.0": 2,
+      "-1.5": 1
+    },
+    "_TempNyxStatePaintMaskChannel": {
+      "0.0": 37,
+      "2.0": 2
+    },
+    "_TexScale": {
+      "1.0": 10,
+      "2.0": 3,
+      "4.0": 1
+    },
+    "_TextureBiasWhenDithering": {
+      "-1.0": 39
+    },
+    "_TextureLineSmoothness": {
+      "0.1": 22,
+      "0.286": 2,
+      "0.15": 1
+    },
+    "_TextureLineThickness": {
+      "0.6": 22,
+      "0.43": 2,
+      "0.55": 1
+    },
+    "_ThirdCubeMapBrightness": {
+      "1.0": 14
+    },
+    "_ThirdCubeMap_SamplerType": {
+      "0.0": 14
+    },
+    "_ThirdExactSphereScale": {
+      "1.0": 14
+    },
+    "_ThirdTexToggle": {
+      "0.0": 14
+    },
+    "_ToonPerspectiveBeginScale": {
+      "0.1": 42
+    },
+    "_ToonPerspectiveCamBeginDistance": {
+      "1.0": 42
+    },
+    "_ToonPerspectiveCamEndDistance": {
+      "2.0": 42
+    },
+    "_ToonPerspectiveEnable": {
+      "0.0": 41,
+      "1.0": 1
+    },
+    "_ToonPerspectiveEndScale": {
+      "1.0": 42
+    },
+    "_ToonPerspectiveRadius": {
+      "0.1": 42
+    },
+    "_ToonPerspectiveRootPosIndex": {
+      "0.0": 42
+    },
+    "_ToonPerspectiveScale": {
+      "0.0": 42
+    },
+    "_ToonPerspectiveSmooth": {
+      "0.05": 42
+    },
+    "_ToonPerspectiveUseCamDistScale": {
+      "1.0": 42
+    },
+    "_TransparentAlpha": {
+      "1.0": 39
+    },
+    "_UseBackFaceUV2": {
+      "1.0": 30,
+      "0.0": 9
+    },
+    "_UseBumpAsAOMask": {
+      "0.0": 24
+    },
+    "_UseBumpMap": {
+      "1.0": 22,
+      "0.0": 13
+    },
+    "_UseCharacterPlaneClips": {
+      "0.0": 33,
+      "1.0": 5
+    },
+    "_UseCharacterShining": {
+      "0.0": 13,
+      "1.0": 12
+    },
+    "_UseCharacterStockings": {
+      "1.0": 8,
+      "0.0": 4
+    },
+    "_UseCoolShadowColorOrTex": {
+      "1.0": 29,
+      "0.0": 10
+    },
+    "_UseEyeMask": {
+      "0.0": 20,
+      "1.0": 19
+    },
+    "_UseFaceMapNew": {
+      "0.0": 32
+    },
+    "_UseFakePoint": {
+      "0.0": 33
+    },
+    "_UseGradientStocking": {
+      "0.0": 11,
+      "1.0": 1
+    },
+    "_UseGradientStockingRampColor": {
+      "0.0": 12
+    },
+    "_UseHairAlphaLimitation": {
+      "0.0": 34,
+      "1.0": 5
+    },
+    "_UseHairAlphaMask": {
+      "0.0": 38,
+      "1.0": 1
+    },
+    "_UseHairMap": {
+      "0.0": 27,
+      "1.0": 7
+    },
+    "_UseInput": {
+      "1.0": 11,
+      "0.0": 2,
+      "5.0": 1
+    },
+    "_UseLightMapColorAO": {
+      "1.0": 38,
+      "0.0": 1
+    },
+    "_UseMaskInShadowExport": {
+      "0.0": 41
+    },
+    "_UseMaterial2": {
+      "1.0": 22,
+      "0.0": 17
+    },
+    "_UseMaterial3": {
+      "1.0": 27,
+      "0.0": 12
+    },
+    "_UseMaterial4": {
+      "1.0": 21,
+      "0.0": 18
+    },
+    "_UseMaterial5": {
+      "0.0": 28,
+      "1.0": 11
+    },
+    "_UseMaterialMasksTex": {
+      "0.0": 35
+    },
+    "_UseMobileBumpCompressSmooth": {
+      "0.0": 22,
+      "1.0": 13
+    },
+    "_UseNPCMultiEye": {
+      "0.0": 38
+    },
+    "_UsePVMask1": {
+      "0.0": 41
+    },
+    "_UsePVMask2": {
+      "0.0": 41
+    },
+    "_UseParallaxMask": {
+      "0.0": 14
+    },
+    "_UseSecondFresnel": {
+      "0.0": 11,
+      "1.0": 1
+    },
+    "_UseShadowRamp": {
+      "1.0": 20,
+      "0.0": 19
+    },
+    "_UseShadowTransition": {
+      "0.0": 36,
+      "1.0": 3
+    },
+    "_UseShiningPhaseCenterClamp": {
+      "0.0": 14,
+      "1.0": 11
+    },
+    "_UseSpecular": {
+      "0.0": 39
+    },
+    "_UseStockingWhite": {
+      "0.0": 8
+    },
+    "_UseTexture": {
+      "0.0": 14
+    },
+    "_UseToonLightMap": {
+      "1.0": 34,
+      "0.0": 5
+    },
+    "_UseVertexColorAO": {
+      "1.0": 36,
+      "0.0": 3
+    },
+    "_UseVertexRampWidth": {
+      "0.0": 29,
+      "1.0": 10
+    },
+    "_UsingDitherAlpha": {
+      "0.0": 51,
+      "1.0": 2,
+      "8.0": 1
+    },
+    "_WriteFaceMatID": {
+      "0.0": 27,
+      "1.0": 11
+    },
+    "_WriteSpecialMatID": {
+      "0.0": 27,
+      "1.0": 11
+    },
+    "_WriteTransEyeMatID": {
+      "0.0": 38
+    },
+    "_Ztest": {
+      "4.0": 43
+    },
+    "_Zwrite": {
+      "1.0": 41,
+      "0.0": 2
+    },
+    "_isNativeMainNormal": {
+      "0.0": 33
+    },
+    "_shadowSoftRange": {
+      "1.0": 25,
+      "2.0": 14
+    },
+    "_shadowSoftRange2": {
+      "0.0": 26,
+      "2.0": 13
+    },
+    "_shadowSoftRange3": {
+      "0.0": 27,
+      "2.0": 11,
+      "0.416": 1
+    },
+    "_shadowSoftRange4": {
+      "0.0": 26,
+      "2.0": 12,
+      "0.5": 1
+    },
+    "_shadowSoftRange5": {
+      "0.0": 30,
+      "2.0": 9
+    },
+    "_useShadowSoft": {
+      "0.0": 25,
+      "1.0": 14
+    },
+    "_useShadowSoft2": {
+      "0.0": 26,
+      "1.0": 13
+    },
+    "_useShadowSoft3": {
+      "0.0": 27,
+      "1.0": 12
+    },
+    "_useShadowSoft4": {
+      "0.0": 26,
+      "1.0": 12,
+      "0.2": 1
+    },
+    "_useShadowSoft5": {
+      "0.0": 30,
+      "1.0": 9
+    },
+    "_EnableSdfSpecA": {
+      "0.0": 15,
+      "1.0": 8
+    },
+    "_EnableSdfSpecB": {
+      "0.0": 21
+    },
+    "_FaceFlipFactor": {
+      "0.0": 18
+    },
+    "_FaceSdfShadowSharpness": {
+      "100.0": 14
+    },
+    "_MainTexTintBlendMode": {
+      "0.0": 24
+    },
+    "_NewFaceShadowOffset": {
+      "0.0": 23
+    },
+    "_NewFaceUseLegacySampling": {
+      "1.0": 21
+    },
+    "_NewShadowRampMax": {
+      "1.0": 23
+    },
+    "_NewShadowRampMin": {
+      "0.0": 23
+    },
+    "_NewShadowSmooth": {
+      "1.0": 21
+    },
+    "_PreDesaturateScale": {
+      "0.0": 24
+    },
+    "_SdfOutlineEllipseDebug": {
+      "0.0": 21
+    },
+    "_SdfOutlineEllipseEnabled": {
+      "0.0": 21
+    },
+    "_SdfSpecA_BacklightIntensity": {
+      "0.0": 15,
+      "1.0": 5,
+      "0.5": 2,
+      "0.9": 1
+    },
+    "_SdfSpecA_FlipUv": {
+      "1.0": 16,
+      "0.0": 7
+    },
+    "_SdfSpecA_InvertStrength": {
+      "0.0": 23
+    },
+    "_SdfSpecA_Sharpness": {
+      "10.0": 14
+    },
+    "_SdfSpecA_Smoothness": {
+      "10.0": 21
+    },
+    "_SdfSpecA_Strength": {
+      "1.0": 20,
+      "0.1": 3
+    },
+    "_SdfSpecA_UseSoftSampling": {
+      "0.0": 20,
+      "1.0": 1
+    },
+    "_SdfSpecA_UvSplitY": {
+      "0.5": 10,
+      "0.45": 4
+    },
+    "_SdfSpecA_Vertical": {
+      "0.0": 23
+    },
+    "_SdfSpecB_BacklightIntensity": {
+      "0.0": 21
+    },
+    "_SdfSpecB_FlipUv": {
+      "1.0": 21
+    },
+    "_SdfSpecB_InvertStrength": {
+      "0.0": 21
+    },
+    "_SdfSpecB_Smoothness": {
+      "10.0": 21
+    },
+    "_SdfSpecB_Strength": {
+      "1.0": 21
+    },
+    "_SdfSpecB_UseSoftSampling": {
+      "0.0": 21
+    },
+    "_SdfSpecB_Vertical": {
+      "0.0": 21
+    },
+    "_UseFaceSDF": {
+      "0.0": 12,
+      "1.0": 11
+    },
+    "_ColorBlendHDRProtect": {
+      "0.0": 10
+    },
+    "_EnableFlowGlow": {
+      "0.0": 10
+    },
+    "_EnableParallax2": {
+      "0.0": 10
+    },
+    "_FlowGlowColorChannelSwitch": {
+      "0.0": 10
+    },
+    "_FlowGlowTex_SamplerType": {
+      "0.0": 10
+    },
+    "_FlowGlowUSpeed": {
+      "0.0": 10
+    },
+    "_FlowGlowUVChannel": {
+      "0.0": 10
+    },
+    "_FlowGlowVSpeed": {
+      "0.0": 10
+    },
+    "_Parallax2BlendAmount": {
+      "0.0": 10
+    },
+    "_Parallax2Dispersion": {
+      "0.0": 10
+    },
+    "_Parallax2FlowDistortionCorrect": {
+      "0.5": 10
+    },
+    "_Parallax2FlowSpeed": {
+      "0.1": 10
+    },
+    "_Parallax2FlowUVMode": {
+      "0.0": 10
+    },
+    "_Parallax2FlowUVSwitch": {
+      "0.0": 10
+    },
+    "_Parallax2Height": {
+      "0.1": 10
+    },
+    "_Parallax2MaskAdditiveMode": {
+      "0.0": 10
+    },
+    "_Parallax2MaskChannelSwitch": {
+      "0.0": 10
+    },
+    "_Parallax2MaskHeight": {
+      "0.1": 10
+    },
+    "_Parallax2TexColorChannelSwitch": {
+      "0.0": 10
+    },
+    "_Parallax2TexFlowChannelSwitch": {
+      "0.0": 10
+    },
+    "_Parallax2Tex_SamplerType": {
+      "0.0": 10
+    },
+    "_Parallax2UVChannel": {
+      "0.0": 10
+    },
+    "_Parallax2UVMaskDirection": {
+      "0.0": 10
+    },
+    "_Parallax2ViewAngleMaskRange": {
+      "0.5": 10
+    },
+    "_ShiningCameraOffsetScale": {
+      "2.5": 8,
+      "10.0": 1,
+      "17.0": 1
+    },
+    "_UseFlowGlowParallaxAlphaMask": {
+      "0.0": 10
+    },
+    "_UseParallax2FlowIndependentTint": {
+      "0.0": 10
+    },
+    "_UseParallax2Mask": {
+      "0.0": 10
+    },
+    "_UseParallax2UVMask": {
+      "0.0": 10
+    },
+    "_UseParallax2ViewAngleMask": {
+      "0.0": 10
+    },
+    "_FacialExpAdditionEnable": {
+      "0.0": 4
+    },
+    "_FacialExpAdditionIndex": {
+      "0.0": 4
+    },
+    "_FacialExpAdditionLeftHoriFlip": {
+      "0.0": 4
+    },
+    "_FacialExpAdditionLeftIndex": {
+      "0.0": 4
+    },
+    "_FacialExpAdditionLeftOffsetX": {
+      "-0.13": 4
+    },
+    "_FacialExpAdditionLeftOffsetY": {
+      "-0.05": 4
+    },
+    "_FacialExpAdditionLeftRotateAngle": {
+      "0.0": 4
+    },
+    "_FacialExpAdditionLeftRotateSpeed": {
+      "0.0": 4
+    },
+    "_FacialExpAdditionLeftScale": {
+      "5.0": 4
+    },
+    "_FacialExpAdditionLeftScaleX": {
+      "1.0": 4
+    },
+    "_FacialExpAdditionLeftScaleY": {
+      "1.0": 4
+    },
+    "_FacialExpAdditionMirror": {
+      "1.0": 4
+    },
+    "_FacialExpAdditionRightHoriFlip": {
+      "0.0": 4
+    },
+    "_FacialExpAdditionRightOffsetX": {
+      "-0.13": 4
+    },
+    "_FacialExpAdditionRightOffsetY": {
+      "-0.05": 4
+    },
+    "_FacialExpAdditionRightRotateAngle": {
+      "0.0": 4
+    },
+    "_FacialExpAdditionRightRotateSpeed": {
+      "0.0": 4
+    },
+    "_FacialExpAdditionRightScale": {
+      "5.0": 4
+    },
+    "_FacialExpAdditionRightScaleX": {
+      "1.0": 4
+    },
+    "_FacialExpAdditionRightScaleY": {
+      "1.0": 4
+    },
+    "_FacialExpAdditionSplitIndex": {
+      "0.0": 4
+    },
+    "_FacialExpAtlasRows": {
+      "8.0": 4
+    },
+    "_FacialExpEnable": {
+      "0.0": 4
+    },
+    "_FacialExpIndex": {
+      "0.0": 2,
+      "22.13": 1,
+      "5.0": 1
+    },
+    "_FacialExpLeftHoriFlip": {
+      "0.0": 4
+    },
+    "_FacialExpLeftIndex": {
+      "0.0": 3,
+      "21.6": 1
+    },
+    "_FacialExpLeftOffsetX": {
+      "-0.13": 2,
+      "-0.142": 1,
+      "-0.14": 1
+    },
+    "_FacialExpLeftOffsetY": {
+      "-0.015": 1,
+      "-0.02": 1,
+      "-0.05": 1,
+      "-0.025": 1
+    },
+    "_FacialExpLeftRotateAngle": {
+      "0.0": 4
+    },
+    "_FacialExpLeftRotateSpeed": {
+      "0.0": 4
+    },
+    "_FacialExpLeftScale": {
+      "4.0": 2,
+      "5.3": 1,
+      "5.0": 1
+    },
+    "_FacialExpLeftScaleX": {
+      "1.0": 4
+    },
+    "_FacialExpLeftScaleY": {
+      "1.0": 4
+    },
+    "_FacialExpMirror": {
+      "1.0": 3,
+      "0.0": 1
+    },
+    "_FacialExpRightHoriFlip": {
+      "0.0": 4
+    },
+    "_FacialExpRightOffsetX": {
+      "-0.13": 2,
+      "-0.142": 1,
+      "-0.14": 1
+    },
+    "_FacialExpRightOffsetY": {
+      "-0.015": 1,
+      "-0.02": 1,
+      "-0.05": 1,
+      "-0.025": 1
+    },
+    "_FacialExpRightRotateAngle": {
+      "0.0": 4
+    },
+    "_FacialExpRightRotateSpeed": {
+      "0.0": 4
+    },
+    "_FacialExpRightScale": {
+      "4.0": 2,
+      "5.3": 1,
+      "5.0": 1
+    },
+    "_FacialExpRightScaleX": {
+      "1.0": 4
+    },
+    "_FacialExpRightScaleY": {
+      "1.0": 4
+    },
+    "_FacialExpShadowSoftness": {
+      "0.5": 4
+    },
+    "_FacialExpShadowStrength": {
+      "0.5": 4
+    },
+    "_FacialExpShadowThreshold": {
+      "0.0": 4
+    },
+    "_FacialExpSplitIndex": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_FacialUVExpressionEnable": {
+      "1.0": 3,
+      "0.0": 1
+    },
+    "_CausticAngleResponse": {
+      "3.0": 1,
+      "2.401": 1,
+      "2.63": 1,
+      "0.5": 1
+    },
+    "_CausticBackLightMin": {
+      "1.0": 2,
+      "0.1": 1,
+      "0.5": 1
+    },
+    "_CausticBinary": {
+      "0.0": 4
+    },
+    "_CausticDirectionSharpness": {
+      "2.5": 2,
+      "2.0": 1,
+      "1.77": 1
+    },
+    "_CausticFrontBackTransition": {
+      "0.033": 2,
+      "0.0": 1,
+      "0.079": 1
+    },
+    "_CausticLightInfluence": {
+      "0.0": 1,
+      "0.8": 1,
+      "0.707": 1,
+      "0.7": 1
+    },
+    "_CausticThreshold": {
+      "0.5": 4
+    },
+    "_CausticUseRefractedUV": {
+      "1.0": 3,
+      "0.0": 1
+    },
+    "_CausticsSettings": {
+      "1.0": 4
+    },
+    "_DepthOffsetSettings": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_DepthPower": {
+      "2.0": 2,
+      "0.3": 1,
+      "0.35": 1
+    },
+    "_DummyBaseSettings": {
+      "0.0": 4
+    },
+    "_DummyPVMask": {
+      "0.0": 4
+    },
+    "_EnablePositionJitter": {
+      "0.0": 4
+    },
+    "_EnableRegionMode": {
+      "0.0": 4
+    },
+    "_EnableRotationJitter": {
+      "0.0": 4
+    },
+    "_EnableScaleJitter": {
+      "0.0": 4
+    },
+    "_EnableSteppedTime": {
+      "0.0": 4
+    },
+    "_EnableViewAngleDepthOffset": {
+      "0.0": 2,
+      "1.0": 2
+    },
+    "_EyeDiscFeather": {
+      "0.065": 2,
+      "0.3": 1,
+      "0.127": 1
+    },
+    "_EyeDiscRadius": {
+      "0.551": 1,
+      "0.36": 1,
+      "0.46": 1,
+      "0.5": 1
+    },
+    "_EyeInShadowTintLightDirIntensity": {
+      "0.0": 1,
+      "0.75": 1,
+      "1.0": 1
+    },
+    "_EyeInShadowTintNightIntensity": {
+      "0.25": 2,
+      "0.15": 1
+    },
+    "_EyeMatcapBinarySmoothness": {
+      "0.646": 4
+    },
+    "_EyeMatcapBinaryThreshold": {
+      "0.356": 4
+    },
+    "_EyeMatcapBlendMode": {
+      "1.0": 4
+    },
+    "_EyeMatcapIntensity": {
+      "2.0": 1,
+      "0.3": 1,
+      "0.87": 1,
+      "0.31": 1
+    },
+    "_EyeMatcapSphericalNormalLerp": {
+      "0.3": 2,
+      "0.5": 1,
+      "0.63": 1
+    },
+    "_EyeMatcapUseBinary": {
+      "0.0": 4
+    },
+    "_FlipbookCutOff": {
+      "0.1": 4
+    },
+    "_FlipbookIntensity": {
+      "1.0": 4
+    },
+    "_FlipbookSettings": {
+      "0.0": 4
+    },
+    "_FlipbookSpeed": {
+      "10.0": 4
+    },
+    "_FrameDurationMs": {
+      "333.33": 4
+    },
+    "_HighlightIntensity": {
+      "2.0": 2,
+      "1.0": 1,
+      "1.9": 1
+    },
+    "_HighlightRampWidth": {
+      "1.0": 3,
+      "1.2": 1
+    },
+    "_HighlightSettings": {
+      "1.0": 4
+    },
+    "_InvertSDFMap": {
+      "0.0": 4
+    },
+    "_LightInfluence": {
+      "0.1": 2,
+      "0.0": 2
+    },
+    "_MatcapSettings": {
+      "1.0": 4
+    },
+    "_NoiseRadialFlipU": {
+      "0.0": 4
+    },
+    "_NoiseRadialFlipV": {
+      "0.0": 4
+    },
+    "_NoiseRadialIntensity": {
+      "1.0": 4
+    },
+    "_NoiseRadialSpeed": {
+      "1.0": 4
+    },
+    "_ParallaxLayer1": {
+      "1.0": 4
+    },
+    "_ParallaxLayer1BlendMode": {
+      "0.0": 4
+    },
+    "_ParallaxLayer1DepthOffsetStrength": {
+      "0.0": 2,
+      "1.0": 1,
+      "0.099": 1
+    },
+    "_ParallaxLayer1Intensity": {
+      "1.0": 4
+    },
+    "_ParallaxLayer1ParallaxScale": {
+      "0.06": 1,
+      "0.05": 1,
+      "0.01": 1,
+      "0.04": 1
+    },
+    "_ParallaxLayer1RampBlendMode": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_ParallaxLayer1RampStrength": {
+      "1.0": 4
+    },
+    "_ParallaxLayer1UseClockTick": {
+      "0.0": 4
+    },
+    "_ParallaxLayer1UseRamp": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_ParallaxLayer2": {
+      "0.0": 2,
+      "1.0": 2
+    },
+    "_ParallaxLayer2BlendMode": {
+      "0.0": 4
+    },
+    "_ParallaxLayer2DepthOffsetStrength": {
+      "0.0": 3,
+      "0.4": 1
+    },
+    "_ParallaxLayer2Intensity": {
+      "1.0": 3,
+      "1.95": 1
+    },
+    "_ParallaxLayer2ParallaxScale": {
+      "0.0": 2,
+      "0.025": 1,
+      "0.05": 1
+    },
+    "_ParallaxLayer2RampBlendMode": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_ParallaxLayer2RampStrength": {
+      "1.0": 4
+    },
+    "_ParallaxLayer2UseClockTick": {
+      "0.0": 4
+    },
+    "_ParallaxLayer2UseRamp": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_ParallaxLayer3": {
+      "0.0": 2,
+      "1.0": 2
+    },
+    "_ParallaxLayer3BlendMode": {
+      "0.0": 4
+    },
+    "_ParallaxLayer3DepthOffsetStrength": {
+      "0.0": 4
+    },
+    "_ParallaxLayer3Intensity": {
+      "1.0": 3,
+      "0.85": 1
+    },
+    "_ParallaxLayer3ParallaxScale": {
+      "0.0": 2,
+      "-0.025": 1,
+      "0.05": 1
+    },
+    "_ParallaxLayer3RampBlendMode": {
+      "0.0": 4
+    },
+    "_ParallaxLayer3RampStrength": {
+      "1.0": 4
+    },
+    "_ParallaxLayer3UseClockTick": {
+      "0.0": 4
+    },
+    "_ParallaxLayer3UseRamp": {
+      "0.0": 4
+    },
+    "_ParallaxScale": {
+      "0.03": 1,
+      "0.45": 1,
+      "0.15": 1,
+      "0.3": 1
+    },
+    "_PositionJitterSpeed": {
+      "10.0": 4
+    },
+    "_PositionJitterStrength": {
+      "0.01": 4
+    },
+    "_RefractionSettings": {
+      "1.0": 4
+    },
+    "_Region1EnablePositionJitter": {
+      "0.0": 4
+    },
+    "_Region1EnableRotationJitter": {
+      "0.0": 4
+    },
+    "_Region1EnableScaleJitter": {
+      "0.0": 4
+    },
+    "_Region1TimeOffset": {
+      "0.0": 4
+    },
+    "_Region1Tip": {
+      "0.0": 4
+    },
+    "_Region2EnablePositionJitter": {
+      "0.0": 4
+    },
+    "_Region2EnableRotationJitter": {
+      "0.0": 4
+    },
+    "_Region2EnableScaleJitter": {
+      "0.0": 4
+    },
+    "_Region2TimeOffset": {
+      "0.0": 4
+    },
+    "_Region2Tip": {
+      "0.0": 4
+    },
+    "_Region3EnablePositionJitter": {
+      "0.0": 4
+    },
+    "_Region3EnableRotationJitter": {
+      "0.0": 4
+    },
+    "_Region3EnableScaleJitter": {
+      "0.0": 4
+    },
+    "_Region3TimeOffset": {
+      "0.0": 4
+    },
+    "_Region3Tip": {
+      "0.0": 4
+    },
+    "_Region4EnablePositionJitter": {
+      "0.0": 4
+    },
+    "_Region4EnableRotationJitter": {
+      "0.0": 4
+    },
+    "_Region4EnableScaleJitter": {
+      "0.0": 4
+    },
+    "_Region4TimeOffset": {
+      "0.0": 4
+    },
+    "_Region4Tip": {
+      "0.0": 4
+    },
+    "_RotationAngle": {
+      "0.0": 3,
+      "-0.02": 1
+    },
+    "_RotationJitterSpeed": {
+      "10.0": 4
+    },
+    "_RotationJitterStrength": {
+      "0.1": 4
+    },
+    "_SDFCenterValue": {
+      "0.5": 4
+    },
+    "_ScaleJitterSpeed": {
+      "10.0": 4
+    },
+    "_ScaleJitterStrength": {
+      "0.1": 4
+    },
+    "_UseHighlightRamp": {
+      "1.0": 3,
+      "0.0": 1
+    },
+    "_UseNoiseRadialCaustic": {
+      "0.0": 4
+    },
+    "_UseViewRotation": {
+      "0.0": 4
+    },
+    "_ViewAngleDepthOffsetStrength": {
+      "1.0": 4
+    },
+    "_ViewRotationSensitivity": {
+      "1.0": 4
+    },
+    "_isUVMirror": {
+      "0.0": 4
+    },
+    "_CameraOffsetShining_ID1": {
+      "2.5": 4,
+      "4.08": 2
+    },
+    "_CameraOffsetShining_ID2": {
+      "2.5": 6
+    },
+    "_CameraOffsetShining_ID3": {
+      "2.5": 6
+    },
+    "_CameraOffsetShining_ID4": {
+      "2.5": 4,
+      "3.5": 1,
+      "1.5": 1
+    },
+    "_EnableUnderWaterFade": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_ShiningColorBlend_V2": {
+      "0.0": 3,
+      "1.0": 2,
+      "0.65": 1
+    },
+    "_ShiningCustomIDChannel_V2": {
+      "0.0": 5,
+      "1.0": 1
+    },
+    "_ShiningCustomIDMaskChannel_V2": {
+      "0.0": 4,
+      "3.0": 2
+    },
+    "_ShiningCustomIDMask_V2_SamplerType": {
+      "0.0": 6
+    },
+    "_ShiningCustomMaskChannel_ID1": {
+      "0.0": 6
+    },
+    "_ShiningCustomMaskChannel_ID2": {
+      "0.0": 3,
+      "3.0": 2,
+      "2.0": 1
+    },
+    "_ShiningCustomMaskChannel_ID3": {
+      "0.0": 3,
+      "1.0": 2,
+      "2.0": 1
+    },
+    "_ShiningCustomMaskChannel_ID4": {
+      "0.0": 5,
+      "2.0": 1
+    },
+    "_ShiningDensitySeedJitter_ID1": {
+      "0.755": 4,
+      "1.101": 2
+    },
+    "_ShiningDensitySeedJitter_ID2": {
+      "0.755": 5,
+      "0.8": 1
+    },
+    "_ShiningDensitySeedJitter_ID3": {
+      "0.755": 6
+    },
+    "_ShiningDensitySeedJitter_ID4": {
+      "0.755": 4,
+      "1.02": 2
+    },
+    "_ShiningDensitySource_ID1": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_ShiningDensitySource_ID2": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_ShiningDensitySource_ID3": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_ShiningDensitySource_ID4": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_ShiningDensityVColorChannel_ID1": {
+      "3.0": 4,
+      "1.0": 2
+    },
+    "_ShiningDensityVColorChannel_ID2": {
+      "3.0": 4,
+      "0.0": 2
+    },
+    "_ShiningDensityVColorChannel_ID3": {
+      "3.0": 4,
+      "0.0": 2
+    },
+    "_ShiningDensityVColorChannel_ID4": {
+      "3.0": 4,
+      "1.0": 2
+    },
+    "_ShiningDensity_V2": {
+      "0.3": 3,
+      "1.0": 2,
+      "0.55": 1
+    },
+    "_ShiningFarNearBlend_V2": {
+      "0.5": 4,
+      "1.0": 2
+    },
+    "_ShiningFrequency_V2": {
+      "2.0": 5,
+      "0.0": 1
+    },
+    "_ShiningHighlightDarkIntensity_V2": {
+      "0.3": 6
+    },
+    "_ShiningHighlightSoftness_V2": {
+      "0.1": 6
+    },
+    "_ShiningHighlightStrength_V2": {
+      "1.0": 6
+    },
+    "_ShiningHighlightWidth_V2": {
+      "0.3": 6
+    },
+    "_ShiningIDCustomSection_ID1": {
+      "0.0": 6
+    },
+    "_ShiningIDCustomSection_ID2": {
+      "0.0": 6
+    },
+    "_ShiningIDCustomSection_ID3": {
+      "0.0": 6
+    },
+    "_ShiningIDCustomSection_ID4": {
+      "0.0": 6
+    },
+    "_ShiningIntensity_V2": {
+      "3.0": 3,
+      "2.5": 2,
+      "1.79": 1
+    },
+    "_ShiningMaxDistance_V2": {
+      "15.0": 3,
+      "1.0": 2,
+      "40.0": 1
+    },
+    "_ShiningNotUseMask_V2": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_ShiningRandomGrayAmount_V2": {
+      "0.0": 6
+    },
+    "_ShiningRandomGrayBrightness_V2": {
+      "1.0": 6
+    },
+    "_ShiningRandomRotation_ID1": {
+      "0.0": 6
+    },
+    "_ShiningRandomRotation_ID2": {
+      "0.0": 4,
+      "0.841": 2
+    },
+    "_ShiningRandomRotation_ID3": {
+      "0.0": 4,
+      "0.65": 2
+    },
+    "_ShiningRandomRotation_ID4": {
+      "0.0": 6
+    },
+    "_ShiningRandomSizeMax_ID1": {
+      "1.2": 5,
+      "1.0": 1
+    },
+    "_ShiningRandomSizeMax_ID2": {
+      "1.2": 3,
+      "0.9": 2,
+      "1.6": 1
+    },
+    "_ShiningRandomSizeMax_ID3": {
+      "1.2": 4,
+      "1.9": 1,
+      "0.75": 1
+    },
+    "_ShiningRandomSizeMax_ID4": {
+      "1.2": 4,
+      "1.1": 1,
+      "0.85": 1
+    },
+    "_ShiningRandomSizeMin_ID1": {
+      "0.8": 4,
+      "0.6": 2
+    },
+    "_ShiningRandomSizeMin_ID2": {
+      "0.8": 5,
+      "-0.3": 1
+    },
+    "_ShiningRandomSizeMin_ID3": {
+      "0.8": 4,
+      "0.5": 2
+    },
+    "_ShiningRandomSizeMin_ID4": {
+      "0.8": 4,
+      "0.59": 1,
+      "0.34": 1
+    },
+    "_ShiningRandomSize_ID1": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_ShiningRandomSize_ID2": {
+      "0.0": 3,
+      "1.0": 2,
+      "1.6": 1
+    },
+    "_ShiningRandomSize_ID3": {
+      "0.0": 4,
+      "0.3": 2
+    },
+    "_ShiningRandomSize_ID4": {
+      "0.0": 4,
+      "1.2": 1,
+      "1.0": 1
+    },
+    "_ShiningRotation_ID1": {
+      "0.0": 4,
+      "12.0": 1,
+      "25.0": 1
+    },
+    "_ShiningRotation_ID2": {
+      "0.0": 4,
+      "187.0": 2
+    },
+    "_ShiningRotation_ID3": {
+      "0.0": 6
+    },
+    "_ShiningRotation_ID4": {
+      "0.0": 4,
+      "18.0": 1,
+      "25.0": 1
+    },
+    "_ShiningSampleDataIDChannel_V2": {
+      "0.0": 4,
+      "3.0": 2
+    },
+    "_ShiningSaturation_V2": {
+      "1.0": 4,
+      "2.0": 2
+    },
+    "_ShiningSizeFar_V2": {
+      "1.0": 5,
+      "2.0": 1
+    },
+    "_ShiningSizeNear_V2": {
+      "1.0": 6
+    },
+    "_ShiningSize_V2": {
+      "0.05": 3,
+      "0.25": 2,
+      "0.015": 1
+    },
+    "_ShiningSpecularNoiseTiling_V2": {
+      "10.0": 6
+    },
+    "_ShiningSpecularSoftness_V2": {
+      "0.1": 6
+    },
+    "_ShiningSpecularThreshold_V2": {
+      "0.5": 6
+    },
+    "_ShiningTiling_ID1": {
+      "40.0": 3,
+      "73.6": 2,
+      "160.0": 1
+    },
+    "_ShiningTiling_ID2": {
+      "40.0": 5,
+      "41.4": 2,
+      "200.0": 1,
+      "500.0": 1
+    },
+    "_ShiningTiling_ID3": {
+      "40.0": 5,
+      "50.3": 2,
+      "260.0": 1,
+      "120.0": 1
+    },
+    "_ShiningTiling_ID4": {
+      "40.0": 5,
+      "130.0": 1,
+      "62.4": 1,
+      "48.12": 1,
+      "120.0": 1
+    },
+    "_ShiningUVRandomOffset_ID1": {
+      "0.0": 6
+    },
+    "_ShiningUVRandomOffset_ID2": {
+      "0.0": 6
+    },
+    "_ShiningUVRandomOffset_ID3": {
+      "0.0": 6
+    },
+    "_ShiningUVRandomOffset_ID4": {
+      "0.0": 6
+    },
+    "_ShiningUVSwitch_ID1": {
+      "0.0": 4,
+      "2.0": 2
+    },
+    "_ShiningUVSwitch_ID2": {
+      "0.0": 4,
+      "2.0": 2
+    },
+    "_ShiningUVSwitch_ID3": {
+      "0.0": 3,
+      "2.0": 3
+    },
+    "_ShiningUVSwitch_ID4": {
+      "0.0": 3,
+      "2.0": 3
+    },
+    "_ShiningUVTileRandomOffset_ID1": {
+      "0.0": 6
+    },
+    "_ShiningUVTileRandomOffset_ID2": {
+      "0.0": 6
+    },
+    "_ShiningUVTileRandomOffset_ID3": {
+      "0.0": 6
+    },
+    "_ShiningUVTileRandomOffset_ID4": {
+      "0.0": 6
+    },
+    "_ShiningVColorMaskChannel_V2": {
+      "3.0": 4,
+      "0.0": 2
+    },
+    "_SymmetricRotationAxisX_ID1": {
+      "0.5": 4,
+      "0.14": 2
+    },
+    "_SymmetricRotationAxisX_ID2": {
+      "0.5": 6
+    },
+    "_SymmetricRotationAxisX_ID3": {
+      "0.5": 6
+    },
+    "_SymmetricRotationAxisX_ID4": {
+      "0.5": 4,
+      "0.14": 2
+    },
+    "_UnderWaterDistanceDense": {
+      "10.0": 3
+    },
+    "_UseCharacterShining_V2": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseFullBrightnessAnimation_V2": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseID1UVcustom": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseID2UVcustom": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseID3UVcustom": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseID4UVcustom": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseIDMapSampling": {
+      "0.0": 6
+    },
+    "_UseNormalBAsID": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseRandomCustom_ID1": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_UseRandomCustom_ID2": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseRandomCustom_ID3": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_UseRandomCustom_ID4": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseShiningCustomShape_V2": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_UseShiningHightLight_V2": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseShiningIDSampler_V2": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseShiningMap_V2": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseShiningPhaseCenterClamp_V2": {
+      "0.0": 5,
+      "1.0": 1
+    },
+    "_UseShiningRandomGray_V2": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_UseShiningSpect_V2": {
+      "0.0": 3,
+      "1.0": 3
+    },
+    "_UseShiningVColorMask_V2": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_UseSymmetricRotation_ID1": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_UseSymmetricRotation_ID2": {
+      "0.0": 6
+    },
+    "_UseSymmetricRotation_ID3": {
+      "0.0": 6
+    },
+    "_UseSymmetricRotation_ID4": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_BubblesBypassBlend": {
+      "0.0": 1
+    },
+    "_DummyGelInterior": {
+      "0.0": 1
+    },
+    "_EnableMermaidBubbles": {
+      "1.0": 1
+    },
+    "_GelBubbleJitter": {
+      "0.017": 1
+    },
+    "_GelDebugView": {
+      "0.0": 1
+    },
+    "_GelEndFade": {
+      "0.027": 1
+    },
+    "_GelFlowSpeed": {
+      "0.3": 1
+    },
+    "_GelFlowSpeedDelta": {
+      "-0.1": 1
+    },
+    "_GelFresnelFade": {
+      "0.3": 1
+    },
+    "_GelLayerOffset": {
+      "0.03": 1
+    },
+    "_GelNormalDistortion": {
+      "0.05": 1
+    },
+    "_GelPitchFadeStart": {
+      "0.3": 1
+    },
+    "_GelPlaneStrength": {
+      "1.0": 1
+    },
+    "_GelSegmentCount": {
+      "4.53": 1
+    },
+    "_GelStripLength": {
+      "1.11": 1
+    },
+    "_GelStripWidth": {
+      "0.28": 1
+    },
+    "_GelSurfaceFade": {
+      "0.05": 1
+    },
+    "_GelUseBoneSkinning": {
+      "0.0": 1
+    },
+    "_MermaidMaskCH": {
+      "0.0": 1
+    },
+    "_ReflectChannelSwitch": {
+      "1.0": 1
+    },
+    "_ReflectTargetHue": {
+      "0.581": 1
+    },
+    "_ReflectTargetSat": {
+      "1.0": 1
+    },
+    "_ReflectUseHueTint": {
+      "1.0": 1
+    },
+    "_RefractionChannelSwitch": {
+      "1.0": 1
+    },
+    "_RefractionCubeMapIntensity": {
+      "0.8": 1
+    },
+    "_RefractionDirInverseToggle": {
+      "0.0": 1
+    },
+    "_RefractionTargetHue": {
+      "0.541": 1
+    },
+    "_RefractionTargetSat": {
+      "0.4": 1
+    },
+    "_RefractionUseHueTint": {
+      "1.0": 1
+    },
+    "_ShiningUVSwitch": {
+      "1.0": 1
+    },
+    "_ThinFilmBlend": {
+      "0.661": 1
+    },
+    "_ThinFilmFresnelPower": {
+      "8.0": 1
+    },
+    "_ThinFilmIntensity": {
+      "4.0": 1
+    },
+    "_ThinFilmIridescence": {
+      "1.0": 1
+    },
+    "_ThinFilmShadowStrength": {
+      "0.5": 1
+    },
+    "_ThinFilmThicknessOffset": {
+      "0.0": 1
+    },
+    "_ThinFilmThicknessScale": {
+      "1.5": 1
+    },
+    "_ThinFilmUVGradient": {
+      "2.0": 1
+    },
+    "_ThinFilmViewStrength": {
+      "4.6": 1
+    },
+    "_UseGelInterior": {
+      "0.0": 1
+    },
+    "_AnisoSilkAnisotropy": {
+      "0.5": 2,
+      "-0.32": 1
+    },
+    "_AnisoSilkCameraLightDirBlend": {
+      "1.0": 2,
+      "0.96": 1
+    },
+    "_AnisoSilkFrontViewBoostStrength": {
+      "0.5": 3
+    },
+    "_AnisoSilkInputColorBlendStrength": {
+      "0.0": 2,
+      "0.8": 1
+    },
+    "_AnisoSilkIridescenceIOR": {
+      "1.5": 3
+    },
+    "_AnisoSilkIridescenceStrength": {
+      "0.3": 2,
+      "0.7": 1
+    },
+    "_AnisoSilkIridescenceThickness": {
+      "500.0": 2,
+      "142.0": 1
+    },
+    "_AnisoSilkMaskChannel": {
+      "3.0": 3
+    },
+    "_AnisoSilkSecondLobeRoughnessScale": {
+      "2.0": 2,
+      "1.0": 1
+    },
+    "_AnisoSilkSecondLobeStrength": {
+      "0.5": 2,
+      "0.35": 1
+    },
+    "_AnisoSilkSmoothnessMax": {
+      "0.75": 2,
+      "0.85": 1
+    },
+    "_AnisoSilkSmoothnessMin": {
+      "0.0": 2,
+      "0.16": 1
+    },
+    "_AnisoSilkSpecularColorControl": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_AnisoSilkSpecularFinalIntensity": {
+      "1.0": 2,
+      "0.01": 1
+    },
+    "_AnisoSilkSpecularIntensity": {
+      "1.0": 2,
+      "3.5": 1
+    },
+    "_AnisoSilkSpecularSaturation": {
+      "1.0": 2,
+      "1.4": 1
+    },
+    "_AnisoSilkSpecularThresholdRange": {
+      "1.0": 3
+    },
+    "_AnisoSilkSwapTB": {
+      "0.0": 3
+    },
+    "_AnisoSilkThreadIDColorSelect": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_AnisoSilkThreadMap_SamplerType": {
+      "0.0": 3
+    },
+    "_AnisoSilkThreadNoiseStrength": {
+      "0.0": 2,
+      "0.15": 1
+    },
+    "_AnisoSilkThreadNoiseTiling": {
+      "8.0": 2,
+      "9.0": 1
+    },
+    "_AnisoSilkThreadNormalStrength": {
+      "0.5": 2,
+      "0.28": 1
+    },
+    "_AnisoSilkThreadSmoothnessScale": {
+      "0.5": 2,
+      "0.62": 1
+    },
+    "_AnisoSilkThreadUVSelect": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_AnisoSilkUseCameraDirAsLightDir": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_AnisoSilkUseFrontViewBoost": {
+      "0.0": 3
+    },
+    "_AnisoSilkUseInputColorForFColor": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_AnisoSilkUseIridescence": {
+      "0.0": 3
+    },
+    "_AnisoSilkUseMatTypeAsSpecMask": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_AnisoSilkUseSecondLobe": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_AnisoSilkUseThreadIDColor": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_AnisoSilkUseThreadMapMask": {
+      "1.0": 3
+    },
+    "_CameraOffsetShining_V2": {
+      "6.0": 2,
+      "2.5": 1
+    },
+    "_CameraOffsetShining_V2_CopyID_1": {
+      "5.0": 2,
+      "2.5": 1
+    },
+    "_CameraOffsetShining_V2_CopyID_2": {
+      "5.0": 2,
+      "6.0": 1
+    },
+    "_CameraOffsetShining_V2_CopyID_3": {
+      "6.0": 2,
+      "5.0": 1
+    },
+    "_CameraOffsetShining_V2_CopyID_4": {
+      "2.5": 2,
+      "6.0": 1
+    },
+    "_CustomIDNoiseDistortionStrength_V2": {
+      "0.1": 3
+    },
+    "_CustomIDNoiseDistortionTiling": {
+      "1.0": 3
+    },
+    "_CustomIDShiningNoiseMaskChannel_V2": {
+      "0.0": 3
+    },
+    "_EnableCharacterSilksAnisotropy": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_FlattenState": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_HighlightDarkIntensity_V2": {
+      "0.3": 3
+    },
+    "_HighlightDarkIntensity_V2_CopyID_1": {
+      "0.3": 3
+    },
+    "_HighlightDarkIntensity_V2_CopyID_2": {
+      "0.3": 3
+    },
+    "_HighlightDarkIntensity_V2_CopyID_3": {
+      "0.3": 3
+    },
+    "_HighlightDarkIntensity_V2_CopyID_4": {
+      "0.3": 3
+    },
+    "_HighlightSoftness_V2": {
+      "0.1": 3
+    },
+    "_HighlightSoftness_V2_CopyID_1": {
+      "0.1": 3
+    },
+    "_HighlightSoftness_V2_CopyID_2": {
+      "0.1": 3
+    },
+    "_HighlightSoftness_V2_CopyID_3": {
+      "0.1": 3
+    },
+    "_HighlightSoftness_V2_CopyID_4": {
+      "0.1": 3
+    },
+    "_HighlightStrength_V2": {
+      "1.0": 3
+    },
+    "_HighlightStrength_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_HighlightStrength_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_HighlightStrength_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_HighlightStrength_V2_CopyID_4": {
+      "1.0": 3
+    },
+    "_HighlightWidth_V2": {
+      "0.3": 2,
+      "0.35": 1
+    },
+    "_HighlightWidth_V2_CopyID_1": {
+      "0.3": 3
+    },
+    "_HighlightWidth_V2_CopyID_2": {
+      "0.3": 3
+    },
+    "_HighlightWidth_V2_CopyID_3": {
+      "0.3": 3
+    },
+    "_HighlightWidth_V2_CopyID_4": {
+      "0.3": 2,
+      "0.35": 1
+    },
+    "_MultiplyAlpha": {
+      "0.0": 2
+    },
+    "_NoiseDistortionStrength_V2": {
+      "0.1": 3
+    },
+    "_NoiseDistortionStrength_V2_CopyID_1": {
+      "0.1": 3
+    },
+    "_NoiseDistortionStrength_V2_CopyID_2": {
+      "0.1": 3
+    },
+    "_NoiseDistortionStrength_V2_CopyID_3": {
+      "0.1": 3
+    },
+    "_NoiseDistortionStrength_V2_CopyID_4": {
+      "0.1": 3
+    },
+    "_NoiseDistortionTiling_V2": {
+      "1.0": 3
+    },
+    "_NoiseDistortionTiling_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_NoiseDistortionTiling_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_NoiseDistortionTiling_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_NoiseDistortionTiling_V2_CopyID_4": {
+      "1.0": 3
+    },
+    "_ShiningCameraOffset": {
+      "6.5": 1,
+      "2.5": 1,
+      "3.0": 1,
+      "1.2": 1
+    },
+    "_ShiningColorBlend_ID2": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_ShiningColorBlend_ID3": {
+      "1.0": 2,
+      "0.0": 2
+    },
+    "_ShiningColorBlend_ID4": {
+      "0.0": 4
+    },
+    "_ShiningColorBlend_ID5": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_ShiningColorBlend_V2_CopyID_1": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_ShiningColorBlend_V2_CopyID_2": {
+      "0.0": 3
+    },
+    "_ShiningColorBlend_V2_CopyID_3": {
+      "0.35": 2,
+      "0.7": 1
+    },
+    "_ShiningColorBlend_V2_CopyID_4": {
+      "0.0": 2,
+      "0.1": 1
+    },
+    "_ShiningCustomIDChannel_V2_CopyID_1": {
+      "2.0": 3
+    },
+    "_ShiningCustomIDChannel_V2_CopyID_2": {
+      "2.0": 2,
+      "1.0": 1
+    },
+    "_ShiningCustomIDChannel_V2_CopyID_3": {
+      "0.0": 2,
+      "3.0": 1
+    },
+    "_ShiningCustomIDChannel_V2_CopyID_4": {
+      "0.0": 2,
+      "3.0": 1
+    },
+    "_ShiningCustomIDMaskChannel": {
+      "2.0": 3,
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_ShiningCustomIDMask_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningCustomIDMask_V2_CopyID_1_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningCustomIDMask_V2_CopyID_2_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningCustomIDMask_V2_CopyID_3_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningCustomIDMask_V2_CopyID_4_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningCustomMaskChannel_V2": {
+      "0.0": 2,
+      "2.0": 1
+    },
+    "_ShiningCustomMaskChannel_V2_CopyID_1": {
+      "2.0": 2,
+      "0.0": 1
+    },
+    "_ShiningCustomMaskChannel_V2_CopyID_2": {
+      "1.0": 2,
+      "2.0": 1
+    },
+    "_ShiningCustomMaskChannel_V2_CopyID_3": {
+      "3.0": 2,
+      "2.0": 1
+    },
+    "_ShiningCustomMaskChannel_V2_CopyID_4": {
+      "0.0": 2,
+      "2.0": 1
+    },
+    "_ShiningDensityMapPower_V2": {
+      "1.0": 3
+    },
+    "_ShiningDensityMapPower_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_ShiningDensityMapPower_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_ShiningDensityMapPower_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_ShiningDensityMapPower_V2_CopyID_4": {
+      "1.0": 3
+    },
+    "_ShiningDensityMap_V2_CopyID_1_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningDensityMap_V2_CopyID_2_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningDensityMap_V2_CopyID_3_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningDensityMap_V2_CopyID_4_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningDensityMap_V2_SamplerType": {
+      "0.0": 3
+    },
+    "_ShiningDensitySource_V2": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_ShiningDensitySource_V2_CopyID_1": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_ShiningDensitySource_V2_CopyID_2": {
+      "0.0": 3
+    },
+    "_ShiningDensitySource_V2_CopyID_3": {
+      "0.0": 3
+    },
+    "_ShiningDensitySource_V2_CopyID_4": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_ShiningDensityVColorChannel_V2": {
+      "3.0": 2,
+      "1.0": 1
+    },
+    "_ShiningDensityVColorChannel_V2_CopyID_1": {
+      "3.0": 2,
+      "1.0": 1
+    },
+    "_ShiningDensityVColorChannel_V2_CopyID_2": {
+      "1.0": 2,
+      "3.0": 1
+    },
+    "_ShiningDensityVColorChannel_V2_CopyID_3": {
+      "1.0": 2,
+      "3.0": 1
+    },
+    "_ShiningDensityVColorChannel_V2_CopyID_4": {
+      "3.0": 2,
+      "1.0": 1
+    },
+    "_ShiningDensity_ID2": {
+      "0.3": 3,
+      "0.07": 1
+    },
+    "_ShiningDensity_ID3": {
+      "0.3": 2,
+      "0.5": 1,
+      "0.356": 1
+    },
+    "_ShiningDensity_ID4": {
+      "0.3": 3,
+      "0.24": 1
+    },
+    "_ShiningDensity_ID5": {
+      "0.3": 4
+    },
+    "_ShiningDensity_V2_CopyID_1": {
+      "0.731": 2,
+      "0.4": 1
+    },
+    "_ShiningDensity_V2_CopyID_2": {
+      "0.65": 2,
+      "0.05": 1
+    },
+    "_ShiningDensity_V2_CopyID_3": {
+      "0.45": 2,
+      "1.0": 1
+    },
+    "_ShiningDensity_V2_CopyID_4": {
+      "0.3": 2,
+      "0.5": 1
+    },
+    "_ShiningFarNearBlend_V2_CopyID_1": {
+      "0.5": 3
+    },
+    "_ShiningFarNearBlend_V2_CopyID_2": {
+      "0.5": 3
+    },
+    "_ShiningFarNearBlend_V2_CopyID_3": {
+      "0.5": 3
+    },
+    "_ShiningFarNearBlend_V2_CopyID_4": {
+      "0.5": 3
+    },
+    "_ShiningFrequencncy_ID2": {
+      "0.0": 3,
+      "2.08": 1
+    },
+    "_ShiningFrequencncy_ID3": {
+      "0.0": 3,
+      "0.41": 1
+    },
+    "_ShiningFrequencncy_ID4": {
+      "0.0": 3,
+      "0.25": 1
+    },
+    "_ShiningFrequencncy_ID5": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_ShiningFrequency_V2_CopyID_1": {
+      "0.24": 2,
+      "2.75": 1
+    },
+    "_ShiningFrequency_V2_CopyID_2": {
+      "0.5": 2,
+      "2.75": 1
+    },
+    "_ShiningFrequency_V2_CopyID_3": {
+      "1.5": 2,
+      "2.5": 1
+    },
+    "_ShiningFrequency_V2_CopyID_4": {
+      "2.0": 2,
+      "0.2": 1
+    },
+    "_ShiningHighlightDarkIntensity_V2_CopyID_1": {
+      "0.3": 3
+    },
+    "_ShiningHighlightDarkIntensity_V2_CopyID_2": {
+      "0.3": 2,
+      "0.65": 1
+    },
+    "_ShiningHighlightDarkIntensity_V2_CopyID_3": {
+      "0.3": 2,
+      "0.05": 1
+    },
+    "_ShiningHighlightSoftness_V2_CopyID_1": {
+      "0.1": 3
+    },
+    "_ShiningHighlightSoftness_V2_CopyID_2": {
+      "0.1": 3
+    },
+    "_ShiningHighlightSoftness_V2_CopyID_3": {
+      "0.1": 3
+    },
+    "_ShiningHighlightStrength_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_ShiningHighlightStrength_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_ShiningHighlightStrength_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_ShiningHighlightWidth_V2_CopyID_1": {
+      "0.3": 3
+    },
+    "_ShiningHighlightWidth_V2_CopyID_2": {
+      "0.3": 2,
+      "0.5": 1
+    },
+    "_ShiningHighlightWidth_V2_CopyID_3": {
+      "0.3": 3
+    },
+    "_ShiningIntensity_ID2": {
+      "3.0": 3,
+      "0.1": 1
+    },
+    "_ShiningIntensity_ID3": {
+      "3.0": 4
+    },
+    "_ShiningIntensity_ID4": {
+      "3.0": 3,
+      "1.5": 1
+    },
+    "_ShiningIntensity_ID5": {
+      "3.0": 4
+    },
+    "_ShiningIntensity_V2_CopyID_1": {
+      "1.2": 2,
+      "1.0": 1
+    },
+    "_ShiningIntensity_V2_CopyID_2": {
+      "1.0": 2,
+      "1.79": 1
+    },
+    "_ShiningIntensity_V2_CopyID_3": {
+      "5.0": 1,
+      "1.0": 1,
+      "1.5": 1
+    },
+    "_ShiningIntensity_V2_CopyID_4": {
+      "3.0": 2,
+      "0.39": 1
+    },
+    "_ShiningMaxDistance_V2_CopyID_1": {
+      "40.0": 2,
+      "15.0": 1
+    },
+    "_ShiningMaxDistance_V2_CopyID_2": {
+      "40.0": 2,
+      "15.0": 1
+    },
+    "_ShiningMaxDistance_V2_CopyID_3": {
+      "15.0": 2,
+      "40.0": 1
+    },
+    "_ShiningMaxDistance_V2_CopyID_4": {
+      "15.0": 3
+    },
+    "_ShiningNoiseMaskChannel_V2": {
+      "0.0": 3
+    },
+    "_ShiningNoiseMaskChannel_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_ShiningNoiseMaskChannel_V2_CopyID_2": {
+      "0.0": 3
+    },
+    "_ShiningNoiseMaskChannel_V2_CopyID_3": {
+      "3.0": 2,
+      "0.0": 1
+    },
+    "_ShiningNoiseMaskChannel_V2_CopyID_4": {
+      "0.0": 3
+    },
+    "_ShiningNotUseMask_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_ShiningNotUseMask_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_ShiningNotUseMask_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_ShiningNotUseMask_V2_CopyID_4": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_ShiningRandomGrayAmount_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_ShiningRandomGrayAmount_V2_CopyID_2": {
+      "0.251": 2,
+      "0.0": 1
+    },
+    "_ShiningRandomGrayAmount_V2_CopyID_3": {
+      "0.0": 3
+    },
+    "_ShiningRandomGrayAmount_V2_CopyID_4": {
+      "0.0": 3
+    },
+    "_ShiningRandomGrayBrightness_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_ShiningRandomGrayBrightness_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_ShiningRandomGrayBrightness_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_ShiningRandomGrayBrightness_V2_CopyID_4": {
+      "1.0": 3
+    },
+    "_ShiningRandomRotation_V2": {
+      "0.0": 3
+    },
+    "_ShiningRandomRotation_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_ShiningRandomRotation_V2_CopyID_2": {
+      "0.66": 2,
+      "0.0": 1
+    },
+    "_ShiningRandomRotation_V2_CopyID_3": {
+      "0.3": 2,
+      "0.0": 1
+    },
+    "_ShiningRandomRotation_V2_CopyID_4": {
+      "0.0": 3
+    },
+    "_ShiningRandomSizeMax_V2": {
+      "0.7": 1,
+      "1.2": 1,
+      "1.0": 1
+    },
+    "_ShiningRandomSizeMax_V2_CopyID_1": {
+      "1.2": 2,
+      "1.0": 1
+    },
+    "_ShiningRandomSizeMax_V2_CopyID_2": {
+      "1.0": 2,
+      "0.7": 1
+    },
+    "_ShiningRandomSizeMax_V2_CopyID_3": {
+      "1.1": 2,
+      "0.7": 1
+    },
+    "_ShiningRandomSizeMax_V2_CopyID_4": {
+      "1.2": 2,
+      "1.0": 1
+    },
+    "_ShiningRandomSizeMin_V2": {
+      "0.5": 1,
+      "0.8": 1,
+      "1.0": 1
+    },
+    "_ShiningRandomSizeMin_V2_CopyID_1": {
+      "0.8": 2,
+      "1.0": 1
+    },
+    "_ShiningRandomSizeMin_V2_CopyID_2": {
+      "0.6": 2,
+      "0.5": 1
+    },
+    "_ShiningRandomSizeMin_V2_CopyID_3": {
+      "0.8": 2,
+      "0.5": 1
+    },
+    "_ShiningRandomSizeMin_V2_CopyID_4": {
+      "0.8": 2,
+      "1.0": 1
+    },
+    "_ShiningRandomSize_V2": {
+      "1.0": 1,
+      "0.0": 1,
+      "3.0": 1
+    },
+    "_ShiningRandomSize_V2_CopyID_1": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_ShiningRandomSize_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_ShiningRandomSize_V2_CopyID_3": {
+      "0.6": 2,
+      "1.0": 1
+    },
+    "_ShiningRandomSize_V2_CopyID_4": {
+      "0.0": 2,
+      "3.0": 1
+    },
+    "_ShiningRotation_V2": {
+      "0.0": 2,
+      "26.0": 1
+    },
+    "_ShiningRotation_V2_CopyID_1": {
+      "0.0": 2,
+      "26.0": 1
+    },
+    "_ShiningRotation_V2_CopyID_2": {
+      "9.71": 2,
+      "0.0": 1
+    },
+    "_ShiningRotation_V2_CopyID_3": {
+      "10.0": 2,
+      "90.0": 1
+    },
+    "_ShiningRotation_V2_CopyID_4": {
+      "0.0": 2,
+      "26.0": 1
+    },
+    "_ShiningSampleDataIDChannel_V2_CopyID_1": {
+      "1.0": 2,
+      "2.0": 1
+    },
+    "_ShiningSampleDataIDChannel_V2_CopyID_2": {
+      "2.0": 2,
+      "3.0": 1
+    },
+    "_ShiningSampleDataIDChannel_V2_CopyID_3": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_ShiningSaturation_V2_CopyID_1": {
+      "2.0": 2,
+      "1.0": 1
+    },
+    "_ShiningSaturation_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_ShiningSaturation_V2_CopyID_3": {
+      "1.0": 2,
+      "1.303": 1
+    },
+    "_ShiningSaturation_V2_CopyID_4": {
+      "1.0": 2,
+      "1.5": 1
+    },
+    "_ShiningShadowColorIntensity_V2": {
+      "0.8": 3
+    },
+    "_ShiningShadowColorIntensity_V2_CopyID_1": {
+      "0.8": 3
+    },
+    "_ShiningShadowColorIntensity_V2_CopyID_2": {
+      "0.8": 3
+    },
+    "_ShiningShadowColorIntensity_V2_CopyID_3": {
+      "0.8": 3
+    },
+    "_ShiningSizeFar_V2_CopyID_1": {
+      "2.0": 2,
+      "1.0": 1
+    },
+    "_ShiningSizeFar_V2_CopyID_2": {
+      "2.0": 2,
+      "1.0": 1
+    },
+    "_ShiningSizeFar_V2_CopyID_3": {
+      "1.0": 2,
+      "2.0": 1
+    },
+    "_ShiningSizeFar_V2_CopyID_4": {
+      "1.0": 3
+    },
+    "_ShiningSizeNear_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_ShiningSizeNear_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_ShiningSizeNear_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_ShiningSizeNear_V2_CopyID_4": {
+      "1.0": 3
+    },
+    "_ShiningSize_ID2": {
+      "0.05": 3,
+      "0.15": 1
+    },
+    "_ShiningSize_ID3": {
+      "0.05": 3,
+      "0.022": 1
+    },
+    "_ShiningSize_ID4": {
+      "0.05": 3,
+      "0.03": 1
+    },
+    "_ShiningSize_ID5": {
+      "0.05": 3,
+      "0.082": 1
+    },
+    "_ShiningSize_V2_CopyID_1": {
+      "0.25": 1,
+      "0.05": 1,
+      "0.16": 1
+    },
+    "_ShiningSize_V2_CopyID_2": {
+      "0.5": 2,
+      "1.18": 1
+    },
+    "_ShiningSize_V2_CopyID_3": {
+      "1.18": 3
+    },
+    "_ShiningSize_V2_CopyID_4": {
+      "0.03": 1,
+      "0.05": 1,
+      "0.25": 1
+    },
+    "_ShiningSpecularNoiseTiling_V2_CopyID_1": {
+      "10.0": 3
+    },
+    "_ShiningSpecularNoiseTiling_V2_CopyID_2": {
+      "10.0": 3
+    },
+    "_ShiningSpecularNoiseTiling_V2_CopyID_3": {
+      "10.0": 3
+    },
+    "_ShiningSpecularSoftness_V2_CopyID_1": {
+      "0.1": 3
+    },
+    "_ShiningSpecularSoftness_V2_CopyID_2": {
+      "0.1": 3
+    },
+    "_ShiningSpecularSoftness_V2_CopyID_3": {
+      "0.1": 3
+    },
+    "_ShiningSpecularThreshold_V2_CopyID_1": {
+      "0.5": 3
+    },
+    "_ShiningSpecularThreshold_V2_CopyID_2": {
+      "0.5": 3
+    },
+    "_ShiningSpecularThreshold_V2_CopyID_3": {
+      "0.5": 3
+    },
+    "_ShiningTiling_ID5": {
+      "40.0": 3,
+      "350.1": 1
+    },
+    "_ShiningTiling_V2": {
+      "200.0": 1,
+      "40.0": 1,
+      "45.0": 1
+    },
+    "_ShiningTiling_V2_CopyID_1": {
+      "300.0": 1,
+      "40.0": 1,
+      "45.0": 1
+    },
+    "_ShiningTiling_V2_CopyID_2": {
+      "63.0": 2,
+      "120.0": 1
+    },
+    "_ShiningTiling_V2_CopyID_3": {
+      "50.0": 2,
+      "150.0": 1
+    },
+    "_ShiningTiling_V2_CopyID_4": {
+      "260.0": 1,
+      "40.0": 1,
+      "71.0": 1
+    },
+    "_ShiningUVRandomOffset_V2": {
+      "0.0": 3
+    },
+    "_ShiningUVRandomOffset_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_ShiningUVRandomOffset_V2_CopyID_2": {
+      "0.0": 3
+    },
+    "_ShiningUVRandomOffset_V2_CopyID_3": {
+      "0.0": 3
+    },
+    "_ShiningUVRandomOffset_V2_CopyID_4": {
+      "0.0": 3
+    },
+    "_ShiningUVSwitch_V2": {
+      "0.0": 2,
+      "2.0": 1
+    },
+    "_ShiningUVSwitch_V2_CopyID_1": {
+      "0.0": 2,
+      "2.0": 1
+    },
+    "_ShiningUVSwitch_V2_CopyID_2": {
+      "2.0": 3
+    },
+    "_ShiningUVSwitch_V2_CopyID_3": {
+      "2.0": 2,
+      "3.0": 1
+    },
+    "_ShiningUVSwitch_V2_CopyID_4": {
+      "0.0": 2,
+      "3.0": 1
+    },
+    "_ShiningUVTileRandomOffset_V2": {
+      "0.0": 3
+    },
+    "_ShiningUVTileRandomOffset_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_ShiningUVTileRandomOffset_V2_CopyID_2": {
+      "0.0": 3
+    },
+    "_ShiningUVTileRandomOffset_V2_CopyID_3": {
+      "0.0": 3
+    },
+    "_ShiningUVTileRandomOffset_V2_CopyID_4": {
+      "0.0": 3
+    },
+    "_ShiningVColorMaskChannel_V2_CopyID_1": {
+      "1.0": 2,
+      "3.0": 1
+    },
+    "_ShiningVColorMaskChannel_V2_CopyID_2": {
+      "1.0": 2,
+      "3.0": 1
+    },
+    "_ShiningVColorMaskChannel_V2_CopyID_3": {
+      "1.0": 2,
+      "3.0": 1
+    },
+    "_ShiningVColorMaskChannel_V2_CopyID_4": {
+      "3.0": 2,
+      "1.0": 1
+    },
+    "_SpecularNoiseTiling_V2": {
+      "10.0": 3
+    },
+    "_SpecularNoiseTiling_V2_CopyID_1": {
+      "10.0": 3
+    },
+    "_SpecularNoiseTiling_V2_CopyID_2": {
+      "10.0": 3
+    },
+    "_SpecularNoiseTiling_V2_CopyID_3": {
+      "10.0": 3
+    },
+    "_SpecularNoiseTiling_V2_CopyID_4": {
+      "10.0": 3
+    },
+    "_SpecularSoftness_V2": {
+      "0.1": 3
+    },
+    "_SpecularSoftness_V2_CopyID_1": {
+      "0.1": 3
+    },
+    "_SpecularSoftness_V2_CopyID_2": {
+      "0.1": 3
+    },
+    "_SpecularSoftness_V2_CopyID_3": {
+      "0.1": 3
+    },
+    "_SpecularSoftness_V2_CopyID_4": {
+      "0.1": 3
+    },
+    "_SpecularThreshold_V2": {
+      "0.5": 3
+    },
+    "_SpecularThreshold_V2_CopyID_1": {
+      "0.5": 3
+    },
+    "_SpecularThreshold_V2_CopyID_2": {
+      "0.5": 3
+    },
+    "_SpecularThreshold_V2_CopyID_3": {
+      "0.5": 3
+    },
+    "_SpecularThreshold_V2_CopyID_4": {
+      "0.5": 3
+    },
+    "_UseCharacterShining_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_UseCharacterShining_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_UseCharacterShining_V2_CopyID_3": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseCharacterShining_V2_CopyID_4": {
+      "0.0": 3
+    },
+    "_UseFullBrightnessAnimation_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_UseFullBrightnessAnimation_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_UseFullBrightnessAnimation_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_UseFullBrightnessAnimation_V2_CopyID_4": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseHightLight_V2": {
+      "0.0": 3
+    },
+    "_UseHightLight_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_UseHightLight_V2_CopyID_2": {
+      "0.0": 3
+    },
+    "_UseHightLight_V2_CopyID_3": {
+      "0.0": 3
+    },
+    "_UseHightLight_V2_CopyID_4": {
+      "0.0": 3
+    },
+    "_UseID2Shining": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_UseID3Shining": {
+      "1.0": 2,
+      "0.0": 2
+    },
+    "_UseID4Shining": {
+      "0.0": 4
+    },
+    "_UseID5Shining": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_UseMultipleShining": {
+      "1.0": 3,
+      "0.0": 1
+    },
+    "_UseProceduraCustomIDlNoise": {
+      "1.0": 3
+    },
+    "_UseRandomCustom_V2": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseRandomCustom_V2_CopyID_1": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseRandomCustom_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_UseRandomCustom_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_UseRandomCustom_V2_CopyID_4": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseShiningCustomShape_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_UseShiningCustomShape_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_UseShiningCustomShape_V2_CopyID_3": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningDensityMap_V2": {
+      "0.0": 3
+    },
+    "_UseShiningDensityMap_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_UseShiningDensityMap_V2_CopyID_2": {
+      "0.0": 3
+    },
+    "_UseShiningDensityMap_V2_CopyID_3": {
+      "0.0": 3
+    },
+    "_UseShiningDensityMap_V2_CopyID_4": {
+      "0.0": 3
+    },
+    "_UseShiningHightLight_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_UseShiningHightLight_V2_CopyID_2": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningHightLight_V2_CopyID_3": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningMap": {
+      "1.0": 3
+    },
+    "_UseShiningMap_V2_CopyID_1": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningMap_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_UseShiningMap_V2_CopyID_3": {
+      "1.0": 3
+    },
+    "_UseShiningMap_V2_CopyID_4": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseShiningPhaseCenterClamp_ID2": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_UseShiningPhaseCenterClamp_ID3": {
+      "1.0": 2,
+      "0.0": 2
+    },
+    "_UseShiningPhaseCenterClamp_ID4": {
+      "0.0": 4
+    },
+    "_UseShiningPhaseCenterClamp_ID5": {
+      "0.0": 3,
+      "1.0": 1
+    },
+    "_UseShiningPhaseCenterClamp_V2_CopyID_1": {
+      "1.0": 3
+    },
+    "_UseShiningPhaseCenterClamp_V2_CopyID_2": {
+      "1.0": 3
+    },
+    "_UseShiningPhaseCenterClamp_V2_CopyID_3": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseShiningPhaseCenterClamp_V2_CopyID_4": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseShiningRandomGray_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_UseShiningRandomGray_V2_CopyID_2": {
+      "0.0": 3
+    },
+    "_UseShiningRandomGray_V2_CopyID_3": {
+      "0.0": 3
+    },
+    "_UseShiningRandomGray_V2_CopyID_4": {
+      "0.0": 3
+    },
+    "_UseShiningSpect_V2_CopyID_1": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningSpect_V2_CopyID_2": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningSpect_V2_CopyID_3": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningVColorMask_V2_CopyID_1": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningVColorMask_V2_CopyID_2": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningVColorMask_V2_CopyID_3": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_UseShiningVColorMask_V2_CopyID_4": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseSpect_V2": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseSpect_V2_CopyID_1": {
+      "0.0": 3
+    },
+    "_UseSpect_V2_CopyID_2": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseSpect_V2_CopyID_3": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseSpect_V2_CopyID_4": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseUvCustomIDNoise": {
+      "0.0": 3
+    },
+    "_UseUvNoise_V2": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseUvNoise_V2_CopyID_1": {
+      "0.0": 2,
+      "1.0": 1
+    },
+    "_UseUvNoise_V2_CopyID_2": {
+      "0.0": 3
+    },
+    "_UseUvNoise_V2_CopyID_3": {
+      "0.0": 3
+    },
+    "_UseUvNoise_V2_CopyID_4": {
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_ASEHeader": {
+      "0.0": 1
+    },
+    "_AnimBoneOffset": {
+      "0.0": 1
+    },
+    "_AnimFPS": {
+      "15.0": 1
+    },
+    "_BlurSize": {
+      "1.0": 1
+    },
+    "_ClipAlphaHighLightScale": {
+      "0.0": 1
+    },
+    "_ClipAlphaThreshold": {
+      "0.0": 1
+    },
+    "_ClipAlphaUVSet": {
+      "0.0": 1
+    },
+    "_ClipBoxHighLightScale": {
+      "0.2": 1
+    },
+    "_ClipDissolveDirection": {
+      "0.0": 1
+    },
+    "_ClipDissolveHightlightScale": {
+      "1.0": 1
+    },
+    "_ClipDissolveValue": {
+      "1.0": 1
+    },
+    "_ClipMethod": {
+      "0.0": 1
+    },
+    "_ClipPlaneWorld": {
+      "1.0": 1
+    },
+    "_InstanceData": {
+      "0.0": 1
+    },
+    "_NyxStatePaintMaskChannel": {
+      "0.0": 1
+    },
+    "_OutlineType": {
+      "2.0": 1
+    },
+    "_PerformanceLayerEnum": {
+      "0.0": 1
+    },
+    "_TessEdgeLength": {
+      "10.0": 1
+    },
+    "_TessOutlineZOffset": {
+      "0.0": 1
+    },
+    "_TessPidStart": {
+      "0.0": 1
+    },
+    "_TessStrength": {
+      "1.0": 1
+    },
+    "_TessType": {
+      "0.0": 1
+    },
+    "_TessellationCheckInflectionOn": {
+      "1.0": 1
+    },
+    "_TessellationOn": {
+      "0.0": 1
+    },
+    "_TextureLineUse": {
+      "0.0": 1
+    },
+    "_UseClipPlane": {
+      "0.0": 84
+    },
+    "_UseClipping": {
+      "0.0": 1
+    },
+    "_UseNPCColoring": {
+      "0.0": 1
+    },
+    "_UseToonSpecular": {
+      "1.0": 1
+    },
+    "_UtilityDisplay1": {
+      "0.0": 1
+    },
+    "_UtilityDisplay2": {
+      "0.0": 1
+    },
+    "_isSecondLayer": {
+      "0.0": 1
+    },
+    "_isThridLayer": {
+      "0.0": 1
+    },
+    "_BaseMatcapBlendMode": {
+      "0.0": 1
+    },
+    "_BaseMatcapFaceToCam": {
+      "0.0": 1
+    },
+    "_BaseMatcapIntensity": {
+      "1.2": 1
+    },
+    "_BaseMatcapPackedTex_SamplerType": {
+      "0.0": 1
+    },
+    "_BaseMatcapSettings": {
+      "1.0": 1
+    },
+    "_BaseMatcapSize": {
+      "1.0": 1
+    },
+    "_AlphaBrightness": {
+      "3.0": 1,
+      "1.0": 1
+    },
+    "_AlphaClipToggle": {
+      "0.0": 2
+    },
+    "_AlphaFadeDistance": {
+      "2.0": 2
+    },
+    "_AlphaFadeDistanceInvertToggle": {
+      "0.0": 2
+    },
+    "_AlphaFadeDistanceTwoWay": {
+      "1000.0": 2
+    },
+    "_AlphaFadeDistanceTwoWayToggle": {
+      "0.0": 2
+    },
+    "_AlphaFadeOffset": {
+      "0.0": 2
+    },
+    "_AlphaFadeOffsetTwoWay": {
+      "0.0": 2
+    },
+    "_BaseTexAlphaBrightness": {
+      "1.0": 2
+    },
+    "_BaseTexAlphaChannelInvert": {
+      "0.0": 2
+    },
+    "_BaseTexAlphaChannelSwitch": {
+      "3.0": 2
+    },
+    "_BaseTexColorChannelInvert": {
+      "0.0": 2
+    },
+    "_BaseTexColorChannelSwitch": {
+      "4.0": 1,
+      "0.0": 1
+    },
+    "_BaseTexGradientOffset": {
+      "0.0": 1,
+      "0.06": 1
+    },
+    "_BaseTexGradientSoftness": {
+      "1.0": 2
+    },
+    "_BaseTexGroup": {
+      "0.0": 2
+    },
+    "_BaseTexMipBias": {
+      "0.0": 2
+    },
+    "_BaseTexUVRandomToggle": {
+      "0.0": 2
+    },
+    "_BaseTexUVSwitch": {
+      "0.0": 2
+    },
+    "_BaseTex_ClampU": {
+      "0.0": 1
+    },
+    "_BaseTex_ClampV": {
+      "0.0": 1
+    },
+    "_BaseTex_FlipU": {
+      "0.0": 1
+    },
+    "_BaseTex_FlipV": {
+      "0.0": 1
+    },
+    "_BaseTex_SwapUV": {
+      "0.0": 1
+    },
+    "_BaseTex_Uspeed": {
+      "0.1": 1,
+      "0.0": 1
+    },
+    "_BaseTex_Vspeed": {
+      "0.0": 2
+    },
+    "_ColorBrightness": {
+      "5.0": 1,
+      "4.0": 1
+    },
+    "_Cull": {
+      "2.0": 62,
+      "0.0": 22
+    },
+    "_CustomData1_Color": {
+      "0.0": 1
+    },
+    "_CustomData2_Color": {
+      "0.0": 1
+    },
+    "_CustomDataDrawer": {
+      "0.0": 1
+    },
+    "_CustomLightToggle": {
+      "0.0": 2
+    },
+    "_CustomLightType": {
+      "0.0": 1,
+      "1.0": 1
+    },
+    "_CustomPointLightRadius": {
+      "1.0": 2
+    },
+    "_CutOff": {
+      "0.1": 2
+    },
+    "_DepthFade": {
+      "7.7": 1,
+      "9.31": 1
+    },
+    "_DepthFadeToggle": {
+      "1.0": 2
+    },
+    "_DepthThresh": {
+      "13.2": 1,
+      "0.02": 1
+    },
+    "_DirectionDissolveMode": {
+      "0.0": 2
+    },
+    "_DirectionDissolveTexWeight": {
+      "0.25": 2
+    },
+    "_DirectionDissolveToggle": {
+      "0.0": 2
+    },
+    "_DirectionDissolveValue": {
+      "0.0": 2
+    },
+    "_DissolveEdgeColorFade": {
+      "0.0": 2
+    },
+    "_DissolveEdgeColorWidth": {
+      "0.0": 2
+    },
+    "_DissolveEdgeFade": {
+      "0.389": 1,
+      "0.092": 1
+    },
+    "_DissolveTexChannelInvert": {
+      "0.0": 2
+    },
+    "_DissolveTexChannelSwitch": {
+      "2.0": 1,
+      "1.0": 1
+    },
+    "_DissolveTexToggle": {
+      "1.0": 2
+    },
+    "_DissolveTexUVRandomToggle": {
+      "0.0": 2
+    },
+    "_DissolveTexUVSwitch": {
+      "0.0": 2
+    },
+    "_DissolveTex_ClampU": {
+      "0.0": 2
+    },
+    "_DissolveTex_ClampV": {
+      "0.0": 2
+    },
+    "_DissolveTex_FlipU": {
+      "0.0": 2
+    },
+    "_DissolveTex_FlipV": {
+      "0.0": 2
+    },
+    "_DissolveTex_SwapUV": {
+      "0.0": 2
+    },
+    "_DissolveTex_Uspeed": {
+      "0.03": 2
+    },
+    "_DissolveTex_Vspeed": {
+      "0.0": 2
+    },
+    "_DissolveVal": {
+      "0.231": 1,
+      "0.078": 1
+    },
+    "_EffectedByFog": {
+      "0.0": 2
+    },
+    "_EnableAlphaDistanceFade": {
+      "0.0": 2
+    },
+    "_EnableCustomData": {
+      "0.0": 1
+    },
+    "_EnableVertexAnime": {
+      "0.0": 2
+    },
+    "_FresnelAlphaEdgeFade": {
+      "0.271": 1,
+      "0.5": 1
+    },
+    "_FresnelAlphaInvert": {
+      "1.0": 1,
+      "0.0": 1
+    },
+    "_FresnelAlphaRange": {
+      "0.25": 2
+    },
+    "_FresnelAlphaToggle": {
+      "1.0": 1,
+      "0.0": 1
+    },
+    "_FresnelColorBlendMode": {
+      "1.0": 2
+    },
+    "_FresnelColorEdgeFade": {
+      "0.251": 1,
+      "0.273": 1
+    },
+    "_FresnelColorInvert": {
+      "0.0": 2
+    },
+    "_FresnelColorRange": {
+      "0.424": 1,
+      "0.146": 1
+    },
+    "_LightAreaFade": {
+      "1.0": 2
+    },
+    "_LightAreaRange": {
+      "0.0": 2
+    },
+    "_MaskTexBlendMode": {
+      "0.0": 2
+    },
+    "_MaskTexChannelInvert": {
+      "0.0": 2
+    },
+    "_MaskTexChannelSwitch": {
+      "0.0": 2
+    },
+    "_MaskTexGradientOffset": {
+      "0.0": 2
+    },
+    "_MaskTexGradientSoftness": {
+      "1.0": 2
+    },
+    "_MaskTexMipBias": {
+      "0.0": 2
+    },
+    "_MaskTexToggle": {
+      "1.0": 2
+    },
+    "_MaskTexUVRandomToggle": {
+      "0.0": 2
+    },
+    "_MaskTexUVSwitch": {
+      "0.0": 2
+    },
+    "_MaskTex_ClampU": {
+      "0.0": 2
+    },
+    "_MaskTex_ClampV": {
+      "1.0": 2
+    },
+    "_MaskTex_FlipU": {
+      "0.0": 2
+    },
+    "_MaskTex_FlipV": {
+      "1.0": 1,
+      "0.0": 1
+    },
+    "_MaskTex_SwapUV": {
+      "0.0": 2
+    },
+    "_MaskTex_Uspeed": {
+      "0.0": 1,
+      "0.2": 1
+    },
+    "_MaskTex_Vspeed": {
+      "0.0": 2
+    },
+    "_MotionVectorsAlphaCutoff": {
+      "0.1": 2
+    },
+    "_NoiseIntensityOnBaseTex": {
+      "1.0": 1
+    },
+    "_NoiseIntensityOnDissolve": {
+      "0.0": 1
+    },
+    "_NoiseIntensityOnMask": {
+      "0.0": 1
+    },
+    "_NoiseTexChannelInvert": {
+      "0.0": 2
+    },
+    "_NoiseTexChannelSwitch": {
+      "0.0": 2
+    },
+    "_NoiseTexToggle": {
+      "1.0": 1,
+      "0.0": 1
+    },
+    "_NoiseTexUVRandomToggle": {
+      "0.0": 2
+    },
+    "_NoiseTexUVSwitch": {
+      "0.0": 2
+    },
+    "_NoiseTex_ClampU": {
+      "0.0": 2
+    },
+    "_NoiseTex_ClampV": {
+      "0.0": 2
+    },
+    "_NoiseTex_FlipU": {
+      "0.0": 2
+    },
+    "_NoiseTex_FlipV": {
+      "0.0": 2
+    },
+    "_NoiseTex_SwapUV": {
+      "0.0": 2
+    },
+    "_NoiseTex_Uspeed": {
+      "0.0": 2
+    },
+    "_NoiseTex_Vspeed": {
+      "0.2": 1,
+      "0.0": 1
+    },
+    "_Noise_Brightness": {
+      "0.2": 1
+    },
+    "_Noise_Offset": {
+      "0.0": 2
+    },
+    "_RenderState": {
+      "0.0": 2
+    },
+    "_StencilComp": {
+      "8.0": 7,
+      "0.0": 2,
+      "3.0": 1
+    },
+    "_StencilID": {
+      "0.0": 2
+    },
+    "_StencilOp": {
+      "0.0": 3
+    },
+    "_UseBaseRamp": {
+      "0.0": 1
+    },
+    "_UseDiffuseColorRamp": {
+      "0.0": 1
+    },
+    "_UseDissolveEdgeColorRamp": {
+      "0.0": 1
+    },
+    "_UseFresnelRamp": {
+      "0.0": 1
+    },
+    "_UseParticleInstancing": {
+      "0.0": 2
+    },
+    "_VertColADirectionDissolve": {
+      "0.0": 2
+    },
+    "_VertColADissolve": {
+      "0.0": 2
+    },
+    "_VertexAnimeIntensity": {
+      "0.4": 1,
+      "0.05": 1
+    },
+    "_VertexAnimeMaskTexChannelSwitch": {
+      "1.0": 2
+    },
+    "_VertexAnimeMaskTexToggle": {
+      "1.0": 1,
+      "0.0": 1
+    },
+    "_VertexAnimeMaskTex_ClampU": {
+      "0.0": 2
+    },
+    "_VertexAnimeMaskTex_ClampV": {
+      "1.0": 2
+    },
+    "_VertexAnimeMaskTex_FlipU": {
+      "0.0": 2
+    },
+    "_VertexAnimeMaskTex_FlipV": {
+      "0.0": 2
+    },
+    "_VertexAnimeMaskTex_SwapUV": {
+      "0.0": 2
+    },
+    "_VertexAnimeMaskTex_Uspeed": {
+      "0.0": 2
+    },
+    "_VertexAnimeMaskTex_Vspeed": {
+      "0.0": 2
+    },
+    "_VertexAnimeMaskUVSwitch": {
+      "0.0": 2
+    },
+    "_VertexAnimeOffset": {
+      "-0.22": 1,
+      "0.0": 1
+    },
+    "_VertexAnimeTexChannelInvert": {
+      "0.0": 2
+    },
+    "_VertexAnimeTexChannelSwitch": {
+      "1.0": 2
+    },
+    "_VertexAnimeTexUVSwitch": {
+      "0.0": 2
+    },
+    "_VertexAnimeTex_ClampU": {
+      "0.0": 2
+    },
+    "_VertexAnimeTex_ClampV": {
+      "0.0": 2
+    },
+    "_VertexAnimeTex_FlipU": {
+      "0.0": 2
+    },
+    "_VertexAnimeTex_FlipV": {
+      "0.0": 2
+    },
+    "_VertexAnimeTex_SwapUV": {
+      "0.0": 2
+    },
+    "_VertexAnimeTex_Uspeed": {
+      "0.0": 2
+    },
+    "_VertexAnimeTex_Vspeed": {
+      "0.0": 1,
+      "0.2": 1
+    },
+    "_VertexColorAToggle": {
+      "1.0": 2
+    },
+    "_VertexColorRGBToggle": {
+      "1.0": 2
+    },
+    "_BaseTexContrast": {
+      "1.0": 1
+    },
+    "_BaseTexSaturation": {
+      "1.0": 1
+    },
+    "_BaseTexUVOffsetByCameraScale": {
+      "0.0": 1
+    },
+    "_Detail2AlphaBlendMode": {
+      "2.0": 1
+    },
+    "_Detail2ColorBlendMode": {
+      "1.0": 1
+    },
+    "_Detail2TexAlphaBrightness": {
+      "1.0": 1
+    },
+    "_Detail2TexAlphaChannelInvert": {
+      "0.0": 1
+    },
+    "_Detail2TexAlphaChannelSwitch": {
+      "3.0": 1
+    },
+    "_Detail2TexColorChannelInvert": {
+      "0.0": 1
+    },
+    "_Detail2TexColorChannelSwitch": {
+      "0.0": 1
+    },
+    "_Detail2TexGradientOffset": {
+      "0.0": 1
+    },
+    "_Detail2TexGradientSoftness": {
+      "1.0": 1
+    },
+    "_Detail2TexMipBias": {
+      "0.0": 1
+    },
+    "_Detail2TexUVRandomToggle": {
+      "0.0": 1
+    },
+    "_Detail2TexUVSwitch": {
+      "0.0": 1
+    },
+    "_Detail2Tex_ClampU": {
+      "0.0": 1
+    },
+    "_Detail2Tex_ClampV": {
+      "0.0": 1
+    },
+    "_Detail2Tex_FlipU": {
+      "0.0": 1
+    },
+    "_Detail2Tex_FlipV": {
+      "0.0": 1
+    },
+    "_Detail2Tex_SwapUV": {
+      "0.0": 1
+    },
+    "_Detail2Tex_Uspeed": {
+      "0.0": 1
+    },
+    "_Detail2Tex_Vspeed": {
+      "0.0": 1
+    },
+    "_DetailAlphaBlendMode": {
+      "2.0": 1
+    },
+    "_DetailColorBlendMode": {
+      "1.0": 1
+    },
+    "_DetailTexAlphaBrightness": {
+      "1.0": 1
+    },
+    "_DetailTexAlphaChannelInvert": {
+      "0.0": 1
+    },
+    "_DetailTexAlphaChannelSwitch": {
+      "3.0": 1
+    },
+    "_DetailTexColorChannelInvert": {
+      "0.0": 1
+    },
+    "_DetailTexColorChannelSwitch": {
+      "0.0": 1
+    },
+    "_DetailTexGradientOffset": {
+      "0.0": 1
+    },
+    "_DetailTexGradientSoftness": {
+      "1.0": 1
+    },
+    "_DetailTexMipBias": {
+      "0.0": 1
+    },
+    "_DetailTexUVRandomToggle": {
+      "0.0": 1
+    },
+    "_DetailTexUVSwitch": {
+      "0.0": 1
+    },
+    "_DetailTex_ClampU": {
+      "0.0": 1
+    },
+    "_DetailTex_ClampV": {
+      "0.0": 1
+    },
+    "_DetailTex_FlipU": {
+      "0.0": 1
+    },
+    "_DetailTex_FlipV": {
+      "0.0": 1
+    },
+    "_DetailTex_SwapUV": {
+      "0.0": 1
+    },
+    "_DetailTex_Uspeed": {
+      "0.0": 1
+    },
+    "_DetailTex_Vspeed": {
+      "0.0": 1
+    },
+    "_DetailToggle": {
+      "0.0": 1
+    },
+    "_DirectionGradientMode": {
+      "0.0": 1
+    },
+    "_DirectionGradientOffset": {
+      "0.0": 1
+    },
+    "_DirectionGradientScale": {
+      "1.0": 1
+    },
+    "_DirectionGradientToggle": {
+      "0.0": 1
+    },
+    "_DitherGroup": {
+      "0.0": 1
+    },
+    "_MainTex_ClampU": {
+      "0.0": 1
+    },
+    "_MainTex_ClampV": {
+      "0.0": 1
+    },
+    "_MainTex_FlipU": {
+      "0.0": 1
+    },
+    "_MainTex_FlipV": {
+      "0.0": 1
+    },
+    "_MainTex_SwapUV": {
+      "0.0": 1
+    },
+    "_NoiseIntensityOnBaseTex_U": {
+      "1.0": 1
+    },
+    "_NoiseIntensityOnBaseTex_V": {
+      "1.0": 1
+    },
+    "_NoiseIntensityOnDetail2Tex_U": {
+      "0.0": 1
+    },
+    "_NoiseIntensityOnDetail2Tex_V": {
+      "0.0": 1
+    },
+    "_NoiseIntensityOnDetailTex_U": {
+      "0.0": 1
+    },
+    "_NoiseIntensityOnDetailTex_V": {
+      "0.0": 1
+    },
+    "_NoiseIntensityOnDissolve_U": {
+      "0.0": 1
+    },
+    "_NoiseIntensityOnDissolve_V": {
+      "0.0": 1
+    },
+    "_NoiseIntensityOnMask_U": {
+      "0.0": 1
+    },
+    "_NoiseIntensityOnMask_V": {
+      "0.0": 1
+    },
+    "_Noise_U_Scale": {
+      "0.2": 1
+    },
+    "_Noise_V_Scale": {
+      "0.2": 1
+    },
+    "_NormalIntensity": {
+      "1.0": 1
+    },
+    "_NormalTexToggle": {
+      "0.0": 1
+    },
+    "_AddLightFeather": {
+      "0.03": 8,
+      "0.048": 2
+    },
+    "_AddLightOffset": {
+      "0.5": 8,
+      "0.55": 2
+    },
+    "_AddLightStrengthen": {
+      "0.3": 7,
+      "0.0": 4,
+      "1.45": 2
+    },
+    "_AlphaCutoff": {
+      "0.5": 8,
+      "0.54": 6,
+      "0.0": 2,
+      "0.396": 1
+    },
+    "_AlphaTestThreshold": {
+      "0.5": 6,
+      "0.78": 5,
+      "0.634": 4,
+      "0.717": 2
+    },
+    "_AnisotropySpecular": {
+      "0.0": 6
+    },
+    "_BloomIntensity": {
+      "0.0": 5,
+      "1.0": 3
+    },
+    "_ColorIntensity": {
+      "0.5": 6
+    },
+    "_CrystalRange1": {
+      "0.0": 6
+    },
+    "_CrystalRange2": {
+      "1.0": 6
+    },
+    "_CrystalTransparency": {
+      "0.35": 6
+    },
+    "_DissolveDistortionIntensity": {
+      "0.01": 9
+    },
+    "_DissolveMapAdd": {
+      "0.0": 6
+    },
+    "_DissolveMaskUVSet": {
+      "0.0": 4
+    },
+    "_DissolveOutlineOffset": {
+      "0.0": 9
+    },
+    "_DissolveOutlineSize1": {
+      "0.05": 9
+    },
+    "_DissolveOutlineSize2": {
+      "0.0": 9
+    },
+    "_DissolvePosMaskFilpOn": {
+      "0.0": 9
+    },
+    "_DissolvePosMaskOn": {
+      "0.0": 9
+    },
+    "_DissolvePosMaskWorldON": {
+      "0.0": 9
+    },
+    "_DissolveRate": {
+      "0.0": 9
+    },
+    "_DissolveShadowOff": {
+      "0.0": 3
+    },
+    "_DissolveUV": {
+      "0.0": 9
+    },
+    "_DissoveDirecMask": {
+      "2.0": 9
+    },
+    "_DissoveON": {
+      "0.0": 9
+    },
+    "_EmissionIntensity": {
+      "1.0": 11,
+      "0.0": 7,
+      "3.0": 5,
+      "0.6": 4,
+      "1.12": 1
+    },
+    "_EmissionThreshold": {
+      "1.0": 7,
+      "0.8": 5,
+      "0.0": 2,
+      "0.7": 2,
+      "0.01": 1
+    },
+    "_EnableAlphaCutoff": {
+      "0.0": 8,
+      "1.0": 4
+    },
+    "_EnableBackRimLight": {
+      "1.0": 6
+    },
+    "_EnableDualFace": {
+      "0.0": 6
+    },
+    "_EnableStocking": {
+      "0.0": 6
+    },
+    "_FakeRefAddIntensity": {
+      "0.25": 6
+    },
+    "_FakeRefBlendIntensity": {
+      "0.1": 6
+    },
+    "_FlameCrystal": {
+      "0.0": 6
+    },
+    "_FlameHeight": {
+      "1.0": 6
+    },
+    "_FlameID": {
+      "1.0": 6
+    },
+    "_FlameSpeed": {
+      "1.0": 6
+    },
+    "_FlameSwirilScale": {
+      "1.0": 6
+    },
+    "_FlameSwirilSpeed": {
+      "1.0": 6
+    },
+    "_FlameSwirilTexScale": {
+      "1.0": 6
+    },
+    "_FlameWidth": {
+      "1.0": 6
+    },
+    "_FresnelColorStrength": {
+      "1.0": 9
+    },
+    "_FurTexSmooth": {
+      "0.95": 6
+    },
+    "_FurTile": {
+      "10.0": 6
+    },
+    "_HeatInst": {
+      "0.0": 6
+    },
+    "_HeatedHeight": {
+      "0.0": 6
+    },
+    "_HeatedThreshould": {
+      "0.0": 6
+    },
+    "_HideCharaParts": {
+      "0.0": 6,
+      "1.0": 2
+    },
+    "_MoonHaloRange": {
+      "0.0": 6
+    },
+    "_MoonUVType": {
+      "0.0": 6
+    },
+    "_NormalScale": {
+      "1.0": 6
+    },
+    "_OSScale": {
+      "1.0": 6
+    },
+    "_Opaqueness": {
+      "1.0": 7
+    },
+    "_Outline": {
+      "1.0": 77,
+      "0.0": 16
+    },
+    "_OutlineColorIntensity": {
+      "0.0": 6
+    },
+    "_OutlineExtdMax": {
+      "18.0": 8,
+      "28.3": 1
+    },
+    "_OutlineExtdMode": {
+      "0.0": 8
+    },
+    "_OutlineExtdStart": {
+      "6.5": 8,
+      "18.7": 1
+    },
+    "_OutlineNormalFrom": {
+      "1.0": 29,
+      "0.0": 2
+    },
+    "_OutlineOffset": {
+      "0.2": 9,
+      "0.0": 6,
+      "0.4": 1
+    },
+    "_OutlinePolygonOffsetUnits": {
+      "0.0": 9,
+      "10.0": 5,
+      "5.0": 1
+    },
+    "_PolygonOffsetUnits": {
+      "0.0": 9
+    },
+    "_ReceiveShadows": {
+      "1.0": 98,
+      "0.0": 11
+    },
+    "_ReflectionBlendThreshold": {
+      "0.1": 6
+    },
+    "_ReflectionReversedThreshold": {
+      "0.1": 6
+    },
+    "_ReflectionRoughness": {
+      "1.0": 6
+    },
+    "_ReflectionSoftness": {
+      "0.05": 6
+    },
+    "_ReflectionThreshold": {
+      "0.5": 6
+    },
+    "_RenderingMode": {
+      "1.0": 11,
+      "0.0": 5
+    },
+    "_RimDark0": {
+      "0.5": 11,
+      "0.6": 3,
+      "0.8": 1,
+      "0.3": 1
+    },
+    "_RimDark1": {
+      "0.5": 11
+    },
+    "_RimDark2": {
+      "0.5": 11,
+      "0.4": 5
+    },
+    "_RimDark3": {
+      "0.5": 11,
+      "0.651": 1
+    },
+    "_RimDark4": {
+      "0.5": 11,
+      "0.493": 3
+    },
+    "_RimDark5": {
+      "0.5": 11
+    },
+    "_RimDark6": {
+      "0.5": 11
+    },
+    "_RimDark7": {
+      "0.5": 9,
+      "0.476": 2
+    },
+    "_RimEdge": {
+      "0.015": 8
+    },
+    "_RimEdgeSoftness0": {
+      "0.5": 27,
+      "0.9": 4,
+      "0.1": 3,
+      "0.01": 1
+    },
+    "_RimEdgeSoftness1": {
+      "0.5": 25,
+      "0.1": 2,
+      "0.01": 1
+    },
+    "_RimEdgeSoftness2": {
+      "0.5": 25,
+      "0.1": 2,
+      "0.01": 1
+    },
+    "_RimEdgeSoftness3": {
+      "0.5": 23,
+      "0.9": 2,
+      "0.1": 2,
+      "0.01": 1
+    },
+    "_RimEdgeSoftness4": {
+      "0.5": 23,
+      "0.9": 2,
+      "0.1": 2,
+      "0.01": 1
+    },
+    "_RimEdgeSoftness5": {
+      "0.5": 25,
+      "0.1": 2,
+      "0.01": 1
+    },
+    "_RimEdgeSoftness6": {
+      "0.5": 23,
+      "0.1": 2,
+      "0.455": 2,
+      "0.01": 1
+    },
+    "_RimEdgeSoftness7": {
+      "0.5": 23,
+      "0.9": 2,
+      "0.1": 2,
+      "0.01": 1
+    },
+    "_RimFeatherWidth": {
+      "0.01": 3,
+      "0.1": 2,
+      "0.05": 1
+    },
+    "_RimLight": {
+      "0.0": 8
+    },
+    "_RimLightMode": {
+      "1.0": 13
+    },
+    "_RimShadow": {
+      "0.0": 5,
+      "1.0": 3
+    },
+    "_RimShadowCt": {
+      "1.0": 6,
+      "2.0": 2,
+      "1.5": 2,
+      "0.9": 1
+    },
+    "_RimShadowFeather0": {
+      "0.5": 2,
+      "0.99": 2,
+      "0.723": 2,
+      "0.01": 2,
+      "0.6": 2,
+      "0.873": 1
+    },
+    "_RimShadowFeather1": {
+      "0.9": 3,
+      "0.8": 2,
+      "0.01": 2
+    },
+    "_RimShadowFeather2": {
+      "0.896": 8,
+      "0.47": 6,
+      "0.9": 3,
+      "0.65": 2,
+      "0.864": 2,
+      "0.01": 2
+    },
+    "_RimShadowFeather3": {
+      "0.8": 5,
+      "0.01": 4,
+      "0.9": 3,
+      "0.574": 2,
+      "0.7": 1
+    },
+    "_RimShadowFeather4": {
+      "0.864": 8,
+      "0.8": 5,
+      "0.01": 4,
+      "0.9": 3,
+      "0.716": 2,
+      "0.65": 1
+    },
+    "_RimShadowFeather5": {
+      "0.6": 5,
+      "0.01": 4,
+      "0.868": 4,
+      "0.881": 4,
+      "0.9": 3,
+      "0.893": 2
+    },
+    "_RimShadowFeather6": {
+      "0.9": 7,
+      "0.01": 4,
+      "0.257": 2,
+      "0.7": 1
+    },
+    "_RimShadowFeather7": {
+      "0.9": 8,
+      "0.01": 4,
+      "0.99": 2
+    },
+    "_RimShadowIntensity": {
+      "1.0": 9,
+      "1.5": 6,
+      "0.0": 5,
+      "1.74": 2
+    },
+    "_RimShadowWidth0": {
+      "0.0": 30,
+      "1.0": 3,
+      "6.6": 2
+    },
+    "_RimShadowWidth1": {
+      "0.0": 25,
+      "1.0": 2,
+      "1.5": 1
+    },
+    "_RimShadowWidth2": {
+      "0.0": 9,
+      "1.8": 9,
+      "2.0": 6,
+      "9.07": 2,
+      "1.0": 2
+    },
+    "_RimShadowWidth3": {
+      "0.0": 22,
+      "7.4": 2,
+      "1.0": 2,
+      "2.0": 1,
+      "1.8": 1
+    },
+    "_RimShadowWidth4": {
+      "0.0": 9,
+      "1.96": 8,
+      "2.2": 4,
+      "3.11": 2,
+      "1.0": 2,
+      "2.0": 1
+    },
+    "_RimShadowWidth5": {
+      "0.0": 15,
+      "1.5": 5,
+      "2.21": 4,
+      "6.28": 2,
+      "1.0": 2
+    },
+    "_RimShadowWidth6": {
+      "0.0": 11,
+      "8.49": 5,
+      "6.84": 2,
+      "1.0": 2
+    },
+    "_RimShadowWidth7": {
+      "0.0": 15,
+      "1.73": 8,
+      "9.97": 2,
+      "1.0": 2,
+      "2.0": 1
+    },
+    "_RimType0": {
+      "1.0": 8
+    },
+    "_RimType1": {
+      "1.0": 6
+    },
+    "_RimType2": {
+      "1.0": 6
+    },
+    "_RimType3": {
+      "1.0": 6
+    },
+    "_RimType4": {
+      "1.0": 6
+    },
+    "_RimType5": {
+      "1.0": 6
+    },
+    "_RimType6": {
+      "1.0": 6,
+      "0.7": 2
+    },
+    "_RimType7": {
+      "1.0": 6,
+      "0.444": 2
+    },
+    "_RimWidth": {
+      "2.5": 20,
+      "2.3": 8,
+      "2.07": 2,
+      "2.89": 2,
+      "3.0": 2,
+      "2.0": 1
+    },
+    "_RimWidth0": {
+      "0.0": 17,
+      "1.0": 6
+    },
+    "_Rimintensity": {
+      "2.5": 27,
+      "1.0": 1,
+      "3.0": 1,
+      "2.3": 1
+    },
+    "_SelfShadowDarken": {
+      "0.6": 3
+    },
+    "_SelfShadowDepthOffset": {
+      "0.0": 4
+    },
+    "_SelfShadowSampleOffset": {
+      "0.001": 3
+    },
+    "_ShadowBoost": {
+      "0.0": 6
+    },
+    "_ShadowBoostVal": {
+      "0.0": 6
+    },
+    "_ShadowRamp": {
+      "1.0": 8,
+      "0.994": 2
+    },
+    "_ShowID0": {
+      "0.0": 6
+    },
+    "_ShowID1": {
+      "0.0": 6
+    },
+    "_ShowID2": {
+      "0.0": 6
+    },
+    "_ShowID3": {
+      "0.0": 6
+    },
+    "_ShowID4": {
+      "0.0": 6
+    },
+    "_ShowID5": {
+      "0.0": 6
+    },
+    "_ShowID6": {
+      "0.0": 6
+    },
+    "_ShowID7": {
+      "0.0": 6
+    },
+    "_ShowPartID": {
+      "0.0": 6,
+      "255.0": 4,
+      "7.0": 2
+    },
+    "_SkyFresnelBaise": {
+      "0.0": 6
+    },
+    "_SkyFresnelScale": {
+      "0.0": 6
+    },
+    "_SkyFresnelSmooth": {
+      "0.0": 6
+    },
+    "_SkyRange": {
+      "0.0": 6,
+      "-0.107": 2
+    },
+    "_SkyStarDepthScale": {
+      "1.0": 6
+    },
+    "_SkyStarMaskTexScale": {
+      "1.0": 6,
+      "3.0": 2
+    },
+    "_SkyStarMaskTexSpeed": {
+      "0.0": 6,
+      "0.1": 6,
+      "0.02": 5,
+      "0.01": 2
+    },
+    "_SkyStarTexScale": {
+      "40.0": 11,
+      "1.0": 6,
+      "3.0": 2
+    },
+    "_SpecularColor": {
+      "0.0": 5,
+      "1.0": 3
+    },
+    "_SpecularIntensity": {
+      "1.2": 29,
+      "1.0": 4,
+      "0.0": 2,
+      "9.0": 2,
+      "0.3": 1
+    },
+    "_SpecularIntensity0": {
+      "1.0": 6,
+      "0.6": 3,
+      "0.8": 2,
+      "0.3": 1,
+      "0.5": 1
+    },
+    "_SpecularIntensity1": {
+      "1.0": 6,
+      "0.2": 2,
+      "6.1": 1
+    },
+    "_SpecularIntensity2": {
+      "1.5": 6,
+      "1.0": 4,
+      "3.3": 2
+    },
+    "_SpecularIntensity3": {
+      "1.3": 6,
+      "0.5": 4,
+      "1.8": 3,
+      "1.0": 3,
+      "9.4": 2,
+      "9.5": 1
+    },
+    "_SpecularIntensity4": {
+      "1.5": 13,
+      "1.0": 4,
+      "2.5": 3,
+      "1.2": 2,
+      "2.0": 2,
+      "1.3": 2
+    },
+    "_SpecularIntensity5": {
+      "4.0": 8,
+      "1.0": 6,
+      "2.0": 4,
+      "3.0": 1,
+      "10.0": 1
+    },
+    "_SpecularIntensity6": {
+      "1.0": 5,
+      "1.1": 5,
+      "4.0": 5,
+      "1.2": 2,
+      "1.3": 1,
+      "0.0": 1
+    },
+    "_SpecularIntensity7": {
+      "1.1": 6,
+      "3.0": 6,
+      "1.0": 4,
+      "8.1": 2,
+      "2.3": 2
+    },
+    "_SpecularRoughness": {
+      "0.02": 26,
+      "0.05": 2,
+      "0.0": 2
+    },
+    "_SpecularRoughness0": {
+      "0.02": 6,
+      "0.0": 2
+    },
+    "_SpecularRoughness1": {
+      "0.02": 6,
+      "0.224": 2,
+      "0.01": 1
+    },
+    "_SpecularRoughness2": {
+      "0.0": 8,
+      "0.459": 6,
+      "0.02": 3,
+      "0.05": 2,
+      "0.514": 2,
+      "0.042": 1
+    },
+    "_SpecularRoughness3": {
+      "0.06": 8,
+      "0.307": 4,
+      "0.02": 3,
+      "0.3": 2,
+      "0.287": 2,
+      "0.122": 1
+    },
+    "_SpecularRoughness4": {
+      "0.009": 8,
+      "0.08": 5,
+      "0.02": 3,
+      "0.05": 2,
+      "0.015": 2,
+      "0.024": 1
+    },
+    "_SpecularRoughness5": {
+      "0.133": 8,
+      "0.02": 6,
+      "0.015": 2,
+      "0.45": 1,
+      "0.01": 1
+    },
+    "_SpecularRoughness6": {
+      "0.086": 6,
+      "0.013": 5,
+      "0.02": 4,
+      "0.278": 3,
+      "0.102": 2,
+      "0.054": 2
+    },
+    "_SpecularRoughness7": {
+      "0.009": 8,
+      "0.2": 5,
+      "0.035": 5,
+      "0.02": 3,
+      "0.18": 2,
+      "0.092": 2
+    },
+    "_SpecularShininess": {
+      "10.0": 6,
+      "3.0": 2,
+      "8.0": 1,
+      "6.0": 1,
+      "1.0": 1
+    },
+    "_SpecularShininess0": {
+      "10.0": 6,
+      "4.0": 3,
+      "8.0": 1,
+      "5.0": 1
+    },
+    "_SpecularShininess1": {
+      "10.0": 6,
+      "31.0": 1
+    },
+    "_SpecularShininess2": {
+      "9.0": 6,
+      "10.0": 5,
+      "6.0": 1
+    },
+    "_SpecularShininess3": {
+      "10.0": 5,
+      "37.0": 4,
+      "74.0": 2,
+      "15.0": 1,
+      "111.0": 1
+    },
+    "_SpecularShininess4": {
+      "9.0": 8,
+      "20.0": 2,
+      "7.0": 2,
+      "10.0": 2,
+      "12.0": 1,
+      "15.0": 1
+    },
+    "_SpecularShininess5": {
+      "12.0": 10,
+      "10.0": 6,
+      "11.0": 1
+    },
+    "_SpecularShininess6": {
+      "10.0": 6,
+      "5.0": 6,
+      "52.0": 3,
+      "22.0": 2,
+      "17.0": 2,
+      "8.0": 2
+    },
+    "_SpecularShininess7": {
+      "10.0": 5,
+      "2.0": 5,
+      "24.0": 4,
+      "7.0": 3,
+      "50.0": 2,
+      "12.0": 2
+    },
+    "_StarDensity": {
+      "0.5": 6,
+      "0.0": 2
+    },
+    "_StarMode": {
+      "0.0": 6
+    },
+    "_StarrySky": {
+      "0.0": 6
+    },
+    "_StencilMask": {
+      "255.0": 3
+    },
+    "_StencilOP": {
+      "2.0": 6
+    },
+    "_StencilRef": {
+      "128.0": 14,
+      "144.0": 11,
+      "16.0": 6,
+      "8.0": 1
+    },
+    "_StockDarkWidth": {
+      "0.513": 4,
+      "0.5": 3,
+      "0.267": 2,
+      "0.056": 1,
+      "0.412": 1
+    },
+    "_StockRoughness": {
+      "0.81": 9,
+      "0.87": 5,
+      "0.75": 2,
+      "1.0": 2,
+      "0.0": 1
+    },
+    "_StockSP": {
+      "0.55": 9,
+      "0.577": 5,
+      "1.0": 2,
+      "0.25": 2,
+      "0.253": 1
+    },
+    "_Stockpower": {
+      "1.5": 9,
+      "0.3": 2,
+      "1.0": 2,
+      "0.767": 1
+    },
+    "_Stockpower1": {
+      "4.0": 9,
+      "26.3": 5,
+      "1.0": 4,
+      "2.7": 1
+    },
+    "_Stockthickness": {
+      "0.85": 9,
+      "0.036": 4,
+      "0.152": 2,
+      "0.0": 2,
+      "0.708": 1,
+      "0.197": 1
+    },
+    "_UseMaterialValuesLUT": {
+      "0.0": 4,
+      "1.0": 2
+    },
+    "_UseMoonHalo": {
+      "0.0": 6
+    },
+    "_UseNormalMap": {
+      "0.0": 6
+    },
+    "_UseOverHeated": {
+      "0.0": 6
+    },
+    "_mBloomIntensity0": {
+      "0.02": 34,
+      "0.01": 3,
+      "0.0": 3
+    },
+    "_mBloomIntensity1": {
+      "0.02": 25,
+      "0.0": 2,
+      "0.05": 1,
+      "0.11": 1
+    },
+    "_mBloomIntensity2": {
+      "0.02": 20,
+      "0.04": 5,
+      "0.0": 2,
+      "0.3": 1
+    },
+    "_mBloomIntensity3": {
+      "0.02": 16,
+      "0.05": 3,
+      "0.0": 1,
+      "0.06": 1,
+      "0.04": 1
+    },
+    "_mBloomIntensity4": {
+      "0.02": 12,
+      "0.15": 5,
+      "0.2": 3,
+      "0.1": 2,
+      "0.08": 2,
+      "0.33": 2
+    },
+    "_mBloomIntensity5": {
+      "0.02": 17,
+      "0.8": 4,
+      "0.0": 2,
+      "0.01": 2,
+      "0.12": 1,
+      "0.4": 1
+    },
+    "_mBloomIntensity6": {
+      "0.02": 8,
+      "0.01": 8,
+      "0.07": 2,
+      "-0.27": 2,
+      "0.1": 1,
+      "0.0": 1
+    },
+    "_mBloomIntensity7": {
+      "0.02": 14,
+      "0.1": 4,
+      "3.54": 2,
+      "0.3": 1,
+      "3.0": 1,
+      "0.4": 1
+    },
+    "_AnisoN": {
+      "0.0": 2
+    },
+    "_AnisoT": {
+      "0.0": 2
+    },
+    "_EyeMaskStencilOp": {
+      "2.0": 1
+    },
+    "_ForwardStencilComp": {
+      "8.0": 1
+    },
+    "_ForwardStencilRef": {
+      "1.0": 1
+    },
+    "_HairBlendOffset": {
+      "-0.314": 2,
+      "-0.232": 2,
+      "-0.3": 1,
+      "-0.545": 1,
+      "-0.511": 1
+    },
+    "_HairBlendWeight": {
+      "0.768": 2,
+      "1.39": 2,
+      "0.3": 1,
+      "0.321": 1,
+      "0.99": 1
+    },
+    "_HairStencilComp": {
+      "6.0": 2
+    },
+    "_HairStencilMask": {
+      "0.0": 2
+    },
+    "_HairStencilOp": {
+      "2.0": 1
+    },
+    "_OutlineBlendOffset": {
+      "0.0": 2
+    },
+    "_OutlineBlendWeight": {
+      "1.0": 2,
+      "0.5": 2,
+      "0.28": 2
+    },
+    "_OutlineEnhanceAmt": {
+      "0.5": 2
+    },
+    "_OutlineStencilComp": {
+      "8.0": 1
+    },
+    "_SpecularShadowIntensity": {
+      "0.086": 1,
+      "0.191": 1
+    },
+    "_SpecularShadowOffset": {
+      "0.8": 2,
+      "0.339": 2
+    },
+    "_StencilEye": {
+      "17.0": 3
+    },
+    "_UsingAniso": {
+      "0.0": 2
+    },
+    "_ExMapThreshold": {
+      "0.8": 5
+    },
+    "_ExSpecularIntensity": {
+      "2.0": 5
+    },
+    "_HairBlendSilhouette": {
+      "0.324": 2,
+      "0.5": 1
+    },
+    "_LipLineFixMax": {
+      "2.0": 5
+    },
+    "_LipLineFixStart": {
+      "0.6": 5
+    },
+    "_LipLineFixThrd": {
+      "0.701": 2,
+      "0.7": 1,
+      "0.8": 1,
+      "0.785": 1
+    },
+    "_NoseLinePower": {
+      "0.8": 2,
+      "3.0": 2,
+      "5.84": 1
+    },
+    "_OutlineFixRange1": {
+      "0.5": 3,
+      "0.55": 1,
+      "0.6": 1
+    },
+    "_OutlineFixRange2": {
+      "0.65": 4,
+      "0.7": 1
+    },
+    "_OutlineFixRange3": {
+      "0.6": 3,
+      "0.7": 2
+    },
+    "_OutlineFixRange4": {
+      "0.7": 5
+    },
+    "_ShadowThreshold": {
+      "0.05": 5
+    },
+    "_SpecularPow": {
+      "0.0": 2,
+      "9.6": 2
+    },
+    "_SpecularThreshold": {
+      "0.0": 2,
+      "0.65": 2
+    },
+    "_StencilFace": {
+      "16.0": 5
+    },
+    "_GlintConcentration": {
+      "0.0": 2,
+      "0.005": 2,
+      "0.016": 2,
+      "0.8": 1
+    },
+    "_GlintDensity": {
+      "0.388": 2,
+      "0.148": 2,
+      "0.03": 1
+    },
+    "_GlintIntensity": {
+      "1.0": 2,
+      "0.716": 2
+    },
+    "_GlintPointScale": {
+      "0.5": 4,
+      "0.216": 2
+    },
+    "_GlintRandom": {
+      "1.5": 4
+    },
+    "_GlintScale": {
+      "600.0": 3,
+      "800.0": 2,
+      "447.3": 2
+    },
+    "_GlintSparkFreq": {
+      "0.05": 2,
+      "0.22": 2
+    },
+    "_GlintSparkle": {
+      "10.0": 2,
+      "0.0": 2
+    },
+    "_GlintUVTillingY": {
+      "0.5": 6
+    },
+    "_GlintViewFreq": {
+      "3.64": 2,
+      "5.22": 2,
+      "0.1": 2
+    },
+    "_GlobalGlintDensity": {
+      "0.293": 2,
+      "0.372": 2,
+      "0.57": 1
+    },
+    "_GlobalGlintIntensity": {
+      "3.36": 2,
+      "2.51": 2,
+      "1.76": 1
+    },
+    "_GlobalGlintPointScale": {
+      "0.444": 2,
+      "0.344": 2,
+      "0.107": 1
+    },
+    "_GlobalGlintScale": {
+      "1000.0": 2,
+      "600.0": 2,
+      "285.49": 2,
+      "60.0": 1
+    },
+    "_GlobalGlintShadow": {
+      "0.339": 2
+    },
+    "_GlobalGlintSparkFreq": {
+      "0.1": 2,
+      "0.44": 2,
+      "1.4": 1
+    },
+    "_GlobalGlintSparkle": {
+      "0.05": 2,
+      "2.89": 2,
+      "1.0": 1
+    },
+    "_GlobalGlintViewFreq": {
+      "0.52": 2,
+      "1.39": 2,
+      "1.0": 1
+    },
+    "_UseMatcap": {
+      "1.0": 14
+    },
+    "_MatCapStrength": {
+      "2.28": 4,
+      "0.33": 2,
+      "2.68": 1,
+      "2.0": 1
+    },
+    "_UVChannelBack": {
+      "0.0": 2
+    },
+    "_AuraOffset": {
+      "0.03": 1
+    },
+    "_AuraScrPosScale": {
+      "0.0": 1
+    },
+    "_AuraWidth": {
+      "0.07": 1
+    },
+    "_BackShadowRange": {
+      "0.0": 1
+    },
+    "_ExCheekIntensity": {
+      "0.0": 1
+    },
+    "_ExShadowIntensity": {
+      "0.0": 1
+    },
+    "_ExShyIntensity": {
+      "0.0": 1
+    },
+    "_EyeEffectProcs": {
+      "0.0": 1
+    },
+    "_EyeMaskStencilComp": {
+      "8.0": 1
+    },
+    "_EyeShadowAngleMin": {
+      "0.85": 1,
+      "1.0": 1
+    },
+    "_EyeShadowMaxAngle": {
+      "1.0": 1
+    },
+    "_FixLipOutline": {
+      "0.0": 1
+    },
+    "_LipLineFixScale": {
+      "1.0": 1
+    },
+    "_OutlineFixFront": {
+      "0.05": 1
+    },
+    "_OutlineFixSide": {
+      "0.6": 1
+    },
+    "_RimShadowFeather": {
+      "0.01": 1
+    },
+    "_RimShadowWidth": {
+      "1.0": 1
+    },
+    "_ShadowFeather": {
+      "0.0": 1
+    },
+    "_SpecialEyeIntensity": {
+      "1.0": 1
+    },
+    "_UseSpecialEye": {
+      "0.0": 1
+    },
+    "_UseUVChannel2": {
+      "1.0": 1
+    },
+    "_MatCapStrengthInShadow": {
+      "0.2": 4,
+      "0.55": 1,
+      "1.0": 1
+    },
+    "_FlipBookAutoPlay": {
+      "1.0": 1
+    },
+    "_FlipBookAutoPlayCurve": {
+      "1.0": 1
+    },
+    "_FlipBookAutoPlaySpeed": {
+      "0.12": 1
+    },
+    "_FlipBookBlend": {
+      "1.0": 1
+    },
+    "_SoftNear": {
+      "-0.26": 1
+    },
+    "_GBufferDepthOnly": {
+      "1.0": 1
+    },
+    "_AbnormalProperty": {
+      "0.0": 92
+    },
+    "_AbnormalPropertyBurn": {
+      "0.0": 92
+    },
+    "_AbnormalPropertyElectro": {
+      "0.0": 92
+    },
+    "_AbnormalPropertyFreeze": {
+      "0.0": 92
+    },
+    "_AdditionalLightIntensity": {
+      "1.0": 95
+    },
+    "_AlbedoSmoothness": {
+      "0.05": 85,
+      "0.1": 8,
+      "0.3": 1,
+      "0.116": 1
+    },
+    "_AlbedoSmoothness2": {
+      "0.05": 76,
+      "0.1": 7,
+      "0.8": 1,
+      "0.078": 1
+    },
+    "_AlbedoSmoothness3": {
+      "0.05": 77,
+      "0.1": 8
+    },
+    "_AlbedoSmoothness4": {
+      "0.05": 57,
+      "0.1": 6,
+      "0.03": 2,
+      "0.02": 1
+    },
+    "_AlbedoSmoothness5": {
+      "0.05": 60,
+      "0.1": 6
+    },
+    "_AlphaClip": {
+      "0.0": 76,
+      "1.0": 1
+    },
+    "_AlphaDstBlend": {
+      "1.0": 25
+    },
+    "_AlphaSrcBlend": {
+      "8.0": 25
+    },
+    "_AmbientColorScale": {
+      "1.0": 92
+    },
+    "_Anisotropy": {
+      "0.5": 60
+    },
+    "_Blink": {
+      "0.0": 95
+    },
+    "_BlinkFrequency": {
+      "1.0": 95
+    },
+    "_BrightMultiplier": {
+      "1.0": 93
+    },
+    "_BrightMultiplier2": {
+      "1.0": 83
+    },
+    "_BrightMultiplier3": {
+      "1.0": 83
+    },
+    "_BrightMultiplier4": {
+      "1.0": 65
+    },
+    "_BrightMultiplier5": {
+      "1.0": 65
+    },
+    "_CameraToLightRadian": {
+      "0.0": 94
+    },
+    "_CastUIShadow": {
+      "1.0": 77
+    },
+    "_CenterMinAlpha": {
+      "0.0": 54
+    },
+    "_ChannelMixerUsingUV4": {
+      "0.0": 95
+    },
+    "_CharEnableAnyHit": {
+      "1.0": 9
+    },
+    "_CharacterSimplify": {
+      "0.0": 92
+    },
+    "_CharacterStencilCompDepth": {
+      "8.0": 12,
+      "0.0": 1
+    },
+    "_CharacterStencilDepth": {
+      "128.0": 13
+    },
+    "_CharacterStencilOp": {
+      "0.0": 13
+    },
+    "_ClipPlane": {
+      "0.0": 94
+    },
+    "_ClipPlaneXZ": {
+      "0.0": 83
+    },
+    "_ColorCorrectionIntensity": {
+      "1.0": 87
+    },
+    "_DarkAOScale": {
+      "0.5": 85,
+      "0.25": 7
+    },
+    "_DitherAlpha2": {
+      "1.0": 105
+    },
+    "_DoubleSided": {
+      "0.0": 65,
+      "1.0": 16
+    },
+    "_Emission": {
+      "0.0": 58,
+      "1.0": 8
+    },
+    "_EnableAnyHit": {
+      "1.0": 9
+    },
+    "_FresnelFlashing": {
+      "4.0": 92
+    },
+    "_FresnelMaskWidth": {
+      "5.0": 92
+    },
+    "_FresnelWidth": {
+      "3.5": 94
+    },
+    "_Glitch": {
+      "0.0": 94
+    },
+    "_HardLight": {
+      "0.0": 94
+    },
+    "_HardLightWidth": {
+      "0.1": 92,
+      "0.0": 2
+    },
+    "_HighlightShape": {
+      "0.0": 57,
+      "1.0": 9
+    },
+    "_HighlightShape2": {
+      "0.0": 62,
+      "1.0": 4
+    },
+    "_HighlightShape3": {
+      "0.0": 66
+    },
+    "_HighlightShape4": {
+      "0.0": 62,
+      "1.0": 4
+    },
+    "_HighlightShape5": {
+      "0.0": 65,
+      "1.0": 1
+    },
+    "_IgnoreTimeScale": {
+      "0.0": 95
+    },
+    "_LerpPosition": {
+      "0.5": 94
+    },
+    "_LerpPositionForCGLighting": {
+      "0.5": 82
+    },
+    "_LightDirectionFromCamera": {
+      "0.0": 94
+    },
+    "_LightSource": {
+      "0.0": 94
+    },
+    "_LightSourceForCGLighting": {
+      "0.0": 82
+    },
+    "_MarkAsGhostMask": {
+      "0.0": 80
+    },
+    "_MarkAsIgnisFatuusMask": {
+      "0.0": 75
+    },
+    "_MarkAsVfxMask": {
+      "0.0": 74
+    },
+    "_MaskTexFactor": {
+      "1.0": 93
+    },
+    "_MatCap": {
+      "1.0": 50,
+      "0.0": 25
+    },
+    "_MatCapAlphaBurst": {
+      "1.0": 44,
+      "0.6": 5,
+      "0.88": 2,
+      "0.4": 2,
+      "0.3": 2,
+      "1.5": 1
+    },
+    "_MatCapAlphaBurst2": {
+      "1.0": 28,
+      "0.8": 8,
+      "0.5": 6,
+      "1.2": 3,
+      "2.0": 3,
+      "0.55": 2
+    },
+    "_MatCapAlphaBurst3": {
+      "1.0": 33,
+      "0.6": 9,
+      "0.5": 7,
+      "0.8": 3,
+      "1.11": 2,
+      "1.34": 2
+    },
+    "_MatCapAlphaBurst4": {
+      "1.0": 31,
+      "0.5": 7,
+      "0.6": 5,
+      "0.8": 3,
+      "0.75": 2,
+      "0.2": 2
+    },
+    "_MatCapAlphaBurst5": {
+      "1.0": 40,
+      "0.5": 9,
+      "0.53": 4,
+      "1.32": 3,
+      "0.65": 2,
+      "0.3": 1
+    },
+    "_MatCapAlphaBurstFallback": {
+      "1.0": 66
+    },
+    "_MatCapAlphaBurstFx": {
+      "1.0": 94
+    },
+    "_MatCapBlendMode": {
+      "0.0": 45,
+      "1.0": 14,
+      "2.0": 7
+    },
+    "_MatCapBlendMode2": {
+      "1.0": 28,
+      "0.0": 27,
+      "2.0": 11
+    },
+    "_MatCapBlendMode3": {
+      "0.0": 35,
+      "1.0": 19,
+      "2.0": 12
+    },
+    "_MatCapBlendMode4": {
+      "0.0": 34,
+      "2.0": 18,
+      "1.0": 14
+    },
+    "_MatCapBlendMode5": {
+      "0.0": 41,
+      "1.0": 13,
+      "2.0": 12
+    },
+    "_MatCapBlendModeFallback": {
+      "0.0": 65,
+      "2.0": 1
+    },
+    "_MatCapBlendModeFx": {
+      "0.0": 95
+    },
+    "_MatCapBumpScaleFx": {
+      "1.0": 95
+    },
+    "_MatCapColorBurst": {
+      "1.0": 47,
+      "0.5": 7,
+      "0.3": 1,
+      "0.7": 1,
+      "1.3": 1,
+      "0.4": 1
+    },
+    "_MatCapColorBurst2": {
+      "1.0": 27,
+      "1.5": 8,
+      "1.2": 5,
+      "0.4": 3,
+      "0.5": 3,
+      "0.0": 2
+    },
+    "_MatCapColorBurst3": {
+      "1.0": 35,
+      "0.8": 6,
+      "0.2": 3,
+      "0.26": 3,
+      "0.5": 3,
+      "1.38": 2
+    },
+    "_MatCapColorBurst4": {
+      "1.0": 36,
+      "0.5": 5,
+      "1.25": 4,
+      "1.5": 4,
+      "0.0": 3,
+      "1.2": 2
+    },
+    "_MatCapColorBurst5": {
+      "1.0": 47,
+      "0.88": 4,
+      "0.3": 4,
+      "1.29": 3,
+      "1.56": 2,
+      "0.08": 1
+    },
+    "_MatCapColorBurstFallback": {
+      "1.0": 66
+    },
+    "_MatCapColorBurstFx": {
+      "1.0": 94
+    },
+    "_MatCapFX": {
+      "0.0": 94
+    },
+    "_MatCapNormalUSpeedFx": {
+      "0.0": 92
+    },
+    "_MatCapNormalVSpeedFx": {
+      "0.0": 93
+    },
+    "_MatCapRefract": {
+      "0.0": 54,
+      "1.0": 12
+    },
+    "_MatCapRefract2": {
+      "0.0": 64,
+      "1.0": 2
+    },
+    "_MatCapRefract3": {
+      "0.0": 66
+    },
+    "_MatCapRefract4": {
+      "0.0": 65,
+      "1.0": 1
+    },
+    "_MatCapRefract5": {
+      "0.0": 66
+    },
+    "_MatCapRefractFallback": {
+      "0.0": 66
+    },
+    "_MatCapTexID": {
+      "100.0": 66
+    },
+    "_MatCapTexID2": {
+      "100.0": 65,
+      "11.0": 1
+    },
+    "_MatCapTexID3": {
+      "100.0": 66
+    },
+    "_MatCapTexID4": {
+      "100.0": 65,
+      "4.0": 1
+    },
+    "_MatCapTexID5": {
+      "100.0": 66
+    },
+    "_MatCapUSpeed": {
+      "0.0": 65,
+      "0.015": 1
+    },
+    "_MatCapUSpeed2": {
+      "0.0": 66
+    },
+    "_MatCapUSpeed3": {
+      "0.0": 66
+    },
+    "_MatCapUSpeed4": {
+      "0.0": 65,
+      "0.02": 1
+    },
+    "_MatCapUSpeed5": {
+      "0.0": 66
+    },
+    "_MatCapUSpeedFallback": {
+      "0.0": 66
+    },
+    "_MatCapUSpeedFx": {
+      "0.0": 95
+    },
+    "_MatCapVSpeed": {
+      "0.0": 65,
+      "0.015": 1
+    },
+    "_MatCapVSpeed2": {
+      "0.0": 66
+    },
+    "_MatCapVSpeed3": {
+      "0.0": 66
+    },
+    "_MatCapVSpeed4": {
+      "0.0": 65,
+      "0.02": 1
+    },
+    "_MatCapVSpeed5": {
+      "0.0": 66
+    },
+    "_MatCapVSpeedFallback": {
+      "0.0": 66
+    },
+    "_MatCapVSpeedFx": {
+      "0.0": 95
+    },
+    "_MatcapBrightnessAlpha": {
+      "0.0": 13
+    },
+    "_MaterialNum": {
+      "4.0": 33,
+      "0.0": 25,
+      "1.0": 12,
+      "3.0": 8,
+      "2.0": 7
+    },
+    "_ModelSize": {
+      "1.0": 64,
+      "2.0": 2
+    },
+    "_ModelSize2": {
+      "1.0": 64,
+      "2.0": 1,
+      "3.0": 1
+    },
+    "_ModelSize3": {
+      "1.0": 64,
+      "10.0": 1,
+      "2.0": 1
+    },
+    "_ModelSize4": {
+      "1.0": 64,
+      "2.0": 1,
+      "3.0": 1
+    },
+    "_ModelSize5": {
+      "1.0": 66
+    },
+    "_MultiplyAlbedo": {
+      "1.0": 95
+    },
+    "_MultiplyAlbedoForCGLighting": {
+      "1.0": 83
+    },
+    "_MultiplyGI": {
+      "0.0": 36
+    },
+    "_MultiplySrcColor": {
+      "0.0": 95
+    },
+    "_NormalThreshold": {
+      "0.0": 94
+    },
+    "_OutlineFX": {
+      "0.0": 84
+    },
+    "_OutlineWidthFX": {
+      "1.0": 84
+    },
+    "_OutlineWidthUIAdjustment": {
+      "1.0": 77
+    },
+    "_OverlayTexScale": {
+      "1000.0": 84,
+      "20.0": 4,
+      "40.0": 4,
+      "50.0": 2,
+      "10.0": 1
+    },
+    "_Override": {
+      "0.0": 94
+    },
+    "_Override2Tone": {
+      "0.0": 94
+    },
+    "_Override2ToneBlendMode": {
+      "0.0": 94
+    },
+    "_Override2ToneBlendModeForCGLighting": {
+      "0.0": 82
+    },
+    "_Override2ToneForCGLighting": {
+      "0.0": 82
+    },
+    "_Override2ToneMultiplyAlbedo": {
+      "0.0": 94
+    },
+    "_Override2ToneMultiplyAlbedoForCGLighting": {
+      "0.0": 82
+    },
+    "_OverrideMainLight": {
+      "0.0": 80
+    },
+    "_OverrideMainLightParam": {
+      "0.0": 93
+    },
+    "_OverrideMainLightParam2": {
+      "0.0": 83
+    },
+    "_OverrideMainLightParam3": {
+      "0.0": 83
+    },
+    "_OverrideMainLightParam4": {
+      "0.0": 65
+    },
+    "_OverrideMainLightParam5": {
+      "0.0": 65
+    },
+    "_OverrideOutline": {
+      "0.0": 84
+    },
+    "_OverrideOutlineUseUV2": {
+      "1.0": 91
+    },
+    "_OverrideRimGlow": {
+      "0.0": 94
+    },
+    "_OverrideRimGlowMode": {
+      "0.0": 94
+    },
+    "_OverrideRimGlowUseUV2": {
+      "0.0": 94
+    },
+    "_PerObjectShadowData": {
+      "0.0": 64
+    },
+    "_PerObjectShadowIntensity": {
+      "1.0": 95
+    },
+    "_PerObjectShadowIntensity2": {
+      "1.0": 85
+    },
+    "_PerObjectShadowIntensity3": {
+      "1.0": 85
+    },
+    "_PerObjectShadowIntensity4": {
+      "1.0": 66
+    },
+    "_PerObjectShadowIntensity5": {
+      "1.0": 66
+    },
+    "_PlaneClipReverse": {
+      "0.0": 83
+    },
+    "_PointSpace": {
+      "0.0": 94
+    },
+    "_PointSpaceForCGLighting": {
+      "0.0": 82
+    },
+    "_PowMax": {
+      "1.5": 92
+    },
+    "_PowMin": {
+      "1.25": 92
+    },
+    "_PropertyMask2Channel": {
+      "0.0": 92
+    },
+    "_PropertyMask2UseUV2": {
+      "0.0": 94
+    },
+    "_PropertyMaskChannel": {
+      "0.0": 93
+    },
+    "_PropertyMaskUVFlipSpeed": {
+      "50.0": 92
+    },
+    "_PropertyMaskUseUV2": {
+      "0.0": 94
+    },
+    "_PropertyNormalUseUV2": {
+      "0.0": 92
+    },
+    "_PropertyTexUVFlipSpeed": {
+      "25.0": 92
+    },
+    "_PropertyTexUseUV2": {
+      "0.0": 94
+    },
+    "_PropertyType": {
+      "0.0": 92
+    },
+    "_RampSource": {
+      "0.0": 95
+    },
+    "_ReceiveAddShadows": {
+      "1.0": 95
+    },
+    "_RefractDepth": {
+      "0.5": 65,
+      "0.33": 1
+    },
+    "_RefractDepth2": {
+      "0.5": 62,
+      "1.13": 4
+    },
+    "_RefractDepth3": {
+      "0.5": 65,
+      "1.0": 1
+    },
+    "_RefractDepth4": {
+      "0.5": 66
+    },
+    "_RefractDepth5": {
+      "0.5": 66
+    },
+    "_RefractDepthFallback": {
+      "0.5": 66
+    },
+    "_RenderType": {
+      "0.0": 70,
+      "1.0": 12,
+      "2.0": 11
+    },
+    "_ReversePlaneXZ": {
+      "0.0": 83
+    },
+    "_RimGlow": {
+      "1.0": 83,
+      "0.0": 1
+    },
+    "_ScreenImage": {
+      "0.0": 95
+    },
+    "_ScreenMaskUV": {
+      "0.0": 93
+    },
+    "_ScreenScale": {
+      "1.0": 95
+    },
+    "_ScreenTexRotation": {
+      "0.0": 95
+    },
+    "_SecondaryEmission": {
+      "0.0": 95
+    },
+    "_SecondaryEmissionChannel": {
+      "0.0": 95
+    },
+    "_SecondaryEmissionChannelForCGLighting": {
+      "0.0": 83
+    },
+    "_SecondaryEmissionForCGLighting": {
+      "0.0": 83
+    },
+    "_SecondaryEmissionMaskChannel": {
+      "0.0": 95
+    },
+    "_SecondaryEmissionMaskChannelForCGLighting": {
+      "0.0": 83
+    },
+    "_SecondaryEmissionTexRotation": {
+      "0.0": 95
+    },
+    "_SecondaryEmissionTexRotationForCGLighting": {
+      "0.0": 83
+    },
+    "_SecondaryEmissionUseUV2": {
+      "0.0": 95
+    },
+    "_SecondaryEmissionUseUV2ForCGLighting": {
+      "0.0": 83
+    },
+    "_ShadowColorFadeByZ": {
+      "1.0": 94
+    },
+    "_ShadowCull": {
+      "2.0": 63,
+      "0.0": 1
+    },
+    "_ShadowDitherOff": {
+      "0.0": 82
+    },
+    "_ShadowNormalBias": {
+      "0.01": 95
+    },
+    "_ShadowZOffset": {
+      "0.0": 94
+    },
+    "_ShadowZOffsetWholeMesh": {
+      "0.0": 94
+    },
+    "_ShapeSoftness": {
+      "0.1": 65,
+      "0.636": 1
+    },
+    "_ShapeSoftness2": {
+      "0.1": 66
+    },
+    "_ShapeSoftness3": {
+      "0.1": 64,
+      "0.2": 2
+    },
+    "_ShapeSoftness4": {
+      "0.1": 66
+    },
+    "_ShapeSoftness5": {
+      "0.1": 66
+    },
+    "_ShiftAngle": {
+      "120.0": 94
+    },
+    "_ShiftAngleForCGLighting": {
+      "120.0": 82
+    },
+    "_SkinMatId": {
+      "0.0": 28,
+      "1.0": 12,
+      "5.0": 11,
+      "4.0": 8,
+      "3.0": 6,
+      "2.0": 1
+    },
+    "_SoftLight": {
+      "0.0": 94
+    },
+    "_SoftLightWidth": {
+      "0.1": 92,
+      "0.0": 2
+    },
+    "_Softness": {
+      "0.0": 94
+    },
+    "_SoftnessForCGLighting": {
+      "0.0": 82
+    },
+    "_SpecIntensity": {
+      "0.1": 59,
+      "0.05": 2,
+      "0.23": 2,
+      "0.2": 2,
+      "0.063": 1
+    },
+    "_SpecSocketBoneIndex": {
+      "0.0": 92
+    },
+    "_SpecSocketGPUAnimInstanceID": {
+      "0.0": 92
+    },
+    "_SpecSocketTotalNumberOfBones": {
+      "0.0": 92
+    },
+    "_SpecialWeaponEmission": {
+      "0.0": 83
+    },
+    "_SpecularRange": {
+      "1.0": 65,
+      "0.993": 1
+    },
+    "_SpecularRange2": {
+      "1.0": 65,
+      "0.953": 1
+    },
+    "_SpecularRange3": {
+      "1.0": 62,
+      "0.3": 1,
+      "1.009": 1,
+      "0.917": 1,
+      "1.023": 1
+    },
+    "_SpecularRange4": {
+      "1.0": 59,
+      "0.93": 2,
+      "1.05": 2,
+      "1.02": 1,
+      "1.009": 1,
+      "0.882": 1
+    },
+    "_SpecularRange5": {
+      "1.0": 64,
+      "0.958": 1,
+      "1.02": 1
+    },
+    "_StencilComFunc": {
+      "0.0": 94
+    },
+    "_StencilReadMask": {
+      "1.0": 95
+    },
+    "_StretchDirection": {
+      "0.0": 93
+    },
+    "_StretchDistance": {
+      "0.0": 94
+    },
+    "_StretchPercentage": {
+      "0.0": 93
+    },
+    "_Surface": {
+      "0.0": 43
+    },
+    "_SymmetryUV": {
+      "0.0": 66
+    },
+    "_TabSelection": {
+      "0.0": 41,
+      "1.0": 14,
+      "3.0": 12,
+      "4.0": 11,
+      "2.0": 7
+    },
+    "_ToonSpecular": {
+      "0.01": 62,
+      "0.05": 2,
+      "0.027": 1,
+      "0.078": 1
+    },
+    "_ToonSpecular2": {
+      "0.01": 61,
+      "0.015": 2,
+      "0.05": 1,
+      "0.5": 1,
+      "0.013": 1
+    },
+    "_ToonSpecular3": {
+      "0.01": 59,
+      "0.05": 2,
+      "0.037": 2,
+      "0.03": 1,
+      "0.3": 1,
+      "0.078": 1
+    },
+    "_ToonSpecular4": {
+      "0.01": 58,
+      "0.05": 5,
+      "0.1": 2,
+      "0.051": 1
+    },
+    "_ToonSpecular5": {
+      "0.01": 64,
+      "0.015": 2
+    },
+    "_TransSpeed": {
+      "1.0": 92
+    },
+    "_Transition": {
+      "0.0": 94
+    },
+    "_TransitionCompletion": {
+      "0.0": 94
+    },
+    "_TransitionWidth": {
+      "0.0": 90,
+      "0.1": 4
+    },
+    "_UseAlpha": {
+      "0.0": 33
+    },
+    "_UseAlphaFX": {
+      "0.0": 13
+    },
+    "_UseChannelMixer": {
+      "0.0": 95
+    },
+    "_UseDitherCenter": {
+      "0.0": 54
+    },
+    "_UseInvSecondaryEmissionMask": {
+      "0.0": 93
+    },
+    "_UseMatCapMask": {
+      "1.0": 50,
+      "0.0": 16
+    },
+    "_UseOverlayTex": {
+      "0.0": 84,
+      "1.0": 11
+    },
+    "_VertexOffset": {
+      "0.5": 95
+    },
+    "_VertexStretch": {
+      "0.0": 94
+    },
+    "_VolumeLutScale": {
+      "1.0": 92
+    },
+    "_VolumeLutScale2": {
+      "1.0": 74
+    },
+    "_VolumeLutScale3": {
+      "1.0": 74
+    },
+    "_VolumeLutScale4": {
+      "1.0": 56
+    },
+    "_VolumeLutScale5": {
+      "1.0": 56
+    },
+    "_ZTest": {
+      "4.0": 70,
+      "3.0": 14
+    },
+    "_ZTestPreZ": {
+      "4.0": 82
+    },
+    "_ZWriteOn": {
+      "0.0": 11
+    },
+    "_ZWritePreZ": {
+      "1.0": 82
+    },
+    "_FixedLightDirection": {
+      "0.0": 27
+    },
+    "_LightMapUVFlip": {
+      "0.0": 27
+    },
+    "_UseFaceShadowPoint": {
+      "1.0": 33
+    },
+    "_UseVertexMaterialID": {
+      "0.0": 11,
+      "1.0": 6
+    },
+    "_CharacterHalfResAlphaDstBlend": {
+      "0.0": 19
+    },
+    "_CharacterHalfResAlphaSrcBlend": {
+      "1.0": 19
+    },
+    "_CharacterHalfResDstBlend": {
+      "0.0": 19
+    },
+    "_CharacterHalfResSrcBlend": {
+      "1.0": 19
+    },
+    "_EnableBlush": {
+      "0.0": 16
+    },
+    "_NoseLineHoriDisp": {
+      "0.92": 14,
+      "0.85": 6,
+      "0.88": 2,
+      "0.86": 1
+    },
+    "_NoseLineLkDnDisp": {
+      "0.62": 18,
+      "0.5": 5
+    },
+    "_NoseLineScale": {
+      "1.0": 18
+    },
+    "_NoseSpecularScale": {
+      "1.0": 20
+    },
+    "_StencilRefShadow": {
+      "132.0": 12,
+      "148.0": 11
+    },
+    "_StencilWriteMask": {
+      "255.0": 24
+    },
+    "_StencilWriteMaskShadow": {
+      "128.0": 12,
+      "144.0": 11
+    },
+    "_ClipSpaceXOffset": {
+      "0.0": 23
+    },
+    "_ClipSpaceYOffset": {
+      "0.0": 23
+    },
+    "_Length": {
+      "1.0": 10,
+      "0.8": 1
+    },
+    "_UI": {
+      "1.0": 10,
+      "0.0": 1
+    },
+    "_XOffset": {
+      "0.8": 11
+    },
+    "_XOffsetEnter": {
+      "-0.7": 11
+    },
+    "_XOffsetNew": {
+      "-0.25": 10,
+      "0.0": 1
+    },
+    "_YOffset": {
+      "1.5": 10,
+      "0.0": 1
+    },
+    "_YOffsetEnter": {
+      "0.75": 11
+    },
+    "_ZOffset": {
+      "0.5": 11,
+      "0.0": 4
+    },
+    "_Frame": {
+      "0.0": 4
+    },
+    "_HalfResAlphaDstBlend": {
+      "0.0": 7
+    },
+    "_HalfResAlphaSrcBlend": {
+      "7.0": 7
+    },
+    "_HalfResDstBlend": {
+      "5.0": 7
+    },
+    "_HalfResSrcBlend": {
+      "1.0": 7
+    },
+    "_LastFrame": {
+      "0.0": 4
+    },
+    "_PartIDOffset": {
+      "0.0": 4
+    },
+    "_RigidAnimation": {
+      "0.0": 4
+    },
+    "_WrapMode": {
+      "0.0": 4
+    },
+    "_ColorBlocks": {
+      "0.0": 11
+    },
+    "_IterateOver": {
+      "1.0": 7
+    },
+    "_ReceiveStencilShadow": {
+      "1.0": 7,
+      "0.0": 2
+    },
+    "_ShadowmapSmoothness": {
+      "0.5": 12
+    },
+    "_UseShadowFadeMask": {
+      "0.0": 6,
+      "1.0": 6
+    },
+    "_IsMonsterMat": {
+      "0.0": 4
+    },
+    "_MarkAsGlitchMask": {
+      "0.0": 15
+    },
+    "_BShift": {
+      "0.0": 8
+    },
+    "_CharacterStencil": {
+      "128.0": 8
+    },
+    "_DiffuseFade": {
+      "1.0": 7
+    },
+    "_DiffuseFade2": {
+      "1.0": 7
+    },
+    "_DiffuseFade3": {
+      "1.0": 7
+    },
+    "_DiffuseFade4": {
+      "1.0": 7
+    },
+    "_DiffuseFade5": {
+      "1.0": 7
+    },
+    "_Dither": {
+      "0.0": 9
+    },
+    "_FixNeck": {
+      "0.0": 3,
+      "1.0": 2
+    },
+    "_GShift": {
+      "0.0": 8
+    },
+    "_LineBrightness": {
+      "1.0": 8
+    },
+    "_LineGlitch": {
+      "0.0": 8
+    },
+    "_LineThresholdMax": {
+      "0.2": 8
+    },
+    "_LineThresholdMin": {
+      "0.0": 8
+    },
+    "_NoiseScale": {
+      "1.0": 8
+    },
+    "_RShift": {
+      "0.0": 8
+    },
+    "_SssWidth": {
+      "0.0": 6,
+      "0.1": 3
+    },
+    "_SssWidth2": {
+      "0.0": 6,
+      "0.1": 3
+    },
+    "_MatCapId": {
+      "0.0": 5
+    },
+    "_ShapeFresnelOffset": {
+      "1.0": 5
+    },
+    "_ShapeFresnelOffset2": {
+      "1.0": 5
+    },
+    "_ShapeFresnelOffset3": {
+      "1.0": 5
+    },
+    "_ShapeFresnelOffset4": {
+      "1.0": 5
+    },
+    "_ShapeFresnelOffset5": {
+      "1.0": 5
+    },
+    "_ShapeFresnelScale": {
+      "0.9": 5
+    },
+    "_ShapeFresnelScale2": {
+      "0.9": 5
+    },
+    "_ShapeFresnelScale3": {
+      "0.9": 5
+    },
+    "_ShapeFresnelScale4": {
+      "0.9": 5
+    },
+    "_ShapeFresnelScale5": {
+      "0.9": 5
+    },
+    "_HairMatId": {
+      "5.0": 3
+    },
+    "_HairMatId2": {
+      "5.0": 3
+    },
+    "_SssWidth3": {
+      "0.1": 3
+    },
+    "_SssWidth4": {
+      "0.1": 3
+    },
+    "_SssWidth5": {
+      "0.1": 3
+    },
+    "_Stencil": {
+      "1.0": 1
+    },
+    "_CharIgnoreHitThreshold": {
+      "1.0": 1
+    }
+  }
+}

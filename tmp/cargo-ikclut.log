@@ -1,0 +1,338 @@
+﻿cargo : warning: unused variable: `试`
+At line:8 char:1
++ cargo test --manifest-path src-tauri\Cargo.toml --lib 2>&1 | Out-File ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: unused variable: `试`:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+   --> src\review_probe.rs:124:9
+    |
+124 |     for 试 in 0..2u64 {
+    |         ^^ help: if this is intentional, prefix it with an underscore: `_试`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `编UTF16无BOM` should have a snake case name
+   --> src\project.rs:923:4
+    |
+923 | fn 编UTF16无BOM(s: &str) -> Vec<u8> {
+    |    ^^^^^^^^^^^^ help: convert the identifier to snake case: `编_utf16无_bom`
+    |
+    = note: `#[warn(non_snake_case)]` (part of `#[warn(nonstandard_style)]`) on by default
+
+warning: function `真工程副本上A与C的验收` should have a snake case name
+    --> src\project.rs:2518:8
+     |
+2518 |     fn 真工程副本上A与C的验收() {
+     |        ^^^^^^^^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `真工程副本上_a与_c的验收`
+
+warning: variable `A出` should have a snake case name
+    --> src\project.rs:2582:13
+     |
+2582 |         let A出 = 工作.join("A出");
+     |             ^^^ help: convert the identifier to snake case: `a出`
+
+warning: function `真样本_A情形` should have a snake case name
+    --> src\project.rs:2851:8
+     |
+2851 |     fn 真样本_A情形() {
+     |        ^^^^^^^^^^^^ help: convert the identifier to snake case: `真样本_a情形`
+
+warning: function `真工程A验收` should have a snake case name
+    --> src\project.rs:3060:8
+     |
+3060 |     fn 真工程A验收() {
+     |        ^^^^^^^^^^^ help: convert the identifier to snake case: `真工程_a验收`
+
+warning: function `换根_所有段都换_等号空格与CRLF原样保留` should have a snake case name
+    --> src\migrate_root.rs:2357:8
+     |
+2357 |     fn 换根_所有段都换_等号空格与CRLF原样保留() {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `换根_所有段都换_等号空格与_crlf原样
+保留`
+
+warning: variable `源A` should have a snake case name
+    --> src\migrate_root.rs:2914:13
+     |
+2914 |         let 源A = d.join("旧A/UserFile/模型");
+     |             ^^^ help: convert the identifier to snake case: `源_a`
+
+warning: variable `源B` should have a snake case name
+    --> src\migrate_root.rs:2918:13
+     |
+2918 |         let 源B = d.join("旧B/UserFile/特效");
+     |             ^^^ help: convert the identifier to snake case: `源_b`
+
+warning: variable `到A` should have a snake case name
+    --> src\migrate_root.rs:2922:13
+     |
+2922 |         let 到A = d.join("新处/模型");
+     |             ^^^ help: convert the identifier to snake case: `到_a`
+
+warning: variable `到B` should have a snake case name
+    --> src\migrate_root.rs:2923:13
+     |
+2923 |         let 到B = d.join("新处2/特效");
+     |             ^^^ help: convert the identifier to snake case: `到_b`
+
+warning: variable `旧A` should have a snake case name
+    --> src\migrate_root.rs:2925:13
+     |
+2925 |         let 旧A = d.join("旧A");
+     |             ^^^ help: convert the identifier to snake case: `旧_a`
+
+warning: variable `旧B` should have a snake case name
+    --> src\migrate_root.rs:2926:13
+     |
+2926 |         let 旧B = d.join("旧B");
+     |             ^^^ help: convert the identifier to snake case: `旧_b`
+
+warning: function `香港观塘_诊断为什么A拒绝` should have a snake case name
+   --> src\migrate_probe.rs:162:4
+    |
+162 | fn 香港观塘_诊断为什么A拒绝() {
+    |    ^^^^^^^^^^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `香港观塘_诊断为什么_a拒绝`
+
+warning: variable `源User` should have a snake case name
+    --> src\migrate_probe.rs:1698:9
+     |
+1698 |     let 源User = PathBuf::from(format!(r"{工程根}\UserFile"));
+     |         ^^^^^^ help: convert the identifier to snake case: `源_user`
+
+warning: variable `源User` should have a snake case name
+    --> src\migrate_probe.rs:1781:9
+     |
+1781 |     let 源User = PathBuf::from(format!(r"{工程根}\UserFile"));
+     |         ^^^^^^ help: convert the identifier to snake case: `源_user`
+
+warning: variable `源User` should have a snake case name
+    --> src\migrate_probe.rs:1904:9
+     |
+1904 |     let 源User = PathBuf::from(format!(r"{工程根}\UserFile"));
+     |         ^^^^^^ help: convert the identifier to snake case: `源_user`
+
+warning: variable `源User` should have a snake case name
+    --> src\migrate_probe.rs:1991:9
+     |
+1991 |     let 源User = PathBuf::from(format!(r"{工程根}\UserFile"));
+     |         ^^^^^^ help: convert the identifier to snake case: `源_user`
+
+warning: variable `源User` should have a snake case name
+    --> src\migrate_probe.rs:2184:9
+     |
+2184 |     let 源User = PathBuf::from(format!(r"{工程根}\UserFile"));
+     |         ^^^^^^ help: convert the identifier to snake case: `源_user`
+
+warning: variable `源User` should have a snake case name
+    --> src\migrate_probe.rs:2407:9
+     |
+2407 |     let 源User = PathBuf::from(format!(r"{工程根}\UserFile"));
+     |         ^^^^^^ help: convert the identifier to snake case: `源_user`
+
+warning: variable `旧A` should have a snake case name
+    --> src\migrate_probe.rs:2449:10
+     |
+2449 |     let (旧A, 总A, 在A, 帧A) = 盘上回读(&副本, 名, &旧根们, &改前pmm);
+     |          ^^^ help: convert the identifier to snake case: `旧_a`
+
+warning: variable `总A` should have a snake case name
+    --> src\migrate_probe.rs:2449:14
+     |
+2449 |     let (旧A, 总A, 在A, 帧A) = 盘上回读(&副本, 名, &旧根们, &改前pmm);
+     |               ^^^ help: convert the identifier to snake case: `总_a`
+
+warning: variable `在A` should have a snake case name
+    --> src\migrate_probe.rs:2449:18
+     |
+2449 |     let (旧A, 总A, 在A, 帧A) = 盘上回读(&副本, 名, &旧根们, &改前pmm);
+     |                    ^^^ help: convert the identifier to snake case: `在_a`
+
+warning: variable `帧A` should have a snake case name
+    --> src\migrate_probe.rs:2449:22
+     |
+2449 |     let (旧A, 总A, 在A, 帧A) = 盘上回读(&副本, 名, &旧根们, &改前pmm);
+     |                         ^^^ help: convert the identifier to snake case: `帧_a`
+
+warning: variable `旧B` should have a snake case name
+    --> src\migrate_probe.rs:2492:10
+     |
+2492 |     let (旧B, 总B, 在B, 帧B) = 盘上回读(&包, 名, &旧根们, &改前pmm);
+     |          ^^^ help: convert the identifier to snake case: `旧_b`
+
+warning: variable `总B` should have a snake case name
+    --> src\migrate_probe.rs:2492:14
+     |
+2492 |     let (旧B, 总B, 在B, 帧B) = 盘上回读(&包, 名, &旧根们, &改前pmm);
+     |               ^^^ help: convert the identifier to snake case: `总_b`
+
+warning: variable `在B` should have a snake case name
+    --> src\migrate_probe.rs:2492:18
+     |
+2492 |     let (旧B, 总B, 在B, 帧B) = 盘上回读(&包, 名, &旧根们, &改前pmm);
+     |                    ^^^ help: convert the identifier to snake case: `在_b`
+
+warning: variable `帧B` should have a snake case name
+    --> src\migrate_probe.rs:2492:22
+     |
+2492 |     let (旧B, 总B, 在B, 帧B) = 盘上回读(&包, 名, &旧根们, &改前pmm);
+     |                         ^^^ help: convert the identifier to snake case: `帧_b`
+
+warning: `robin-editor` (lib test) generated 28 warnings (run `cargo fix --lib -p robin-editor --tests` to apply 1 sugg
+estion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.02s
+     Running unittests src\lib.rs (src-tauri\target\debug\deps\robin_editor_lib-c23c447141cedc81.exe)
+
+running 150 tests
+test migrate_probe::真语料_找根覆盖面 ... ignored
+test migrate_probe::香港观塘_产品根替换_写到2 ... ignored
+test migrate_probe::香港观塘_完整根替换迁移 ... ignored
+test migrate_probe::香港观塘_扫一遍 ... ignored
+test migrate_probe::香港观塘_根替换迁移 ... ignored
+test migrate_probe::香港观塘_真实迁移 ... ignored
+test migrate_probe::香港观塘_诊断为什么A拒绝 ... ignored
+test migrate_probe::香港观塘_逐条指定_写到2 ... ignored
+test migrate_probe::香港观塘_逐条指定_写到3 ... ignored
+test migrate_probe::香港验收_情形1_原地修复 ... ignored
+test migrate_probe::香港验收_情形1_夜间已经指对了 ... ignored
+test migrate_probe::香港验收_情形2_分散到多处 ... ignored
+test migrate_probe::香港验收_打包_自包含目录 ... ignored
+test migrate_probe::香港验收_搬运_多处目标 ... ignored
+test migrate_probe::香港验收_撤销复跑_修复区与打包区 ... ignored
+test fsops::tests::unknown_bytes_are_refused ... ok
+test migrate_root::tests::写辅助_不改内容 ... ok
+test migrate_root::tests::定目标_原位在_与需要指定 ... ok
+test migrate_root::tests::换根_所有段都换_等号空格与CRLF原样保留 ... ok
+test migrate_root::tests::列路径_逐条列出每一处并算状态 ... ok
+test fsops::tests::read_rgba_does_not_touch_rgb_of_transparent_pixels ... ok
+test fsops::tests::read_rgba_returns_exactly_w_h_4_bytes ... ok
+test fsops::tests::tga_decodes_by_extension_even_though_it_has_no_magic ... ok
+test fsops::tests::magic_detectable_formats_still_use_their_own_header ... ok
+test migrate_root::tests::打包_输出目录落在源目录里面就拒绝 ... ok
+test migrate_root::tests::搬根_旧新同一处_说清原地不动不写盘 ... ok
+test migrate_root::tests::搬根_没给根表就说清楚 ... ok
+test migrate_root::tests::搬根_有没落定的就拒绝 ... ok
+test migrate_root::tests::搬根_有一条换完不在盘上就整体拒绝 ... ok
+test fsops::tests::atomic_write_replaces_existing_content ... ok
+test fsops::tests::atomic_write_lands_exactly_and_leaves_no_temp ... ok
+test migrate_root::tests::搬根_写盘_回读核对_长度与内容 ... ok
+test migrate_root::tests::搬根_目标落在测试目录就拒绝 ... ok
+test migrate_root::tests::逐条覆盖压过根规则 ... ok
+test pmx::debug_tests::trace_positions ... ignored
+test pmx::tests::classifies_material_names ... ok
+test migrate_root::tests::干跑与真跑都拒_新路径塞不进256字节字段 ... ok
+test migrate_root::tests::打包_同名不同内容时按原来的闸拒绝并说清楚 ... ok
+test migrate_root::tests::找死根_按段分组_并试出新根 ... ok
+test migrate_root::tests::换根不碰帧区_vmd动作嵌在工程里 ... ok
+test pmx::tests::rejects_non_pmx ... ok
+test project::tests::emm_parses_objects_and_effects ... ok
+test project::tests::emm_rewrite_only_touches_object_paths ... ok
+test pmx::tests::material_faces_add_up ... ok
+test project::tests::long_path_or_ambiguous_hit_is_refused_not_guessed ... ok
+test project::tests::pmx_encoding_flag_comes_from_header ... ok
+test project::tests::pmm_field_is_found_by_unique_search_and_overwritten_in_place ... ok
+test fsops::tests::failed_write_does_not_touch_the_original ... ok
+test project::tests::pmx_texture_span_search_requires_unique ... ok
+test migrate_root::tests::搬运_干跑不碰盘 ... ok
+test migrate_root::tests::搬运_只差斜杠不搬 ... ok
+test project::tests::换名字_长度变化_后面整体位移_其余字节逐字节相同 ... ok
+test pmx::tests::parses_a_real_model ... ok
+test migrate_root::tests::检索_搜索起点给空目录不炸 ... ok
+test migrate_root::tests::搬运_目标在源里面就拒绝 ... ok
+test project::tests::真工程A验收 ... ignored
+test project::tests::真工程上命中分级与失配样本 ... ignored
+test project::tests::真工程上能摘几个 ... ignored
+test project::tests::真工程上锚定位命中率 ... ignored
+test project::tests::真工程副本上A与C的验收 ... ignored
+test project::tests::真工程改名实测 ... ignored
+test project::tests::真样本_A情形 ... ignored
+test project::tests::诊断_pmx贴图串存法 ... ignored
+test project::tests::诊断_完整路径为什么零命中 ... ignored
+test project::tests::诊断_模型条目数对不上 ... ignored
+test project::tests::贴图段长度_两种编码都记字节数_utf16逐字符铺小端 ... ok
+test migrate_root::tests::打包_工程本来就健康时没有映射也有入口 ... ok
+test project::tests::条目名_模型取长度前缀_附件取百字节区 ... ok
+test review_probe::乱码目录_过目用 ... ignored
+test project::tests::重排编号_删掉的键消失_后面的前移_材质号不动 ... ok
+test textenc::corpus_report::corpus_residual ... ignored
+test textenc::piece_tests::empty_or_commentless_files_have_no_pieces ... ok
+test textenc::piece_tests::fx_pieces_are_comment_bodies_only ... ok
+test textenc::piece_tests::piece_count_mismatch_is_refused ... ok
+test textenc::piece_tests::plain_text_is_one_piece ... ok
+test textenc::piece_tests::star_and_slash_in_code_do_not_confuse_the_scanner ... ok
+test pmx::tests::parses_several_models ... ok
+test textenc::piece_tests::unclosed_block_comment_does_not_eat_code ... ok
+test textenc::piece_tests::write_back_touches_comment_bodies_only ... ok
+test textenc::safety_tests::dump_one_char ... ignored
+test textenc::safety_tests::clean_japanese_comments_stay_clean ... ok
+test textenc::safety_tests::real_case_line_with_latin_letter_in_the_middle ... ok
+test textenc::safety_tests::mixed_line_untouched_when_already_correct ... ok
+test textenc::safety_tests::real_case_kanji_words_are_not_half_converted ... ok
+test migrate_root::tests::检索_已经落定的不进表 ... ok
+test textenc::safety_tests::short_chinese_runs_stay_clean ... ok
+test textenc::tests2::below_margin_still_reports_candidates ... ok
+test migrate_root::tests::搬根_逐条指定到别处的文件 ... ok
+test textenc::tests2::dump_e2e_cases ... ignored
+test textenc::tests2::below_margin_names_still_offer_the_right_candidate ... ok
+test migrate_root::tests::检索_测试目录里的候选只列待确认 ... ok
+test textenc::tests2::destroyed_text_is_never_auto_applied ... ok
+test textenc::tests2::false_positives_kanji_words_stay_untouched ... ok
+test migrate_root::tests::打包_没被规则覆盖的健康路径也进包_连邻居一起 ... ok
+test textenc::safety_tests::real_mojibake_still_gets_repaired_after_raising_the_margin ... ok
+test textenc::tests2::kana_ratio_ignores_halfwidth ... ok
+test migrate_root::tests::检索_尾部一样长就交给人挑_不许猜 ... ok
+test textenc::tests2::forced_choice_applies_the_candidate ... ok
+test textenc::tests2::forced_choice_leaves_the_rest_alone ... ok
+test textenc::tests2::margin_is_tiered_by_length ... ok
+test textenc::tests2::forced_choice_in_comment_mode_leaves_code_untouched ... ok
+test textenc::tests2::false_positives_long_chinese_stay_untouched ... ok
+test textenc::tests::detects_shift_jis ... ok
+test textenc::tests2::corpus_file_names_are_auto_repaired ... ok
+test textenc::tests::fx_comment_mode_keeps_structure ... ok
+test textenc::tests::reads_bom_and_utf8 ... ok
+test textenc::tests::does_not_guess_on_destroyed_text ... ok
+test textenc::tests::fx_comment_mode_leaves_code_untouched ... ok
+test textenc::tests::leaves_normal_text_alone ... ok
+test textenc::tests::repairs_inside_a_sentence ... ok
+test textenc::tests::repairs_known_mojibake ... ok
+test fsops::tests::write_bytes_round_trips_through_the_command ... ok
+test project::tests::搬家_改名_长度变了就拒绝_并说清为什么 ... ok
+test migrate_root::tests::打包_试算与真跑的数必须一样_源目录嵌套时也不例外 ... ok
+test translate::tests::body_shape_is_openai_compatible ... ok
+test translate::tests::empty_config_is_refused_without_any_request ... ok
+test translate::tests::endpoint_join_is_forgiving ... ok
+test translate::tests::http_status_hints_are_specific ... ok
+test translate::tests::live_engine_round_trip ... ignored
+test translate::tests::live_mymemory_round_trip ... ignored
+test translate::tests::mymemory_解析译文与额度报错 ... ok
+test translate::tests::pack_unpack_round_trip ... ok
+test translate::tests::unpack_drops_chatter_before_the_first_marker ... ok
+test translate::tests::unpack_refuses_mismatched_numbering ... ok
+test translate::tests::url编码_汉字与空格 ... ok
+test fsops::tests::write_rgba_image_is_atomic_too ... ok
+test translate::tests::分块_不切断多字节字符 ... ok
+test translate::tests::分块_优先在句末切 ... ok
+test migrate_root::tests::检索_同名多份时按尾部对上是哪一份 ... ok
+test textenc::write_tests::dry_run_never_writes_anywhere ... ok
+test textenc::write_tests::unencodable_text_is_refused_with_a_clear_message ... ok
+test textenc::tests2::scan_lists_uncertain_segments ... ok
+test project::tests::搬家_改名_名字与路径都落到盘上_且结构条目数不变 ... ok
+test migrate_root::tests::搬运_搬模式_核对相同才删原件 ... ok
+test project::tests::摘条目_三种情况必须拒绝 ... ok
+test migrate_root::tests::搬运_多个目标位置_拷模式_原件还在 ... ok
+test textenc::write_tests::no_bom_file_does_not_gain_one ... ok
+test textenc::tests2::rename_refuses_to_overwrite_and_can_roll_back ... ok
+test textenc::write_tests::utf16le_can_be_written_back ... ok
+test textenc::write_tests::save_as_backs_up_existing_target ... ok
+test textenc::tests2::scan_names_finds_mojibake_names ... ok
+test textenc::write_tests::utf8_bom_survives_a_rewrite ... ok
+test textenc::write_tests::save_as_leaves_original_alone_and_creates_dir ... ok
+test project::tests::搬家只改路径字段_长度不变_其余逐字节相同 ... ok
+test project::tests::摘条目_整段摘掉_计数减一_emm重排 ... ok
+test migrate_root::tests::撤销_原地修复写回改前那份_搬模式把原件搬回原位 ... ok
+test pmx::tests::parses_real_model_library ... ok
+test project::tests::搬家_新位置没文件就整体拒绝 ... ok
+test migrate_root::tests::找死根_部分搬走也给部分规则_不再拆碎 ... ok
+test translate::tests::unreachable_endpoint_reports_the_url ... ok
+
+test result: ok. 118 passed; 0 failed; 32 ignored; 0 measured; 0 filtered out; finished in 2.09s
+

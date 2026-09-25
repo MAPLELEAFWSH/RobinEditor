@@ -1,0 +1,160 @@
+==== 甲、① 文本（panel=fix）：桌面端原生那条路的四种走法 ====
+落点表: {
+ "实例": "页面自己那份",
+ "ids": [
+  "glitch.fix",
+  "glitch.fix.dir"
+ ],
+ "落点": [
+  {
+   "id": "glitch.fix",
+   "收": "txt/fx/fxsub/fxconf/conf/ini/md/csv/log/json/x",
+   "dir": false,
+   "矩形": [
+    352,
+    297,
+    1691,
+    1037
+   ]
+  },
+  {
+   "id": "glitch.fix.dir",
+   "收": "（图片）",
+   "dir": true,
+   "矩形": [
+    352,
+    297,
+    1691,
+    1037
+   ]
+  }
+ ]
+}
+✅ 甲-0 文本栏挂了落点 —— 注册表里 2 个（要 ≥2：文件那个 + 文件夹那个）
+工作区中心: {"x":1022,"y":667} 矩形: {"l":352,"t":297,"r":1691,"b":1037}
+✅ 甲-1 正确坐标 enter→over→drop 落在了落点上 —— 读文本=true，侧栏=""
+✅ 甲-2 只来 enter→drop（`over` 一次没来，拖进来就撒手）也落在了落点上 —— 读文本=true，侧栏=""
+✅ 甲-3 只来 drop（连 enter 都没有）也落在了落点上 —— 读文本=true，侧栏=""
+✅ 甲-4 enter 有坐标、drop 的位置是空的 → 退回 enter 算出的落点，照样落地 —— 读文本=true，侧栏=""
+✅ 甲-5 载荷整个没有 position → @tauri-apps/api 那一层就抛（事实，不是我们能修的） —— 事件返回=["（@tauri-apps/api 那一层抛了：Cannot use 'in' operator to search for 'Physical' in undefined）"]，读文本=false
+✅ 甲-6 故意偏到没有落点的地方 → 明说"没落在能接它的地方"，且没读文件 —— 侧栏="戊.fx 没落在能接它的地方 —— 拖到有落点的位置，或用那一处的「选…」按钮"，读文本=false
+✅ 甲-7 dpr=2（125%/200% 缩放那种屏）载荷按设备像素给，仍然命中 —— dpr=2，物理坐标={"x":2044,"y":1334}，读文本=true，侧栏=""
+✅ 甲-8 浏览器那条路（HTML5 drop）同样命中了落点，说的是"没有真实路径" —— 提示="网页上的.fx 没有真实路径，这个位置只能拖桌面端的文件 "
+
+==== 乙、另外三个分栏：以前一个落点都没有 ====
+
+---- ① 文件（panel=batch）落点表 ----
+{
+ "实例": "页面自己那份",
+ "ids": [
+  "glitch.batch",
+  "glitch.batch.dir"
+ ],
+ "落点": [
+  {
+   "id": "glitch.batch",
+   "收": "txt/fx/fxsub/fxconf/conf/ini/md/csv/log/json/x",
+   "dir": false,
+   "矩形": [
+    352,
+    297,
+    1691,
+    1037
+   ]
+  },
+  {
+   "id": "glitch.batch.dir",
+   "收": "（图片）",
+   "dir": true,
+   "矩形": [
+    352,
+    297,
+    1691,
+    1037
+   ]
+  }
+ ]
+}
+✅ 乙-0 ① 文件 现在有落点 —— 注册表里 2 个：glitch.batch, glitch.batch.dir
+✅ 乙-1 ① 文件 拖一个文件夹进去 → 走了那一栏的目录扫描 —— 调用=["probe_dir D:\\乱码目录","scan_text_files D:\\乱码目录"]，坏话=" "
+✅ 乙-2 ① 文件 拖一个单文件 → 说清楚该往哪儿拖（不是"没落在能接它的地方"） —— 提示="单个.fx 是单个文件 —— 「文件」这一栏按目录扫：拖整个文件夹进来，或点「选目录」。只修一个文件去「文本」栏。 "
+
+---- ① 名称（panel=names）落点表 ----
+{
+ "实例": "页面自己那份",
+ "ids": [
+  "glitch.names",
+  "glitch.names.dir"
+ ],
+ "落点": [
+  {
+   "id": "glitch.names",
+   "收": "txt/fx/fxsub/fxconf/conf/ini/md/csv/log/json/x",
+   "dir": false,
+   "矩形": [
+    352,
+    297,
+    1691,
+    1037
+   ]
+  },
+  {
+   "id": "glitch.names.dir",
+   "收": "（图片）",
+   "dir": true,
+   "矩形": [
+    352,
+    297,
+    1691,
+    1037
+   ]
+  }
+ ]
+}
+✅ 乙-0 ① 名称 现在有落点 —— 注册表里 2 个：glitch.names, glitch.names.dir
+✅ 乙-1 ① 名称 拖一个文件夹进去 → 走了那一栏的目录扫描 —— 调用=["probe_dir D:\\名字目录","scan_names D:\\名字目录"]，坏话=" "
+✅ 乙-2 ① 名称 拖一个单文件 → 说清楚该往哪儿拖（不是"没落在能接它的地方"） —— 提示="单个.fx 是单个文件 —— 这一栏扫的是名字，按目录来：拖整个文件夹进来，或点「选目录」。 "
+
+---- ① .fx 注释（panel=fx）落点表 ----
+{
+ "实例": "页面自己那份",
+ "ids": [
+  "glitch.fx",
+  "glitch.fx.dir"
+ ],
+ "落点": [
+  {
+   "id": "glitch.fx",
+   "收": "txt/fx/fxsub/fxconf/conf/ini/md/csv/log/json/x",
+   "dir": false,
+   "矩形": [
+    352,
+    297,
+    1691,
+    1037
+   ]
+  },
+  {
+   "id": "glitch.fx.dir",
+   "收": "（图片）",
+   "dir": true,
+   "矩形": [
+    352,
+    297,
+    1691,
+    1037
+   ]
+  }
+ ]
+}
+✅ 乙-0 ① .fx 注释 现在有落点 —— 注册表里 2 个：glitch.fx, glitch.fx.dir
+✅ 乙-1 ① .fx 注释 拖一个文件夹进去 → 走了那一栏的目录扫描 —— 调用=["probe_dir D:\\效果目录","scan_dir D:\\效果目录","fix_text_file D:\\乱码测试\\a.fx","fix_text_file D:\\乱码测试\\b.txt"]，坏话=" "
+✅ 乙-2 ① .fx 注释 拖一个单文件 → 说清楚该往哪儿拖（不是"没落在能接它的地方"） —— 提示="单个.fx 是单个文件 —— 这一栏按目录扫 .fx / .fxsub：拖整个文件夹进来，或点「选 Ray / MME 目录」。 "
+
+==== 丙、没动过的页：原有的落点还在（防改坏） ====
+✅ 丙 ③ 配置开关 的落点还在 —— ids=["ray.mat:page","ray:root"]
+✅ 丙 ⑥ 材质匹配 的落点还在 —— ids=["yaku:root"]
+✅ 丙 ⑨ 修复工程 的落点还在 —— ids=["migrate.emm","migrate.pmm"]
+
+==== 汇总 ====
+21/21 条通过

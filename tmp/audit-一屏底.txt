@@ -1,0 +1,231 @@
+﻿  … /tools/recent（67ms）
+  … /tools/recent +展开（67ms）
+  … /tools/quick（55ms）
+  … /tools/quick +展开（65ms）
+  … /tools/channels（37ms）
+  … /tools/channels +展开（37ms）
+  … /tools/channels?panel=extract（40ms）
+  … /tools/channels?panel=extract +展开（49ms）
+  … /tools/channels?panel=pipeline（30ms）
+  … /tools/channels?panel=pipeline +展开（48ms）
+  … /tools/channels?panel=layers（31ms）
+  … /tools/channels?panel=layers +展开（33ms）
+  … /tools/channels?panel=adjust（29ms）
+  … /tools/channels?panel=adjust +展开（34ms）
+  … /tools/channels?panel=blend（31ms）
+  … /tools/channels?panel=blend +展开（47ms）
+  … /tools/channels?panel=split（28ms）
+  … /tools/channels?panel=split +展开（34ms）
+  … /tools/channels?panel=merge（42ms）
+  … /tools/channels?panel=merge +展开（40ms）
+  … /tools/channels?panel=swizzle（47ms）
+  … /tools/channels?panel=swizzle +展开（42ms）
+  … /tools/channels?panel=batch（40ms）
+  … /tools/channels?panel=batch +展开（41ms）
+  … /tools/ilm（47ms）
+  … /tools/ilm +展开（67ms）
+  … /tools/ilm?panel=pairing（24ms）
+  … /tools/ilm?panel=pairing +展开（47ms）
+  … /tools/mstoon（51ms）
+  … /tools/mstoon +展开（58ms）
+  … /tools/mstoon?panel=shadowrate（28ms）
+  … /tools/mstoon?panel=shadowrate +展开（40ms）
+  … /tools/mstoon?panel=sublight（45ms）
+  … /tools/mstoon?panel=sublight +展开（63ms）
+  … /tools/mstoon?panel=edge（33ms）
+  … /tools/mstoon?panel=edge +展开（47ms）
+  … /tools/mstoon?panel=facesdf（42ms）
+  … /tools/mstoon?panel=facesdf +展开（46ms）
+  … /tools/ikclut（29ms）
+  … /tools/ikclut +展开（37ms）
+  … /tools/ikclut?panel=blend（26ms）
+  … /tools/ikclut?panel=blend +展开（34ms）
+  … /tools/ikclut?panel=export（25ms）
+  … /tools/ikclut?panel=export +展开（35ms）
+  … /tools/glitch（35ms）
+  … /tools/glitch +展开（40ms）
+  … /tools/glitch?panel=batch（25ms）
+  … /tools/glitch?panel=batch +展开（46ms）
+  … /tools/glitch?panel=fx（30ms）
+  … /tools/glitch?panel=fx +展开（60ms）
+  … /tools/glitch?panel=names（30ms）
+  … /tools/glitch?panel=names +展开（38ms）
+  … /tools/ray（43ms）
+  … /tools/ray +展开（33ms）
+  … /tools/ray?panel=material（33ms）
+  … /tools/ray?panel=material +展开（42ms）
+  … /tools/yaku（55ms）
+  … /tools/yaku +展开（50ms）
+  … /tools/yaku?panel=apply（29ms）
+  … /tools/yaku?panel=apply +展开（42ms）
+  … /tools/migrate（31ms）
+  … /tools/migrate +展开（44ms）
+  … /tools/migrate?panel=pack（38ms）
+  … /tools/migrate?panel=pack +展开（54ms）
+页	中区px	视口-导航	右空px	吃宽列	侧栏	开关	抽屉	开抽屉后中区	primary	点得到	横滚	重叠	溢出	过?
+/tools/recent	1339	1371	16	0	有	有	收起	1339	0（白名单）	ok	0	0	0	ok
+/tools/recent +展开	1339	1371	16	0	有	有	收起	1339	0（白名单）	ok	0	0	0	ok
+/tools/quick	1339	1371	16	0	有	有	收起	1339	0（白名单）	ok	0	0	0	ok
+/tools/quick +展开	1339	1371	16	0	有	有	收起	1339	0（白名单）	ok	0	0	0	ok
+/tools/channels	1329	1371	26	0	有	有	开着	1329	1	ok	0	0	0	FAIL
+/tools/channels +展开	1329	1371	26	0	有	有	开着	1329	1	ok	0	0	0	FAIL
+/tools/channels?panel=extract	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=extract +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=pipeline	1339	1371	16	0	有	有	开着	1339	1	挡住 ✗	0	0	0	FAIL
+/tools/channels?panel=pipeline +展开	1339	1371	16	0	有	有	开着	1339	1	挡住 ✗	0	0	0	FAIL
+/tools/channels?panel=layers	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=layers +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=adjust	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=adjust +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=blend	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=blend +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=split	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=split +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=merge	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=merge +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=swizzle	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=swizzle +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/channels?panel=batch	1339	1371	16	0	有	有	开着	1339	2 ✗	ok	0	0	0	FAIL
+/tools/channels?panel=batch +展开	1339	1371	16	0	有	有	开着	1339	2 ✗	ok	0	0	0	FAIL
+/tools/ilm	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/ilm +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/ilm?panel=pairing	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/ilm?panel=pairing +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/mstoon	1339	1371	16	0	有	有	收起	1339	1	ok	0	0	0	ok
+/tools/mstoon +展开	1339	1371	16	0	有	有	收起	1339	1	ok	0	0	0	ok
+/tools/mstoon?panel=shadowrate	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/mstoon?panel=shadowrate +展开	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/mstoon?panel=sublight	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/mstoon?panel=sublight +展开	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/mstoon?panel=edge	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/mstoon?panel=edge +展开	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/mstoon?panel=facesdf	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/mstoon?panel=facesdf +展开	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/ikclut	1329	1371	26	0	有	有	开着	1329	1	ok	0	0	0	FAIL
+/tools/ikclut +展开	1329	1371	26	0	有	有	开着	1329	1	ok	0	0	0	FAIL
+/tools/ikclut?panel=blend	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/ikclut?panel=blend +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/ikclut?panel=export	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/ikclut?panel=export +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/glitch	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/glitch +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/glitch?panel=batch	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/glitch?panel=batch +展开	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/glitch?panel=fx	1339	1371	16	0	有	有	开着	1339	2 ✗	ok	0	0	0	FAIL
+/tools/glitch?panel=fx +展开	1339	1371	16	0	有	有	开着	1339	2 ✗	ok	0	0	0	FAIL
+/tools/glitch?panel=names	1339	1371	16	0	有	有	开着	1339	2 ✗	ok	0	0	0	FAIL
+/tools/glitch?panel=names +展开	1339	1371	16	0	有	有	开着	1339	2 ✗	ok	0	0	0	FAIL
+/tools/ray	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/ray +展开	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/ray?panel=material	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/ray?panel=material +展开	1339	1371	16	0	—	无侧栏	收起	1339	1	ok	0	0	0	ok
+/tools/yaku	1339	1371	16	0	有	有	收起	1339	1	ok	0	0	0	ok
+/tools/yaku +展开	1339	1371	16	0	有	有	收起	1339	1	ok	0	0	0	ok
+/tools/yaku?panel=apply	1329	1371	26	0	—	无侧栏	收起	1329	1	ok	0	0	0	ok
+/tools/yaku?panel=apply +展开	1329	1371	26	0	—	无侧栏	收起	1329	1	ok	0	0	0	ok
+/tools/migrate	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/migrate +展开	1329	1371	26	0	有	有	开着	1329	1	ok	0	0	0	FAIL
+/tools/migrate?panel=pack	1339	1371	16	0	有	有	开着	1339	1	ok	0	0	0	FAIL
+/tools/migrate?panel=pack +展开	1329	1371	26	0	有	有	开着	1329	1	ok	0	0	0	FAIL
+
+---- 不过的那些，附前三条例子 ----
+
+/tools/channels  中区 1329px（视口−导航 1371） / 右空 26px / 抽屉 288px / primary 1（导出四通道）
+
+/tools/channels +展开  中区 1329px（视口−导航 1371） / 右空 26px / 抽屉 288px / primary 1（导出四通道）
+
+/tools/channels?panel=extract  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（全部导出）
+
+/tools/channels?panel=extract +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（全部导出）
+
+/tools/channels?panel=pipeline  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（选目录）
+  **主按钮点不到**（1 个，命中的是别的元素）：选目录 ← grp svelte-11wfs4s —— 这就是 B5「写盘条被底栏挡住」。查 bottom 有没有让开 --status-h、层级有没有高过 --z-status（⑥ 的 .foot 与全局 .wb__acts）
+
+/tools/channels?panel=pipeline +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（选目录）
+  **主按钮点不到**（1 个，命中的是别的元素）：选目录 ← grp svelte-11wfs4s —— 这就是 B5「写盘条被底栏挡住」。查 bottom 有没有让开 --status-h、层级有没有高过 --z-status（⑥ 的 .foot 与全局 .wb__acts）
+
+/tools/channels?panel=layers  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出合成图）
+
+/tools/channels?panel=layers +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出合成图）
+
+/tools/channels?panel=adjust  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出）
+
+/tools/channels?panel=adjust +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出）
+
+/tools/channels?panel=blend  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出）
+
+/tools/channels?panel=blend +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出）
+
+/tools/channels?panel=split  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出四张）
+
+/tools/channels?panel=split +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出四张）
+
+/tools/channels?panel=merge  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出合成图）
+
+/tools/channels?panel=merge +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出合成图）
+
+/tools/channels?panel=swizzle  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出）
+
+/tools/channels?panel=swizzle +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出）
+
+/tools/channels?panel=batch  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 2（选目录、试跑）
+  主按钮多于一个（还有 0 个是看不见的，没算）—— 只留整页唯一那个，其余降成次级
+
+/tools/channels?panel=batch +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 2（选目录、试跑）
+  主按钮多于一个（还有 0 个是看不见的，没算）—— 只留整页唯一那个，其余降成次级
+
+/tools/ilm  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出 LM）
+
+/tools/ilm +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出 LM）
+
+/tools/ilm?panel=pairing  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（选模型目录）
+
+/tools/ilm?panel=pairing +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（选模型目录）
+
+/tools/ikclut  中区 1329px（视口−导航 1371） / 右空 26px / 抽屉 288px / primary 1（导出 CLUT）
+
+/tools/ikclut +展开  中区 1329px（视口−导航 1371） / 右空 26px / 抽屉 288px / primary 1（导出 CLUT）
+
+/tools/ikclut?panel=blend  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出混合结果）
+
+/tools/ikclut?panel=blend +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出混合结果）
+
+/tools/ikclut?panel=export  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出 PNG + TXT）
+
+/tools/ikclut?panel=export +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（导出 PNG + TXT）
+
+/tools/glitch  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（还原）
+
+/tools/glitch +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（还原）
+
+/tools/glitch?panel=batch  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（试跑）
+
+/tools/glitch?panel=batch +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（试跑）
+
+/tools/glitch?panel=fx  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 2（选 Ray / MME 目录、试跑）
+  主按钮多于一个（还有 0 个是看不见的，没算）—— 只留整页唯一那个，其余降成次级
+
+/tools/glitch?panel=fx +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 2（选 Ray / MME 目录、试跑）
+  主按钮多于一个（还有 0 个是看不见的，没算）—— 只留整页唯一那个，其余降成次级
+
+/tools/glitch?panel=names  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 2（选目录、改名）
+  主按钮多于一个（还有 0 个是看不见的，没算）—— 只留整页唯一那个，其余降成次级
+
+/tools/glitch?panel=names +展开  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 2（选目录、改名）
+  主按钮多于一个（还有 0 个是看不见的，没算）—— 只留整页唯一那个，其余降成次级
+
+/tools/migrate  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（原地修好）
+
+/tools/migrate +展开  中区 1329px（视口−导航 1371） / 右空 26px / 抽屉 288px / primary 1（原地修好）
+
+/tools/migrate?panel=pack  中区 1339px（视口−导航 1371） / 右空 16px / 抽屉 288px / primary 1（打包到输出目录）
+
+/tools/migrate?panel=pack +展开  中区 1329px（视口−导航 1371） / 右空 26px / 抽屉 288px / primary 1（打包到输出目录）
+
+---- 允许 0 个主按钮（白名单，理由）----
+  /tools/recent：最近工程 = 纯列表/导航页：动的是"每一行那个工程"，整页没有唯一主操作
+  /tools/recent +展开：最近工程 = 纯列表/导航页：动的是"每一行那个工程"，整页没有唯一主操作
+  /tools/quick：快捷动作 = 启动器页：动作是那一格格的按钮，整页没有唯一主操作
+  /tools/quick +展开：快捷动作 = 启动器页：动作是那一格格的按钮，整页没有唯一主操作
+
+有不过的 —— 任何一项不过就是不过。

@@ -1,0 +1,519 @@
+////  mat_body.fx
+//  MMDStarRail4Fun
+//
+//  Created by 洪梓嫣 on 2025/4/20.
+//  Copyright © 2019 Bilibili. All rights reserved.
+//
+
+// ============= 以下不要动 =============
+
+#define MATERIAL_DOMAIN_COMMON         0   // 普通(身体&头发)
+#define MATERIAL_DOMAIN_FACE           1   // 脸
+
+#define BASE_COLOR_FROM_CONST          0   // 来自常量
+#define BASE_COLOR_FROM_PMX            1   // 来自模型
+#define BASE_COLOR_FROM_TEX            2   // 来自COLOR_TEXTURE
+#define BASE_ALPHA_FROM_CONST          0   // 来自常量
+#define BASE_ALPHA_FROM_PMX            1   // 来自模型
+#define BASE_ALPHA_FROM_TEX            2   // 来自COLOR_TEXTURE
+
+#define SUB_INDEX_FROM_CONST           0   // 来自常量
+#define SUB_INDEX_FROM_TEX             1   // 来自LIGHTMAP_TEXTURE或FACEMAP_TEXTURE
+#define DIFFUSE_THRESHOLD_FROM_CONST   0   // 来自常量
+#define DIFFUSE_THRESHOLD_FROM_TEX     1   // 来自LIGHTMAP_TEXTURE
+#define SPECULAR_THRESHOLD_FROM_CONST  0   // 来自常量
+#define SPECULAR_THRESHOLD_FROM_TEX    1   // 来自LIGHTMAP_TEXTURE
+
+#define RAMP_COLOR_FROM_COLOR          0 // 来自ShadowColor和ShallowColor
+#define RAMP_COLOR_FROM_TEX            1 // 来自RAMP_COOL_TEXTURE和RAMP_WARM_TEXTURE
+
+#define SHADOW_NONE                    0 // 无影
+#define SHADOW_4FUN                    1 // 来自Shadow.x
+
+#define STOCKINGS_MASK_FROM_CONST      0 // 来自常量
+#define STOCKINGS_MASK_FROM_TEX        1 // 来自STOCKINGS_TEXTURE
+#define STOCKINGS_THICKNESS_FROM_CONST 0 // 来自常量
+#define STOCKINGS_THICKNESS_FROM_TEX   1 // 来自STOCKINGS_TEXTURE
+#define STOCKINGS_TILE_FROM_CONST      0 // 来自常量
+#define STOCKINGS_TILE_FROM_TEX        1 // 来自STOCKINGS_TEXTURE
+
+#define EMISSIVE_COLOR_FROM_CONST      0 // 来自常量
+#define EMISSIVE_COLOR_FROM_PMX        1 // 来自模型颜色
+#define EMISSIVE_COLOR_FROM_TEX        2 // 来自EMISSIVE_TEXTURE
+#define EMISSIVE_MASK_FROM_CONST       0 // 来自常量
+#define EMISSIVE_MASK_FROM_TEX         1 // 来自EMISSIVE_TEXTURE
+
+// v2.1新增
+#define STARRYSKY_COLOR_FROM_CONST     0 // 来自常量
+#define STARRYSKY_COLOR_FROM_PMX       1 // 来自模型
+#define STARRYSKY_COLOR_FROM_TEX       2 // 来自STARRYSKY_TEXTURE
+#define STARRYSKY_MASK_FROM_CONST      0 // 来自常量
+#define STARRYSKY_MASK_FROM_TEX        1 // 来自STARRYSKY_MASK_TEXTURE
+#define STARRYSKY_STAR_FROM_CONST      0 // 来自常量
+#define STARRYSKY_STAR_FROM_TEX        1 // 来自STARRYSKY_STAR_TEXTURE
+#define STARRYSKY_STAR_MASK_FROM_CONST 0 // 来自常量
+#define STARRYSKY_STAR_MASK_FROM_TEX   1 // 来自STARRYSKY_STAR_MASK_TEXTURE
+
+// ============= 以上不要动 =============
+
+// ============= 纹理 begin =============
+// #define COLOR_TEXTURE \
+// "D:/GameExtract/sr/Anaxa/Texture2D/Avatar_Anaxa_00_Body_Color_A_L.png"
+#define LIGHTMAP_TEXTURE \
+"Avatar_Robin_00_Body_LightMap_L.png"
+// #define FACEMAP_TEXTURE \
+// "D:/GameExtract/sr/M_180_Male_FaceMap_00.png"
+// #define STOCKINGS_TEXTURE \
+// "D:/GameExtract/sr/Anaxa/Texture2D/Avatar_Anaxa_00_Body_Stockings_L.png"
+ #define RAMP_COOL_TEXTURE \
+ "Avatar_Robin_00_Body_Cool_Ramp.png"
+ #define RAMP_WARM_TEXTURE \
+ "Avatar_Robin_00_Body_Warm_Ramp.png"
+// #define EMISSIVE_TEXTURE \
+// "D:/GameExtract/sr/Anaxa/Texture2D/Avatar_Anaxa_00_Body_Color_A_L.png"
+// #define EYES_EFFECT_TEXTURE \
+// "effect.png"
+
+// v2.1新增
+// #define STARRYSKY_TEXTURE \
+// "D:/GameExtract/sr/Anaxa/Texture2D/Avatar_Anaxa_00_Body_Color_A_L.png"
+// #define STARRYSKY_MASK_TEXTURE \
+// "D:/GameExtract/sr/Anaxa/Texture2D/Avatar_Anaxa_00_Body_Effect_L.png"
+// #define STARRYSKY_STAR_TEXTURE \
+// "D:/GameExtract/sr/Anaxa/Texture2D/UI_StarBg1.png"
+// #define STARRYSKY_STAR_MASK_TEXTURE \
+// "D:/GameExtract/sr/Anaxa/Texture2D/UI3D_Eff_Water_Ice_Noise.png"
+// ============= 纹理 end =============
+
+// ============= 材质域 begin =============
+#define MATERIAL_DOMAIN 0
+// ============= 材质域 end =============
+
+// ============= 基础颜色 begin =============
+// 颜色来源
+#define BASE_COLOR_FROM 1
+// uv缩放与平移
+const float4 BaseColorMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 BaseColorMapSpeed = float2(0.0, 0.0);
+// 颜色常量
+const float3 BaseColorConst = float3(1.0, 1.0, 1.0);
+// 染色
+const float3 BaseColorTint0 = float3(1.0, 0.9, 0.88);
+const float3 BaseColorTint1 = float3(1.0, 1.0, 1.0);
+const float3 BaseColorTint2 = float3(1.0, 1.0, 1.0);
+const float3 BaseColorTint3 = float3(1.0, 1.0, 1.0);
+const float3 BaseColorTint4 = float3(1.0, 1.0, 1.0);
+const float3 BaseColorTint5 = float3(1.0, 1.0, 1.0);
+const float3 BaseColorTint6 = float3(1.0, 1.0, 1.0);
+const float3 BaseColorTint7 = float3(1.0, 1.0, 1.0);
+// 伽马
+const float  BaseColorGamma0 = 1.0;
+const float  BaseColorGamma1 = 1.0;
+const float  BaseColorGamma2 = 1.0;
+const float  BaseColorGamma3 = 1.0;
+const float  BaseColorGamma4 = 1.0;
+const float  BaseColorGamma5 = 1.0;
+const float  BaseColorGamma6 = 1.0;
+const float  BaseColorGamma7 = 1.0;
+
+// 透明度来源
+#define BASE_ALPHA_FROM 1
+// 透明度常量
+const float AlphaConst = 1.0;
+// 透明度乘数
+const float AlphaMultiplier = 1.0;
+// ============= 基础颜色 end =============
+
+// ============= 子材质索引 begin =============
+// 索引来源
+#define SUB_INDEX_FROM 1
+// uv缩放与平移
+const float4 SubMaterialMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 SubMaterialMapSpeed = float2(0.0, 0.0);
+// 通道, 0=R, 1=G, 2=B, 3=A
+#define SUB_INDEX_SWIZZLE 3
+// 索引常量
+const int SubMaterialIndexConst = 0;
+// ============= 子材质索引 end =============
+
+// ============= 漫反射 begin =============
+// 阈值来源
+#define DIFFUSE_THRESHOLD_FROM 1
+// 偏移uv缩放与平移
+const float4 DiffuseThresholdMapST = float4(1.0, 1.0, 0.0, 0.0);
+// 偏移uv平移速度
+const float2 DiffuseThresholdMapSpeed = float2(0.0, 0.0);
+// 通道, 0=R, 1=G, 2=B, 3=A
+#define DIFFUSE_THRESHOLD_SWIZZLE 1
+// 阈值常量
+const float DiffuseThresholdConst = 0.5;
+
+// Ramp来源
+#define RAMP_COLOR_FROM 1
+// 明暗分界线 (0.01 ~ 1)
+const float ShadowRamp = 0.5;
+// 阴影色
+const float3 ShadowColor0 = float3(1.0, 0.75, 0.7);
+const float3 ShadowColor1 = float3(0.5, 0.5, 0.5);
+const float3 ShadowColor2 = float3(0.5, 0.5, 0.5);
+const float3 ShadowColor3 = float3(0.5, 0.5, 0.5);
+const float3 ShadowColor4 = float3(0.5, 0.5, 0.5);
+const float3 ShadowColor5 = float3(0.5, 0.5, 0.5);
+const float3 ShadowColor6 = float3(0.5, 0.5, 0.5);
+const float3 ShadowColor7 = float3(0.5, 0.5, 0.5);
+// 浅影色
+const float3 ShallowColor0 = float3(1.0, 0.93, 0.88);
+const float3 ShallowColor1 = float3(0.75, 0.75, 0.75);
+const float3 ShallowColor2 = float3(0.75, 0.75, 0.75);
+const float3 ShallowColor3 = float3(0.75, 0.75, 0.75);
+const float3 ShallowColor4 = float3(0.75, 0.75, 0.75);
+const float3 ShallowColor5 = float3(0.75, 0.75, 0.75);
+const float3 ShallowColor6 = float3(0.75, 0.75, 0.75);
+const float3 ShallowColor7 = float3(0.75, 0.75, 0.75);
+// 范围(仅使用阴影色与浅影色时生效)
+const float2 ShadowRampRange0 = float2(0.45, 0.55);
+const float2 ShadowRampRange1 = float2(0.45, 0.55);
+const float2 ShadowRampRange2 = float2(0.45, 0.55);
+const float2 ShadowRampRange3 = float2(0.45, 0.55);
+const float2 ShadowRampRange4 = float2(0.45, 0.55);
+const float2 ShadowRampRange5 = float2(0.45, 0.55);
+const float2 ShadowRampRange6 = float2(0.45, 0.55);
+const float2 ShadowRampRange7 = float2(0.45, 0.55);
+
+// 伽马
+const float RampGamma0 = 1.0;
+const float RampGamma1 = 1.0;
+const float RampGamma2 = 1.0;
+const float RampGamma3 = 1.0;
+const float RampGamma4 = 1.0;
+const float RampGamma5 = 1.0;
+const float RampGamma6 = 1.0;
+const float RampGamma7 = 1.0;
+
+// 阴影模式
+#define SHADOW_MODE 1
+// ============= 漫反射 end =============
+
+// ============= 高光 begin =============
+// 阈值来源
+#define SPECULAR_THRESHOLD_FROM 1
+// uv缩放与平移
+const float4 SpecularThresholdMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 SpecularThresholdMapSpeed = float2(0.0, 0.0);
+// 通道, 0=R, 1=G, 2=B, 3=A
+#define SPECULAR_THRESHOLD_SWIZZLE 2
+// 常量
+const float SpecularThresholdConst = 0.0;
+
+// 颜色
+const float3 SpecularColor0 = float3(1,1,1);
+const float3 SpecularColor1 = float3(0,0,0);
+const float3 SpecularColor2 = float3(0.21698111,0.21698111,0.21698111);
+const float3 SpecularColor3 = float3(0.3905749,0.52458555,0.6320754);
+const float3 SpecularColor4 = float3(0.9433962,0.87672454,0.6719473);
+const float3 SpecularColor5 = float3(0.6981132,0.66871154,0.61578846);
+const float3 SpecularColor6 = float3(1,1,1);
+const float3 SpecularColor7 = float3(0,0,0);
+
+// 范围(0.1, 500)
+const float SpecularShininess0 = 10;
+const float SpecularShininess1 = 10;
+const float SpecularShininess2 = 8;
+const float SpecularShininess3 = 10;
+const float SpecularShininess4 = 10;
+const float SpecularShininess5 = 6;
+const float SpecularShininess6 = 10;
+const float SpecularShininess7 = 10;
+
+// 粗糙(0, 1)
+const float SpecularRoughness0 = 0.02;
+const float SpecularRoughness1 = 0.02;
+const float SpecularRoughness2 = 0.07;
+const float SpecularRoughness3 = 0.02;
+const float SpecularRoughness4 = 0.02;
+const float SpecularRoughness5 = 0.02;
+const float SpecularRoughness6 = 0.1;
+const float SpecularRoughness7 = 0.02;
+
+// 强度(0, 50)
+const float SpecularIntensity0 = 0.0;
+const float SpecularIntensity1 = 1.0;
+const float SpecularIntensity2 = 1.0;
+const float SpecularIntensity3 = 1.0;
+const float SpecularIntensity4 = 1.2;
+const float SpecularIntensity5 = 1.0;
+const float SpecularIntensity6 = 1.0;
+const float SpecularIntensity7 = 0.4;
+// ============= 高光 end =============
+
+// ============= 黑丝 begin =============
+// 遮罩来源
+#define STOCKINGS_MASK_FROM 0
+// uv缩放与平移
+const float4 StockingsMaskMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 StockingsMaskMapSpeed = float2(0.0, 0.0);
+// 通道, 0=R, 1=G, 2=B, 3=A
+#define STOCKINGS_MASK_SWIZZLE 0
+// 遮罩常量
+const float StockingsMaskConst = 0;
+
+// 厚度来源
+#define STOCKINGS_THICKNESS_FROM 0
+// uv缩放与平移
+const float4 StockingsThicknessMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 StockingsThicknessMapSpeed = float2(0.0, 0.0);
+// 通道, 0=R, 1=G, 2=B, 3=A
+#define STOCKINGS_THICKNESS_SWIZZLE 1
+// 厚度常量
+const float StockingsThicknessConst = 0;
+
+// 网格来源
+#define STOCKINGS_TILE_FROM 0
+// uv缩放与平移
+const float4 StockingsTileMapST = float4(20.0, 20.0, 0.0, 0.0);
+// uv平移速度
+const float2 StockingsTileMapSpeed = float2(0.0, 0.0);
+// 通道, 0=R, 1=G, 2=B, 3=A
+#define STOCKINGS_TILE_SWIZZLE 2
+// 网格常量
+const float StockingsTileConst = 0;
+
+// 颜色
+const float3 StockingsColor = float3(1,1,1);
+// 暗部颜色
+const float3 StockingsDarkColor = float3(1,1,1);
+// 暗部宽度 (0~0.96)
+const float StockingsDarkWidth = 0.5;
+// 强度 (0.04~1)
+const float StockingsPower = 1;
+// 亮部宽度 (1~32)
+const float StockingsLightWidth = 1;
+// 亮部强度 (0~1)
+const float StockingsLightIntensity = 0.25;
+// 粗糙度 (0~1)
+const float StockingsRoughness = 1;
+// 厚度 (0~1)
+const float StockingsThickness = 0;
+// 偏移
+const float3 StockingsOffset = float3(0,0,0);
+// ============= 黑丝 end =============
+
+// ============= 边缘阴影 begin =============
+// 幂
+const float RimShadowPower = 1;
+// 强度
+const float RimShadowIntensity = 1;
+// 偏移
+const float3 RimShadowOffset = float3(0,0,0);
+
+// 颜色
+const float3 RimShadowColor0 = float3(1,1,1);
+const float3 RimShadowColor1 = float3(0.95918363,0.9510204,1.0);
+const float3 RimShadowColor2 = float3(0.3713065,0.42665553,0.5283019);
+const float3 RimShadowColor3 = float3(1,1,1);
+const float3 RimShadowColor4 = float3(1,1,1);
+const float3 RimShadowColor5 = float3(0.8113207,0.78818494,0.73860806);
+const float3 RimShadowColor6 = float3(0.75471693,0.75471693,0.75471693);
+const float3 RimShadowColor7 = float3(1,1,1);
+// 宽度
+const float RimShadowWidth0 = 0.0;
+const float RimShadowWidth1 = 0.0;
+const float RimShadowWidth2 = 1.0;
+const float RimShadowWidth3 = 0.0;
+const float RimShadowWidth4 = 0.0;
+const float RimShadowWidth5 = 2.0;
+const float RimShadowWidth6 = 3.0;
+const float RimShadowWidth7 = 0.0;
+
+// 柔软 (0.01~0.99)
+const float RimShadowFeather0 = 0.01;
+const float RimShadowFeather1 = 0.01;
+const float RimShadowFeather2 = 0.643;
+const float RimShadowFeather3 = 0.01;
+const float RimShadowFeather4 = 0.01;
+const float RimShadowFeather5 = 0.5;
+const float RimShadowFeather6 = 0.5;
+const float RimShadowFeather7 = 0.01;
+// ============= 边缘阴影 end =============
+
+// ============= 脸 begin =============
+// SDF阈值通道
+#define FACE_THRESHOLD_SWIZZLE 3
+// SDF软化
+const float FaceThresholdSoftness = 0.01;
+
+// 使用鼻线
+#define NOSE_LINE_ENABLE 0
+// 鼻线通道, 0=R, 1=G, 2=B, 3=A
+#define NOSE_LINE_SWIZZLE 2
+// 鼻线颜色
+const float3 NoseLineColor = float3(0.1, 0.05, 0.0);
+
+// 动态眼睛特效
+#define ANMIATED_EYES 0
+// uv缩放与平移
+const float4 EyesAnimatedST = float4(4.926, 4.464, -0.126, -0.137);
+// 动态速度
+const float EyesAnimatedSpeed = 1.0;
+// 动态亮度
+const float3 EyesAnimatedColor = float3(1,1,1);
+// 空心范围
+const float2 EyesAnimatedHollowRange = float2(0.2, 0.5);
+// ============= 脸 end =============
+
+// ============= 自发光 begin =============
+// 颜色来源
+#define EMISSIVE_COLOR_FROM 0
+// uv缩放与平移
+const float4 EmissiveColorMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 EmissiveColorMapSpeed = float2(0.0, 0.0);
+// 颜色常量
+const float3 EmissiveColorConst = float3(0, 0, 0);
+
+// 遮罩来源
+#define EMISSIVE_MASK_FROM 0
+// uv缩放与平移
+const float4 EmissiveMaskMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 EmissiveMaskMapSpeed = float2(0.0, 0.0);
+// 通道, 0=R, 1=G, 2=B, 3=A
+#define EMISSIVE_MASK_SWIZZLE 3
+// 遮罩常量
+const float EmissiveMaskConst = 0.0;
+
+// 染色
+const float3 EmissiveColorTint = float3(1.0, 1.0, 1.0);
+// 伽马
+const float  EmissiveGamma = 1.0;
+
+// 强度
+const float EmissiveIntensity = 1.0;
+// ============= 自发光 end =============
+
+// v2.1新增
+// ============= 星空 begin =============
+// 星空特效
+#define STARRYSKY 0
+// 星空颜色来源
+#define STARRYSKY_COLOR_FROM 0
+// uv缩放与平移
+const float4 SkyMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 SkyMapSpeed = float2(0.0, 0.0);
+// 颜色常量
+const float3 SkyColorConst = float3(0,0,0);
+
+// 星空遮罩来源
+#define STARRYSKY_MASK_FROM 0
+// uv缩放与平移
+const float4 SkyMaskMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 SkyMaskMapSpeed = float2(0.0, 0.0);
+// 通道A, 0=R, 1=G, 2=B, 3=A
+#define STARRYSKY_MASK_A_SWIZZLE 0
+// 通道B, 0=R, 1=G, 2=B, 3=A
+#define STARRYSKY_MASK_B_SWIZZLE 1
+// 遮罩常量
+const float2 SkyMaskConst = float2(1.0, 1.0);
+
+// 星星颜色来源
+#define STARRYSKY_STAR_FROM 0
+// uv缩放与平移
+const float4 SkyStarMapST = float4(1.14, 1.14, 0.6, 0.03);
+// uv平移速度
+const float2 SkyStarMapSpeed = float2(0.0, 0.02);
+// 颜色常量
+const float4 SkyStarColorConst = float4(1,1,1,1);
+
+// 星星遮罩来源
+#define STARRYSKY_STAR_MASK_FROM 0
+// uv缩放与平移
+const float4 SkyStarMaskMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 SkyStarMaskMapSpeed = float2(0.0, 0.0);
+// 通道A, 0=R, 1=G, 2=B, 3=A
+#define STARRYSKY_STAR_MASK_SWIZZLE 0
+// 遮罩常量
+const float3 SkyStarMaskConst = float3(1.0, 1.0, 1.0);
+
+// 范围(-1~1)
+const float SkyRange = 0.0;
+// 星星颜色
+const float3 SkyStarColor = float3(0.033775367,0.5392147,0.6509434);
+// 星星颜色纹理缩放
+const float SkyStarTexScale = 40.0;
+// 星星深度缩放
+const float SkyStarDepthScale = 6.4;
+// 星星遮罩纹理缩放
+const float SkyStarMaskTexScale = 0.7;
+// 星星闪烁频率(0~20)
+const float SkyStarMaskTexSpeed = 0.02;
+// 菲涅尔颜色
+const float3 SkyFresnelColor = float3(0,0,0);
+// 菲涅尔基线
+const float SkyFresnelBaise = 0.0;
+// 菲涅尔缩放
+const float SkyFresnelScale = 0.0;
+// 菲涅尔平滑度(0~0.5)
+const float SkyFresnelSmooth = 0.0;
+// 模型缩放(0~30)
+const float OSScale = 1.0;
+// 星星密度(0~1)
+const float StarDensity = 0.495;
+// 星空模式(0~1)
+const float StarMode = 0.0;
+// ============= 星空 end =============
+
+// v2.2新增
+// ============= 法线 begin =============
+// 法线贴图路径, 注释掉本行将不启用法线贴图
+// #define NORMALMAP_TEXTURE "normal.png"
+// uv缩放与平移
+const float4 NormalMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 NormalMapSpeed = float2(0.0, 0.0);
+
+// x方向通道, 0=R, 1=G, 2=B, 3=A
+#define NORMALMAP_X_SWIZZLE 0
+// y方向通道, 0=R, 1=G, 2=B, 3=A
+#define NORMALMAP_Y_SWIZZLE 1
+
+// 翻转y通道(切换GL/DX法线)
+#define NORMALMAP_INVERT_Y_CHANNEL 0
+
+// 法线强度
+const float NormalScale = 1.0;
+// ============= 法线 end =============
+
+// v2.2新增
+// ============= MatCap begin =============
+// MatCap贴图路径, 注释掉本行将不启用MatCap
+// #define MATCAP_TEXTURE "D:/GameExtract/character maps/Avatar_Tex_MetalMap.png"
+// MatCap遮罩贴图路径
+// #define MATCAP_MASK_TEXTURE "mask.png"
+// MatCap遮罩通道, , 0=R, 1=G, 2=B, 3=A
+#define MATCAP_MASK_SWIZZLE 0
+// uv缩放与平移
+const float4 MatCapMaskMapST = float4(1.0, 1.0, 0.0, 0.0);
+// uv平移速度
+const float2 MatCapMaskMapSpeed = float2(0.0, 0.0);
+
+// MatCap颜色
+const float3 MatCapColorTint = float3(1,1,1);
+// MatCap颜色程度
+const float MatCapColorBurst = 1.0;
+// MatCap强度
+const float MatCapAlphaBurst = 1.0;
+// MatCap混合模式, 0=混合, 1=相加, 2=叠加
+#define MATCAP_BLEND_MODE 1
+
+// ============= MatCap end =============
+
+#include "shared.fxsub"
+#include "internal/shader.hlsl"

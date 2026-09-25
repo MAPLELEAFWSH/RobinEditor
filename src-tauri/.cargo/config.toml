@@ -1,0 +1,17 @@
+# crates.io 官方源在本机不可达（实测超时），固定走 rsproxy 镜像。
+# 换机器时若官方源可达，删掉本文件即可。
+[source.crates-io]
+replace-with = "rsproxy-sparse"
+
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
+
+[net]
+git-fetch-with-cli = true
+retry = 10
+
+# rsproxy 会偶发抽风（单包 30s 只传 10 字节就断），放宽超时与低速阈值
+[http]
+timeout = 180
+low-speed-limit = 1
+multiplexing = false

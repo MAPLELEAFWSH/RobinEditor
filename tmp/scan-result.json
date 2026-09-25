@@ -1,0 +1,40 @@
+﻿{
+  "count": 5,
+  "rows": [
+    {
+      "rel": "all-broken.fx",
+      "likely": true,
+      "via": "逐段修，5 段（gbk -> shift_jis）",
+      "before": "// 僥僋僗僠儍偺愝掕",
+      "after": "// テクスチャの設定"
+    },
+    {
+      "rel": "broken.fx",
+      "likely": true,
+      "via": "逐段修，5 段（gbk -> shift_jis）",
+      "before": "// 僥僋僗僠儍偺愝掕",
+      "after": "// テクスチャの設定"
+    },
+    {
+      "rel": "clean.fx",
+      "likely": false,
+      "via": "none",
+      "before": "// コントローラーから受け取る",
+      "after": "// コントローラーから受け取る"
+    },
+    {
+      "rel": "crlf.fx",
+      "likely": true,
+      "via": "逐段修，5 段（gbk -> shift_jis）",
+      "before": "// 僥僋僗僠儍偺愝掕",
+      "after": "// テクスチャの設定"
+    },
+    {
+      "rel": "japanese.fx",
+      "likely": false,
+      "via": "none",
+      "before": "// コントローラーから受け取る",
+      "after": "// コントローラーから受け取る"
+    }
+  ]
+}

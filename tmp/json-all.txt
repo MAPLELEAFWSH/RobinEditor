@@ -1,0 +1,314 @@
+﻿扫到 215 个 json
+
+================================================================================
+一、贴图槽 → 实际指向的贴图（这张表就是正确命名的依据）
+================================================================================
+
+  _MainTex                     出现  172 次
+      → Avatar_Sparxie_01_Body_Color_A_L                         ×8    末尾段 L
+      → Avatar_Evanescia_00_Body_Color_A_L                       ×6    末尾段 L
+      → Claret_Face_D                                            ×6    末尾段 D
+      → Sigrid_Face_D                                            ×6    末尾段 D
+
+  _LightTex                    出现   95 次
+      → Female_Face_Lightmap                                     ×23   末尾段 Lightmap
+      → Female_Face_Lightmap_02                                  ×10   末尾段 02
+      → Claret_Body_Map1_N                                       ×4    末尾段 N
+      → Claret_Body_Map2_N                                       ×4    末尾段 N
+
+  _OtherDataTex                出现   62 次
+      → Claret_Body_Map1_M                                       ×4    末尾段 M
+      → Claret_Body_Map2_M                                       ×4    末尾段 M
+      → Claret_Hair_M                                            ×4    末尾段 M
+      → Sigrid_Body_Map2_M                                       ×4    末尾段 M
+
+  _OtherDataTex2               出现   62 次
+      → Claret_Body_Map1_A                                       ×4    末尾段 A
+      → Claret_Body_Map2_A                                       ×4    末尾段 A
+      → Claret_Hair_A                                            ×4    末尾段 A
+      → Sigrid_Body_Map2_A                                       ×4    末尾段 A
+
+  _MatCapTex                   出现   44 次
+      → Eff_Matcap_092                                           ×9    末尾段 092
+      → Matcap_30                                                ×6    末尾段 30
+      → Matcap_38                                                ×4    末尾段 38
+      → Matcap_14                                                ×2    末尾段 14
+
+  _MatCapTex2                  出现   39 次
+      → Eff_MatCap_073                                           ×12   末尾段 073
+      → Eff_MatCap_037                                           ×4    末尾段 037
+      → Eff_MatCap_007                                           ×4    末尾段 007
+      → Eff_MatCap_019                                           ×4    末尾段 019
+
+  _MatCapTex3                  出现   36 次
+      → Eff_MatCap_074                                           ×8    末尾段 074
+      → Eff_MatCap_073                                           ×6    末尾段 073
+      → Eff_MatCap_021                                           ×5    末尾段 021
+      → Eff_Matcap_Socks_04                                      ×3    末尾段 04
+
+  _MatCapTex4                  出现   33 次
+      → Eff_MatCap_019                                           ×10   末尾段 019
+      → Eff_MatCap_021                                           ×3    末尾段 021
+      → Eff_MatCap_056                                           ×2    末尾段 056
+      → Eff_Matcap_025                                           ×2    末尾段 025
+
+  _LightMapTex                 出现   31 次
+      → Avatar_Tex_Face01_Shadow                                 ×6    末尾段 Shadow
+      → Avatar_Girl_Sword_Vesna_Tex_Hair_Lightmap                ×4    末尾段 Lightmap
+      → Avatar_Girl_Sword_Vesna_Tex_Dress_Lightmap               ×2    末尾段 Lightmap
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body_Lightmap        ×2    末尾段 Lightmap
+
+  _DiffuseCoolRampMultiTex     出现   31 次
+      → Avatar_Sparxie_01_Body_Cool_Ramp                         ×10   末尾段 Ramp
+      → Avatar_YaoGuang_00_Body_Cool_Ramp                        ×6    末尾段 Ramp
+      → Avatar_Evanescia_00_Body_Cool_Ramp                       ×6    末尾段 Ramp
+      → Avatar_Mar_7th_10_Body_Cool_Ramp                         ×2    末尾段 Ramp
+
+  _DiffuseRampMultiTex         出现   31 次
+      → Avatar_Sparxie_01_Body_Warm_Ramp                         ×8    末尾段 Ramp
+      → Avatar_YaoGuang_00_Body_Warm_Ramp                        ×6    末尾段 Ramp
+      → Avatar_Evanescia_00_Body_Warm_Ramp                       ×6    末尾段 Ramp
+      → Avatar_Mar_7th_10_Body_Warm_Ramp                         ×2    末尾段 Ramp
+
+  _LightMap                    出现   31 次
+      → Avatar_Sparxie_01_Body_LightMap_L                        ×8    末尾段 L
+      → Avatar_Evanescia_00_Body_LightMap_L                      ×6    末尾段 L
+      → Avatar_YaoGuang_00_Body_LightMap_L                       ×4    末尾段 L
+      → Avatar_Mar_7th_10_Body_LightMap_L                        ×2    末尾段 L
+
+  _MatCapTex5                  出现   24 次
+      → Eff_MatCap_021                                           ×12   末尾段 021
+      → Eff_Matcap_092                                           ×4    末尾段 092
+      → Eff_MatCap_075                                           ×2    末尾段 075
+      → Eff_Matcap_115                                           ×2    末尾段 115
+
+  _BumpMap                     出现   23 次
+      → Avatar_Girl_Sword_Vesna_Tex_Hair_Normalmap               ×4    末尾段 Normalmap
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body_Normalmap       ×2    末尾段 Normalmap
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body01_Normalmap     ×2    末尾段 Normalmap
+      → Avatar_Girl_Sword_Odette_Tex_Body01_Normalmap            ×2    末尾段 Normalmap
+
+  _MaterialValuesPackLUT       出现   22 次
+      → MaterialIDValuesLUTSparkle_00_Mat_Body_D                 ×8    末尾段 D
+      → MaterialIDValuesLUTRen_00_Mat_Body1                      ×6    末尾段 Body1
+      → MaterialIDValuesLUTTheHerta_00_Mat_Body_D                ×5    末尾段 D
+      → MaterialIDValuesLUTSparxie_00_Mat_Weapon                 ×2    末尾段 Weapon
+
+  _MTMap                       出现   21 次
+      → Avatar_Tex_MetalMap                                      ×21   末尾段 MetalMap
+
+  _PackedShadowRampTex         出现   20 次
+      → Avatar_Girl_Claymore_MarionetteNew_Tex_Body_Shadow_Ramp  ×4    末尾段 Ramp
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body01_Shadow_Ramp   ×3    末尾段 Ramp
+      → Avatar_Girl_Sword_Vesna_Tex_Dress_Shadow_Ramp            ×2    末尾段 Ramp
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body_Shadow_Ramp     ×2    末尾段 Ramp
+
+  _MatCapMaskTex               出现   14 次
+      → Avatar_Sparxie_01_Body_Mask_L                            ×6    末尾段 L
+      → Avatar_YaoGuang_00_Body_Mask_L                           ×4    末尾段 L
+      → Avatar_Evanescia_00_Body_Mask_L                          ×2    末尾段 L
+      → Avatar_YaoGuang_00_Shawl_Mask                            ×1    末尾段 Mask
+
+  _EyeColorMap                 出现   11 次
+      → Eye_E                                                    ×9    末尾段 E
+      → Eye_E_02                                                 ×2    末尾段 02
+
+  _FaceSdfMap                  出现   10 次
+      → Avatar_Girl_Tex_FaceSDF                                  ×10   末尾段 FaceSDF
+
+  _MTSpecularRamp              出现   10 次
+      → Avatar_Tex_Specular_Ramp                                 ×10   末尾段 Ramp
+
+  _StockingsDetailTex          出现    8 次
+      → Avatar_Girl_Pole_Escoffier_Tex_Stockings_Detailmap       ×7    末尾段 Detailmap
+      → Avatar_Girl_Sword_Vesna_Tex_Stockings_Detailmap          ×1    末尾段 Detailmap
+
+  _FaceMapTex                  出现    6 次
+      → Avatar_Girl01_Tex_FaceLightmap                           ×6    末尾段 FaceLightmap
+
+  _SkyStarMaskTex              出现    6 次
+      → UI3D_Eff_Sc_NoiseMulti_04                                ×6    末尾段 04
+
+  _SkyStarTex                  出现    6 次
+      → UI3D_Enviro_Stars_Big_2Channel                           ×6    末尾段 2Channel
+
+  _NormalTex                   出现    5 次
+      → Avatar_Tex_Facet_Normalmap                               ×3    末尾段 Normalmap
+      → Avatar_Tex_Leather_Reflectmap                            ×2    末尾段 Reflectmap
+
+  _EyeMaskWithMatcap           出现    4 次
+      → Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil_Matcap_Mask ×2    末尾段 Mask
+      → Avatar_Tex_Leather_Reflectmap                            ×1    末尾段 Reflectmap
+      → Avatar_Girl_Sword_Odette_Tex_Pupil_Matcap_Mask           ×1    末尾段 Mask
+
+  _ParallaxLayer1Tex           出现    4 次
+      → Avatar_Girl_Sword_Vesna_Tex_Pupil02_Diffuse              ×1    末尾段 Diffuse
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_Pupil02_Diffuse      ×1    末尾段 Diffuse
+      → Avatar_Girl_Sword_Odette_Tex_Pupil_02_Diffuse            ×1    末尾段 Diffuse
+      → Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil02_Diffuse   ×1    末尾段 Diffuse
+
+  _SDFGradientMap              出现    4 次
+      → Avatar_Girl_Sword_Vesna_Tex_EyeHighlight_Diffuse         ×1    末尾段 Diffuse
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_EyeHighlight_Diffuse ×1    末尾段 Diffuse
+      → Avatar_Girl_Sword_Odette_Tex_EyeHighlight_Diffuse        ×1    末尾段 Diffuse
+      → Avatar_Girl_Claymore_MarionetteNew_Tex_EyeHighlight_Diff ×1    末尾段 Diffuse
+
+  _FaceExpression              出现    4 次
+      → W_140_Girl_Face_ExpressionMap_00                         ×2    末尾段 00
+      → W_160_Maid_Face_ExpressionMap_00                         ×2    末尾段 00
+
+  _FaceMap                     出现    4 次
+      → W_140_Girl_FaceMap_00                                    ×2    末尾段 00
+      → W_160_Maid_FaceMap_00                                    ×2    末尾段 00
+
+  _FacialExpAtlasTex           出现    3 次
+      → Avatar_Tex_Eye_BlendShape_Diffuse                        ×3    末尾段 Diffuse
+
+  _PackedHighlightRampTex      出现    3 次
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_Body_Packed_Ramp     ×1    末尾段 Ramp
+      → Avatar_Girl_Sword_Odette_Tex_Pupil_Packed_Ramp           ×1    末尾段 Ramp
+      → Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil_Packed_Ramp ×1    末尾段 Ramp
+
+  _ShiningCustomIDMask_V2      出现    3 次
+      → Avatar_Girl_Sword_Odette_Tex_Stockings                   ×3    末尾段 Stockings
+
+  _EyeMask                     出现    3 次
+      → Avatar_Tex_Appear_Face_Mask                              ×3    末尾段 Mask
+
+  _StockRangeTex               出现    3 次
+      → Avatar_Mar_7th_01_Body_Stockings                         ×2    末尾段 Stockings
+      → Avatar_Evanescia_00_Body_Stockings                       ×1    末尾段 Stockings
+
+  _GlintMask                   出现    3 次
+      → Avatar_Sparxie_01_Body_Mask2                             ×2    末尾段 Mask2
+      → Avatar_YaoGuang_00_Glint_Mask_L                          ×1    末尾段 L
+
+  _MatCap                      出现    2 次
+      → Eff_Sc_Matcap_16                                         ×1    末尾段 16
+      → Avatar_Tex_Crystal_Diffuse                               ×1    末尾段 Diffuse
+
+  _ParallaxTex                 出现    2 次
+      → Avatar_Tex_Facet_Normalmap                               ×1    末尾段 Normalmap
+      → Eff_Stages_MagForce_13_Mask                              ×1    末尾段 Mask
+
+  _ParallaxLayer2Tex           出现    2 次
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_Pupil03_Diffuse      ×1    末尾段 Diffuse
+      → Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil04_Diffuse   ×1    末尾段 Diffuse
+
+  _ParallaxLayer3Tex           出现    2 次
+      → Avatar_Girl_Sword_Odette_Tex_Pupil_03_Diffuse            ×1    末尾段 Diffuse
+      → Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil03_Diffuse   ×1    末尾段 Diffuse
+
+  _DissolveTex                 出现    2 次
+      → Eff_Blur_Multi_01                                        ×1    末尾段 01
+      → Eff_Universe_03                                          ×1    末尾段 03
+
+  _MaskTex                     出现    2 次
+      → Eff_Avatra_Odette_Symbol_01                              ×1    末尾段 01
+      → Eff_Sc_TrailMulti_05                                     ×1    末尾段 05
+
+  _GelPlaneTex                 出现    1 次
+      → Avatar_Girl_Catalyst_Vodyanitsa_Tex_Tail_Mask            ×1    末尾段 Mask
+
+  _AnisoSilkThreadMap          出现    1 次
+      → Avatar_Girl_Sword_Odette_Tex_Stockings_Detailmap         ×1    末尾段 Detailmap
+
+  _BaseMatcapPackedTex         出现    1 次
+      → Avatar_Girl_Sword_Odette_Tex_Pupil_Normalmap             ×1    末尾段 Normalmap
+
+  _BaseRampTex                 出现    1 次
+      → Eff_Avatra_Odette_Ramp_01                                ×1    末尾段 01
+
+  _BaseTex                     出现    1 次
+      → Eff_Noise_28_01                                          ×1    末尾段 01
+
+  _NoiseTex                    出现    1 次
+      → Eff_Noise_13                                             ×1    末尾段 13
+
+  _VertexAnimeMaskTex          出现    1 次
+      → Eff_Mask_60                                              ×1    末尾段 60
+
+  _VertexAnimeTex              出现    1 次
+      → Eff_Normal_Fluid_02                                      ×1    末尾段 02
+
+  _BaseOneTexture              出现    1 次
+      → Avatar_Girl_Claymore_MarionetteNew_Tex_Body01_Normalmap  ×1    末尾段 Normalmap
+
+  _PackedParallaxLayerRampTex  出现    1 次
+      → Avatar_Girl_Claymore_MarionetteNew_Tex_Pupil_Blend_Ramp  ×1    末尾段 Ramp
+
+  _FlipBookAutoPlayCurveMap    出现    1 次
+      → Eff_Avatar_Evanescia_00_Body_Color_Curve_Ramp            ×1    末尾段 Ramp
+
+  _TransmissionTexture         出现    1 次
+      → Remielle_Wings_T                                         ×1    末尾段 T
+
+================================================================================
+二、按材质族看用哪些槽（哪些是必须的，哪些可选）
+================================================================================
+  Body       90 个槽： _AnisoSilkThreadMap _BaseOneRamp _BaseOneTexture _BlockMaskTex _BumpMap _ChannelMixTex _CharacterRampTex _CrystalTex _CubeMap _DiffuseCoolRampMultiTex _DiffuseRampMultiTex _DissolveMap _DissolveMask _EmissionTex _EyeMask _FaceMapTex _FaceSdfMap _FakePointNoiseTex _FlameTex _FlipBookAutoPlayCurveMap _FlowGlowTex _FurTex _GlintMask _LightMap _LightMapBlueNoise _LightMapTex _LightTex _MTMap _MTSpecularRamp _MainTex _MatCap _MatCap2DArray _MatCapBumpMapFx _MatCapMaskTex _MatCapTex _MatCapTex2 _MatCapTex3 _MatCapTex4 _MatCapTex5 _MatCapTexFallback _MatCapTexFx _MaterialMasksTex _MaterialValuesPackLUT _NormalMap _NormalPackageMap _NormalTex _NyxStateOutlineColorRamp _NyxStateOutlineNoise _OtherDataTex _OtherDataTex2 _OverrideOutlineTex _OverrideRimGlowTexFX _PVMask1 _PVMask2 _PackageLightMap _PackedShadowRampTex _Parallax2Tex _ParallaxTex _RefractionTex _ScreenMask _ScreenTex _SecondCubeMap _SecondaryEmissionMaskTex _SecondaryEmissionMaskTexForCGLighting _SecondaryEmissionTex _SecondaryEmissionTexForCGLighting _ShaderLerpCharAvatarDie_DissolveNoise _ShaderLerpCharFrozen_CubeMap _ShaderLerpCharFrozen_IceBumpTex _ShaderLerpCharFrozen_TillingNormal _ShaderLerpCharFrozen_TriplanarTex _ShiningCustomIDMask_V2 _SkyMask _SkyStarMaskTex _SkyStarTex _SkyTex _SpecialWeaponEmissionMaskTex _SpecialWeaponEmissionTex _StockRangeTex _StockingsDetailTex _StockingsShadowRamp _StretchMask _TangentDirTex _TempNyxStatePaintMaskTex _TextureLinePackageMap _ThirdCubeMap _ThreadMap _TransitionTex _TransmissionTexture _VSSKinningPoseTex
+  Brow       21 个槽： _BumpMap _EyeMask _FaceMapTex _FaceSdfMap _FakePointNoiseTex _LightMapBlueNoise _LightMapTex _MTMap _MTSpecularRamp _MainTex _MaterialMasksTex _NormalPackageMap _NyxStateOutlineColorRamp _NyxStateOutlineNoise _PVMask1 _PVMask2 _PackageLightMap _PackedShadowRampTex _TempNyxStatePaintMaskTex _TextureLinePackageMap _VSSKinningPoseTex
+  Eye        38 个槽： _BlockMaskTex _BlushTexture _ChannelMixTex _CharacterRampTex _EyeColorMap _EyeMask _FaceMapTex _FaceSdfMap _FacialExpAtlasTex _FakePointNoiseTex _LightMapBlueNoise _LightMapTex _LightTex _MainTex _MatCapBumpMapFx _MatCapTexFx _NormalPackageMap _NyxStateOutlineColorRamp _NyxStateOutlineNoise _OverrideOutlineTex _OverrideRimGlowTexFX _PVMask1 _PVMask2 _PackageLightMap _PackedShadowRampTex _ScreenMask _ScreenTex _SecondaryEmissionMaskTex _SecondaryEmissionMaskTexForCGLighting _SecondaryEmissionTex _SecondaryEmissionTexForCGLighting _SpecialWeaponEmissionMaskTex _SpecialWeaponEmissionTex _StretchMask _TempNyxStatePaintMaskTex _TextureLinePackageMap _TransitionTex _VSSKinningPoseTex
+  Face       45 个槽： _BlockMaskTex _BlushTexture _BumpMap _ChannelMixTex _CharacterRampTex _DissolveMap _DissolveMask _EyeMask _FaceExpression _FaceMap _FaceMapTex _FaceSdfMap _FakePointNoiseTex _LightMapBlueNoise _LightMapTex _LightTex _MTMap _MTSpecularRamp _MainTex _MatCapBumpMapFx _MatCapTexFx _MaterialMasksTex _NormalPackageMap _NyxStateOutlineColorRamp _NyxStateOutlineNoise _OverrideOutlineTex _OverrideRimGlowTexFX _PVMask1 _PVMask2 _PackageLightMap _PackedShadowRampTex _ScreenMask _ScreenTex _SecondaryEmissionMaskTex _SecondaryEmissionMaskTexForCGLighting _SecondaryEmissionTex _SecondaryEmissionTexForCGLighting _SpecialEyeShapeTexture _SpecialWeaponEmissionMaskTex _SpecialWeaponEmissionTex _StretchMask _TempNyxStatePaintMaskTex _TextureLinePackageMap _TransitionTex _VSSKinningPoseTex
+  Hair       72 个槽： _BlockMaskTex _BumpMap _ChannelMixTex _CharacterRampTex _CubeMap _DiffuseCoolRampMultiTex _DiffuseRampMultiTex _DissolveMap _DissolveMask _EyeMask _FaceMapTex _FaceSdfMap _FakePointNoiseTex _FlowGlowTex _LightMap _LightMapBlueNoise _LightMapTex _LightTex _MTMap _MTSpecularRamp _MainTex _MatCap _MatCap2DArray _MatCapBumpMapFx _MatCapTex _MatCapTex2 _MatCapTex3 _MatCapTex4 _MatCapTex5 _MatCapTexFallback _MatCapTexFx _MaterialMasksTex _NormalPackageMap _NormalTex _NyxStateOutlineColorRamp _NyxStateOutlineNoise _OtherDataTex _OtherDataTex2 _OverrideOutlineTex _OverrideRimGlowTexFX _PVMask1 _PVMask2 _PackageLightMap _PackedShadowRampTex _Parallax2Tex _ParallaxTex _RefractionTex _ScreenMask _ScreenTex _SecondCubeMap _SecondaryEmissionMaskTex _SecondaryEmissionMaskTexForCGLighting _SecondaryEmissionTex _SecondaryEmissionTexForCGLighting _ShaderLerpCharAvatarDie_DissolveNoise _ShaderLerpCharFrozen_CubeMap _ShaderLerpCharFrozen_IceBumpTex _ShaderLerpCharFrozen_TillingNormal _ShaderLerpCharFrozen_TriplanarTex _SpecialWeaponEmissionMaskTex _SpecialWeaponEmissionTex _StockingsDetailTex _StockingsShadowRamp _StretchMask _TangentShifterTex _TempNyxStatePaintMaskTex _TextureLinePackageMap _ThirdCubeMap _ThreadMap _TransitionTex _TransmissionTexture _VSSKinningPoseTex
+  Tail       29 个槽： _BumpMap _CubeMap _EyeMask _FaceMapTex _FakePointNoiseTex _GelPlaneTex _LightMapBlueNoise _LightMapTex _MTMap _MTSpecularRamp _MainTex _MatCap _MaterialMasksTex _NormalPackageMap _NyxStateOutlineColorRamp _NyxStateOutlineNoise _PVMask1 _PVMask2 _PackageLightMap _PackedShadowRampTex _ShaderLerpCharAvatarDie_DissolveNoise _ShaderLerpCharFrozen_CubeMap _ShaderLerpCharFrozen_IceBumpTex _ShaderLerpCharFrozen_TillingNormal _ShaderLerpCharFrozen_TriplanarTex _ShiningCustomIDMask_V2 _TempNyxStatePaintMaskTex _TextureLinePackageMap _VSSKinningPoseTex
+  Weapon     48 个槽： _BlockMaskTex _ChannelMixTex _CharacterRampTex _CrystalTex _DiffuseCoolRampMultiTex _DiffuseRampMultiTex _DissolveMap _DissolveMask _EmissionTex _FlameTex _FurTex _LightMap _LightTex _MainTex _MatCap2DArray _MatCapBumpMapFx _MatCapMaskTex _MatCapTex _MatCapTex2 _MatCapTex3 _MatCapTex4 _MatCapTex5 _MatCapTexFallback _MatCapTexFx _MaterialValuesPackLUT _NormalMap _OtherDataTex _OtherDataTex2 _OverrideOutlineTex _OverrideRimGlowTexFX _ScreenMask _ScreenTex _SecondaryEmissionMaskTex _SecondaryEmissionMaskTexForCGLighting _SecondaryEmissionTex _SecondaryEmissionTexForCGLighting _SkyMask _SkyStarMaskTex _SkyStarTex _SkyTex _SpecialWeaponEmissionMaskTex _SpecialWeaponEmissionTex _StockRangeTex _StretchMask _TangentDirTex _ThreadMap _TransitionTex _TransmissionTexture
+  Wing       53 个槽： _BumpMap _ChannelMixTex _CharacterRampTex _CubeMap _EyeMask _FaceMapTex _FakePointNoiseTex _FlowGlowTex _LightMapBlueNoise _LightMapTex _LightTex _MTMap _MTSpecularRamp _MainTex _MatCap _MatCap2DArray _MatCapTex _MatCapTex2 _MatCapTex3 _MatCapTex4 _MatCapTex5 _MatCapTexFallback _MaterialMasksTex _NormalPackageMap _NormalTex _NyxStateOutlineColorRamp _NyxStateOutlineNoise _OtherDataTex _OtherDataTex2 _OverrideRimGlowTexFX _PVMask1 _PVMask2 _PackageLightMap _PackedShadowRampTex _Parallax2Tex _ParallaxTex _RefractionTex _ScreenMask _ScreenTex _SecondCubeMap _SecondaryEmissionMaskTex _SecondaryEmissionTex _ShaderLerpCharAvatarDie_DissolveNoise _ShaderLerpCharFrozen_CubeMap _ShaderLerpCharFrozen_IceBumpTex _ShaderLerpCharFrozen_TillingNormal _ShaderLerpCharFrozen_TriplanarTex _TempNyxStatePaintMaskTex _TextureLinePackageMap _ThirdCubeMap _ThreadMap _TransmissionTexture _VSSKinningPoseTex
+  other      91 个槽： _AnisoSilkThreadMap _AuraNoise _BaseMatcapPackedTex _BaseRampTex _BaseTex _BumpMap _ChannelMixTex _CharacterRampTex _CubeMap _Detail2Tex _DetailTex _DiffuseColorRampTex _DiffuseCoolRampMultiTex _DiffuseRampMultiTex _DirectionGradientTex _DissolveEdgeColorRampTex _DissolveTex _EyeMask _EyeMaskWithMatcap _FaceMapTex _FaceSdfMap _FakePointNoiseTex _FlipbookMap _FlowGlowTex _FresnelRampTex _GlintMask _LightMap _LightMapBlueNoise _LightMapTex _LightTex _MTMap _MTSpecularRamp _MainTex _MaskTex _MatCap _MatCap2DArray _MatCapMaskTex _MatCapTex _MatCapTex2 _MatCapTex3 _MatCapTex4 _MatCapTex5 _MatCapTexFallback _MaterialMasksTex _MaterialValuesPackLUT _NoiseRadialCausticMap _NoiseTex _NormalPackageMap _NormalTex _NyxStateOutlineColorRamp _NyxStateOutlineNoise _OtherDataTex _OtherDataTex2 _OverrideRimGlowTexFX _PVMask1 _PVMask2 _PackageLightMap _PackedHighlightRampTex _PackedParallaxLayerRampTex _PackedShadowRampTex _Parallax2Tex _ParallaxLayer1Tex _ParallaxLayer2Tex _ParallaxLayer3Tex _ParallaxTex _RefractionTex _SDFGradientMap _ScreenMask _ScreenTex _SecondCubeMap _SecondaryEmissionMaskTex _SecondaryEmissionTex _ShaderLerpCharAvatarDie_DissolveNoise _ShaderLerpCharFrozen_CubeMap _ShaderLerpCharFrozen_IceBumpTex _ShaderLerpCharFrozen_TillingNormal _ShaderLerpCharFrozen_TriplanarTex _ShiningCustomIDMask_V2 _SkyStarMaskTex _SkyStarTex _StockRangeTex _StockingsDetailTex _StockingsShadowRamp _TempNyxStatePaintMaskTex _TextureLinePackageMap _ThirdCubeMap _ThreadMap _TransmissionTexture _VSSKinningPoseTex _VertexAnimeMaskTex _VertexAnimeTex
+
+================================================================================
+三、数值属性（反推中性值用）
+================================================================================
+  _OutlineWidth                      1.0(84)  0.03(39)  0.045(14)
+  _DitherAlpha                       1.0(156)  0.0(1)  0.088(1)
+  _ZWrite                            1.0(138)  0.0(4)
+  _MaxOutlineZOffset                 0.01(84)  1.0(28)  0.0(6)
+  _BumpScale                         1.0(108)  0.5(9)  0.271(2)
+  _Cutoff                            0.5(115)  1.0(1)  0.1(1)
+  _Metallic                          1.0(62)  0.0(41)  0.5(4)
+  _Glossiness                        1.0(62)  0.5(49)
+  _ReceiveShadows                    1.0(98)  0.0(11)
+  _DstBlend                          0.0(53)  10.0(34)  1.0(19)
+  _DitherAlpha2                      1.0(105)
+  _AdditionalLightIntensity          1.0(95)
+  _AlbedoSmoothness                  0.05(85)  0.1(8)  0.3(1)
+  _Blink                             0.0(95)
+  _BlinkFrequency                    1.0(95)
+  _ChannelMixerUsingUV4              0.0(95)
+  _IgnoreTimeScale                   0.0(95)
+  _MatCapBlendModeFx                 0.0(95)
+  _MatCapBumpScaleFx                 1.0(95)
+  _MatCapUSpeedFx                    0.0(95)
+  _MatCapVSpeedFx                    0.0(95)
+  _MultiplyAlbedo                    1.0(95)
+  _MultiplySrcColor                  0.0(95)
+  _OverlayTexScale                   1000.0(84)  20.0(4)  40.0(4)
+  _PerObjectShadowIntensity          1.0(95)
+  _RampSource                        0.0(95)
+
+================================================================================
+四、颜色属性
+================================================================================
+  _Color                         (1.0, 1.0, 1.0, 1.0)(158)  (1.0, 1.0, 1.0, 0.7)(1)
+  _OutlineColor3                 (1.0, 1.0, 1.0, 1.0)(62)  (0.0, 0.0, 0.0, 1.0)(21)
+  _OutlineColor2                 (1.0, 1.0, 1.0, 1.0)(79)  (0.0, 0.0, 0.0, 1.0)(20)
+  _OutlineColor4                 (1.0, 1.0, 1.0, 1.0)(64)  (0.0, 0.0, 0.0, 1.0)(23)
+  _OutlineColor5                 (1.0, 1.0, 1.0, 1.0)(58)  (0.0, 0.0, 0.0, 1.0)(20)
+  _SpecularColor2                (1.0, 1.0, 1.0, 1.0)(87)  (0.0, 0.0, 0.0, 1.0)(19)
+  _SpecularColor5                (1.0, 1.0, 1.0, 1.0)(95)  (0.0, 0.0, 0.0, 1.0)(14)
+  _SpecularColor4                (1.0, 1.0, 1.0, 1.0)(84)  (0.0, 0.0, 0.0, 1.0)(6)
+  _SpecularColor3                (1.0, 1.0, 1.0, 1.0)(80)  (0.0, 0.0, 0.0, 1.0)(17)
+  _OutlineColor                  (1.0, 0.5, 0.5, 1.0)(42)  (1.0, 1.0, 1.0, 1.0)(25)
+  _FresnelColor                  (0.0, 0.2, 1.62, 1.0)(94)  (0.0, 0.0, 0.0, 0.0)(9)
+  _SpecularColor                 (1.0, 1.0, 1.0, 1.0)(69)  (1.0, 0.66, 0.49, 1.0)(8)
+  _EmissionColor                 (0.0, 0.0, 0.0, 1.0)(63)  (1.0, 1.0, 1.0, 1.0)(43)
+  _ShadowColor                   (0.95, 0.9, 0.9, 1.0)(37)  (0.89, 0.8, 0.8, 1.0)(10)
+  _DetailColor                   (0.38, 0.56, 1.5, 1.0)(94)  (1.0, 1.0, 1.0, 1.0)(1)
+  _AChannelColor                 (1.0, 0.0, 1.0, 1.0)(95)
+  _AChannelColorPrecomputed      (1.0, 0.0, 1.0, 1.0)(83)  (0.0, 1.0, 0.0, 1.0)(12)
+  _BChannelColor                 (0.0, 0.0, 1.0, 1.0)(95)
+  _BChannelColorPrecomputed      (0.0, 0.0, 1.0, 1.0)(83)  (1.0, 1.0, 0.0, 1.0)(12)
+  _BlinkOpacity                  (0.0, 1.0, 0.0, 0.0)(95)
+
+解析成功 215，失败 0
+已写出 src\lib\unity-slots.json

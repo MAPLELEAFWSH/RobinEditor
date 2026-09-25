@@ -1,0 +1,1021 @@
+/* ============================================================
+   设计令牌。全站只有这一处定义色、字、时长。
+   页面里不写死色值和 z-index，也不写 transition: all。
+   ============================================================ */
+
+/* 字体全用微软雅黑，不带自定义字体文件。
+   YaHei UI 是 Windows 上给界面用的那版，字形和雅黑一样但小字更清楚。 */
+:root {
+  --hue: 230;
+
+  /* 思源黑体。Source Han Sans（Adobe 的名字）和 Noto Sans CJK（Google 的名字）
+     是同一套设计，两边的名字都写上，谁在就用谁。中文 Windows 上装的多半是
+     Noto Sans SC。都没有就退到雅黑，最后才是系统默认。
+     不打包字体文件：光 NotoSansSC-VF.ttf 一个就 16.9 MB，塞进去直接把体积预算吃掉。 */
+  --font-sans: 'Source Han Sans SC', 'Source Han Sans CN', 'Noto Sans SC',
+               '思源黑体', '思源黑体 CN', 'Microsoft YaHei UI', 'Microsoft YaHei',
+               'PingFang SC', 'Hiragino Sans GB', system-ui, sans-serif;
+  /* 尾栏那些数字以前用等宽字体对齐。现在统一走同一套，靠 tabular-nums 让数字等宽，
+     见 .sb__kv 那条。 */
+  --font-mono: var(--font-sans);
+
+  /* ============================================================
+     布局常量
+     --status-h 是底部状态栏高度。右下角的悬浮球列、设置面板都要按它让位。
+     面板的位置是算出来的，不是各写各的：
+       面板底边 = 状态栏 + 间隙 + 球列最高高度 + 间隙
+     改一个尺寸，三者一起动，不会互相压住。
+     ============================================================ */
+  --page-measure: 84rem;      /* 内容最大宽度 */
+  --navbar-height: 4.5rem;
+  --rail-width: 21rem;
+  --rail-collapsed: 3.25rem;
+  /* 工作区「参数」抽屉（规范 §十一 —— **它否掉了 §八 的"收窄/可收起"**）。
+     用户实测："别死都护着右栏了，占空间还不承认"。→ 答案不是更窄的列，而是**浮层**：
+     默认只有一列（中区＝整幅，除了左边导航没别的列吃宽度），参数从右侧滑出、盖在中区之上、
+     默认收起；用户自己点「钉住」时才占一列，宽度上限 **18rem**。 */
+  --side-w: 18rem;
+  --side-min: 12rem;
+  --side-max: 18rem;
+  --status-h: 30px;
+  --fab-size: 2.6rem;
+  --fab-gap: 0.5rem;
+  --fab-stack: calc(var(--fab-size) + var(--fab-gap));
+  --edge: 1rem;               /* 贴边元素统一留白 */
+
+  /* ============================================================
+     层叠顺序。全站的 z-index 只准从这里取，不许就地写数字 ——
+     之前状态栏写 45、侧栏写 50，侧栏把状态栏压掉一截，就是各写各的后果。
+     ============================================================ */
+  --z-backdrop: -2;           /* 壁纸层，在 body 背景之后 */
+  --z-base: 0;
+  --z-content: 1;             /* 卡片内的浮层 */
+  --z-rise: 10;               /* 卡片悬停抬起 */
+  --z-drawer: 20;             /* 参数抽屉。要盖住卡片（含悬停抬起的 10），但必须**在被压扁那一层之下**——
+                                 底栏那条写盘条（65）不许被抽屉盖。原来这里写的是 6，比悬停抬起还低，
+                                 用户报的"底栏和参数栏图层错误"就是这个（2026-09-23 实测：抽屉 6 < 底栏 65）。 */
+  --z-bar: 40;                /* 顶栏（sticky） */
+  --z-side: 50;               /* 侧栏 */
+  --z-status: 60;             /* 尾栏：要在侧栏之上，才能整条贯通 */
+  --z-fab: 70;                /* 悬浮球列 */
+  --z-sheet: 80;              /* 设置面板：在球之上，但不遮尾栏 */
+  --z-modal: 90;              /* 模态遮罩 */
+  --z-curtain: 100;           /* 开场遮罩 */
+  --z-progress: 110;          /* 顶部进度条，压在所有东西之上 */
+
+  /* 进度条。3px，实测记下来的那个值（见 docs/借鉴-新增参考.md） */
+  --progress-h: 3px;
+  --progress-grow: 8s;        /* 渐近长到 95% 用多久 */
+
+  /* —— 圆角阶梯 ——
+     实测对照：witchcat 9999/16/12/8/6/4 · lin-xin 32(大卡)
+                RyuChan box 1rem / btn .5rem / badge 1.9rem
+                元素手账 card 1rem / btn .5rem / cover .75rem / chip .375rem */
+  --r-sm: 0.375rem;
+  --r-md: 0.5rem;
+  --r-lg: 0.75rem;
+  --r-xl: 1rem;
+  --r-2xl: 1.5rem;
+  --r-3xl: 2rem;
+  --r-badge: 1.9rem;
+  --r-full: 999px;
+  /* 按钮用。原来是 --r-full（999px 真胶囊），圆得过分，一个 38px 高的按钮
+     两头全是半圆，跟旁边的卡片（12px）和输入框（8px）不成一套。
+     10px 落在"明显是圆角、但不是胶囊"这一段上，和 --r-lg 12px 也咬得住。
+     胶囊形只留给标签、进度条、圆点这些真的是胶囊的东西。 */
+  --r-btn: 10px;
+
+  /* —— 间距 —— */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+
+  /* ============================================================
+     字号阶梯。全站只准用这七档，避免 13 / 13.5 / 14 / 15 混着写。
+     行高一起定，不单独拍。
+     ============================================================ */
+  --fs-2xs: 11px;    --lh-2xs: 1.45;   /* 尾栏、极小的元信息 */
+  --fs-xs:  12px;    --lh-xs:  1.5;    /* 说明、徽章 */
+  --fs-sm:  13px;    --lh-sm:  1.6;    /* 导航项、次级正文 */
+  --fs-md:  14px;    --lh-md:  1.7;    /* 正文 */
+  --fs-lg:  16px;    --lh-lg:  1.5;    /* 小标题 */
+  --fs-xl:  20px;    --lh-xl:  1.35;   /* 页面标题 */
+  --fs-2xl: 26px;    --lh-2xl: 1.25;   /* 大标题 */
+  --tracking-tight: -0.011em;
+  --tracking-normal: 0;
+
+  /* ============================================================
+     时长和曲线。全站只用一条曲线，离场另换一条。
+     数字是实测记下来的那批（见 docs/借鉴-新增参考.md），照数取，不是搬代码。
+     没有过冲曲线 —— back/pop 那种越界在工具界面上会飘。
+     ============================================================ */
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);    /* 全站主用 */
+  --ease-exit: cubic-bezier(0.4, 0, 0.6, 1);   /* 离场，加速收走 */
+  --ease-slow: cubic-bezier(0.65, 0, 0.35, 1); /* 只有背景漂移用得上 */
+  /* 这两个原来名字和值反了：
+     ease-in-quad 写的是 (0.25,0.46,0.45,0.94) —— 那是 ease-out 的形状（一头冲出去再刹住）；
+     ease-out-cubic 写的是 (0.55,0.055,0.675,0.19) —— 那是 ease-in（起步慢、越走越快）。
+     名字反了比数值错更糟：照着名字用的人（比如涟漪想"扩散后刹住"）会拿到相反的效果。
+     现在按标准定义摆正：in 是越走越快，out 是一头冲出去再减速。 */
+  --ease-in-quad: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  --t-page: 120ms;      /* 换页 / 内容切换 */
+  --t-press: 75ms;      /* 按下那一下 */
+  --t-micro: 200ms;     /* 颜色、背景、位移 */
+  --t-btn: 250ms;       /* 按钮 */
+  --t-nav: 280ms;       /* 导航栏 */
+  --t-side: 300ms;      /* 侧栏 / 面板展开 */
+  --t-enter: 350ms;     /* 通用淡入 */
+  --t-card: 400ms;      /* 卡片进场 */
+  --t-exit: 250ms;      /* 离场。得比进场快，不然收起来拖沓 */
+  --t-reveal: 1000ms;   /* 背景层透明度 */
+  --t-drift: 8.6s;      /* 背景漂移 */
+  --t-transition: 300ms;
+  /* 涟漪。比 --t-transition 长，300ms 那版看着就是闪一下，不成"扩散" */
+  --t-ripple: 700ms;
+  /* 壁纸交叉淡入。之前是就地写死的 1.1s，收进 token 免得又出现一处硬编码 */
+  --t-cross: 1100ms;
+  /* 开场幕布的退场。单独一条，不走通用的 --t-transition ——
+     那 300ms 是给"换页"用的。
+
+     2026-09-19 量过一条曲线，才知道问题不在"太短"而在**顺序**：
+     原来幕布 600ms、内容 400ms（错峰 105ms），看着像"同时在淡"，
+     但幕布降到 0.75 那一刻内容的 opacity 才 0.58、降到 0.35 时才 0.90 ——
+     露出来的是"一半的幕布 + 没成形的内容"，所以像跳不像渐变。
+     现在把幕布拉到 700ms、错峰压到 30ms：内容 490ms 就全部落位，
+     剩下 210ms 是"内容已经在幕布后面成形，幕布再把它平滑地露出来"。
+
+     2026-09-19 第二版：改成真正的交叉淡入。主界面不再在幕布背后偷跑 ——
+     它等 `boot.reveal` 才开始淡入，两边共用这一个时长。 */
+  --t-boot: 900ms;
+  /* 换主题那一下的圆擦除。参考的手感是 450ms ease-in-out、从按钮位置扩满一整圈；
+     这里取 460ms，用项目自己的缓动。 */
+  --t-theme: 460ms;
+
+  --beat: 441ms;
+  /* 一批进场元素的错峰间隔。只作用于 .rise / .rise--small / .reveal 那几处。
+     跟 --t-boot 配着看：幕布 700ms 撤完，四项 × 30ms = 90ms 错峰，
+     最后一项 ~490ms 落位 —— 比幕布早，才有"内容先成形再露面"那一段。
+     这个数再大就会反过来：幕布已经在让开、内容还在往上走。 */
+  --stagger: 30ms;
+
+  --lift-btn: -1px;
+  --lift-card: -4px;
+  --lift-nav: -2px;
+  --press-scale: 0.9;
+  --press-scale-soft: 0.95;
+  --rise-card: 2rem;
+  --rise-soft: 1rem;
+  --enter-scale: 0.95;
+  --enter-scale-soft: 0.98;
+
+  /* 别处还在用的旧名字 */
+  --hover-lift: var(--lift-btn);
+  --btn-press-scale: var(--press-scale-soft);
+  --press-sink: 0px;
+
+  /* ============================================================
+     颜色（浅色）—— 取值来自对参考主题实测记录下来的那一批
+     ------------------------------------------------------------
+     数值是量出来的，不是搬代码搬来的；完整来路见 docs/借鉴-新增参考.md。
+     两条规矩：
+       ① 主色、纸面、按钮三态、选中态：跟着 --hue 走
+       ② 分隔线、次要文字、元信息：**中性 rgba**，不掺色相
+          （实测那套用的是 black(0.08) / black(0.7) 这种写法；
+           混着用会让色相一改就脏）
+     之前 --card-border / --card-shadow 写的是固定冷蓝 rgb(179,196,214)，
+     色相拖到橙色时还是蓝的 —— 那批已经清掉了。
+     ============================================================ */
+
+  /* 主色。彩度从 0.14 压到 0.085 —— 原来那档太艳，大面积铺开很吵 */
+  --primary: oklch(0.68 0.085 var(--hue));
+  --primary-ink: oklch(0.50 0.075 var(--hue));
+
+  /* 纸面 */
+  --page-bg: oklch(0.95 0.006 var(--hue));
+  --page-bg-2: oklch(0.97 0.005 var(--hue));
+  --card-bg: #ffffff;
+  --panel-bg: #ffffff;
+  --codeblock-bg: oklch(0.97 0.005 var(--hue));
+
+  /* 文字 */
+  --deep-text: oklch(0.25 0.012 var(--hue));
+  --body-text: oklch(0.35 0.012 var(--hue));
+  --content-meta: rgba(0, 0, 0, 0.7);
+
+  /* 按钮三态。彩度整体降一档 */
+  --btn-content: oklch(0.50 0.075 var(--hue));
+  --btn-regular-bg: oklch(0.95 0.016 var(--hue));
+  --btn-regular-bg-hover: oklch(0.90 0.032 var(--hue));
+  --btn-regular-bg-active: oklch(0.85 0.05 var(--hue));
+  --btn-plain-bg-hover: oklch(0.95 0.016 var(--hue));
+  --btn-plain-bg-active: oklch(0.98 0.007 var(--hue));
+  --btn-card-bg-hover: oklch(0.98 0.004 var(--hue));
+  --btn-card-bg-active: oklch(0.90 0.02 var(--hue));
+
+  /* 分隔线：中性，不掺色相 */
+  --line-divider: rgba(0, 0, 0, 0.08);
+  --line-color: rgba(0, 0, 0, 0.1);
+  --line-strong: rgba(0, 0, 0, 0.2);
+  --meta-divider: rgba(0, 0, 0, 0.2);
+
+  /* 链接与选中 */
+  --title-active: oklch(0.58 0.065 var(--hue));
+  --selection-bg: oklch(0.90 0.032 var(--hue));
+  --link-underline: oklch(0.93 0.025 var(--hue));
+  --link-hover-bg: oklch(0.95 0.016 var(--hue));
+  --link-active-bg: oklch(0.90 0.032 var(--hue));
+
+  /* ============================================================
+     不透明度：分五层，每层一个变量
+     ------------------------------------------------------------
+     之前只有一个 --card-opacity，而且全站只有 `.card` 一条规则用了它。
+     .card__inner 是写死的 92%，侧栏/顶栏/尾栏用的是 --glass-chrome
+     （由毛玻璃档位控制，跟滑杆无关），其它面又直接用不透明的 --card-bg。
+     结果拖滑杆只有最外层那个框在动，里面和四周全是实的 —— 调不出整体效果。
+
+     现在：底色一律拆成「不透明基色 + alpha」，所有面从这几层派生。
+       --a-card   卡片
+       --a-inner  卡片里的嵌套面（也跟着卡片，压一层自然更实）
+       --a-side   侧栏
+       --a-bar    顶栏
+       --a-sb     尾栏
+       --a-panel  设置面板
+     ============================================================ */
+  --a-card: 0.92;
+  --a-inner: var(--a-card);
+  --a-side: 1;
+  --a-bar: 1;
+  --a-sb: 1;
+  --a-panel: 0.98;
+
+  /* 不透明基色。真正的色值只在这里出现，深色主题在下面覆盖 */
+  --base-card: #ffffff;
+  --base-page-2: oklch(0.97 0.005 var(--hue));
+  --base-surface-2: oklch(0.97 0.008 var(--hue));
+  --base-surface-3: oklch(0.94 0.015 var(--hue));
+  --card-border-width: 0.67px;
+  --card-line: rgba(0, 0, 0, 0.1);
+  --card-border: var(--card-border-width) solid var(--card-line);
+  --card-radius: var(--r-xl);
+  --card-radius-nested: var(--r-lg);
+  --card-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 26px 60px rgba(0, 0, 0, 0.13);
+  --card-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  /* —— 侧栏条目 ——
+     照 lin-xin 的导航来：
+       .nav-link       背景透明，字 600，color/opacity/transform 各 200ms
+       .nav-indicator  一条 4px 圆角渐变条，box-shadow 0 5px 12px 18% 的辉光
+       选中没有底色，只有那条 + 字从暗变亮
+
+     关键在--accent-solid 的彩度。lin-xin 用的是 #6f8fb4，
+     折算成 oklch 大概 (0.62 0.05 250) —— 低彩度的石板蓝。
+     我之前拿 --primary 当指示色，那是 oklch(0.7 0.14) 的高彩度蓝，
+     再叠一层底色的淡蓝，就成了"蓝色光晕"。彩度降下来就干净了。
+
+     悬浮用中性灰 + 右移 2px（lin-xin .lx-popover-item:hover 的 translate(2px)）。 */
+  --accent-solid: oklch(0.62 0.05 var(--hue));
+  --accent-solid-2: oklch(0.56 0.06 var(--hue));
+  --rail-mark-w: 4px;
+  --rail-mark-h: 20px;
+
+  --rail-hover: rgba(0, 0, 0, 0.045);
+  --rail-press: rgba(0, 0, 0, 0.07);
+  /* 选中不用底色了，留个透明值免得别处引用取不到 */
+  --rail-cur-bg: transparent;
+  --rail-item-bg: var(--rail-cur-bg);
+  --rail-item-hover: var(--rail-hover);
+  --rail-item-active: var(--rail-press);
+
+  /* —— 各层底色，全部从「基色 + alpha」派生 ——
+     这样滑杆一动，所有用这些变量的地方跟着走，不会漏掉某个面。 */
+  --card-bg: color-mix(in oklab, var(--base-card) calc(var(--a-card) * 100%), transparent);
+  --card-bg-nested: color-mix(in oklab, var(--base-card) calc(var(--a-inner) * 100%), transparent);
+  --page-bg-2: color-mix(in oklab, var(--base-page-2) calc(var(--a-inner) * 100%), transparent);
+  --surface-2: color-mix(in oklab, var(--base-surface-2) calc(var(--a-inner) * 100%), transparent);
+  --surface-3: color-mix(in oklab, var(--base-surface-3) calc(var(--a-inner) * 100%), transparent);
+
+  /* chrome 四个面各自的底色 */
+  --side-bg: color-mix(in oklab, var(--base-card) calc(var(--a-side) * 100%), transparent);
+  --bar-bg: color-mix(in oklab, var(--base-card) calc(var(--a-bar) * 100%), transparent);
+  --sb-bg: color-mix(in oklab, var(--base-card) calc(var(--a-sb) * 100%), transparent);
+  --sheet-bg: color-mix(in oklab, var(--base-card) calc(var(--a-panel) * 100%), transparent);
+
+  --float-panel-bg: var(--card-bg);
+  /* 这俩名字是老底子留下的，现在只是别名。
+     以前写死 rgba(...,.9)，滑杆拖到底它们还是实的。 */
+  --card-bg-90: var(--card-bg);
+  --card-bg-80: var(--card-bg-nested);
+  --overlay-border: rgba(0, 0, 0, 0.16);
+
+  /* —— 壁纸层。实测记下来的一组：--wallpaper-opacity 0.8 / --wallpaper-blur 0px —— */
+  --cover-veil: 0.8;
+  --cover-soften: 0px;
+  --veil-strong: rgba(255, 255, 255, 0.5);
+  --veil-mid: rgba(255, 255, 255, 0.22);
+  /* 压在壁纸上的那层。浅色主题用白的把图提亮，深色主题反过来压暗，
+     强度由 --wp-scrim 给（按当前那张的亮度算，见 src/lib/bg-meta.json） */
+  --scrim-color: rgba(255, 255, 255, 1);
+  --grid-line: oklch(0.28 0.02 var(--hue) / 0.045);
+
+  /* —— 软阴影（RyuChan 实测的新拟态对，只给少数控件用）—— */
+  --shadow-sm: 0 1px 2px oklch(0.28 0.02 var(--hue) / 0.06);
+  --shadow-neu-out: 8px 8px 16px 0 rgba(0, 0, 0, 0.05),
+                    -8px -8px 16px 0 rgba(255, 255, 255, 0.6);
+  --shadow-neu-in: inset 8px 8px 16px 0 rgba(0, 0, 0, 0.05),
+                   inset -8px -8px 16px 0 rgba(255, 255, 255, 0.6);
+
+  /* —— 滚动条 —— */
+  --scrollbar-bg: oklch(0.28 0.02 var(--hue) / 0.18);
+  --scrollbar-bg-hover: oklch(0.28 0.02 var(--hue) / 0.3);
+  --scrollbar-size: 10px;
+
+  /* ============================================================
+     语义色：色相固定，不跟 --hue 走。
+     区分"注意"和"出错"两档，别一个橙色到处用。
+     ============================================================ */
+  --ok: oklch(0.68 0.14 158);
+  --warn: oklch(0.76 0.13 78);
+  --danger: oklch(0.64 0.18 25);
+  --accent: var(--danger);    /* 旧名字留着，语义就是"警示" */
+
+  /* —— 语义别名（页面样式里写短名更好读）—— */
+  --text-1: var(--deep-text);
+  --text-2: var(--content-meta);
+  --text-3: var(--body-text);
+  --line: var(--line-color);
+  --card: var(--card-bg);
+}
+
+/* ============================================================
+   暗色 —— 跟浅色同一批实测取值
+   ============================================================ */
+:root[data-theme='dark'] {
+  --primary: oklch(0.74 0.08 var(--hue));
+  --primary-ink: oklch(0.76 0.065 var(--hue));
+
+  --page-bg: oklch(0.16 0.008 var(--hue));
+  --panel-bg: oklch(0.19 0.009 var(--hue));
+  --codeblock-bg: oklch(0.17 0.009 var(--hue));
+
+  /* 深色下的不透明基色 */
+  --base-card: oklch(0.23 0.009 var(--hue));
+  --base-page-2: oklch(0.19 0.009 var(--hue));
+  --base-surface-2: oklch(0.20 0.009 var(--hue));
+  --base-surface-3: oklch(0.27 0.012 var(--hue));
+
+  --deep-text: oklch(0.95 0.005 var(--hue));
+  --body-text: oklch(0.86 0.006 var(--hue));
+  --content-meta: rgba(255, 255, 255, 0.6);
+
+  --btn-content: oklch(0.76 0.065 var(--hue));
+  --btn-regular-bg: oklch(0.33 0.022 var(--hue));
+  --btn-regular-bg-hover: oklch(0.38 0.026 var(--hue));
+  --btn-regular-bg-active: oklch(0.43 0.03 var(--hue));
+  --btn-plain-bg-hover: oklch(0.30 0.022 var(--hue));
+  --btn-plain-bg-active: oklch(0.27 0.018 var(--hue));
+  --btn-card-bg-hover: oklch(0.30 0.018 var(--hue));
+  --btn-card-bg-active: oklch(0.35 0.022 var(--hue));
+
+  --line-divider: rgba(255, 255, 255, 0.08);
+  --line-color: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.2);
+  --meta-divider: rgba(255, 255, 255, 0.2);
+
+  --title-active: oklch(0.38 0.045 var(--hue));
+  --selection-bg: oklch(0.40 0.05 var(--hue));
+  --link-underline: oklch(0.40 0.05 var(--hue));
+  --link-hover-bg: oklch(0.40 0.05 var(--hue));
+  --link-active-bg: oklch(0.35 0.045 var(--hue));
+
+  --card-line: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 26px 60px rgba(0, 0, 0, 0.55);
+  --card-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  /* 侧栏条目：同一条口径，深浅只是把中性灰的黑白反过来 */
+  --accent-solid: oklch(0.70 0.05 var(--hue));
+  --accent-solid-2: oklch(0.76 0.055 var(--hue));
+  --rail-hover: rgba(255, 255, 255, 0.06);
+  --rail-press: rgba(255, 255, 255, 0.09);
+  --rail-cur-bg: transparent;
+  --rail-item-bg: var(--rail-cur-bg);
+  --rail-item-hover: var(--rail-hover);
+  --rail-item-active: var(--rail-press);
+
+  /* --surface-2 / --surface-3 / --page-bg-2 / --card-bg-90 / --card-bg-80
+     这里以前又写了一遍不透明值。:root[data-theme='dark'] 比 :root 更具体，
+     于是暗色下这几个面直接盖掉了 color-mix 的推导结果 ——
+     滑杆拖到 30%，卡片动了，卡片里那些板块（.steps__it / .drop / .tag--soon）
+     还是全实的。删掉，让上面的推导自己取暗色的 --base-* 就行。 */
+  --float-panel-bg: var(--card-bg);
+  --overlay-border: rgba(255, 255, 255, 0.16);
+
+  --veil-strong: rgba(0, 0, 0, 0.5);
+  --veil-mid: rgba(0, 0, 0, 0.22);
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --scrim-color: rgba(0, 0, 0, 1);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-neu-out: 8px 8px 16px 0 rgba(0, 0, 0, 0.35),
+                    -8px -8px 16px 0 rgba(255, 255, 255, 0.03);
+  --shadow-neu-in: inset 8px 8px 16px 0 rgba(0, 0, 0, 0.35),
+                   inset -8px -8px 16px 0 rgba(255, 255, 255, 0.03);
+
+  --scrollbar-bg: rgba(255, 255, 255, 0.4);
+  --scrollbar-bg-hover: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================
+   动效档位。设置面板里能选关/轻/全。
+   "关"只留颜色与透明度，位移缩放全去掉；"轻"保留位移但去掉缩放和过冲。
+   ============================================================ */
+:root[data-motion='off'] *,
+:root[data-motion='off'] *::before,
+:root[data-motion='off'] *::after {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition-property: color, background-color, border-color, opacity, box-shadow !important;
+  transition-duration: 100ms !important;
+}
+:root[data-motion='off'] .ripple { display: none; }
+:root[data-motion='off'] .reveal { opacity: 1 !important; transform: none !important; }
+
+:root[data-motion='lite'] * {
+  /* 保留位移但不缩放：按下的缩放收掉，抬起的位移留着 */
+  --lift-btn: 0px;
+  --lift-card: 0px;
+  --press-scale: 1;
+  --press-scale-soft: 1;
+  --hover-lift: 0px;
+  --btn-press-scale: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 100ms !important;
+  }
+  :root {
+    --lift-btn: 0px;
+    --lift-card: 0px;
+    --press-scale: 1;
+    --press-scale-soft: 1;
+    --hover-lift: 0px;
+    --btn-press-scale: 1;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ============================================================
+   毛玻璃只负责「模糊」，不碰底色。
+   底色由各面自己的 --a-* 决定（侧栏/顶栏/尾栏/面板各一个滑杆），
+   两件事分开，滑杆和毛玻璃档位就不会互相打架。
+
+     full  真 blur + 提饱和。好看，但每个元素每帧都要重新模糊背后，
+           核显上很痛（实测 4.3ms → 12.4ms）。
+     lite  不写 backdrop-filter，零光栅化开销。
+     off   不模糊。
+   ============================================================ */
+:root {
+  --glass-blur: 0px;
+  --glass-sat: 1;
+  --glass-edge: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+:root[data-glass='full'] {
+  --glass-blur: 12px;
+  --glass-sat: 1.35;
+  --glass-edge: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+:root[data-glass='off'] {
+  --glass-blur: 0px;
+  --glass-edge: none;
+}
+:root[data-theme='dark'] {
+  --glass-edge: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+:root[data-theme='dark'][data-glass='full'] {
+  --glass-edge: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* 背景只铺工作区时，界面后面是平的底色，模糊没意义 */
+:root[data-bg-scope='work'] {
+  --glass-blur: 0px;
+  --glass-edge: none;
+}
+
+/* 可复用的玻璃面。挂到侧栏 / 顶栏 / 尾栏 / 面板上，只管模糊和内高光 */
+.glass {
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-edge);
+}
+
+/* ============================================================
+   基础层
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--page-bg);
+}
+/* body 必须透明：壁纸层是 position:fixed; z-index:-2，
+   负 z-index 画在 body 背景**之后**，body 一旦有底色就把壁纸挡住。 */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: transparent;
+  color: var(--body-text);
+  /* 字体栈在 :root 里组合好了，见上面「字体」那段 */
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh-md);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--selection-bg); }
+
+h1, h2, h3, h4 {
+  color: var(--deep-text);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.title-main { color: var(--deep-text); opacity: 1; }
+.title-sub  { color: var(--body-text); opacity: 0.72; }
+
+a { color: var(--primary-ink); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-color: var(--link-underline); text-underline-offset: 3px; }
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+::-webkit-scrollbar { width: var(--scrollbar-size); height: var(--scrollbar-size); }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-bg);
+  border-radius: var(--r-full);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-bg-hover); background-clip: content-box; }
+
+/* ============================================================
+   圆角卡。底色是 --card-bg，它已经含了 --a-card 那层 alpha，
+   所以滑杆一动这里就跟着走，不用再套一次 color-mix。
+   刻意不挂 backdrop-filter：一页十几张卡，每张都做一遍背景模糊，
+   在核显上就是掉帧大户。
+   ============================================================ */
+.card {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow), var(--card-inner-highlight);
+  transition:
+    transform var(--t-micro) var(--ease-std),
+    border-color var(--t-micro) var(--ease-std),
+    box-shadow var(--t-micro) var(--ease-std);
+}
+/* 抬起幅度照参考：卡片 -4px（witchcat / RyuChan），按钮 -1px（witchcat） */
+.card--lift:hover {
+  transform: translateY(var(--lift-card));
+  box-shadow: var(--card-shadow-hover), var(--card-inner-highlight);
+}
+
+/* 卡片里的嵌套面。原来是写死的 92%，滑杆推不动它 —— 这是"调不出整体效果"的主因 */
+.card__inner {
+  background: var(--card-bg-nested);
+  border-radius: var(--card-radius-nested);
+  border: 1px solid var(--line-divider);
+}
+
+/* ============================================================
+   入场：位移 + 缩放 + 透明度。
+   数值是实测记下来的 —— 卡片 400ms / translateY(2rem) / scale(0.95)，
+   轻一点的用通用淡入 350ms / translateY(1.5rem) / scale(0.98)。
+   没有过冲：那边一条都没有。
+   同一批给递增的 --i 做错峰，间隔 --stagger（30ms，一批 ≤5 项）。
+   ============================================================ */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(var(--rise-card)) scale(var(--enter-scale)); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes rise-soft {
+  from { opacity: 0; transform: translateY(var(--rise-soft)) scale(var(--enter-scale-soft)); }
+  to   { opacity: 1; transform: none; }
+}
+/* 入场动画：**只有进场那一小段才挂**，平时 `.rise` 就是个普通元素。
+   ------------------------------------------------------------
+   上一版写反了：动画常挂在这儿，再用 `html:not([data-enter='true'])` 去"暂停"它。
+   可那个标记一旦置上就永远是 true，闸门等于不存在 —— 每跳一次路由 `.rise`
+   就重新播一遍。真机量到过：点侧栏换页，`running` 又出现（用户说的
+   "每次选中后都重新冒出来"就是这个）。
+
+   现在反过来：进场那一小段给 `<html>` 挂 `data-enter='true'`，
+   这批动画跑完（或 1.6s 兜底）就摘掉。摘掉之后 `.rise` 一点动画都没有，
+   换页直接显示。
+
+   开屏那条链还在：幕布盖着的时候动画在跑、跑完就摘掉，
+   所以幕布淡掉时露出来的是**已经成形**的内容，不是一堆还在往上飘的元素。 */
+.rise,
+.rise--soft {
+  /* 平时什么动画都没有 —— 下面那条带 data-enter 的规则才是例外 */
+  animation: none;
+}
+html[data-enter='true'] .rise {
+  animation: rise-in var(--t-card) var(--ease-std) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger));
+}
+html[data-enter='true'] .rise--soft {
+  animation: rise-soft var(--t-enter) var(--ease-std) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+/* 动效关掉：连那道例外也不要 */
+:root[data-motion='off'] .rise,
+:root[data-motion='off'] .rise--soft {
+  opacity: 1;
+  animation: none;
+}
+/* 滚动触发的版本：默认不可见，IntersectionObserver 加上 .is-in 才进场。
+   离场比进场快（250ms + 加速曲线）。 */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--rise-soft)) scale(var(--enter-scale-soft));
+  transition:
+    opacity var(--t-enter) var(--ease-std),
+    transform var(--t-enter) var(--ease-std);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* 收起用更短的时长和加速曲线 */
+.collapse-out {
+  transition:
+    opacity var(--t-exit) var(--ease-exit),
+    transform var(--t-exit) var(--ease-exit);
+}
+
+/* ============================================================
+   胶囊按钮 + 反色痕迹 + 从左到右推移的矩形框
+   ============================================================ */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 10px 20px;
+  border: 0;
+  border-radius: var(--r-btn);
+  background: var(--btn-regular-bg);
+  color: var(--btn-content);
+  font: inherit;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  /* 按下 75ms 就到位（实测那个按钮就是这个值），松开时走 200ms 的常规时长。
+     用力来自"按下瞬间缩到 0.9"，不是缓动曲线的花样。 */
+  transition:
+    background var(--t-micro) var(--ease-std),
+    color var(--t-micro) var(--ease-std),
+    box-shadow var(--t-micro) var(--ease-std),
+    transform var(--t-press) var(--ease-std);
+}
+.btn:hover {
+  background: var(--btn-regular-bg-hover);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(var(--lift-btn));
+}
+/* 按下：**只变底色，不缩小**（2026-09-23 改）。
+   原来这里还有一句 `transform: scale(var(--press-scale-soft))`（0.95）——
+   那是"按下缩小"的手感，但**带文字的控件一缩，字就跟着缩**：实测按钮内的文字会横移
+   0.18~3.66px，而且缩小过程中字的栅格化在变，看着就是"字在抖"（用户报的"文字冲突抽搐"，
+   见 `PROGRESS.md` 本轮）。底色这条本来就在（`--btn-regular-bg-active` 比常态深一档），
+   所以不用补东西。**图标按钮（`.fab` / `.switch` / 滑杆手柄那些）保留缩放** —— 它们没字可抖。 */
+.btn:active {
+  background: var(--btn-regular-bg-active);
+  transition-duration: var(--t-press);
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn:disabled:hover { background: var(--btn-regular-bg); transform: none; box-shadow: none; }
+.btn--ghost { background: transparent; color: var(--content-meta); padding: 7px 14px; }
+.btn--ghost:hover { background: var(--btn-plain-bg-hover); color: var(--deep-text); }
+.btn--primary { background: var(--primary); color: #fff; }
+.btn--primary:hover { background: color-mix(in oklab, var(--primary) 88%, #fff); }
+.btn--primary:disabled:hover { background: var(--primary); }
+
+/* 从左到右推移的矩形框 */
+.btn--slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  opacity: 0.10;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--t-enter) var(--ease-std);
+  z-index: -1;
+}
+.btn--slide:hover::after { transform: scaleX(1); }
+
+/* 反色痕迹：点击时从指针处扩散一圈（JS 只负责定位和尺寸，动画在这）
+ *
+ * 四个坑，前三版踩过：
+ *   1. 涟漪是追加进去的最后一个子节点，一开始没设 z-index —— 顺序上确实在文字下面，
+ *      但宿主里的图标/底衬一旦是定位元素就会翻上来盖住它，看着就是"有时有有时没有"。
+ *      现在明确 `z-index: var(--z-content)`：**画在宿主内容之上**（2026-09-20 用户定的：
+ *      点击痕迹要盖在图标和文字上面），再由 .ripple-host 的 isolation 关在宿主这一层里，
+ *      不许跟宿主外面的兄弟元素比大小。
+ *   2. 时长用的是 --t-transition（300ms）+ 标准缓动，300ms 内从 0 到 2.6 倍
+ *      再消失，看着就是闪一下。涟漪要减速，用 ease-out。
+ *   3. 尺寸按 max(宽,高)×1.2 算，跟点在哪儿无关 —— 点角落和点中心一样大，
+ *      大按钮上还铺不满。现在 JS 按"点到最远那个角"算直径，scale 到 1 就刚好盖住。
+ *
+ * 2026-09-19 复查：实现是对的（真机量过，动画在跑、结束自己清、宿主类也还原），
+ * 但**太短太淡** —— 560ms 里从 0.26 衰减到 0，中途只剩 0.03，深底卡片上看不出有圈。
+ * 现在 700ms、起点 0.34。
+ *
+ * 2026-09-19 第二版：形状改成**往外走的细环**（参考项目的手感：一圈细环边扩边淡，
+ * 里面跟一个半透明的小圆）。
+ * 原来是一整块实心色往外铺 —— 缩到 0 时就是"啪"地糊一片，不是"荡开一圈"。
+ * 现在：细环为主，**没有内圆了**（见下）。
+ *
+ * 2026-09-23：**内圆删掉、环调细到 1.5px、起点透明度 0.5→0.42**。
+ * 起因是用户报"点击时按钮之间文字的冲突抽搐"，量下来一半是选中态加粗把整排推走
+ * （见 `PROGRESS.md` 本轮），另一半就是这个涟漪：它按设计**画在文字之上**，
+ * 而那个 30% 不透明的内圆**全程压着字**（实测 169/169 帧，两行字的卡片会同时盖住
+ * 标题和说明两行）。细环从字上扫过去不碍事，实心圆不行 —— 所以只留环。 */
+.ripple-host {
+  position: relative;
+  overflow: hidden;
+  /* **`overflow: hidden` 会把 flex 项的"自动最小尺寸"从内容尺寸改成 0**（CSS 规范：
+     滚动容器的 `min-width: auto` 解析成 0）—— 于是这个按钮在 flex 行里突然能缩得比
+     自己的文字还窄，整排重新分配宽度：实测 ① 那排按一下，按钮宽度变 30px、邻座文字横移 28px，
+     700ms 后类一撤又跳回来（用户报的"抽搐"里，这一半跟选中态加粗是**两个独立的源头**）。
+     补一条 `min-content` 把地板焊回去：它约等于原来的自动最小尺寸，等于这个类没改行为。 */
+  min-width: min-content;
+  min-height: min-content;
+  /* 建独立层叠上下文，让涟漪的 z-index 只跟宿主内部比 */
+  isolation: isolate;
+  /* 宿主自己也抬一档：涟漪关在宿主里，宿主不抬的话，
+     宿主**外面**的浮层（祖先的 ::after 遮罩、兄弟覆盖层）照样能把它盖住 ——
+     实测 .seg__b 就是这样：涟漪在宿主里排第一，可宿主本身在 li 的 ::after 底下，
+     点下去看着就是"这一片没反应"。抬到 --z-content（1）就够，
+     卡片悬停抬起用的是 --z-rise（10），不会打架。 */
+  z-index: var(--z-content);
+}
+.ripple {
+  position: absolute;
+  z-index: var(--z-content);
+  /* 边框算进尺寸里：不然 1.5px 的环会把中心点推偏一点，涟漪不是从指针处荡开的 */
+  box-sizing: border-box;
+  border-radius: 50%;
+  /* 环：描边 1.5px，颜色跟着宿主文字色走（按钮/导航项各自的主题色） */
+  border: 1.5px solid currentColor;
+  background: none;
+  opacity: 0.42;
+  transform: scale(0.1);
+  animation: ripple-out var(--t-ripple) var(--ease-out-cubic) forwards;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+@keyframes ripple-out {
+  /* 前段几乎不动、后段快速收掉 —— 这就是"速度衰减"手感的来源：
+     环一开始荡得快，越往外越慢，最后淡掉。 */
+  0%   { transform: scale(0.1); opacity: 0.42; }
+  22%  { opacity: 0.34; }
+  to   { transform: scale(1); opacity: 0; }
+}
+
+/* ============================================================
+   换主题那一下的交叉淡入
+   ------------------------------------------------------------
+   量出来的现状：`apply()` 是同步改属性的，所以页面底、顶栏、尾栏（`transition: all 0s`）
+   和卡片的 background 都是**瞬间**变；而导航项、按钮、分区按钮各自挂着 0.2s 的
+   background/color 过渡 —— 一半瞬间一半 200ms，看着就是"部件速度不一样"。
+
+   做法：整页做一次交叉淡入，所有颜色同一条时间线走完。
+   只在换主题的那一瞬间挂上 `data-theme-vt`，换页转场（+layout 的 onNavigate）
+   用的是同一组 ::view-transition 伪元素，不能互相踩。
+
+   为什么用 View Transition 而不是给 thousands 个元件加 transition：
+   逐个加等于让浏览器同时重算上百个属性的补间，换主题那一下会掉帧。
+   这一层是合成出来的，只走 opacity。
+
+   **`view-transition-name` 必须显式起。** 实测：不给 html 起名字的时候，
+   ::view-transition-old(root) / -new(root) 这两对伪元素根本不生成
+   （只剩一个 ::view-transition-group(root)，duration 0s），
+   下面那两条规则挂空，标记也永远等不到结算 —— 表现就是"点了没动画、标记还不掉"。
+
+   **两种玩法，靠属性值分开**（真机上量到过两套一起跑：圆擦 + 整页淡同时进行，
+   结果圆被淡糊掉了，看着像"软软地化开"而不是"擦出来"）：
+     data-theme-vt=""      整页交叉淡入 —— 拿不到圆心时的退路
+     data-theme-vt="wipe"  圆擦除 —— 有圆心时的正路，这时**不要**再叠加淡入
+   圆擦那条在 theme.ts 里用 Web Animations 挂在 ::view-transition-new(root) 上。 */
+html[data-theme-vt] {
+  view-transition-name: root;
+}
+html[data-theme-vt='']::view-transition-old(root) {
+  animation: theme-fade-out var(--t-theme) var(--ease-std) both;
+}
+html[data-theme-vt='']::view-transition-new(root) {
+  animation: theme-fade-in var(--t-theme) var(--ease-std) both;
+}
+/* 圆擦那条：新旧两层都不挂 opacity 动画，露多少全交给 clip-path */
+html[data-theme-vt='wipe']::view-transition-old(root) {
+  animation: none;
+  opacity: 1;
+}
+@keyframes theme-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes theme-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+/* 动效关掉：不留动画，颜色立即到位（"关"档只留颜色与透明度，这里连透明度也收掉） */
+:root[data-motion='off'][data-theme-vt]::view-transition-old(root),
+:root[data-motion='off'][data-theme-vt]::view-transition-new(root) {
+  animation-duration: 1ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme-vt]::view-transition-old(root),
+  html[data-theme-vt]::view-transition-new(root) {
+    animation-duration: 1ms;
+  }
+}
+/* 圆擦那条的新层：不挂 opacity 动画 —— 露多少由 clip-path 决定。
+   两层都挂动画的话，圆还没擦到的地方已经被淡进来一半，看着是"化开"不是"擦开"。 */
+html[data-theme-vt='wipe']::view-transition-new(root) {
+  animation: none;
+  opacity: 1;
+}
+
+/* 指针跟随高光删了。
+   它是一层跟着鼠标走的径向渐变，用的是 --primary（高彩度蓝）15%，
+   铺在卡片的圈角框里 —— 就是那圈蓝色光晕。用户提了三次，
+   前两次我都改成了侧栏，改错地方了。 */
+
+/* 圆角加载条 */
+.loader-bar {
+  height: 6px;
+  border-radius: var(--r-full);
+  background: var(--btn-regular-bg);
+  overflow: hidden;
+}
+.loader-bar__fill {
+  height: 100%;
+  border-radius: var(--r-full);
+  background: var(--primary);
+  transition: width var(--t-transition) var(--ease-std);
+}
+
+/* 标签 / 徽章 */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  background: var(--btn-regular-bg);
+  color: var(--btn-content);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.rule { height: 1px; background: var(--line-divider); border: 0; margin: 0; }
+
+.blinds {
+  background-image: repeating-linear-gradient(
+    90deg, var(--primary) 0 6px, transparent 6px 14px);
+  opacity: 0.5;
+}
+
+/* —— 新拟态（只给"能按下去"的少数控件）—— */
+.neu     { box-shadow: var(--shadow-neu-out); background: var(--card-bg); }
+.neu--in { box-shadow: var(--shadow-neu-in); }
+
+/* ============================================================
+   胶囊导航 + 滑动指示器（lin-xin 实测）
+   ============================================================ */
+.pill-nav {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: var(--r-full);
+  background: var(--surface-2);
+  border: 1px solid var(--line-divider);
+}
+.pill-nav__item {
+  position: relative;
+  z-index: 1;
+  padding: 7px 15px;
+  border: 0;
+  border-radius: var(--r-full);
+  background: transparent;
+  color: var(--content-meta);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--t-micro) var(--ease-std), transform var(--t-micro) var(--ease-std);
+}
+.pill-nav__item:hover { color: var(--deep-text); transform: translateY(var(--lift-nav)); }
+.pill-nav__item[aria-current='page'] { color: #fff; }
+.pill-nav__ind {
+  position: absolute;
+  top: 4px; bottom: 4px; left: 0;
+  border-radius: var(--r-full);
+  background: var(--primary);
+  transition: transform var(--t-enter) var(--ease-std), width var(--t-enter) var(--ease-std);
+  z-index: 0;
+}
+
+/* ============================================================
+   二级分区切换条
+   ============================================================ */
+.seg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  border: 1px solid var(--line-divider);
+}
+.seg__btn {
+  display: flex; flex-direction: column; gap: 1px;
+  padding: 8px 14px;
+  border: 0; border-radius: var(--r-md);
+  background: transparent; color: var(--content-meta);
+  font: inherit; text-align: left; cursor: pointer;
+  transition: background var(--t-micro) var(--ease-std),
+              color var(--t-micro) var(--ease-std),
+              transform var(--t-micro) var(--ease-std);
+}
+.seg__btn:hover { background: var(--surface-3); transform: translateY(var(--lift-nav)); }
+/* 按下：只压深一档底色（原来跟 `.btn` 一样缩到 0.95，字会抖）—— 见 `--press-scale` 那段说明 */
+.seg__btn:active { background: var(--rail-item-active); }
+.seg__btn[aria-current='page'] {
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  color: var(--primary-ink);
+}
+
+/* 空状态 */
+.empty {
+  display: grid; justify-items: center; align-content: center;
+  gap: 6px; padding: 40px 16px; text-align: center; color: var(--content-meta);
+}
+.empty b { color: var(--deep-text); font-size: 15px; }
+.empty span { font-size: 12.5px; }
+
+/* ============================================================
+   转场
+   两条路各走各的，别互相抢：
+     · 换主题 → 从按钮扩散的圆（JS 手动跑 clipPath，挂在 root 上）
+     · 换页面 → 内容区的进退场（挂在 --vt-page 这个具名组上）
+   所以 root 的默认动画一律关掉，页面那组只在导航期间才注册名字。
+   ============================================================ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+/* 只有导航期间才给内容区起名，否则切主题时它也会跟着滑一下 */
+html[data-nav='1'] .vt-page { view-transition-name: vt-page; }
+
+::view-transition-old(vt-page) {
+  animation: vt-page-out 200ms var(--ease-std) both;
+}
+::view-transition-new(vt-page) {
+  animation: vt-page-in 380ms var(--ease-std) both;
+}
+@keyframes vt-page-out {
+  to { opacity: 0; transform: translateY(-8px) scale(0.995); }
+}
+@keyframes vt-page-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.995); }
+}

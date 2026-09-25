@@ -1,0 +1,291 @@
+
+---- 一、养乐多 · 落点注册表 ----
+{
+ "实例": "页面自己那份",
+ "ids": [
+  "yaku:page",
+  "yaku:tmpl:body",
+  "yaku:tmpl:face",
+  "yaku:tmpl:hair",
+  "yaku:tmplcard"
+ ],
+ "落点": [
+  {
+   "id": "yaku:page",
+   "标记": "DIV",
+   "收什么": [
+    "fx",
+    "fxsub"
+   ],
+   "矩形": [
+    352,
+    274,
+    1659,
+    1101
+   ]
+  },
+  {
+   "id": "yaku:tmplcard",
+   "标记": "DIV",
+   "收什么": [
+    "fx",
+    "fxsub"
+   ],
+   "矩形": [
+    607,
+    365,
+    1244,
+    496
+   ]
+  },
+  {
+   "id": "yaku:tmpl:body",
+   "标记": "DIV",
+   "收什么": [
+    "fx",
+    "fxsub"
+   ],
+   "矩形": [
+    607,
+    365,
+    1244,
+    405
+   ]
+  },
+  {
+   "id": "yaku:tmpl:face",
+   "标记": "DIV",
+   "收什么": [
+    "fx",
+    "fxsub"
+   ],
+   "矩形": [
+    607,
+    411,
+    1244,
+    450
+   ]
+  },
+  {
+   "id": "yaku:tmpl:hair",
+   "标记": "DIV",
+   "收什么": [
+    "fx",
+    "fxsub"
+   ],
+   "矩形": [
+    607,
+    456,
+    1244,
+    496
+   ]
+  }
+ ]
+}
+
+---- 二、养乐多 · 模板那几格 ----
+[
+ {
+  "落点": "yaku:tmplcard",
+  "值": "未载入（拖 .fx 进来）",
+  "矩形": [
+   607,
+   365,
+   1244,
+   496
+  ]
+ },
+ {
+  "落点": "yaku:tmpl:body",
+  "值": "未载入（拖 .fx 进来）",
+  "矩形": [
+   607,
+   365,
+   1244,
+   405
+  ]
+ },
+ {
+  "落点": "yaku:tmpl:face",
+  "值": "未载入（拖 .fx 进来）",
+  "矩形": [
+   607,
+   411,
+   1244,
+   450
+  ]
+ },
+ {
+  "落点": "yaku:tmpl:hair",
+  "值": "未载入（拖 .fx 进来）",
+  "矩形": [
+   607,
+   456,
+   1244,
+   496
+  ]
+ }
+]
+
+---- 三、桌面端：把 .fx 拖到「身体」那一行上 ----
+{
+ "拖之前": [
+  "yaku:tmplcard=未载入（拖 .fx 进来）",
+  "yaku:tmpl:body=未载入（拖 .fx 进来）",
+  "yaku:tmpl:face=未载入（拖 .fx 进来）",
+  "yaku:tmpl:hair=未载入（拖 .fx 进来）"
+ ],
+ "拖之后": [
+  "yaku:tmplcard=mat_body.fx",
+  "yaku:tmpl:body=mat_body.fx",
+  "yaku:tmpl:face=未载入（拖 .fx 进来）",
+  "yaku:tmpl:hair=未载入（拖 .fx 进来）"
+ ],
+ "侧栏报错": [],
+ "页面提示": "身体的模板换成 mat_body.fx：4 个参数、0 个段。",
+ "读文本": [
+  "read_text_file D:\\养乐多包\\mat_body.fx"
+ ]
+}
+
+---- 四、桌面端：把 .fx 拖到「模板卡空白处」（该按文件名猜域） ----
+{
+ "模板格": [
+  "yaku:tmplcard=mat_body.fx",
+  "yaku:tmpl:body=mat_body.fx",
+  "yaku:tmpl:face=未载入（拖 .fx 进来）",
+  "yaku:tmpl:hair=mat_hair.fx"
+ ],
+ "侧栏报错": [],
+ "页面提示": "头发的模板换成 mat_hair.fx：4 个参数、0 个段。",
+ "读文本": [
+  "read_text_file D:\\别处\\mat_hair.fx"
+ ]
+}
+
+---- 五、桌面端：把 .fx 拖到这一页**别的空地方**（不指着那几行，该按文件名猜域） ----
+{
+ "落点": {
+  "x": 432,
+  "y": 1103
+ },
+ "页矩形": [
+  352,
+  274,
+  1659,
+  1143
+ ],
+ "模板格": [
+  "yaku:tmplcard=mat_body.fx",
+  "yaku:tmpl:body=mat_body.fx",
+  "yaku:tmpl:face=mat_face.fx",
+  "yaku:tmpl:hair=mat_hair.fx"
+ ],
+ "侧栏报错": [],
+ "页面提示": "脸的模板换成 mat_face.fx：4 个参数、0 个段。（域是按文件名猜的 —— 不对就拖到具体那一行上）",
+ "读文本": [
+  "read_text_file D:\\别处\\mat_face.fx"
+ ]
+}
+
+---- 五之二、桌面端：把 .fx 拖到窗口最边上（应用侧栏，谁都不接） ----
+{
+ "侧栏报错": [
+  "没人接.fx 没落在能接它的地方 —— 拖到有落点的位置，或用那一处的「选…」按钮"
+ ],
+ "页面提示": "脸的模板换成 mat_face.fx：4 个参数、0 个段。（域是按文件名猜的 —— 不对就拖到具体那一行上）"
+}
+
+---- 六、桌面端：把 .png 拖到模板行上（该说清只收 .fx / .fxsub） ----
+{
+ "模板格": [
+  "yaku:tmplcard=mat_body.fx",
+  "yaku:tmpl:body=mat_body.fx",
+  "yaku:tmpl:face=mat_face.fx",
+  "yaku:tmpl:hair=mat_hair.fx"
+ ],
+ "侧栏报错": [
+  "一张图.png 不是这个落点要的文件（只收 .fx / .fxsub）"
+ ],
+ "页面提示": "脸的模板换成 mat_face.fx：4 个参数、0 个段。（域是按文件名猜的 —— 不对就拖到具体那一行上）"
+}
+
+---- 七、HTML5：把 .fx 拖到模板行上（浏览器拿不到真路径，该明确报错） ----
+{
+ "派发": {
+  "x": 926,
+  "y": 476,
+  "事件": [
+   "dragenter",
+   "dragover",
+   "drop"
+  ]
+ },
+ "模板格": [
+  "yaku:tmplcard=mat_body.fx",
+  "yaku:tmpl:body=mat_body.fx",
+  "yaku:tmpl:face=mat_face.fx",
+  "yaku:tmpl:hair=mat_hair.fx"
+ ],
+ "侧栏报错": [
+  "拖进来的模板.fx 没有真实路径，这个位置只能拖桌面端的文件"
+ ],
+ "页面提示": "脸的模板换成 mat_face.fx：4 个参数、0 个段。（域是按文件名猜的 —— 不对就拖到具体那一行上）"
+}
+
+---- 八、对照 · Ray 配置开关页：落点注册表 ----
+{
+ "实例": "页面自己那份",
+ "ids": [
+  "ray.mat:card",
+  "ray.mat:page",
+  "ray:root"
+ ],
+ "落点": [
+  {
+   "id": "ray:root",
+   "标记": "DIV",
+   "收什么": "（图片）",
+   "矩形": [
+    367,
+    285,
+    841,
+    325
+   ]
+  },
+  {
+   "id": "ray.mat:card",
+   "标记": "DIV",
+   "收什么": [
+    "fx",
+    "fxsub"
+   ],
+   "矩形": [
+    352,
+    688,
+    1669,
+    790
+   ]
+  },
+  {
+   "id": "ray.mat:page",
+   "标记": "DIV",
+   "收什么": [
+    "fx",
+    "fxsub"
+   ],
+   "矩形": [
+    352,
+    596,
+    1669,
+    688
+   ]
+  }
+ ]
+}
+
+---- 九、对照 · Ray：把 .fx 拖到材质卡空白处 ----
+{
+ "底栏": "材质.fx",
+ "侧栏报错": []
+}

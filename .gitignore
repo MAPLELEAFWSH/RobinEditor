@@ -1,0 +1,45 @@
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# 研究用的第三方包与样本，放在仓库外。这条是备用，防以后初始化 git 时被扫进来。
+# 理由与边界见 docs/来源与边界.md
+参考工具样本/
+
+# ---- 下面这些是 2026-09-25 初始化 git 时按体积与版权补的 ----
+
+# Rust/Tauri 构建产物。`src-tauri/target` 一个目录就 11 GB
+/src-tauri/target/
+/src-tauri/gen/schemas/
+
+# 打包产物：exe/msi/dll 十几 MB 且每次构建都变，不进仓库。
+# `dist/` 里的 `.txt`（说明、补充）是给用户看的文字，要留。
+/dist/*.exe
+/dist/*.msi
+/dist/*.dll
+
+# 探针跑出来的**临时件**：
+#   chrome-audit     CDP 探针用的 Chrome 用户目录，190 MB
+#   ilmcheck/data    ⑤ 那套探针转储的原始像素（12 × 16 MB）。
+#                    **内容来自第三方素材，不许发布**；
+#                    `tmp/ilmcheck/run.mjs` 在缺 `sizes.json` 时会自己跳过这一套。
+#   其它            日志、一次性截图、诊断输出
+/tmp/chrome-audit/
+/tmp/ilmcheck/data/
+/tmp/uitest/
+
+# `tmp/素材-*.png` 是从**语料复制**过来的游戏贴图（`probe-②原分辨率.mjs` 和
+# `量-②真图编码.mjs` 要用）。**第三方素材，不随仓库发布。**
+# 要在本地跑那两条探针，自己从语料拷一份到 `tmp/素材-②真图.png`。
+/tmp/素材-*.png
+
+# 涟漪探针的截图：一张 1 MB、共约 8 MB，跑一次 `tools/cdp-ripple-probe.mjs` 就重新出。
+# `rects.json`（量出来的矩形）留着，那才是记录。
+/tmp/ripple/*.png

@@ -1,0 +1,657 @@
+/* ============================================================
+   工作台公共件
+   ============================================================
+   七个功能页共用这些。放全局是因为它们在各页之间必须长得一样 ——
+   每个功能各写一套滑杆和图片槽，用起来就会像七个不同的软件。
+
+   命名跟 tokens.css 一致：块用 __ 接元素，状态用 -- 接修饰。
+   ============================================================ */
+
+/* ---------------- 通用拖放落点 ----------------
+   `dropzones.svelte.ts` 往元素上加 .is-drop。放全局是因为那个类由脚本加，
+   组件里 scoped 的样式匹配不到。
+
+   **别再要求 `[data-drop-target]`**：那个属性全库只有 ⑥ 和 ③ 的个别落点写了，
+   其余落点（① 四个分栏、⑦ 批量 / 批量提取、⑤ 配对、⑨ 的 pmm/emm…）都没写 ——
+   于是类加上了、样式一条都匹配不到，**拖上去一点都不亮**，用户看不出会落到哪儿
+   （2026-09-25 只读审查量出来的）。`is-drop` 只会被 `noticeForward` 加到**已注册的落点**上，
+   所以放宽到 `.is-drop` 是安全的。 */
+.is-drop {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+  background: color-mix(in oklab, var(--primary) 10%, transparent);
+}
+
+/* 关着的抽屉被 `translateX(100%+16px)` 移到视口右边**外面** —— 它虽然看不见，
+   却会把整个文档撑出横向滚动（实测 `htmlScroll 1939 > 视口 1707`），各页宽度就跟着漂，
+   体检时同一页在"展开/未展开"两种状态下会一个过一个不过。
+   在根上裁掉横向溢出即可：`clip` 不产生滚动容器，所以底栏那种 `sticky` 不受影响。 */
+html, body { overflow-x: clip; }
+
+/* ---------------- 顶部一句话（设计准则 §一） ----------------
+   进页面第一眼就知道"这一页干什么"，不用去点「说明」。全站同一个位置、同一套字号：
+   主区最上面一行，左图标 + 一句话，不是卡片、不占宽度。 */
+.topline {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-md);
+  color: var(--body-text);
+  min-width: 0;
+}
+.topline svg { flex: none; color: var(--primary); position: relative; top: 2px; }
+.topline > span { min-width: 0; overflow-wrap: anywhere; }
+
+/* ---------------- 折叠卡：收起就**真的收起** ----------------
+   **实测踩过（2026-09-23）**：`<details>` 收起时，浏览器是靠 UA 样式把
+   "除 summary 以外的子节点"设成 `display:none` 的 —— 而 **UA 规则永远输给作者规则**。
+   本工程给折叠卡的正文设过 `display:flex`（`.fold__body` / `.more__body`），
+   于是那些卡**看起来收起了、其实正文一直画在页面上**（量到：details 自己 46px 高、
+   里面的表还有 91px 高）。折叠等于没生效。
+   作者这边补一条同义的规则（`!important` 是必要的：对手就是作者自己的 `display:flex`）。 */
+details:not([open]) > *:not(summary) {
+  display: none !important;
+}
+
+/* ---------------- 版面：主区 + 侧栏 ---------------- */
+
+.wb {
+  display: grid;
+  /* 规范 §十一：**中区＝整幅**。默认只有一列 —— 除了左边的导航，没有别的列在吃宽度。
+     参数是**浮层抽屉**（见下面 `.wb__side`），不占栅格。 */
+  grid-template-columns: minmax(0, 1fr);
+  /* 一行铺满整格高度：`.panel-host` 被撑到一屏高时，中区要跟着长高，底栏才落得到底。
+     容器高度是 auto 时 `1fr` 就等于 `auto`，所以内容更高的页面一点不受影响。 */
+  grid-template-rows: 1fr;
+  gap: 14px;
+  align-items: start;
+}
+/* 用户自己点了「钉住」才让参数占一列（≤18rem，`--side-w` 上限就是 18rem） */
+html.side-pin .wb {
+  grid-template-columns: minmax(0, 1fr) minmax(var(--side-min, 12rem), var(--side-w, 18rem));
+}
+/* `align-self: stretch` 只给中区，不给抽屉 —— 抽屉钉住时是贴着自己内容高的列，
+   跟着拉满会变成一条通到屏幕底的空柱子。 */
+.wb__main { min-width: 0; display: flex; flex-direction: column; gap: 12px; align-self: stretch; }
+/* 底栏（`.wb__acts`，中区最后一个）推到中区底部。中区高度 = 内容高时 `auto` 不起作用，
+   所以内容比一屏长的页面位置一模一样。 */
+.wb__main > .wb__acts:last-child { margin-top: auto; }
+.wb__side {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  /* **浮层抽屉**：从右侧滑出、盖在中区之上、默认收起（收起＝完全不占地方）。
+     钉住时改成"占一列"（static/sticky），那时才吃宽度。 */
+  position: fixed;
+  top: calc(var(--navbar-height) + 8px);
+  /* 让开两样：尾栏 30px，以及本页底栏那条写盘条（`--bbar-h`，AppShell 量的，
+     没底栏的页面就是 0）。少让了底栏，抽屉最后一行会被压在写盘条底下点不到。 */
+  bottom: calc(var(--status-h, 30px) + var(--bbar-h, 0px) + 8px);
+  right: 8px;
+  width: min(var(--side-w, 18rem), calc(100vw - var(--rail-width) - 24px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  z-index: var(--z-drawer, 20);
+  box-shadow: var(--shadow-lg, 0 12px 40px rgba(0, 0, 0, 0.28));
+  transform: translateX(calc(100% + 16px));
+  transition: transform var(--t-panel, 220ms) var(--ease-std);
+}
+html.side-open .wb__side { transform: translateX(0); }
+html.side-pin .wb__side {
+  position: sticky;
+  top: calc(var(--bar-h) + 12px);
+  bottom: auto;
+  right: auto;
+  width: auto;
+  overflow: visible;
+  z-index: auto;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+/* ---------------- 主操作条 ----------------
+   页面上那**唯一**的主按钮待的地方（规范 §10.3「每页恰好 1 个」+ §一「底栏放唯一主按钮」）。
+
+   **不许再放在 `.wb__side` 里** —— 抽屉默认收起、被 `translateX(100%+16px)` 停在视口外，
+   主按钮跟着一起看不见。实测（1707×1067，`tools/ui-audit.mjs --all`）：
+   `channels` 九个分区 / `ilm` / `mstoon` / `ikclut` 三个分区
+   报的都是「可见主按钮 0 个」—— 用户进页面根本没有可点的那一下。
+   放在主区最后一行的位置，抽屉开着关着它都在。
+
+   用 `sticky` 吸在主区底部（同 ⑥ 的底栏），不抢 `.wb` 栅格的行。
+
+   **B5（2026-09-23）**：底部偏移要**让开应用那条状态栏**（`--status-h`，fixed bottom:0），
+   层级要在它之上 —— 原来是 `bottom: 0; z-index: 2`，写盘条的下半截正好压在状态栏底下，
+   主按钮点不着（用户实测：`elementFromPoint` 命中的是状态栏）。 */
+.wb__acts {
+  position: sticky;
+  bottom: var(--status-h, 30px);
+  /* 底层 = 尾栏 60 + 5。必须比抽屉（`--z-drawer` 20）高：抽屉能盖卡片，不能盖写盘条。 */
+  z-index: calc(var(--z-status, 60) + 5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--line-divider);
+  border-radius: var(--r-lg);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+}
+/* 主按钮靠右、其余留在左边（跟 ⑥ 底栏一个排法） */
+.wb__acts > .btn--primary { margin-left: auto; }
+.wb__acts > .btn--primary + .btn { margin-left: 0; }
+.wb__acts .mini { margin: 0; }
+
+/* 拖拽把手：贴在抽屉左边缘（钉住时贴在那一列的左边缘） */
+.wb__grip {
+  position: absolute;
+  left: -7px;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: col-resize;
+  border-radius: var(--r-full);
+  background: transparent;
+  transition: background var(--t-micro) var(--ease-std);
+  touch-action: none;
+}
+.wb__grip:hover, .wb__grip.is-drag { background: color-mix(in oklab, var(--primary) 45%, transparent); }
+
+/* 侧栏里的分组：一条细线隔开，标题小一号
+   —— 下面这些一律加 `.wb` 前缀限定在工作台里。
+   起因：侧边栏的导航分组也用了 `.grp` 这个类名，不限定的话
+   `.grp { padding: 12px 16px }` 会套到侧栏上，52px 的收窄栏里
+   分组按钮的 width:100% 只剩 3.33px —— 图标看得见但点不着。
+   设置面板同理，它自带一套 `.row` / `.range`，也会被这里盖掉。 */
+.wb .grp { padding: 12px 16px; }
+.wb .grp + .grp { border-top: 1px solid var(--line-divider); }
+.wb .grp__t {
+  margin: 0 0 10px;
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--content-meta);
+}
+.wb .grp > .row + .row { margin-top: 9px; }
+
+@media (max-width: 1180px) {
+  /* 窄屏：抽屉更窄、钉住这一档直接不给（省得挤成条）；栅格本来就只有一列 */
+  html.side-pin .wb { grid-template-columns: minmax(0, 1fr); }
+  html.side-pin .wb__side { position: fixed; top: calc(var(--navbar-height) + 8px); bottom: calc(var(--status-h, 30px) + 8px); right: 8px; width: min(var(--side-w, 18rem), calc(100vw - 24px)); overflow-y: auto; box-shadow: var(--shadow-lg, 0 12px 40px rgba(0, 0, 0, 0.28)); }
+  .wb__grip { display: none; }
+}
+
+/* 「宽预览」：把侧栏那一列收掉，主区吃满窗口宽度。
+   1600 档的屏幕按 150% 缩放之后 CSS 视口只有 1707px，`1fr + 21rem` 分完预览台只剩约 940px；
+   调色、调贴图这类活要看得清，所以给一个"把侧栏挪下去"的开关。
+   类挂在 html 上（Preview 组件负责），因为这条规则管的是别的容器的布局。 */
+html.pv-wide .wb { grid-template-columns: minmax(0, 1fr); }
+html.pv-wide .wb__side {
+  position: static;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  align-items: start;
+  gap: 0 14px;
+}
+
+/* ---------------- 行：标题 + 控件 + 读数 ---------------- */
+
+.wb .row {
+  display: grid;
+  /* 第二列原本是 `auto`：里面放一条长路径时它**不肯变窄**，直接把整行顶出卡片。
+     写成 `minmax(0, auto)` 才允许它被压缩（配合 `.row__v` 的断行）。 */
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+  align-items: center;
+  gap: 6px 10px;
+}
+/* 控件独占第二行时，跨两列铺开 */
+.wb .row--stack { grid-template-columns: minmax(0, 1fr); }
+.wb .row__k { font-size: var(--fs-xs); color: var(--body-text); }
+.wb .row__v {
+  font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--content-meta);
+  text-align: right;
+  /* 这里常放路径：断行 + 能让父容器把它压窄 */
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.wb .row__hint {
+  grid-column: 1 / -1;
+  font-size: var(--fs-2xs);
+  line-height: var(--lh-sm);
+  color: var(--content-meta);
+}
+.wb .row select,
+.wb .row input[type='text'],
+.wb .row input[type='number'] {
+  grid-column: 1 / -1;
+}
+/* 数值框（`NumBox`）：它该待在"读数"那一格（标签右边），**不要独占一行** ——
+   上面那条规则是给"整行一个输入框"用的，数值框跟滑条成对出现，占了整行会把行高翻倍。
+   选择器写到这么长是为了压过上面那条 `(0,2,1)`。 */
+.wb .row > .nb,
+.wb .row input[type='number'].nb__i {
+  grid-column: auto;
+  justify-self: end;
+}
+
+/* ---------------- 控件 ---------------- */
+
+.wb .range {
+  -webkit-appearance: none;
+  appearance: none;
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 18px;
+  background: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+.wb .range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: var(--r-full);
+  background: var(--line-color);
+}
+.wb .range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-press) var(--ease-std);
+}
+.wb .range:active::-webkit-slider-thumb { transform: scale(var(--press-scale)); }
+.wb .range:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+.wb .range:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* 侧栏里那排窄的：不占满，读数跟在后头 */
+.wb .range--inline { grid-column: auto; width: 8rem; margin-left: auto; }
+
+input[type='number'],
+input[type='text'],
+select {
+  font: inherit;
+  font-size: var(--fs-xs);
+  color: var(--deep-text);
+  background: var(--surface-2);
+  border: 1px solid var(--line-color);
+  border-radius: var(--r-md);
+  padding: 5px 8px;
+  min-width: 0;
+  width: 100%;
+}
+input[type='number']:focus-visible,
+input[type='text']:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -1px;
+}
+input[type='number'] { font-variant-numeric: tabular-nums; }
+
+/* 勾选：自己画，系统那个在深色下太亮 */
+.chk {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-xs);
+  color: var(--body-text);
+  cursor: pointer;
+  user-select: none;
+}
+.chk input { position: absolute; opacity: 0; width: 0; height: 0; }
+.chk__box {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--surface-2);
+  display: grid;
+  place-items: center;
+  transition: background var(--t-micro) var(--ease-std),
+              border-color var(--t-micro) var(--ease-std);
+}
+.chk input:checked + .chk__box {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.chk input:checked + .chk__box::after {
+  content: '';
+  width: 8px;
+  height: 4px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) translateY(-1px);
+}
+.chk input:focus-visible + .chk__box { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* 分段选择。跟 .seg 不同：这个是表单控件，不是导航 */
+.pick { display: flex; gap: 2px; background: var(--surface-3); border-radius: var(--r-md); padding: 2px; }
+/* 抽屉只有 12~18rem 宽：一排按钮（每颗还可能带半句说明）在里头**必须能换行**，
+   否则 `nowrap` 把抽屉撑出横向滚动条 —— 体检在 ⑤ 上抓到过（424 > 276）。
+   这条只作用在抽屉里，页面上那一排按钮的观感不变。 */
+.wb__side .pick { flex-wrap: wrap; }
+.wb__side .pick__b { flex: 1 1 auto; min-width: 0; }
+.pick__b {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--content-meta);
+  font: inherit;
+  font-size: var(--fs-2xs);
+  padding: 4px 8px;
+  border-radius: calc(var(--r-md) - 2px);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--t-micro) var(--ease-std), color var(--t-micro) var(--ease-std);
+}
+.pick__b:hover { color: var(--deep-text); }
+/* **选中态不加粗**（2026-09-23 改）。原来这里写着 `font-weight: 600`：
+   选中那颗的文字被撑宽 3.16px，而本行是 `flex: 1` + `white-space: nowrap` ——
+   整排要重新排版，四颗按钮**连同文字一起横挪 3.15px**，点一次跳一下、点回来再跳一下。
+   用户报的"点击时按钮之间文字的冲突抽搐"就是它（实测数字见 `PROGRESS.md` 本轮）。
+   选中靠底色 + 深色文字区分（本来就有），再补一条 `inset` 描边给一点边界感 ——
+   `inset` 阴影**不参与布局**，所以点哪颗都不会挪。 */
+.pick__b[aria-pressed='true'] {
+  background: var(--card-bg);
+  color: var(--btn-content);
+  box-shadow: inset 0 0 0 1px var(--line-divider);
+}
+
+/* ---------------- 图片槽 ---------------- */
+
+.slots { display: grid; gap: 10px; }
+.slots--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.slots--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.slots--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) { .slots--3, .slots--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .slots--2, .slots--3, .slots--4 { grid-template-columns: minmax(0, 1fr); } }
+
+.slot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  text-align: center;
+  transition: border-color var(--t-micro) var(--ease-std),
+              background var(--t-micro) var(--ease-std),
+              box-shadow var(--t-micro) var(--ease-std);
+}
+
+/* 从窗口外拖东西悬在这个槽上。
+   只给边框换个色在浅底卡片上几乎看不出来（原来就是这样），所以三样一起上：
+   外圈光环 + 实线主色边 + 顶上一道光带。环和光带都是为了"一眼看见落点"。 */
+.slot--hot {
+  border-style: solid;
+  border-color: var(--primary);
+  background: color-mix(in oklab, var(--primary) 8%, var(--surface-2));
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 26%, transparent);
+}
+/* 光带：从中间往两边展开。只有 scaleX 和透明度，没有弹性、没有回弹 */
+.slot--hot::after {
+  content: '';
+  position: absolute;
+  inset: -1px -1px auto;
+  height: 2px;
+  border-radius: var(--r-full);
+  background: var(--primary);
+  animation: slot-beam var(--t-micro) var(--ease-std) both;
+}
+@keyframes slot-beam {
+  from { transform: scaleX(0.2); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+/* 空槽里的提示字跟着亮起来，让槽自己也在说"放这儿" */
+/* 空槽里的提示字跟着亮起来，让槽自己也在说"放这儿"。
+   **不带 `:global()`**：wb.css 是全局样式表（不是 Svelte 组件里的 scoped style），
+   写 `:global(...)` 两边都不认（lightningcss 打包时警告 "not recognized as a valid pseudo-class"），
+   于是这两条规则**从来没生效过** —— 拖图悬停到槽上时提示字不亮。2026-09-24 修。 */
+.slot--hot .slot__hit b { color: var(--primary-ink); font-weight: 700; }
+.slot--hot .slot__hit { color: var(--primary-ink); }
+
+.slot--full { border-style: solid; border-color: var(--line-divider); }
+
+.slot__hit {
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  min-height: 96px;
+  border: 0;
+  background: transparent;
+  color: var(--content-meta);
+  font: inherit;
+  cursor: pointer;
+  border-radius: var(--r-md);
+}
+.slot__hit b { font-size: var(--fs-xs); color: var(--deep-text); }
+.slot__hit span { font-size: var(--fs-2xs); }
+
+/* 棋盘格，看带透明的贴图时才知道哪儿是空的 */
+.slot__img {
+  width: 100%;
+  height: 112px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  border-radius: var(--r-md);
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, rgba(0, 0, 0, 0.09) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0, 0, 0, 0.09) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.09) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.09) 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+}
+.slot__name {
+  font-size: var(--fs-2xs);
+  color: var(--deep-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.slot__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: var(--fs-2xs);
+  color: var(--content-meta);
+  font-variant-numeric: tabular-nums;
+}
+.slot__ops { display: flex; gap: 4px; flex: none; }
+.slot__ops button {
+  border: 0;
+  background: var(--btn-regular-bg);
+  color: var(--btn-content);
+  font: inherit;
+  font-size: var(--fs-2xs);
+  padding: 2px 7px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background var(--t-micro) var(--ease-std), transform var(--t-press) var(--ease-std);
+}
+.slot__ops button:hover { background: var(--btn-regular-bg-hover); }
+/* 按下只变底色（原来缩到 0.95，带字的按钮会抖 —— 见 tokens.css 里 `--press-scale` 那段） */
+.slot__ops button:active { background: var(--btn-regular-bg-active); }
+
+/* 分量小标签（R/G/B/A 那种） */
+.chip {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: var(--r-sm);
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--btn-regular-bg);
+  color: var(--btn-content);
+}
+.chip--r { background: color-mix(in oklab, #d9534f 26%, var(--btn-regular-bg)); }
+.chip--g { background: color-mix(in oklab, #5cb85c 26%, var(--btn-regular-bg)); }
+.chip--b { background: color-mix(in oklab, #4a7fd0 26%, var(--btn-regular-bg)); }
+.chip--a { background: color-mix(in oklab, #9a8f86 26%, var(--btn-regular-bg)); }
+
+/* ---------------- 预览台 ---------------- */
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  /* 预览台给高一点：2560×1600@150% 这种屏 CSS 视口只有 1067 高，260px 太憋屈 */
+  min-height: min(50vh, 520px);
+  max-height: 74vh;
+  padding: 14px;
+  border-radius: var(--r-lg);
+  background-color: var(--surface-2);
+  background-image:
+    linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  overflow: auto;
+}
+/* 缩略图默认**平滑**：一直 pixelated 是"糊 + 锯齿"的来源（放大时才有意义，
+   那时用 `.px` 单开）。预览台组件（Preview.svelte）里是同一套规则 */
+.stage img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: auto;
+  border-radius: var(--r-sm);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+.stage img.px { image-rendering: pixelated; }
+.stage__tag {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  padding: 2px 7px;
+  border-radius: var(--r-sm);
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  font-size: var(--fs-2xs);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 左右对比 */
+.stage--split { grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.stage__col { display: grid; gap: 6px; justify-items: center; min-width: 0; width: 100%; }
+.stage__cap { font-size: var(--fs-2xs); color: var(--content-meta); }
+
+/* ---------------- 提示条 ---------------- */
+
+.note {
+  display: flex;
+  gap: 9px;
+  padding: 10px 12px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-divider);
+  background: var(--surface-2);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-md);
+  color: var(--body-text);
+}
+/* 这是普通 .css，不是 .svelte 的 <style> —— 写 `:global(svg)` 无效，
+   lightningcss 会报 'global' is not a valid pseudo-class，浏览器整条规则丢掉。
+   这里直接写后代选择器就是全局的。 */
+.note svg { flex: none; margin-top: 2px; color: var(--primary); }
+/* 中间的正文（就是完成提示那一块，里面会塞路径）：**必须能压窄、必须能断行**。
+   不写 `min-width:0` 时，flex 子项按内容最小宽度撑开 —— 一条长路径就把提示条顶出卡片、
+   跟旁边的字叠在一起（用户实测报的就是这个）。 */
+.note > div { min-width: 0; overflow-wrap: anywhere; }
+.note--warn { border-color: color-mix(in oklab, var(--warn) 42%, var(--line-divider)); }
+.note--warn svg { color: var(--warn); }
+.note--ok { border-color: color-mix(in oklab, var(--ok) 42%, var(--line-divider)); }
+.note--ok svg { color: var(--ok); }
+.note b { color: var(--deep-text); }
+
+/* ---------------- 表格 / 清单 ---------------- */
+
+.kv { display: flex; flex-direction: column; gap: 6px; }
+.kv__r {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 右边那条长路径断行之后不会把左边标签挤出去 */
+  gap: 6px 10px;
+  font-size: var(--fs-xs);
+}
+.kv__r span:first-child { color: var(--content-meta); }
+.kv__r span:last-child { color: var(--deep-text); font-variant-numeric: tabular-nums; }
+/* 右列常放路径/文件名：允许断行，并且不许它把整行顶宽 */
+.kv__r span { min-width: 0; overflow-wrap: anywhere; }
+
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; max-height: 22rem; overflow: auto; }
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-2xs);
+  color: var(--body-text);
+  font-variant-numeric: tabular-nums;
+}
+.list li:nth-child(odd) { background: var(--surface-2); }
+/* 清单项里也常放路径：子项要能被压窄，长串要能断（用户报过"路径跟旁边的字叠在一起"） */
+.list li > * { min-width: 0; overflow-wrap: anywhere; }
+.list li b { color: var(--deep-text); font-weight: 600; }
+.list__sp { margin-left: auto; color: var(--content-meta); }
+
+/* 数字序列的展示：把 0-1 的值画成一条，ramp 和曲线都用 */
+.strip { display: flex; height: 22px; border-radius: var(--r-sm); overflow: hidden; border: 1px solid var(--line-divider); }
+.strip i { flex: 1; }
+
+/* 一行按钮，靠右 */
+.acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.acts--end { justify-content: flex-end; }
+.acts__sp { margin-left: auto; }
+
+/* 通用小字 */
+.mini { font-size: var(--fs-2xs); line-height: var(--lh-sm); color: var(--content-meta); }
+/* `.mono` 在本工程里就是"路径 / 代码 / 数值"的意思。**一律允许断行**：
+   短串完全看不出差别，长路径就不会再撑破卡片、跟旁边的字叠在一起（用户实测报过两处：
+   ⑥ 的完成提示、以及根路径那一行）。`min-width:0` 是给 flex/grid 子项用的 —— 不写它，
+   子项默认按内容最小宽度撑开，父容器再窄也压不下去。 */
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
+}
+.nowrap { white-space: nowrap; }
+/* 但**路径不许被 `.nowrap` 挡住换行** —— 长路径挂上它就会溢出。
+   所以要挡换行的短标签（`158 条`、`已唯一找到` 那种）保持 nowrap，是路径就让它断。 */
+.nowrap.mono { white-space: normal; }
+.scroll-y { overflow-y: auto; }
+
+/* 状态标签。以前只在功能页和关于页各写一份（scoped），几个功能都要用，收到这儿来 */
+.tag--ok { background: var(--rail-item-bg); color: var(--primary-ink); gap: 4px; }
+.tag--soon { background: var(--surface-3); }
+.tag--warn { background: color-mix(in oklab, var(--warn) 18%, var(--surface-3)); color: var(--warn); }
+
+/* 面板里的小标题。跟 .grp__t 区分：那个是侧栏分组头，这个是正文标题 */
+.h3 { margin: 0 0 10px; font-size: var(--fs-md); font-weight: 650; color: var(--deep-text); }
+.pad { padding: 16px; }
+.bad { color: var(--danger); }
+.good { color: var(--ok); }

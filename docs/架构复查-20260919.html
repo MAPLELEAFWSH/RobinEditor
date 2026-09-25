@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RobinEditor 架构复查</title>
+    <style>
+      /* 这份报告是全自包含的：这台机器上 cdn.tailwindcss.com 与 cdn.jsdelivr.net
+         都连不通（实测超时），挂着 CDN 的版本打开就是一堆没样式的字。
+         所以样式全部内联，图全部手绘 SVG —— HTML-REPORT.md 本来也说手绘更有编辑感。 */
+      :root {
+        --ink: #0f172a;
+        --mut: #64748b;
+        --line: #e2e8f0;
+        --bg: #fafaf9;
+        --card: #ffffff;
+        --ok: #059669;
+        --warn: #d97706;
+        --spec: #64748b;
+        --leak: #dc2626;
+        --accent: #4f46e5;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; background: var(--bg); color: var(--ink);
+        font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+        line-height: 1.65; font-size: 15px;
+      }
+      main { max-width: 1000px; margin: 0 auto; padding: 56px 28px 96px; }
+      h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: -0.01em; }
+      h2 { font-size: 21px; margin: 0 0 4px; letter-spacing: -0.01em; }
+      .meta { color: var(--mut); font-size: 14px; }
+      .legend { display: flex; gap: 22px; flex-wrap: wrap; margin: 22px 0 0; font-size: 12.5px; color: var(--mut); }
+      .legend i { display: inline-block; width: 26px; vertical-align: middle; margin-right: 7px; }
+      .legend .m { height: 15px; border: 1.5px solid var(--ink); background: #fff; }
+      .legend .d { height: 15px; border: 1.5px solid var(--ink); background: #fff; border-radius: 3px; box-shadow: 3px 3px 0 #0f172a22; }
+      .legend .deep { height: 15px; background: linear-gradient(135deg, #0f172a, #334155); border-radius: 3px; }
+      .legend .lk { height: 0; border-top: 2px solid var(--leak); }
+      .legend .sm { height: 0; border-top: 2px dashed var(--accent); }
+
+      article {
+        background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+        padding: 26px 28px 30px; margin-top: 34px;
+      }
+      .badges { display: flex; gap: 9px; align-items: center; margin: 12px 0 16px; flex-wrap: wrap; }
+      .badge { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+               padding: 3px 9px; border-radius: 999px; }
+      .b-strong { background: #ecfdf5; color: var(--ok); border: 1px solid #a7f3d0; }
+      .b-worth  { background: #fffbeb; color: var(--warn); border: 1px solid #fde68a; }
+      .b-spec   { background: #f1f5f9; color: var(--spec); border: 1px solid #cbd5e1; }
+      .tag { font-size: 11.5px; color: var(--mut); border: 1px solid var(--line);
+             padding: 2px 8px; border-radius: 999px; }
+
+      .files { font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; color: #334155;
+               background: #f8fafc; border: 1px solid var(--line); border-radius: 7px;
+               padding: 11px 14px; margin: 0 0 20px; }
+      .files b { color: var(--ink); }
+
+      .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 0 20px; }
+      .ba figure { margin: 0; border: 1px solid var(--line); border-radius: 10px; background: #fcfcfd; padding: 12px; }
+      .ba figcaption { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+                       color: var(--mut); margin-bottom: 9px; font-weight: 700; }
+      svg { display: block; width: 100%; height: auto; }
+
+      .ps { display: grid; grid-template-columns: 78px 1fr; gap: 6px 12px; font-size: 14.5px; margin: 0 0 16px; }
+      .ps dt { color: var(--mut); font-size: 12.5px; padding-top: 3px; }
+      .ps dd { margin: 0; }
+      ul.wins { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 7px; }
+      ul.wins li { font-size: 12.5px; background: #eef2ff; color: #3730a3; border-radius: 6px; padding: 4px 10px; }
+      .adr { margin-top: 14px; font-size: 13px; background: #fffbeb; border: 1px solid #fde68a;
+             border-left: 3px solid var(--warn); border-radius: 6px; padding: 9px 13px; color: #78350f; }
+      .top { background: linear-gradient(135deg, #0f172a, #1e293b); color: #f8fafc; border: 0; }
+      .top h2 { color: #fff; }
+      .top a { color: #a5b4fc; }
+      .now { color: #94a3b8; font-size: 13.5px; }
+      svg text { font-family: ui-monospace, Consolas, monospace; }
+      @media (max-width: 760px) { .ba { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>RobinEditor 架构复查</h1>
+        <p class="meta">SvelteKit 2 + Svelte 5 + Tauri 2 · 复查日期 2026-09-19 · 判据是删除测试</p>
+        <div class="legend">
+          <span><i class="m"></i>模块</span>
+          <span><i class="d"></i>深模块（接口小、实现厚）</span>
+          <span><i class="lk"></i>跨接缝泄漏</span>
+          <span><i class="sm"></i>接缝</span>
+        </div>
+        <div style="margin-top:26px;background:#fffbeb;border:1px solid #fde68a;border-left:3px solid #d97706;border-radius:8px;padding:14px 17px;font-size:13.5px;color:#78350f">
+          <b>完整版在 `docs/架构复查-20260919.md`。</b>
+          这里只挑了三条；那份是 17 组发现，带行号，其中 <b>A 类是已确认的真 bug</b>（自动保存对参数类编辑不生效、图层缓存超过 320px 永不命中、ilmcheck 测的是副本、没有任何脚本跑测试、Glitch 把截断数当总数报）。
+          <br /><br />
+          <b>一处修正：</b>下面第一条把「拆分支链」写成了 Strong，但按删除测试，<b>分支链本身只算「搬家」</b>——
+          它的真问题是对应第二条那个「最后一个面板是 <code>{:else}</code>」的静默兜底。真正「集中」的是 <code>Channels.svelte</code> 里那些重复项：
+          三个几乎一样的 sources→preview 构造器、两个一模一样的蒙版块、七个几乎一样的导出函数。
+        </div>
+      </header>
+
+      <section id="candidates">
+
+        <!-- ============================================================ 1 -->
+        <article id="c1">
+          <h2>一、把 Channels.svelte 的面板分支链拆成模块</h2>
+          <div class="badges">
+            <span class="badge b-strong">Strong</span>
+            <span class="tag">in-process</span>
+            <span class="tag">接缝已经在 registry 里了</span>
+          </div>
+          <pre class="files"><b>src/lib/modules/channels/Channels.svelte</b>        1859 行  ← 7 个分区挤在一个文件里
+src/lib/modules/channels/{Extract,Pipeline,AdjustEditor,
+  LayerStack,MaskEditor,SourcePick}.svelte     88–543 行
+<b>src/lib/modules/registry.ts</b>                       面板表，已有 component 字段</pre>
+
+          <div class="ba">
+            <figure>
+              <figcaption>现在</figcaption>
+              <svg viewBox="0 0 420 250">
+                <rect x="10" y="10" width="400" height="230" rx="8" fill="#fff" stroke="#0f172a" stroke-width="1.5"/>
+                <text x="22" y="32" font-size="11" fill="#0f172a" font-weight="700">Channels.svelte</text>
+                <text x="22" y="48" font-size="10" fill="#64748b">1859 行 · 一份组件状态</text>
+                <g font-size="10" fill="#334155">
+                  <rect x="24" y="60" width="372" height="21" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                  <text x="34" y="75">{#if panelId === 'split'}    ← 1142</text>
+                  <rect x="24" y="85" width="372" height="21" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                  <text x="34" y="100">{:else if 'merge'}</text>
+                  <rect x="24" y="110" width="372" height="21" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                  <text x="34" y="125">{:else if 'swizzle'}</text>
+                  <rect x="24" y="135" width="372" height="21" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                  <text x="34" y="150">{:else if 'games'}</text>
+                  <rect x="24" y="160" width="372" height="21" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                  <text x="34" y="175">{:else if 'adjust'} / 'blend' / 'layers'</text>
+                  <rect x="24" y="185" width="372" height="21" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                  <text x="34" y="200">…再插一个分区就得改这条链</text>
+                </g>
+                <path d="M210 210 L210 232" stroke="#dc2626" stroke-width="2" marker-end="url(#ar)"/>
+                <text x="218" y="228" font-size="10" fill="#dc2626">7 处共享同一份状态</text>
+                <defs><marker id="ar" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                  <path d="M0 0 L7 3.5 L0 7 z" fill="#dc2626"/></marker></defs>
+              </svg>
+            </figure>
+            <figure>
+              <figcaption>之后</figcaption>
+              <svg viewBox="0 0 420 250">
+                <rect x="10" y="10" width="132" height="230" rx="8" fill="url(#dg)" stroke="#0f172a" stroke-width="1.5"/>
+                <text x="22" y="32" font-size="11" fill="#fff" font-weight="700">registry</text>
+                <text x="22" y="48" font-size="10" fill="#94a3b8">panels[]</text>
+                <text x="22" y="70" font-size="10" fill="#cbd5e1">… component</text>
+                <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#334155"/></linearGradient></defs>
+                <g font-size="10">
+                  <rect x="164" y="24" width="240" height="26" rx="5" fill="#fff" stroke="#0f172a" stroke-width="1.2"/>
+                  <text x="176" y="41" fill="#0f172a">Split.svelte</text>
+                  <rect x="164" y="57" width="240" height="26" rx="5" fill="#fff" stroke="#0f172a" stroke-width="1.2"/>
+                  <text x="176" y="74" fill="#0f172a">Merge.svelte</text>
+                  <rect x="164" y="90" width="240" height="26" rx="5" fill="#fff" stroke="#0f172a" stroke-width="1.2"/>
+                  <text x="176" y="107" fill="#0f172a">Swizzle.svelte</text>
+                  <rect x="164" y="123" width="240" height="26" rx="5" fill="#fff" stroke="#0f172a" stroke-width="1.2"/>
+                  <text x="176" y="140" fill="#0f172a">Games.svelte</text>
+                  <rect x="164" y="156" width="240" height="26" rx="5" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/>
+                  <text x="176" y="173" fill="#3730a3">Adjust / Blend / Layers</text>
+                </g>
+                <path d="M142 60 L162 37" stroke="#4f46e5" stroke-width="1.6" stroke-dasharray="4 4"/>
+                <path d="M142 90 L162 103" stroke="#4f46e5" stroke-width="1.6" stroke-dasharray="4 4"/>
+                <text x="164" y="205" font-size="10" fill="#4f46e5">一条接缝：加分区只改这里</text>
+                <text x="164" y="222" font-size="10" fill="#64748b">每个分区一个接口，各自可测</text>
+              </svg>
+            </figure>
+          </div>
+
+          <dl class="ps">
+            <dt>痛点</dt><dd>加一个分区要往 1142–1624 的分支链里插一段，而七个分区共享同一份组件状态——想看懂其中一个，得把整条链读完。</dd>
+            <dt>改法</dt><dd>每个分区做成自己的模块，注册进 <code>registry.ts</code> 已有的 <code>panels[].component</code>；链子上只留一个 <code>&lt;PanelComp /&gt;</code>。</dd>
+          </dl>
+          <ul class="wins">
+            <li>locality：改一个分区只碰它自己那一个文件</li>
+            <li>leverage：registry 是一条接缝，N 个分区共用</li>
+            <li>接口收缩到 <code>{ panelId }</code></li>
+            <li>删除测试：不通过——它是真模块，不是直通壳</li>
+          </ul>
+          <div class="adr">
+            这条接缝**已经存在了一半**：<code>registry.ts</code> 里 <code>Extract</code> 和 <code>Pipeline</code> 早就作为独立模块注册在 channels 底下。
+            剩下五个还留在链子上，所以现在两种写法并存，读的人得先判断"这个分区属于哪种"。
+          </div>
+        </article>
+
+        <!-- ============================================================ 2 -->
+        <article id="c2">
+          <h2>二、当前分区只留一个属主</h2>
+          <div class="badges">
+            <span class="badge b-strong">Strong</span>
+            <span class="tag">in-process</span>
+            <span class="tag">已复现的真实 bug</span>
+          </div>
+          <pre class="files"><b>src/routes/tools/[id]/+page.svelte</b>   337 行 · 所有模块共用
+  let cur = $state('')                    ← 当前分区的第一个属主
+  $effect(() =&gt; { … page.url … cur = next })   ← 校正两者
+  function pickPanel(pid) { cur = pid; … }     ← 第二个属主</pre>
+
+          <div class="ba">
+            <figure>
+              <figcaption>现在：两个属主 + 一个校正器</figcaption>
+              <svg viewBox="0 0 420 250">
+                <rect x="40" y="30" width="130" height="46" rx="7" fill="#fff" stroke="#0f172a" stroke-width="1.5"/>
+                <text x="60" y="52" font-size="11" fill="#0f172a">cur</text>
+                <text x="60" y="67" font-size="9.5" fill="#64748b">$state</text>
+                <rect x="250" y="30" width="130" height="46" rx="7" fill="#fff" stroke="#0f172a" stroke-width="1.5"/>
+                <text x="272" y="52" font-size="11" fill="#0f172a">page.url</text>
+                <text x="272" y="67" font-size="9.5" fill="#64748b">?panel=</text>
+                <rect x="130" y="120" width="160" height="50" rx="7" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+                <text x="150" y="142" font-size="10.5" fill="#dc2626">$effect 校正器</text>
+                <text x="150" y="158" font-size="9.5" fill="#dc2626">拿旧值把 cur 拽回去</text>
+                <path d="M105 78 L150 118" stroke="#dc2626" stroke-width="1.8" marker-end="url(#lr)"/>
+                <path d="M315 78 L270 118" stroke="#dc2626" stroke-width="1.8" marker-end="url(#lr)"/>
+                <path d="M180 118 L120 78" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#lr)"/>
+                <defs><marker id="lr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                  <path d="M0 0 L7 3.5 L0 7 z" fill="#dc2626"/></marker></defs>
+                <text x="130" y="196" font-size="10" fill="#64748b">点一下分区：URL 变了，</text>
+                <text x="130" y="212" font-size="10" fill="#dc2626">面板被拽回原来那个</text>
+                <text x="130" y="232" font-size="9.5" fill="#94a3b8">实测：export → bezier → sample，渲染一直是「曲线」</text>
+              </svg>
+            </figure>
+            <figure>
+              <figcaption>之后：一个属主，零校正</figcaption>
+              <svg viewBox="0 0 420 250">
+                <rect x="120" y="40" width="180" height="52" rx="7" fill="url(#dg2)" stroke="#0f172a" stroke-width="1.5"/>
+                <text x="145" y="64" font-size="11" fill="#fff">page.url ?panel=</text>
+                <text x="145" y="80" font-size="9.5" fill="#94a3b8">唯一属主</text>
+                <defs><linearGradient id="dg2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#334155"/></linearGradient></defs>
+                <rect x="120" y="140" width="180" height="46" rx="7" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.3"/>
+                <text x="150" y="162" font-size="10.5" fill="#3730a3">cur = $derived(…)</text>
+                <text x="150" y="178" font-size="9.5" fill="#3730a3">没有第二份状态</text>
+                <path d="M210 94 L210 138" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#ar2)"/>
+                <defs><marker id="ar2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                  <path d="M0 0 L7 3.5 L0 7 z" fill="#4f46e5"/></marker></defs>
+                <rect x="120" y="200" width="180" height="30" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 4"/>
+                <text x="146" y="220" font-size="10" fill="#94a3b8">校正 effect 整段删掉</text>
+              </svg>
+            </figure>
+          </div>
+
+          <dl class="ps">
+            <dt>痛点</dt><dd>同一个事实（当前分区）有两份状态，靠一个 <code>$effect</code> 互相校正；两边不一致时它会把用户刚点的东西改回去。</dd>
+            <dt>改法</dt><dd>URL 做唯一属主，<code>cur</code> 改成 <code>$derived</code>，点击只负责 <code>goto</code>，校正 effect 删掉。</dd>
+          </dl>
+          <ul class="wins">
+            <li>locality：分区归属的 bug 不再存在</li>
+            <li>少一份状态、少一个 effect</li>
+            <li>不可能再出现两边打架</li>
+          </ul>
+          <div class="adr">
+            这一条**已经修了**——但修的是症状（把原生 <code>history.replaceState</code> 换成 SvelteKit 的 <code>goto</code>）。
+            两个属主的形状还在，同样的 bug 还能从别的路径长出来。
+          </div>
+        </article>
+
+        <!-- ============================================================ 3 -->
+        <article id="c3">
+          <h2>三、给 mstoon 和 yaku 补上对着真实素材的基准</h2>
+          <div class="badges">
+            <span class="badge b-worth">Worth exploring</span>
+            <span class="tag">in-process</span>
+          </div>
+          <pre class="files">src/lib/modules/mstoon/ops.ts    292 行   ← 数学抽出来了，但没测试
+src/lib/modules/yaku/ops.ts      502 行   ← 同上
+对照：src/lib/modules/ramp/ops.ts  285 行 → tmp/ramp-ops.test.mjs       55 条
+      src/lib/modules/ilm/ops.ts   575 行 → tmp/ilmcheck/run.mjs        88 条</pre>
+
+          <div class="ba">
+            <figure>
+              <figcaption>⑤ ⑧ 的路子：真素材当判据</figcaption>
+              <svg viewBox="0 0 420 190">
+                <rect x="20" y="26" width="112" height="44" rx="6" fill="#fff" stroke="#0f172a" stroke-width="1.3"/>
+                <text x="36" y="45" font-size="10" fill="#0f172a">真实素材</text>
+                <text x="36" y="60" font-size="9" fill="#64748b">30 张 ramp</text>
+                <rect x="154" y="26" width="112" height="44" rx="6" fill="#fff" stroke="#0f172a" stroke-width="1.3"/>
+                <text x="170" y="45" font-size="10" fill="#0f172a">dump 成基准</text>
+                <text x="170" y="60" font-size="9" fill="#64748b">raw / JSON</text>
+                <rect x="288" y="26" width="112" height="44" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="1.3"/>
+                <text x="304" y="45" font-size="10" fill="#065f46">跑真代码</text>
+                <text x="304" y="60" font-size="9" fill="#065f46">逐像素判据</text>
+                <path d="M132 48 L152 48" stroke="#0f172a" stroke-width="1.5"/>
+                <path d="M266 48 L286 48" stroke="#0f172a" stroke-width="1.5"/>
+                <text x="20" y="108" font-size="10" fill="#334155">这一路子在 ⑧ 上抓到了：行不成对、放大核推荐反了、</text>
+                <text x="20" y="126" font-size="10" fill="#334155">以及我自己把 ok() 参数写反导致的整套假通过。</text>
+                <text x="20" y="156" font-size="10" fill="#64748b">④ 与 ⑥ 现在只能靠肉眼看，没有等价的判据。</text>
+              </svg>
+            </figure>
+            <figure>
+              <figcaption>缺的是什么</figcaption>
+              <svg viewBox="0 0 420 190">
+                <rect x="20" y="26" width="380" height="34" rx="6" fill="#fffbeb" stroke="#fde68a"/>
+                <text x="34" y="48" font-size="10" fill="#78350f">mstoon：五张控制图知道产物长什么样，但不知道各自的"源"</text>
+                <rect x="20" y="70" width="380" height="34" rx="6" fill="#fffbeb" stroke="#fde68a"/>
+                <text x="34" y="92" font-size="10" fill="#78350f">yaku：材质分类规则的命中率没有基准集</text>
+                <rect x="20" y="114" width="380" height="34" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+                <text x="34" y="136" font-size="10" fill="#334155">这不是代码问题，是素材缺口 —— 缺配对就定不出规格</text>
+                <text x="20" y="170" font-size="9.5" fill="#94a3b8">⑤ 卡了两轮，最后是因为找到了同目录的 vivian 配对才通的</text>
+              </svg>
+            </figure>
+          </div>
+
+          <dl class="ps">
+            <dt>痛点</dt><dd>这两个模块的数学已经抽到 <code>ops.ts</code>（接口位置是对的），但没有任何对着真实素材的判据，改动只能靠肉眼。</dd>
+            <dt>改法</dt><dd>照 <code>tmp/dump-ramps.mjs</code> 的样子把真实素材导成基准，跑真代码断言。</dd>
+          </dl>
+          <ul class="wins">
+            <li>leverage：一份基准护住整个模块</li>
+            <li>接口已经是可测形状</li>
+            <li>素材缺口会变成显式失败</li>
+          </ul>
+        </article>
+
+      </section>
+
+      <section class="top" style="border-radius:12px;padding:28px 30px;margin-top:38px">
+        <h2>先做哪个</h2>
+        <p class="now">第一条：<a href="#c1">把 Channels.svelte 的面板分支链拆成模块</a></p>
+        <p style="margin:6px 0 0;font-size:14px">
+          channels 是九个模块里最大的一处面——3972 行 svelte 挤在 7 个文件里，而 <code>registry.ts</code> 里那条接缝**已经存在了一半**
+          （<code>Extract</code> / <code>Pipeline</code> 早就是独立模块）。把剩下的并过去不是在开新路，是把已经走通的那条走完。
+          收益是 locality：每个分区一个模块，它自己的 bug 只可能在它自己那个文件里。
+        </p>
+        <p class="now" style="margin-top:14px">
+          第二条可以紧随其后——它只有 337 行，改动面小，而且现在的修法是治症状，属主的形状没动。
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

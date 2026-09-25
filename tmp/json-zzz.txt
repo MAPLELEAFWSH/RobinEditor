@@ -1,0 +1,113 @@
+﻿扫到 10 个 json
+
+================================================================================
+一、贴图槽 → 实际指向的贴图（这张表就是正确命名的依据）
+================================================================================
+
+  _LightTex                    出现    9 次
+      → Female_Face_Lightmap                                     ×3    末尾段 Lightmap
+      → Claret_Body_Map1_N                                       ×2    末尾段 N
+      → Claret_Body_Map2_N                                       ×2    末尾段 N
+      → Claret_Hair_N                                            ×2    末尾段 N
+
+  _MainTex                     出现    9 次
+      → Claret_Face_D                                            ×3    末尾段 D
+      → Claret_Body_Map1_D                                       ×2    末尾段 D
+      → Claret_Body_Map2_D                                       ×2    末尾段 D
+      → Claret_Hair_D                                            ×2    末尾段 D
+
+  _MatCapTex2                  出现    6 次
+      → Eff_MatCap_073                                           ×5    末尾段 073
+      → Eff_MatCap_043                                           ×1    末尾段 043
+
+  _MatCapTex3                  出现    6 次
+      → Eff_MatCap_074                                           ×4    末尾段 074
+      → Eff_MatCap_073                                           ×2    末尾段 073
+
+  _OtherDataTex                出现    6 次
+      → Claret_Body_Map1_M                                       ×2    末尾段 M
+      → Claret_Body_Map2_M                                       ×2    末尾段 M
+      → Claret_Hair_M                                            ×2    末尾段 M
+
+  _OtherDataTex2               出现    6 次
+      → Claret_Body_Map1_A                                       ×2    末尾段 A
+      → Claret_Body_Map2_A                                       ×2    末尾段 A
+      → Claret_Hair_A                                            ×2    末尾段 A
+
+  _MatCapTex                   出现    5 次
+      → Eff_Matcap_092                                           ×4    末尾段 092
+      → Eff_MatCap_073                                           ×1    末尾段 073
+
+  _MatCapTex4                  出现    4 次
+      → Eff_MatCap_019                                           ×4    末尾段 019
+
+  _MatCapTex5                  出现    2 次
+      → Eff_Matcap_092                                           ×2    末尾段 092
+
+  _EyeColorMap                 出现    1 次
+      → Eye_E                                                    ×1    末尾段 E
+
+================================================================================
+二、按材质族看用哪些槽（哪些是必须的，哪些可选）
+================================================================================
+  Body       20 个槽： _ChannelMixTex _CharacterRampTex _LightTex _MainTex _MatCap2DArray _MatCapTex _MatCapTex2 _MatCapTex3 _MatCapTex4 _MatCapTex5 _MatCapTexFallback _OtherDataTex _OtherDataTex2 _OverrideRimGlowTexFX _ScreenMask _ScreenTex _SecondaryEmissionMaskTex _SecondaryEmissionTex _ThreadMap _TransmissionTexture
+  Eye        11 个槽： _BlushTexture _ChannelMixTex _CharacterRampTex _EyeColorMap _LightTex _MainTex _OverrideRimGlowTexFX _ScreenMask _ScreenTex _SecondaryEmissionMaskTex _SecondaryEmissionTex
+  Face       10 个槽： _BlushTexture _ChannelMixTex _CharacterRampTex _LightTex _MainTex _OverrideRimGlowTexFX _ScreenMask _ScreenTex _SecondaryEmissionMaskTex _SecondaryEmissionTex
+  Hair       20 个槽： _ChannelMixTex _CharacterRampTex _LightTex _MainTex _MatCap2DArray _MatCapTex _MatCapTex2 _MatCapTex3 _MatCapTex4 _MatCapTex5 _MatCapTexFallback _OtherDataTex _OtherDataTex2 _OverrideRimGlowTexFX _ScreenMask _ScreenTex _SecondaryEmissionMaskTex _SecondaryEmissionTex _ThreadMap _TransmissionTexture
+  other      20 个槽： _ChannelMixTex _CharacterRampTex _LightTex _MainTex _MatCap2DArray _MatCapTex _MatCapTex2 _MatCapTex3 _MatCapTex4 _MatCapTex5 _MatCapTexFallback _OtherDataTex _OtherDataTex2 _OverrideRimGlowTexFX _ScreenMask _ScreenTex _SecondaryEmissionMaskTex _SecondaryEmissionTex _ThreadMap _TransmissionTexture
+
+================================================================================
+三、数值属性（反推中性值用）
+================================================================================
+  _DitherAlpha                       1.0(10)
+  _DitherAlpha2                      1.0(10)
+  _ZWrite                            1.0(10)
+  _AbnormalProperty                  0.0(9)
+  _AbnormalPropertyBurn              0.0(9)
+  _AbnormalPropertyElectro           0.0(9)
+  _AbnormalPropertyFreeze            0.0(9)
+  _AdditionalLightIntensity          1.0(9)
+  _AlbedoSmoothness                  0.05(6)  0.1(3)
+  _AmbientColorScale                 1.0(9)
+  _Blink                             0.0(9)
+  _BlinkFrequency                    1.0(9)
+  _BrightMultiplier                  1.0(9)
+  _CameraToLightRadian               0.0(9)
+  _ChannelMixerUsingUV4              0.0(9)
+  _CharacterSimplify                 0.0(9)
+  _ClipPlane                         0.0(9)
+  _ClipPlaneXZ                       0.0(9)
+  _ColorCorrectionIntensity          1.0(9)
+  _DarkAOScale                       0.5(9)
+  _FresnelFlashing                   4.0(9)
+  _FresnelMaskWidth                  5.0(9)
+  _FresnelWidth                      3.5(9)
+  _Glitch                            0.0(9)
+  _HardLight                         0.0(9)
+  _HardLightWidth                    0.1(9)
+
+================================================================================
+四、颜色属性
+================================================================================
+  _Color                         (1.0, 1.0, 1.0, 1.0)(10)
+  _AChannelColor                 (1.0, 0.0, 1.0, 1.0)(9)
+  _AChannelColorPrecomputed      (1.0, 0.0, 1.0, 1.0)(9)
+  _AOParameters                  (1.25, 1.5, 1.0, 0.5)(9)
+  _AmbientColorCG                (0.0, 0.0, 0.0, 1.0)(9)
+  _BChannelColor                 (0.0, 0.0, 1.0, 1.0)(9)
+  _BChannelColorPrecomputed      (0.0, 0.0, 1.0, 1.0)(9)
+  _BlinkOpacity                  (0.0, 1.0, 0.0, 0.0)(9)
+  _BlockColorA                   (1.0, 0.0, 0.0, 1.0)(9)
+  _BlockColorB                   (0.5, 1.0, 0.0, 1.0)(9)
+  _BlockColorC                   (0.0, 1.0, 1.0, 1.0)(9)
+  _BlockColorD                   (0.5, 0.0, 1.0, 1.0)(9)
+  _BlockMoveSpeed                (66.0, 88.0, 0.0, 0.0)(9)
+  _CharacterMainLightData        (-1.0, 0.0, 0.0, 0.0)(9)
+  _ColorA                        (1.0, 1.0, 1.0, 1.0)(9)
+  _ColorB                        (0.0, 0.0, 0.0, 1.0)(9)
+  _ColorOverrideAlbedo           (1.0, 1.0, 1.0, 0.0)(9)
+  _DecolorizationContrast        (1.0, 1.0, 0.0, 0.0)(8)  (1.0, 1.0, 0.0, 1.0)(1)
+  _DetailColor                   (0.38, 0.56, 1.5, 1.0)(9)
+  _FresnelColor                  (0.0, 0.2, 1.62, 1.0)(9)
+
+解析成功 10，失败 0

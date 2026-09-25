@@ -1,0 +1,110 @@
+﻿{
+  "broken.fx": {
+    "encoding": "utf-8",
+    "changed": true,
+    "via": "注释 5 处",
+    "lines": [
+      1,
+      2,
+      5,
+      7,
+      8
+    ],
+    "before": "// 僥僋僗僠儍偺愝掕",
+    "after": "// テクスチャの設定"
+  },
+  "clean.fx": {
+    "encoding": "utf-8",
+    "changed": false,
+    "via": "",
+    "lines": [],
+    "before": "#define TEXTURE_SWIZZLE 3",
+    "after": "#define TEXTURE_SWIZZLE 3"
+  },
+  "japanese.fx": {
+    "encoding": "utf-8",
+    "changed": false,
+    "via": "",
+    "lines": [],
+    "before": "#define TEXTURE_SWIZZLE 3",
+    "after": "#define TEXTURE_SWIZZLE 3"
+  },
+  "all-broken.fx": {
+    "encoding": "utf-8",
+    "changed": true,
+    "via": "注释 5 处",
+    "lines": [
+      1,
+      2,
+      5,
+      7,
+      8
+    ],
+    "before": "// 僥僋僗僠儍偺愝掕",
+    "after": "// テクスチャの設定"
+  },
+  "writeBroken": {
+    "written": true,
+    "backup": "E:\\deepseek-harness\\RobinEditor\\tmp\\glitch-test\\broken.fx.bak",
+    "changed": true
+  },
+  "afterText": "// テクスチャの設定\n// コントローラーから受け取る\n#define TEXTURE_SWIZZLE 3\nfloat4 main(float2 uv : TEXCOORD0) : COLOR0 {\n  // シェーダーの本体\n  float4 c = tex2D(TextureSampler, uv);\n  /* メタリック成分を足す */\n  return c; // ここで返す\n}\n",
+  "checks": {
+    "keepsDefine": true,
+    "keepsMain": true,
+    "keepsSampler": true,
+    "keepsReturn": true,
+    "keepsBrace": true,
+    "jaComment1": true,
+    "jaComment2": true,
+    "jaComment3": true,
+    "blockComment": true,
+    "trailing": true,
+    "noMojibake": true
+  },
+  "cleanUntouched": {
+    "changed": false,
+    "written": false,
+    "backup": null
+  },
+  "crlf": {
+    "changed": true,
+    "beforeHasCRLF": true,
+    "afterHasCRLF": true,
+    "crlfCount": 9,
+    "loneLF": 0
+  },
+  "whole": {
+    "changed": true,
+    "via": "整文件",
+    "text": "// テクスチャの設定\n// コントローラーから受け取る\n#define TEXTURE_SWIZZLE 3\nfloat4 main(float2 uv : TEXCOORD0) : COLOR0 {\n  // シェーダーの本体\n  float4 c = tex2D(TextureSampler, uv);\n  /* メタリック成分を足す */\n  return c; // ここで返す\n}\n",
+    "hasJapanese": true
+  },
+  "scan": [
+    {
+      "rel": "all-broken.fx",
+      "likely": false,
+      "via": "none"
+    },
+    {
+      "rel": "broken.fx",
+      "likely": false,
+      "via": "none"
+    },
+    {
+      "rel": "clean.fx",
+      "likely": false,
+      "via": "none"
+    },
+    {
+      "rel": "crlf.fx",
+      "likely": false,
+      "via": "none"
+    },
+    {
+      "rel": "japanese.fx",
+      "likely": false,
+      "via": "none"
+    }
+  ]
+}

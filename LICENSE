@@ -1,0 +1,36 @@
+MIT License
+
+Copyright (c) 2026 MAPLELEAFWSH
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 关于第三方渲染包
+
+这份许可证只覆盖本仓库自己的代码。
+
+**本仓库不含、不分发任何第三方渲染包或工具**（Ray-mmd、养乐多 / Yaku、
+ikClut、msToon 等），也未复制其代码。那些渲染包的版权归各自作者，
+本工具只在你指定的路径上读写文件。
+
+规格来源只有两条：**公开文档**，以及**本项目自己对着素材量出来的实测**。
+详见 `docs/来源与边界.md`。
+
+`tmp/ilmcheck/data/` 里是探针从用户素材转储的原始像素，**已在 `.gitignore` 里排除**，不随仓库发布。

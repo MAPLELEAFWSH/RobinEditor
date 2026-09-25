@@ -1,0 +1,54 @@
+[package]
+name = "robin-editor"
+version = "1.0.0"
+description = "MMD 贴图与渲染包整理工具"
+authors = ["MAPLELEAFWSH"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "robin_editor_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# 只开要用的解码器。TGA 是 MMD 贴图里的常客，浏览器 canvas 解不了，得在这儿解。
+# dds 是 ray-mmd 那套用的（skybox / LUT），也是浏览器解不了的。
+image = { version = "0.25", default-features = false, features = [
+  "png", "jpeg", "tga", "dds", "bmp", "gif", "webp", "tiff", "ico",
+] }
+# 日文乱码修复的核心：GBK / Shift_JIS 双向转换。
+# 纯 JS 做不到 GBK 编码（TextEncoder 只有 UTF-8），所以这段必须放后端。
+encoding_rs = "0.8"
+base64 = "0.22"
+walkdir = "2"
+
+# 翻译请求自己发（不引 tauri-plugin-http —— 跟本工程"文件读写自己写命令"一个路子）。
+# TLS 走 native-tls：Windows 上是 SChannel，不需要 NASM；
+# rustls / aws-lc-rs 在 Windows 上要装汇编器，为一个 POST 请求不值当。
+ureq = { version = "2", default-features = false, features = ["native-tls"] }
+# 直接依赖 native-tls 是为了**显式挂连接器**：ureq 的 `native-tls` 特征只把 crate 编进来，
+# 它自己的 `ureq::get`/`post` 捷径只用 rustls；不开 rustls 又不挂连接器的话，
+# 任何 https 请求都会报 "no TLS backend is configured"（实测踩到过）。
+native-tls = "0.2"
+
+# Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true
+incremental = false

@@ -1,0 +1,72 @@
+﻿
+② ikClut 回归守卫　站点 http://127.0.0.1:1422　视口 1707×1067
+
+== 1. 开机 ==
+  {"幕布还在":true,"主界面可见":false,"getComputedStyle_opacity":"0","控件数":320}
+  FAIL 启动幕布撤了（没撤就是整页卡在 opacity:0，用户看到的"点了没反应"）
+  FAIL 主界面不是 opacity:0   opacity=0
+  ok   控件都渲染出来了   控件 320
+
+== 2. 换成 1920×1080 的参考图 ==
+  {"槽里显示":"（没填上）","报错":["Uncaught Svelte error: effect_update_depth_exceeded\nMaximum update depth exceeded. This typically indicates that an effect reads and writes the same piece of state\nhttps://svelte.dev/e/effect_update_depth_exceeded"]}
+  FAIL 参考图填进去了   （没填上）
+
+== 3. 改参数：到下一帧多少 ms（一帧预算 33ms） ==
+  {"事件内同步ms":0.3,"到下一帧ms":9.5,"到帧前长任务":[],"停手补图那一下ms":[]}
+  ok   事件处理里没有同步跑重活（≤5ms）   0.3ms
+  ok   改一下到下一帧 ≤ 60ms   9.5ms
+  ok   到下一帧之前不许出现长任务（>50ms）   []
+  ok   停手后补细图那一下 ≤ 250ms   []
+  {"逐次事件内同步ms":[0.3,0,0,0,0,0.1,0,0,0.1,0,0,0],"事件内同步最大ms":0.3,"连敲同步共ms":0.5,"到下一帧ms":8.3,"到帧前长任务":[],"重算到帧":0,"停手补图那一下":[]}
+  ok   连敲 12 下，事件内同步最大 ≤ 5ms   0.3ms
+  ok   连敲 12 下，到下一帧 ≤ 80ms   8.3ms
+  ok   连敲 12 下，到下一帧之前不许出现长任务   []
+  ok   连敲 12 下没被拆成"每敲一下算一遍"（重算出图 ≤ 8 次）   重算 0 次
+  {"逐次事件内同步ms":[0.3,0,0.1,0,0,0,0,0,0.1,0,0,0,0,0,0,0,0,0,0.1,0],"事件内同步最大ms":0.3,"连敲同步共ms":0.6,"到下一帧ms":10.9,"到帧前长任务":[],"重算到帧":0,"停手补图那一下":[]}
+  ok   拖 20 帧，事件内同步最大 ≤ 5ms   0.3ms
+  ok   拖 20 帧，到下一帧 ≤ 80ms（拖动那一档走的是 512）   10.9ms
+  ok   拖 20 帧，到下一帧之前不许出现长任务   []
+
+== 4. 连点 ==
+  {"每下点击同步ms":[0.2,0.1,0,0.1,0.1,0,0.1,0.1,0,0,0.1,0.1],"事件内同步最大ms":0.2,"连点同步共ms":0.9,"到下一帧ms":7.9,"重算几次图":0,"长任务":[]}
+  ok   连点 12 下视图切换，事件内同步最大 ≤ 5ms   0.2ms
+  ok   连点 12 下，到下一帧 ≤ 80ms   7.9ms
+  {"到下一帧ms":7.7,"重算":0}
+  ok   连点 21 下参数板标签，到下一帧 ≤ 80ms   7.7ms
+  ok   切参数板不该重算出图（≤2 次）   重算 0 次
+
+== 5. 同步缩放 / 同步平移 ==
+  开同步前两边的百分比：["100%","100%"]
+  ok   两个预览台都在（前后对比模式）   ["100%","100%"]
+  {"2秒内帧数":362,"2秒内重算":0,"2秒内长任务":[],"帧间隔":{"帧数":362,"最长":8,"中位":6}}
+  ok   同步开着空闲 2 秒：一次都不重算（自转会在这里露出来）   重算 0 次
+  ok   同步开着空闲 2 秒：没有长任务   []
+  {"前":["100%","100%"],"后":["100%","100%"]}
+  FAIL 点左边放大，左边变了   100% → 100%
+  FAIL 同步缩放开着：右边跟着变到同一个倍率   右 100% → 100%
+  {"前":["100%","100%"],"后":["100%","100%"]}
+  FAIL 同步缩放关着：只有左边动   右 100% → 100%
+  {"可滚":false,"左":[0,0],"右":[0,0],"安静下来之后又重算":0}
+  FAIL 预览放大之后真的能滚（不然这条没法验）
+  ok   滚左边：右边跟着滚到同一处   左 [0,0] 右 [0,0]
+  ok   同步平移不会自己跟自己推（安静下来后不重算）   重算 0 次
+
+== 6. 收口 ==
+  ok   全程没有 effect_update_depth_exceeded   []
+  ok   全程没有本应用抛的未捕获异常 / 控制台错误   []
+  FAIL 页面自己记的错也是空的（ResizeObserver 那条浏览器告警不算）   ["Uncaught Svelte error: effect_update_depth_exceeded\nMaximum update depth exceeded. This typically indicates that an effect reads and writes the same piece of state\nhttps://svelte.dev/e/effect_update_depth_exceeded"]
+  ok   量测期间页面没有被外部改动打断（重载次数 == 我自己导航的次数）   重载 1 次 / 我导航 1 次
+
+== 7. 混合 / 导出分区 ==
+  blend: {"有内容":true,"幕布还在":true,"主界面可见":false,"控件数":123,"正经错":["Uncaught Svelte error: effect_update_depth_exceeded\nMaximum update depth exceeded. This typically indicates that an effect reads and writes the same piece of state\nhttps://svelte.dev/e/effect_update_depth_exceeded"]}
+  ok   blend 分区进得去（不是空白）   控件 123
+  FAIL blend 分区幕布撤了
+  FAIL blend 分区没有异常   ["[error] updated at\n    at $effect (http://127.0.0.1:1422/src/lib/modules/ikclut/Ikclut.svelte:773:5)","Svelte error: effect_update_depth_exceeded","Uncaught Svelte error: effect_update_depth_exceeded\nMaximum update depth exceeded. This typically indicates that an effect reads and writes the same piece of state\nhttps://svelte.dev/e/effect_update_depth_exceeded"]
+  ok   blend 分区没有被外部改动打断   重载 2 次 / 我导航 2 次
+  export: {"有内容":true,"幕布还在":true,"主界面可见":false,"控件数":110,"正经错":["Uncaught Svelte error: effect_update_depth_exceeded\nMaximum update depth exceeded. This typically indicates that an effect reads and writes the same piece of state\nhttps://svelte.dev/e/effect_update_depth_exceeded"]}
+  ok   export 分区进得去（不是空白）   控件 110
+  FAIL export 分区幕布撤了
+  FAIL export 分区没有异常   ["[error] updated at\n    at $effect (http://127.0.0.1:1422/src/lib/modules/ikclut/Ikclut.svelte:773:5)","Svelte error: effect_update_depth_exceeded","Uncaught Svelte error: effect_update_depth_exceeded\nMaximum update depth exceeded. This typically indicates that an effect reads and writes the same piece of state\nhttps://svelte.dev/e/effect_update_depth_exceeded"]
+  ok   export 分区没有被外部改动打断   重载 3 次 / 我导航 3 次
+
+通过 40 条，失败 12 条

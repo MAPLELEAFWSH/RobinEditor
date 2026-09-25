@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="%sveltekit.assets%/favicon.png" />
+    <link rel="apple-touch-icon" href="%sveltekit.assets%/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>RobinEditor</title>
+    <script>
+      // 首帧之前把主题变量定好，避免闪白 / 闪一下默认蓝色再跳到你的配色。
+      // 读的是 robin.prefs，和 src/lib/prefs.svelte.ts 里的键一致。
+      (function () {
+        var d = document.documentElement;
+        var p = {};
+        try {
+          p = JSON.parse(localStorage.getItem('robin.prefs') || '{}');
+        } catch (e) {
+          p = {};
+        }
+        var dark =
+          p.theme === 'dark' ||
+          (!p.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+        d.setAttribute('data-theme', dark ? 'dark' : 'light');
+        d.setAttribute('data-motion', p.motion || 'full');
+        d.style.setProperty('--hue', String(p.hue == null ? 230 : p.hue));
+        d.style.setProperty('--cover-veil', String((p.bgOpacity == null ? 78 : p.bgOpacity) / 100));
+        d.style.setProperty('--card-opacity', String((p.cardOpacity == null ? 92 : p.cardOpacity) / 100));
+        d.style.setProperty('--card-border-width', p.cardBorder === false ? '0px' : '0.67px');
+        d.style.setProperty('--cover-soften', p.soften ? '6px' : '0px');
+      })();
+    </script>
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <script>
+      // 关掉 webview 自带的右键菜单 —— 那是浏览器的菜单（返回 / 刷新 / 检查），
+      // 在这个应用里没有任何意义，弹出来只会让人以为点错了。
+      // 输入框仍然放行，方便粘贴；要留自己的菜单就在更具体的元素上拦一次。
+      document.addEventListener(
+        'contextmenu',
+        function (e) {
+          var t = e.target;
+          var tag = t && t.tagName ? t.tagName.toLowerCase() : '';
+          if (tag === 'input' || tag === 'textarea' || (t && t.isContentEditable)) return;
+          e.preventDefault();
+        },
+        { capture: true }
+      );
+    </script>
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+</html>
