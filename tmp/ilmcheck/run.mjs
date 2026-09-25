@@ -327,40 +327,34 @@ section('命名与分组');
 }
 
 /* ================================================================
-   7. ladder 库：抄进来的数跟源文件一致
+   7. 原神 / 星铁那套已经删了 —— 这一节守的就是"别再长回来"
+   ----------------------------------------------------------------
+   用户 2026-09-26："既然是绝区零贴图合成，那么其他游戏规格参数保留还有什么用"。
+   理由不是"用不上"，是它们**做不出对的东西**：只能按配比对齐，空间布局对不上
+   （本工程自己量的最佳 IoU 0.387），而那句警告原来从没画到界面上。
+   真要加回来，得先有一条**验过**的规格，再把这节的判据改掉。
    ================================================================ */
-section('ladder 库');
+section('只做绝区零（原神 / 星铁的配比与映射不许再出现）');
 {
-  // 星铁_身体 R：default 1.0，两档 0.85/7.795% 与 0.0/12.567%
-  const r = ops.hsrLadder('星铁_身体', 'r');
-  ok('星铁_身体 R 有两档', r.length === 2, JSON.stringify(r));
-  ok('星铁_身体 R default = 1.0', ops.hsrDefault('星铁_身体', 'r') === 1.0);
-  ok('星铁_身体 R 第一档值 0.85', r[0][0] === 0.85);
-  ok('占比对得上',
-    near(r[0][1], 0.07795111338297527, 1e-12) && near(r[1][1], 0.12566868464152017, 1e-12));
-
-  const g = ops.genshinLadder('身体', 'g');
-  ok('原神_身体 G default = 0.5', ops.genshinDefault('身体', 'g') === 0.5);
-  ok('原神_身体 G 含 0.0 那档 40.31%',
-    g.some((e) => e[0] === 0.0 && near(e[1], 0.4031, 1e-9)),
-    JSON.stringify(g));
-
-  const a = ops.genshinLadder('身体', 'a');
-  const aVals = a.map((e) => e[0]).sort();
-  ok('原神 A 只落在 0/0.3/0.5/0.7/1.0 这几个档上',
-    aVals.every((v) => [0, 0.3, 0.5, 0.7, 1].includes(v)),
-    aVals.join(','));
-
-  ok('四套星铁预设都在', ['星铁_身体', '星铁_头发', '星铁_披风', '星铁_武器']
-    .every((n) => ops.hsrLadder(n, 'a').length > 0));
-  ok('两套原神预设都在', ['身体', '头发'].every((n) => ops.genshinLadder(n, 'r').length > 0));
-
-  // 覆盖率：配比合计必须 <= 1，否则 default 会被挤成负数
-  for (const [name, ch] of [['星铁_身体', 'a'], ['星铁_头发', 'a'], ['身体', 'b'], ['身体', 'a']]) {
-    const lad = ops.hsrLadder(name, ch).length ? ops.hsrLadder(name, ch) : ops.genshinLadder(name, ch);
-    const s = lad.reduce((t, e) => t + e[1], 0);
-    ok(`${name}.${ch} 配比合计 <= 1`, s <= 1, `合计 ${s.toFixed(4)}`);
+  const 不该有的 = ['GENSHIN_LADDERS', 'HSR_LADDERS', 'LADDER_GROUPS', 'GENSHIN_MAP', 'HSR_MAP',
+    'genshinLadder', 'genshinDefault', 'hsrLadder', 'hsrDefault'];
+  for (const 名 of 不该有的) {
+    ok(`${名} 不在 ops 的导出里了`, ops[名] === undefined, typeof ops[名]);
   }
+  ok('预设只剩绝区零', ops.PRESETS.length === 1, ops.PRESETS.map((p) => p.name).join(','));
+  ok('绝区零不吸附网格', ops.presetOf('zzz').grid === 0);
+  ok('导出后缀还是 _LM', ops.presetOf('zzz').suffix === '_LM');
+  ok('绝区零映射就是验过的那套',
+    ops.ZZZ_MAP.r.slot === 'A' && ops.ZZZ_MAP.r.ch === 'g' &&
+    ops.ZZZ_MAP.g.slot === 'N' && ops.ZZZ_MAP.g.ch === 'b' &&
+    ops.ZZZ_MAP.b.slot === 'M' && ops.ZZZ_MAP.b.ch === 'b' &&
+    ops.ZZZ_MAP.a.kind === 'const' && ops.ZZZ_MAP.a.constant === 255);
+  ok('未知 id 回落到绝区零', ops.presetOf('nope').id === 'zzz', ops.presetOf('nope').id);
+  /* 那句"只对得上面积"的话必须还在（手填 ladder 那条路还开着），而且界面上要真画出来 */
+  ok('MANUAL_LAYOUT_NOTE 还在', typeof ops.MANUAL_LAYOUT_NOTE === 'string' && ops.MANUAL_LAYOUT_NOTE.length > 10);
+  const 界面 = fs.readFileSync(new URL('../../src/lib/modules/ilm/Ilm.svelte', import.meta.url), 'utf8');
+  ok('MANUAL_LAYOUT_NOTE 真的画在 Ilm.svelte 的模板里（不是只 import）',
+    界面.includes('{MANUAL_LAYOUT_NOTE}'), '模板里没找到');
 }
 
 /* ================================================================
@@ -368,9 +362,8 @@ section('ladder 库');
    ================================================================ */
 section('预设');
 {
-  ok('三个预设', ops.PRESETS.length === 3, ops.PRESETS.map((p) => p.name).join(','));
+  ok('就一个预设', ops.PRESETS.length === 1, ops.PRESETS.map((p) => p.name).join(','));
   ok('绝区零不吸附网格', ops.presetOf('zzz').grid === 0);
-  ok('原神 / 星铁都吸附 0.05', ops.presetOf('genshin').grid === 0.05 && ops.presetOf('hsr').grid === 0.05);
   ok('绝区零映射就是验过的那套',
     ops.ZZZ_MAP.r.slot === 'A' && ops.ZZZ_MAP.r.ch === 'g' &&
     ops.ZZZ_MAP.g.slot === 'N' && ops.ZZZ_MAP.g.ch === 'b' &&

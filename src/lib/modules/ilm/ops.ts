@@ -74,97 +74,30 @@ export const LM_SLOTS = [
 /** 核对用的参照 LM。不参与打包 */
 export const REF_SLOT = 'REF';
 
-/* ------------------------------------------------------------------ ladder 库 */
+/* ------------------------------------------------------------------ 只做绝区零 */
 
-/** 原神：`test/生成/预设库.json` 里「身体」「头发」两套实测配比 */
-const GENSHIN_LADDERS: Record<string, Record<ChannelKey, { default: number; ladder: Ladder }>> = {
-  身体: {
-    r: { default: 0.0, ladder: [[1.0, 0.0887], [0.6, 0.0137], [0.35, 0.0135], [0.3, 0.0143], [0.1, 0.1207], [0.05, 0.1783]] },
-    g: { default: 0.5, ladder: [[0.45, 0.0118], [0.05, 0.0105], [0.0, 0.4031]] },
-    b: { default: 0.0, ladder: [[1.0, 0.057], [0.3, 0.0335], [0.25, 0.0128], [0.2, 0.0218], [0.15, 0.0186], [0.1, 0.1295], [0.05, 0.1827]] },
-    a: { default: 0.0, ladder: [[1.0, 0.1969], [0.7, 0.0448], [0.5, 0.0823], [0.3, 0.1908]] }
-  },
-  头发: {
-    r: { default: 0.0, ladder: [[1.0, 0.1463], [0.8, 0.0131], [0.5, 0.027], [0.05, 0.0123]] },
-    g: { default: 0.5, ladder: [[0.45, 0.0182], [0.05, 0.0169], [0.0, 0.3887]] },
-    b: { default: 0.0, ladder: [[0.9, 0.0232], [0.7, 0.0104], [0.3, 0.1071], [0.25, 0.0319], [0.15, 0.016], [0.1, 0.0969], [0.05, 0.0187]] },
-    a: { default: 0.7, ladder: [[1.0, 0.0504], [0.5, 0.0638], [0.3, 0.1632], [0.0, 0.2498]] }
-  }
-};
-
-/** 星铁：`贴图样本/honkaiSR/_验证/星铁预设.json` 里那四套 */
-const HSR_LADDERS: Record<string, Record<ChannelKey, { default: number; ladder: Ladder }>> = {
-  星铁_身体: {
-    r: { default: 1.0, ladder: [[0.85, 0.07795111338297527], [0.0, 0.12566868464152017]] },
-    g: { default: 0.4, ladder: [[0.0, 0.20508599281311035]] },
-    b: { default: 0.0, ladder: [[0.65, 0.048416535059611]] },
-    a: { default: 0.0, ladder: [[0.55, 0.17786033948262533], [0.45, 0.20738021532694498]] }
-  },
-  星铁_头发: {
-    r: { default: 1.0, ladder: [[0.85, 0.12457760175069173]] },
-    g: { default: 0.4, ladder: [[0.0, 0.13458124796549478]] },
-    b: { default: 0.0, ladder: [[0.65, 0.048618157704671226], [0.45, 0.02668178081512451]] },
-    a: {
-      default: 0.0,
-      ladder: [
-        [0.95, 0.09484219551086426],
-        [0.55, 0.22196869055430093],
-        [0.45, 0.23049346605936685],
-        [0.3, 0.0413057009379069],
-        [0.2, 0.023741404215494793]
-      ]
-    }
-  },
-  星铁_披风: {
-    r: { default: 1.0, ladder: [[0.85, 0.0675506591796875], [0.0, 0.13114519913991293]] },
-    g: { default: 0.4, ladder: [[0.0, 0.19736305872599283]] },
-    b: { default: 0.0, ladder: [[0.65, 0.04689621925354004]] },
-    a: {
-      default: 0.0,
-      ladder: [
-        [0.95, 0.09484219551086426],
-        [0.55, 0.1441588799158732],
-        [0.45, 0.09245737393697102],
-        [0.3, 0.024450222651163738]
-      ]
-    }
-  },
-  星铁_武器: {
-    r: { default: 1.0, ladder: [[0.85, 0.10648822784423828], [0.0, 0.134422500928243]] },
-    g: { default: 0.4, ladder: [[0.0, 0.23957435290018717]] },
-    b: { default: 0.0, ladder: [[0.45, 0.025628527005513508]] },
-    a: {
-      default: 0.0,
-      ladder: [
-        [0.95, 0.09484219551086426],
-        [0.55, 0.12191816171010335],
-        [0.45, 0.16114934285481772],
-        [0.3, 0.04114349683125814],
-        [0.2, 0.023599783579508465]
-      ]
-    }
-  }
-};
-
-export const LADDER_GROUPS: { id: string; name: string; table: typeof GENSHIN_LADDERS }[] = [
-  { id: 'genshin', name: '原神', table: GENSHIN_LADDERS },
-  { id: 'hsr', name: '星铁', table: HSR_LADDERS }
-];
-
-export function genshinLadder(name: string, ch: ChannelKey): Ladder {
-  const e = GENSHIN_LADDERS[name]?.[ch];
-  return e ? e.ladder.map(([v, s]) => [v, s] as [number, number]) : [];
-}
-export function genshinDefault(name: string, ch: ChannelKey): number {
-  return GENSHIN_LADDERS[name]?.[ch]?.default ?? 0;
-}
-export function hsrLadder(name: string, ch: ChannelKey): Ladder {
-  const e = HSR_LADDERS[name]?.[ch];
-  return e ? e.ladder.map(([v, s]) => [v, s] as [number, number]) : [];
-}
-export function hsrDefault(name: string, ch: ChannelKey): number {
-  return HSR_LADDERS[name]?.[ch]?.default ?? 0;
-}
+/**
+ * **原神 / 星铁的实测配比表已经删掉了**（2026-09-26，用户问"既然是绝区零贴图合成，
+ * 其他游戏规格参数保留还有什么用"）。
+ *
+ * 删的理由不是"用不上"，是**它们做不出对的东西**：
+ *   · 绝区零这条路是"三张现成图按固定通道拼"，逐像素验过，零误差；
+ *   · 原神 / 星铁的 lightmap 得**画** —— 自动那套只能对上"各档占多少面积"，
+ *     对不上"哪块归哪档"。本工程自己量过：留一法里类型预设 + 颜色分数排序的
+ *     最佳 IoU 只有 **0.387**（点了取样 0.63，纯手绘 1.0）。
+ *     换句话说按一下按钮吐出来的是一张**看着像、区域全是错的** lightmap。
+ *   · 那句警告（`MANUAL_LAYOUT_NOTE`）原来只 import 了、**从没画到界面上** ——
+ *     连"这东西不准"都没告诉人。界面上只写着"目标规格：绝区零 / 原神 / 星铁"，
+ *     跟本模块自己的说明（"只管这一个游戏的这一种排法"）打架。
+ *
+ * 删掉的是：`GENSHIN_LADDERS` / `HSR_LADDERS` / `LADDER_GROUPS` /
+ * `genshinLadder` / `genshinDefault` / `hsrLadder` / `hsrDefault` / `GENSHIN_MAP` / `HSR_MAP`。
+ * 数据本身没丢：`test/生成/预设库.json`、`贴图样本/honkaiSR/_验证/星铁预设.json`
+ * 还在，git 历史里也查得到。
+ *
+ * `MANUAL_LAYOUT_NOTE` 留着 —— 手填「按 ladder 配比」那条路还在，
+ * 只要人自己给配比，它就得看见"这只能对上面积"这句。现在它真的画在界面上了。
+ */
 
 
 /* ------------------------------------------------------------------ 映射预设 */
@@ -207,26 +140,10 @@ export const ZZZ_MAP: LmMap = {
 };
 
 /**
- * 原神：一张 256×20 的 ramp，A 是 5 档材质区（0/0.3/0.5/0.7/1.0），
- * G 收敛到 {0, 0.5}。规格见 `test/生成/预设库.json` 的「规格」。
+ * 原神 / 星铁那两条映射**已随配比表一起删掉**（理由见上面「只做绝区零」那一段）：
+ * 它们只能做配比对齐、空间布局对不上，而那句警告原来从没画到界面上。
+ * 要画原神 / 星铁的 lightmap 是另一条路 —— 手画，不在这个模块里。
  */
-export const GENSHIN_MAP: LmMap = {
-  r: ref({ kind: 'ladder', ladder: genshinLadder('身体', 'r'), ladderDefault: 0.0, drive: { slot: 'A', ch: 'luma' } }),
-  g: ref({ kind: 'ladder', ladder: genshinLadder('身体', 'g'), ladderDefault: 0.5, drive: { slot: 'A', ch: 'luma' } }),
-  b: ref({ kind: 'ladder', ladder: genshinLadder('身体', 'b'), ladderDefault: 0.0, drive: { slot: 'A', ch: 'luma' } }),
-  a: ref({ kind: 'ladder', ladder: genshinLadder('身体', 'a'), ladderDefault: 0.0, drive: { slot: 'A', ch: 'luma' } })
-};
-
-/**
- * 星铁：冷暖两张 ramp，A 对应 16 行，G 中性 0.4 且连续，尺寸跟 diffuse。
- * 规格见 `贴图样本/honkaiSR/_分析/HSR规格探测.txt` 与 `_验证/星铁预设.json`。
- */
-export const HSR_MAP: LmMap = {
-  r: ref({ kind: 'ladder', ladder: hsrLadder('星铁_身体', 'r'), ladderDefault: 1.0, drive: { slot: 'A', ch: 'luma' } }),
-  g: ref({ kind: 'ladder', ladder: hsrLadder('星铁_身体', 'g'), ladderDefault: 0.4, drive: { slot: 'A', ch: 'luma' } }),
-  b: ref({ kind: 'ladder', ladder: hsrLadder('星铁_身体', 'b'), ladderDefault: 0.0, drive: { slot: 'A', ch: 'luma' } }),
-  a: ref({ kind: 'ladder', ladder: hsrLadder('星铁_身体', 'a'), ladderDefault: 0.0, drive: { slot: 'A', ch: 'luma' } })
-};
 
 export const PRESETS: Preset[] = [
   {
@@ -237,24 +154,6 @@ export const PRESETS: Preset[] = [
     suffix: '_LM',
     map: ZZZ_MAP,
     note: 'R、B 逐像素精确；G 取自半分辨率法线，lanczos 放大后平均误差 0.13~0.24 级'
-  },
-  {
-    id: 'genshin',
-    name: '原神',
-    semantics: { r: '高光/反射', g: '阴影基调（中性 0.5，离散）', b: '金属度', a: 'Ramp 层（5 档）' },
-    grid: 0.05,
-    suffix: '_Lightmap',
-    map: GENSHIN_MAP,
-    note: '0.05 网格 21 档；A 收敛到 0/0.3/0.5/0.7/1.0'
-  },
-  {
-    id: 'hsr',
-    name: '星铁',
-    semantics: { r: '高光/反射', g: '阴影基调（中性 0.4，连续）', b: '金属度', a: 'Ramp 层 / 材质区' },
-    grid: 0.05,
-    suffix: '_LightMap',
-    map: HSR_MAP,
-    note: '冷暖两张 ramp；A 对应 16 行'
   }
 ];
 

@@ -4,6 +4,7 @@
   import { rail, railMini, panel } from '$lib/ui.svelte';
   import { side, 抽屉, 开抽屉 } from '$lib/side.svelte';
   import { prefs, apply } from '$lib/prefs.svelte';
+  import { 当前工程 } from '$lib/recent.svelte';
   import { toggleTheme, originOf } from '$lib/theme';
   import { ELEMENTS } from '$lib/elements';
   import type { Snippet } from 'svelte';
@@ -130,8 +131,15 @@
     </div>
 
     <div class="bar__tools">
-      <span class="bar__proj" title="当前工程">
-        <span class="bar__dot"></span>未打开工程
+      <!-- 当前工程。**这段原来是写死的"未打开工程"四个字**（用户 2026-09-26 报的
+           "打开工程了上方还显示未打开工程"）—— 没有任何一处状态接上去。
+           现在接 `当前工程`（`recent.svelte.ts` 里设：选工程目录那条路 + ⑨ 那两个文件那次）。 -->
+      <span
+        class="bar__proj"
+        class:bar__proj--on={!!当前工程.path}
+        title={当前工程.path ? `当前工程：${当前工程.path}` : '当前工程：还没选过目录'}
+      >
+        <span class="bar__dot"></span>{当前工程.path ? 当前工程.name : '未打开工程'}
       </span>
 
       <div class="elems" role="group" aria-label="元素配色">
@@ -207,7 +215,13 @@
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-    transition: margin-left var(--t-enter) var(--ease-std);
+    /* **跟侧栏用同一个时长**。原来是 `--t-enter`(350ms)，而侧栏自己的 width 和
+       背景那层用的是 `--t-side`(300ms) —— 时长差 50ms，收起/展开的过程中
+       **轨道边缘和正文左缘不同步**，那 50ms 里两边差着一段，看着就是"衔接错位"
+       （用户 2026-09-26："边栏伸缩你确定真的衔接错位感不明显了吗"）。
+       三处（`.side` / `.bg[data-scope=work]` / 这里）现在都是 `--t-side` + `--ease-std`，
+       动起来是一条边在走。 */
+    transition: margin-left var(--t-side) var(--ease-std);
   }
   .shell[data-mini='true'] { margin-left: var(--rail-collapsed); }
 
@@ -235,8 +249,14 @@
     padding: 5px 12px; border-radius: var(--r-full);
     background: var(--btn-regular-bg); color: var(--btn-content);
     font-size: var(--fs-xs); line-height: var(--lh-xs); font-weight: 600;
+    max-width: 22rem;
   }
-  .bar__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
+  /* 开了工程就把名字露出来（太长就省略，全路径在 title 里）。
+     **别再写死"未打开工程"** —— 见上面那段注释。 */
+  .bar__proj--on { background: color-mix(in oklab, var(--primary) 14%, var(--btn-regular-bg)); }
+  .bar__proj--on > :last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bar__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line-divider); flex: none; }
+  .bar__proj--on .bar__dot { background: var(--primary); }
 
   /* 主题切换按钮。本体只负责按下缩放，动画全在图标上 ——
      换色是 0ms 生效的（见 rules 里对 background-color 的处理），点下去立刻有反应。 */
@@ -306,6 +326,22 @@
     display: flex;
     flex-direction: column;
     gap: var(--fab-gap);
+    transition: right var(--t-panel, 220ms) var(--ease-std);
+  }
+  /* **抽屉一露出来，这列就得让位。**
+     不让位的话那颗「参数」正好压在它自己唤出来的抽屉右下角，把最后一行参数盖住
+     （用户 2026-09-26 报的"参数按钮挡住参数唤出的边栏"）。
+     算一下就明白为什么必中：抽屉 `right: 8px`、宽 `--side-w`（≥12rem），
+     悬浮球 `right: var(--edge)`（16px）—— 水平方向一定落在抽屉里面；
+     而 `--z-fab: 70` 比 `--z-drawer: 20` 高，所以是**盖在上面**。
+     两种"露出来"都要让：滑出（`side-open`）和钉住（`side-pin`）。
+     第二个值是兜底：视口很窄时别把球推出左边界。 */
+  :global(html.side-open) .fabs,
+  :global(html.side-pin) .fabs {
+    right: min(
+      calc(var(--edge) + var(--side-w, 18rem) + var(--fab-gap)),
+      calc(100vw - var(--rail-collapsed) - var(--fab-size) - 12px)
+    );
   }
   .fab {
     display: grid; place-items: center;

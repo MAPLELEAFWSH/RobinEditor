@@ -88,6 +88,35 @@ function load(): RecentEntry[] {
 
 export const recent = $state<RecentEntry[]>(load());
 
+/**
+ * **当前工程**。顶栏那颗点按它显示。
+ *
+ * 用户 2026-09-26 报的："打开工程了上方还显示未打开工程" —— 顶栏那段原来是写死的
+ * 四个字（`AppShell.svelte` 里直接 `<span class="bar__dot"></span>未打开工程`），
+ * 没有任何一处状态接上去，所以选了目录它也不会变。
+ *
+ * 什么时候算"打开了工程"：**`remember()` 只在"选工程目录"那条路上被调**
+ * （导出目录走的是 `pickFolder()`，它不记，见 `io.ts` 里 `setFolderRecorder` 的注释）。
+ * 所以 `remember` 就是"刚开过谁"，在这里顺手把当前工程也设上。
+ *
+ * 起头从 `recent[0]` 取：刷新页面之后顶栏不该假装"什么都没开"——
+ * 最近开过的那个目录就是手上这个工程的来路。
+ */
+export const 当前工程 = $state<{ path: string; name: string }>(
+  recent[0] ? { path: recent[0].path, name: recent[0].name } : { path: '', name: '' }
+);
+
+/** 有没有工程在手（顶栏那颗点看它）。`$state` 用 `const` 声明不能再整个赋值，所以改字段 */
+export function 设当前工程(path: string, name?: string): void {
+  if (!path) {
+    当前工程.path = '';
+    当前工程.name = '';
+    return;
+  }
+  当前工程.path = path;
+  当前工程.name = name || nameOf(path) || path;
+}
+
 function save() {
   try {
     localStorage.setItem(KEY, JSON.stringify(recent));
@@ -96,12 +125,18 @@ function save() {
   }
 }
 
-/** 记一次。同目录只留一条，更新到最前面 */
+/** 记一次。同目录只留一条，更新到最前面。**顺手把「当前工程」也设上**（顶栏那颗点看它） */
 export function remember(path: string, label = '', href = ''): void {
   const next = upsert(recent, path, label, href, Date.now());
   recent.length = 0;
   recent.push(...next);
+  设当前工程(path);
   save();
+}
+
+/** 工程不是目录那种（⑨ 是选 `.pmm` / `.emm` 两个文件）：模块自己报一下名字 */
+export function 报当前工程(path: string, name?: string): void {
+  设当前工程(path, name);
 }
 
 /** 手动改一下这条在干什么（模块没传 label 时补上） */
@@ -118,12 +153,14 @@ export function forget(path: string): void {
   const i = recent.findIndex((e) => e.path === path);
   if (i >= 0) {
     recent.splice(i, 1);
+    if (当前工程.path === path) 设当前工程(recent[0] ? recent[0].path : '', recent[0] ? recent[0].name : '');
     save();
   }
 }
 
 export function clearAll(): void {
   recent.length = 0;
+  设当前工程('');
   save();
 }
 

@@ -49,6 +49,7 @@
   import Note from '$lib/components/wb/Note.svelte';
   import { 提示自动关毫秒 } from '$lib/ui.svelte';
   import Icon from '$lib/components/Icon.svelte';
+  import { 报当前工程 } from '$lib/recent.svelte';
 
   let { panelId = 'pack' }: WbProps = $props();
 
@@ -66,6 +67,14 @@
   const pmm = $derived(当前项?.pmm ?? '');
   const emm = $derived(当前项?.emm ?? '');
   const 工程名 = (x: 工程项 | null) => (x?.pmm ? x.pmm.split(/[\\/]/).pop() ?? x.pmm : '（没选）');
+
+  /* ⑨ 的"工程"是**两个文件**（.pmm / .emm），不走"选目录"那条路，所以顶栏那颗点
+     得由这里自己报一下，名字就用 `工程名()` 同一套。
+     用户 2026-09-26 报的"打开工程了上方还显示未打开工程"里，⑨ 这条路就是这么漏的。 */
+  $effect(() => {
+    const p = pmm;
+    if (p) 报当前工程(p, 工程名(当前项));
+  });
   /** 拖进来的第二个工程挂在这儿，等用户拍板（不许自动换） */
   let 冲突 = $state<{ 哪: 'pmm' | 'emm'; path: string } | null>(null);
 

@@ -33,7 +33,6 @@
      不传 `自动关` + `onclose` 的话 `Note` 既没有叉也不会自己走。 */
   import { 提示自动关毫秒 } from '$lib/ui.svelte';
   import {
-    LADDER_GROUPS,
     LM_SLOTS,
     MANUAL_LAYOUT_NOTE,
     PRESETS,
@@ -42,19 +41,13 @@
     ZZZ_MAP,
     baseStem,
     diffAgainst,
-    genshinDefault,
-    genshinLadder,
-    hsrDefault,
-    hsrLadder,
     lmOutName,
     packLm,
     planeStats,
     presetOf,
     roleOf,
     type DiffResult,
-    type Ladder,
     type LmMap,
-    type Preset,
     type Role,
     type SrcRef
   } from './ops';
@@ -91,6 +84,9 @@
     { id: 'nearest', n: '最邻近 · 差 0.53' }
   ];
   let grid = $state(0);
+  /* 规格 id。**现在只有 'zzz' 一个**（原神 / 星铁那两条映射已删，见 `ops.ts`），
+     留着这个变量是因为下面一串都从 `presetOf(presetId)` 取 suffix / grid / semantics ——
+     等哪天真有第二种验过的规格，把按钮加回来就行。原来那个 `applyPreset` 已删（没人调了）。 */
   let presetId = $state('zzz');
 
   /* ------------------------------------------------------------------ 导出状态 */
@@ -251,13 +247,6 @@
     map = { ...map, [k]: { ...map[k], ...patch } };
   }
 
-  function applyPreset(p: Preset) {
-    presetId = p.id;
-    map = cloneMap(p.map);
-    grid = p.grid;
-    if (p.id === 'zzz') kernel = 'lanczos';
-  }
-
   async function autoPair() {
     const root = await pickFolder('绝区零打包', '/tools/ilm?panel=pack');
     if (!root) return;
@@ -355,17 +344,11 @@
     busy = false;
   }
 
-  /** 把某个通道按某个 ladder 预置填上 */
-  function loadLadder(group: string, name: string, ch: ChannelKey) {
-    const isG = group === 'genshin';
-    const lad: Ladder = isG ? genshinLadder(name, ch) : hsrLadder(name, ch);
-    const def = isG ? genshinDefault(name, ch) : hsrDefault(name, ch);
-    setCh(ch, { kind: 'ladder', ladder: lad.map((e) => [...e] as [number, number]), ladderDefault: def });
-  }
-
-  const LADDER_NAMES = $derived(
-    LADDER_GROUPS.map((g) => ({ group: g.id, groupName: g.name, names: Object.keys(g.table) }))
-  );
+  /* `loadLadder` / `LADDER_NAMES` 已删（2026-09-26）：它们服务的是「换成别的排法」那一页，
+     而那一页的 `repack` 分区**根本没注册**（注册表里只有 pack / pairing）——
+     于是这两个函数从头到尾没人调过。原神 / 星铁的配比表也一并删了，理由见 `ops.ts`。
+     顺带把 `MANUAL_LAYOUT_NOTE` 从"只 import 不画"改成真的画出来：手填「按 ladder 配比」
+     那条路还在，那句话就该在人面前。 */
 
   /* ------------------------------------------------------------------ 配对检查 */
 
@@ -626,17 +609,16 @@
     <aside class="card wb__side">
       <div class="grp">
         <h3 class="grp__t">目标规格</h3>
-        <div class="acts">
-          {#each PRESETS as p (p.id)}
-            <button
-              class="btn btn--ghost btn--sm"
-              aria-pressed={presetId === p.id}
-              class:is-on={presetId === p.id}
-              onclick={() => applyPreset(p)}
-            >{p.name}</button>
-          {/each}
-        </div>
-        <p class="mini" style="margin-top:8px">{curPreset.note}</p>
+        <p class="mini" style="margin:0">
+          只有 <b>{curPreset.name}</b> 一种。这一页是"把三张现成的图按固定通道拼起来"，
+          拼法是逐像素验过的。
+        </p>
+        <p class="mini" style="margin-top:6px">{curPreset.note}</p>
+        <p class="mini" style="margin-top:6px">
+          原神 / 星铁的 lightmap <b>不是这么来的</b> —— 那得自己画。
+          这里原来摆着它们的预设和一串实测配比，已经删掉：自动那套只对得上"各档占多少面积"、
+          对不上"哪块归哪档"。{MANUAL_LAYOUT_NOTE}
+        </p>
       </div>
 
       <div class="grp">
