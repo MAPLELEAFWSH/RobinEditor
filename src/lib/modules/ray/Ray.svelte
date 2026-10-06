@@ -114,6 +114,9 @@
         el,
         accept: d.accept,
         dir: d.dir,
+        /* 拖文件夹进来（`ray:root`）也算"打开工程"（用户 2026-09-26）。
+           标签跟点「选 Ray 包目录」时 `pickFolder('Ray 配置', …)` 传的那一套对齐。 */
+        记: d.dir ? { label: 'Ray 配置', href: '/tools/ray?panel=conf' } : undefined,
         onDrop: (ref) => onDrop(ref.path)
       });
     };

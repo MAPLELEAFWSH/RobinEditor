@@ -1490,7 +1490,7 @@
 {:else}
   <div class="wb">
     <!-- 拖文件夹进来 = 点这颗「选目录」（这一页整页的活就是"指一个目录"） -->
-    <div class="wb__main" use:接目录={(p) => void 扫批量的目录(p)}>
+    <div class="wb__main" use:接目录={{ 收: (p) => void 扫批量的目录(p), label: '整个目录批处理', href: '/tools/channels?panel=batch' }}>
       <div class="card pad">
         <div class="acts">
           <button class="btn btn--primary" onclick={pickBatchDir}>

@@ -146,14 +146,28 @@ export function setFolderRecorder(
  */
 export async function pickFolder(label?: string, href?: string): Promise<string | null> {
   const dir = await pickFolderRaw();
-  if (dir && label) {
-    try {
-      folderRecorder?.(dir, label, href ?? '');
-    } catch {
-      /* 记录失败不该影响选目录本身 */
-    }
-  }
+  if (dir && label) 记工程目录(dir, label, href);
   return dir;
+}
+
+/**
+ * 把「这就是现在打开的工程」报出去（记进最近工程 + 顶栏那颗 `当前工程`）。
+ *
+ * **给拖放那条路用。** 选目录那条路已经在 `pickFolder(label, href)` 里报了；
+ * 而拖文件夹进来走的是落点（`dirdrop.ts` 的 `接目录`），**压根不经过 `pickFolder`** ——
+ * 于是同一个目录，点按钮选它顶栏会变、拖进来不变（用户 2026-09-26 报的）。
+ * 两处都走这一个出口，就不会再分叉。
+ *
+ * `label` 是"当时在干什么"，没给就不记（跟 `pickFolder` 的判据一致）。
+ * 记录失败不该影响落点本身，所以吞掉。
+ */
+export function 记工程目录(path: string, label?: string, href?: string): void {
+  if (!path || !label) return;
+  try {
+    folderRecorder?.(path, label, href ?? '');
+  } catch {
+    /* 记录失败不影响调用方 */
+  }
 }
 
 async function pickFolderRaw(): Promise<string | null> {

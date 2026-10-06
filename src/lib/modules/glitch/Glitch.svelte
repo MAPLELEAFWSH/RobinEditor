@@ -615,7 +615,17 @@
        文件那个按 `TEXT_EXTS` 筛 —— 不是文本的东西（比如 .png）由它把"只收 …"实话说出来；
        文件夹（路径没有后缀）落到下面那个 `dir` 落点上。 */
     登记(`glitch.${panelId}`, (r) => void 接拖文件(r.path), { accept: TEXT_EXTS });
-    登记(`glitch.${panelId}.dir`, (r) => void 接拖文件夹(r.path), { dir: true });
+    /* 拖文件夹进来也算"打开工程"（用户 2026-09-26）。标签跟着当前这一栏走 ——
+       跟同一栏里 `pickFolder('乱码批处理', …)` / `pickFolder('.fx 注释', …)` 那一套对齐，
+       不然点按钮选目录和拖目录进来会在顶栏显示成两个不同的名字。 */
+    const 这栏 = panelId === 'batch'
+      ? { label: '乱码批处理', href: '/tools/glitch?panel=batch' }
+      : panelId === 'fx'
+        ? { label: '.fx 注释', href: '/tools/glitch?panel=fx' }
+        : panelId === 'names'
+          ? { label: '名字还原', href: '/tools/glitch?panel=names' }
+          : { label: '日文乱码修复', href: '/tools/glitch?panel=fix' };
+    登记(`glitch.${panelId}.dir`, (r) => void 接拖文件夹(r.path), { dir: true, 记: 这栏 });
     return () => {
       for (const f of 撤) f();
     };

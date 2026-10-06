@@ -23,6 +23,8 @@ import { registerZone, resetZones, zoneIds } from '../src/lib/dropzones.svelte.t
 import { createDragState, resetDropRegistry } from '../src/lib/drop.ts';
 import { bringIn } from '../src/lib/drag-dom.ts';
 import { 材质落点表, 材质后缀 } from '../src/lib/modules/ray/落点.ts';
+import { 接目录 } from '../src/lib/dirdrop.ts';
+import { setFolderRecorder } from '../src/lib/io.ts';
 
 let pass = 0;
 let fail = 0;
@@ -352,7 +354,56 @@ console.log('\n== 9. 整页落点与贴图格叠着：`.fx` 往下让，`.png` �
   eq(收到的['yaku:page'].length, 1, '整页那个没被再塞一次（还是刚才那条 .fx）');
 }
 
-console.log('\n== 10. 收尾：停掉之后监听不该留 ==');
+console.log('\n== 10. 拖目录进来要算"打开工程"（用户 2026-09-26） ==');
+{
+  /* 为什么单独立这一节：选目录那条路会记最近工程 + 顶栏那颗 `当前工程`，
+     因为页面调的是 `pickFolder(label, href)` —— **记录挂在那个标签参数上**。
+     而拖文件夹进来走的是落点，压根不经过 `pickFolder`，于是同一个目录：
+     点按钮选它顶栏会变、拖进来不变。`dirdrop.ts` 的 `接目录` 现在能带一句
+     `{label, href}`，`drag-dom.ts` 落下来时把它报给同一个出口（`io.ts` 的 `folderRecorder`）。
+     这一节量的就是**那条出口真的通了**，而且**没写 `记` 的落点不许乱记**。 */
+  const 记 = [];
+  setFolderRecorder((path, label, href) => 记.push({ path, label, href }));
+
+  resetZones();
+  /* ① 带了 `记` 的目录落点：拖进去应当报一次 */
+  const 带记 = 假元素(盒(600, 200, 900, 500));
+  const a = 接目录(带记, {
+    收: (p) => 收到的['测.带记'] = [p],
+    label: '批量提取',
+    href: '/tools/channels?panel=pipeline'
+  });
+
+  /* ② 没带 `记` 的目录落点（＝导出目标那类）：什么都不许报 */
+  const 不带记 = 假元素(盒(0, 0, 200, 200));
+  const b = 接目录(不带记, (p) => 收到的['测.不带记'] = [p]);
+
+  eq(zoneIds().includes('dir.1') && zoneIds().includes('dir.2'), true, '两个落点都登记上了');
+
+  记.length = 0;
+  原生拖放(700, 300, 'D:\\工程A');
+  await 静一静();
+  eq(收到的['测.带记']?.join(','), 'D:\\工程A', '拖进去的目录交给了页面自己的收法');
+  eq(记.length, 1, '并且报了"打开工程"一次');
+  eq(记[0]?.path, 'D:\\工程A', '报的路径就是拖进来的那个');
+  eq(记[0]?.label, '批量提取', '标签跟着落点声明走');
+  eq(记[0]?.href, '/tools/channels?panel=pipeline', 'href 也跟着走（最近工程"接着做"要用它）');
+
+  记.length = 0;
+  收到的['测.不带记'] = [];
+  原生拖放(100, 100, 'D:\\导出目标');
+  await 静一静();
+  eq(收到的['测.不带记']?.join(','), 'D:\\导出目标', '没带 `记` 的落点照样收下目录');
+  eq(记.length, 0, '**但它不许记进最近工程**（导出目录不是工程）');
+
+  /* 收尾：钩子还给别人，别让后面的小节跟着记 */
+  setFolderRecorder(null);
+  a.destroy();
+  b.destroy();
+  resetZones();
+}
+
+console.log('\n== 11. 收尾：停掉之后监听不该留 ==');
 {
   停();
   eq(监听表.size, 0, '窗口级监听全撤了');

@@ -11,29 +11,58 @@
  *
  * 用法（Svelte action）：
  * ```svelte
- * <div class="wb__main" use:接目录={(p) => 扫这个目录(p)}>
+ * <div class="wb__main" use:接目录={{ 收: (p) => 扫这个目录(p), label: '批量提取', href: '/tools/channels?panel=pipeline' }}>
  * ```
  * `dir: true` 那个开关是给 `drag-dom` 的原生那条路看的：**文件夹在拖放事件里只给一条路径、
  * 没有后缀**，不按后缀筛才轮得到它（见 `dropzones.svelte.ts` 里 `dir` 的说明）。
+ *
+ * **`label` / `href` 是"这一处收下的算不算打开工程"**（2026-09-26 加的，用户："拖拽选择时
+ * 也需要触发这个变化"）：它跟同一个页面里 `pickFolder(label, href)` 传的是**同一套值**。
+ * 两处都要传 —— 只传 `pickFolder` 的话，点「选目录」顶栏会变成那个目录名，
+ * 拖同一个目录进来却不变，同一个动作两种结果。
  */
-import { registerZone, unregisterZone } from './dropzones.svelte';
+import { registerZone, unregisterZone, type DropZone } from './dropzones.svelte';
 
 /** 每个元素一个稳定 id。用序号而不是随机串，便于在探针里认人 */
 let 序号 = 0;
 
-export function 接目录(node: HTMLElement, 收: (路径: string) => void) {
+/** 落点参数：只要"收到路径干什么"，再可选地报一句"这算打开了哪个工程" */
+export type 目录落点 =
+  | ((路径: string) => void)
+  | { 收: (路径: string) => void; label?: string; href?: string };
+
+export function 接目录(node: HTMLElement, 参数: 目录落点) {
   const id = `dir.${++序号}`;
-  let 当前 = 收;
-  registerZone({
+  let 当前: (路径: string) => void = () => {};
+  let 记: { label: string; href: string } | undefined;
+
+  const 拆 = (p: 目录落点) => {
+    if (typeof p === 'function') {
+      当前 = p;
+      记 = undefined;
+    } else {
+      当前 = p.收;
+      记 = p.label ? { label: p.label, href: p.href ?? '' } : undefined;
+    }
+  };
+  拆(参数);
+
+  /* 留一份引用：`update` 里要改的是**这一个对象**，
+     另造一个再登记会留下旧的落点（`rect` 也会指着老元素）。 */
+  const zone: DropZone = {
     id,
     rect: node.getBoundingClientRect(),
     el: node,
     dir: true,
+    记,
     onDrop: (ref) => 当前(ref.path)
-  });
+  };
+  registerZone(zone);
+
   return {
-    update(下一个: (路径: string) => void) {
-      当前 = 下一个;
+    update(下一个: 目录落点) {
+      拆(下一个);
+      zone.记 = 记;
     },
     destroy() {
       unregisterZone(id);

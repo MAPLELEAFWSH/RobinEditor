@@ -722,7 +722,7 @@
 {:else if panelId === 'pairing'}
   <div class="wb">
     <!-- 拖文件夹进来 = 点这颗「选模型目录」（这一页整页的活就是"指一个目录"） -->
-    <div class="wb__main" use:接目录={(p) => void 扫配对这个目录(p)}>
+    <div class="wb__main" use:接目录={{ 收: (p) => void 扫配对这个目录(p), label: '配对检查', href: '/tools/ilm?panel=pairing' }}>
       <div class="card pad">
         <div class="acts">
           <button class="btn btn--primary" onclick={scanPair} disabled={pairScanning}>

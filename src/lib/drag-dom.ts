@@ -23,7 +23,19 @@ import {
   type Incoming
 } from './drop';
 import { listZones, noticeForward, updateRect, zonesAt, type DropZone } from './dropzones.svelte';
-import { isTauri, probeDir } from './io';
+import { 记工程目录, isTauri, probeDir } from './io';
+
+/**
+ * 落进一个"收文件夹"的落点之后，顺手把它记成"现在打开的工程"。
+ *
+ * 判据都在落点自己身上（`zone.记`）：没写就什么都不做 —— 导出目录那类落点不该记。
+ * 跟 `pickFolder(label, href)` 报到同一处（`io.ts` 的 `folderRecorder`），
+ * 所以最近工程与顶栏那颗 `当前工程` 是一个来源。
+ */
+function 记成工程(zone: DropZone, path: string): void {
+  if (!zone.记 || !path) return;
+  记工程目录(path, zone.记.label, zone.记.href);
+}
 
 /** 槽位在 DOM 上的标记。`Slot` 自己写上去 */
 const KEY_ATTR = 'data-drop-key';
@@ -311,6 +323,8 @@ export function bringIn(st: DragState): () => void {
           ext: first.ext,
           size: first.file?.size ?? 0
         });
+        /* 拖进来的目录也算"打开工程"（跟原生那条路同一个出口，见 `记成工程`） */
+        if (zone.dir) 记成工程(zone, first.path);
       } else if (first) {
         st.fail(`${first.name} 没有真实路径，这个位置只能拖桌面端的文件`);
       }
@@ -419,6 +433,9 @@ export function bringIn(st: DragState): () => void {
               const dir = paths[0];
               if (dir) {
                 z.onDrop({ path: dir, name: baseOfPath(dir), rel: baseOfPath(dir), ext: '', size: 0 });
+                /* **拖进来的目录也算"打开工程"**（用户 2026-09-26）。
+                   不补这一下的话：点「选目录」顶栏会变成那个目录名，拖同一个目录进来不变。 */
+                记成工程(z, dir);
               } else {
                 st.fail('松手那一下没拿到路径，用「选目录」按钮吧');
               }

@@ -303,7 +303,10 @@
       dir: true,
       rect: el.getBoundingClientRect(),
       el,
-      onDrop: (ref) => void useRoot(ref.path)
+      onDrop: (ref) => void useRoot(ref.path),
+      /* 拖文件夹进来也算"打开工程"（用户 2026-09-26）。标签跟这一页点「选模型目录」时
+         `pickFolder('养乐多上材质', …)` 传的那一套对齐。 */
+      记: { label: '养乐多上材质', href: '/tools/yaku?panel=match' }
     });
     return () => unregisterZone(ROOT_ZONE);
   });

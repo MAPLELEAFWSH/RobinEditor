@@ -215,7 +215,7 @@
 
 <div class="wb">
   <!-- 拖文件夹进来 = 点下面那颗「选目录」（这一页整页的活就是"指一个目录"） -->
-  <div class="wb__main" use:接目录={(p) => void 扫这个目录(p)}>
+  <div class="wb__main" use:接目录={{ 收: (p) => void 扫这个目录(p), label: '批量提取', href: '/tools/channels?panel=pipeline' }}>
     <div class="card pad">
       <div class="row">
         <span class="row__k">要处理的目录</span>
