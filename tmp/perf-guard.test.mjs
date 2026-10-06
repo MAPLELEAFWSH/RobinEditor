@@ -82,8 +82,10 @@ ok(
     staticHits.map((h) => `    registry.ts:${h.n}  ${h.line}`).join('\n')
 );
 ok(
-  (regSrc.match(/=>\s*import\('\.\/[^']+\.svelte'\)/g) ?? []).length >= 12,
-  '注册表里的按需加载器少于 12 个，看看是不是被谁改回静态导入了'
+  (regSrc.match(/=>\s*import\('\.\/[^']+\.svelte'\)/g) ?? []).length >= 11,
+  /* 下界卡的是"有没有人把按需加载改回静态 import"。
+     2026-09-26 ④ msToon 整个模块删掉，这一项从 12 降到 11 —— 跟着落。 */
+  '注册表里的按需加载器少于 11 个，看看是不是被谁改回静态导入了'
 );
 
 const { MODULES } = await import('../src/lib/modules/registry.ts');

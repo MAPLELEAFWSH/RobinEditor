@@ -24,12 +24,14 @@ const ok = (c, m) => {
 
 const 注册表 = readFileSync('src/lib/modules/registry.ts', 'utf8');
 
-/* ① 加载器名 → 组件文件：`const loadMstoon = () => import('./mstoon/Mstoon.svelte');` */
+/* ① 加载器名 → 组件文件：`const loadIkclut = () => import('./ikclut/Ikclut.svelte');` */
 const 加载器 = new Map();
 for (const m of 注册表.matchAll(/const\s+(load\w+)\s*=\s*\(\)\s*=>\s*import\('\.\/([^']+)'\)/g)) {
   加载器.set(m[1], `src/lib/modules/${m[2]}`);
 }
-ok(加载器.size >= 10, `注册表里认出 ${加载器.size} 个加载器`);
+/* 下界卡的是"有没有人把按需加载改回静态 import"。
+   2026-09-26 ④ msToon 整个模块删掉，加载器从 12 降到 11、分区从 31 降到 26 —— 跟着落。 */
+ok(加载器.size >= 11, `注册表里认出 ${加载器.size} 个加载器`);
 
 /* ② 每个模块的 panels：从 `id: '<模块>'` 起，取它后面第一个 `panels: [ ... ]` */
 const 全部 = [];
@@ -39,7 +41,7 @@ for (const m of 注册表.matchAll(/\n\s{2}\{\n\s{4}id: '(\w+)',[\s\S]*?\n\s{4}p
     全部.push({ 模块, 分区: p[1], 加载器: p[2] });
   }
 }
-ok(全部.length >= 30, `注册表里认出 ${全部.length} 个分区`);
+ok(全部.length >= 26, `注册表里认出 ${全部.length} 个分区`);
 
 /* ③ 逐个分区：它那个组件里必须认这个 id */
 const 缓存 = new Map();

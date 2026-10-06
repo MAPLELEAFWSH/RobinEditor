@@ -29,7 +29,7 @@
     "active": true,
     "targets": ["nsis"],
     "shortDescription": "MMD 贴图与渲染包整理工具",
-    "longDescription": "把 MMD 的杂活收进一个窗口：贴图通道处理、ILM/lightmap 打包、日文乱码修复、Ramp 生成、msToon 控制图、ikClut 调色、Ray 配置编辑、养乐多上材质。渲染包由你在设置里指路径，本工具不内置、不分发。",
+    "longDescription": "把 MMD 的杂活收进一个窗口：贴图通道处理、绝区零贴图合成、日文乱码修复、ikClut 调色、Ray 配置编辑、养乐多上材质、工程迁移。渲染包由你在设置里指路径，本工具不内置、不分发。",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",

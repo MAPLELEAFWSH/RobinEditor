@@ -13,7 +13,7 @@
  * ⑥ 一收起，⑦ 那一页的参数也跟着没了）。宽度与「钉住」仍是全局的 ——
  * 那是版面偏好，各页保持一致才不会一切页就跳。
  *
- * 存法跟 `mstoon/params.svelte.ts` 一样：**自己管一个 localStorage 键**（不塞进全局 `prefs`，
+ * 存法跟 `prefs.svelte.ts` 一样：**自己管一个 localStorage 键**（不塞进全局 `prefs`，
  * 免得"重置外观"顺手把版面改了）。localStorage 里读出来的东西不可信 → 一律 `clampW`。
  */
 const KEY = 'robin.wb.side.v3';

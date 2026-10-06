@@ -19,7 +19,7 @@
 const PORT = process.env.CDP_PORT ?? process.argv[2] ?? '9223';
 
 /** 侧栏里要点的模块（按显示名找，名字要跟 registry.ts 的 `name` 一模一样）。先进总览当基线，再逐个点 */
-const 要点的 = ['日文乱码修复', 'ikClut 调色', 'Ray 编辑器', 'msToon 贴图', '绝区零贴图合成', '养乐多上材质', '贴图通道处理'];
+const 要点的 = ['日文乱码修复', 'ikClut 调色', 'Ray 编辑器', '绝区零贴图合成', '养乐多上材质', '贴图通道处理', '工程迁移'];
 
 const list = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json();
 const page = list.find((t) => t.type === 'page' && !t.url.startsWith('devtools://'));

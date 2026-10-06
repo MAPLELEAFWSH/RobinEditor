@@ -4,8 +4,9 @@
  * 用法：往 MODULES 里加一条，导航、分区 Tab、功能页标题、关于页清单会自动出现。
  * 详细步骤见 `docs/加新模块.md`。
  *
- * 编号沿用你最初列需求时的顺序（①乱码 ②ikClut ③Ray ④msToon ⑤ILM ⑥养乐多 ⑦通道 ⑨工程迁移）。
- * ⑧Ramp 已删（2026-09-23），号留着不补，文档和用户还在按这些号指模块。
+ * 编号沿用你最初列需求时的顺序（①乱码 ②ikClut ③Ray ⑤ILM ⑥养乐多 ⑦通道 ⑨工程迁移）。
+ * **④msToon 与 ⑧Ramp 都已删**（⑧ 2026-09-23、④ 2026-09-26），号留着不补 ——
+ * 文档和用户还在按这些号指模块。
  */
 
 import type { GroupDef, ModuleDef } from './types';
@@ -23,7 +24,6 @@ const loadPipeline = () => import('./channels/Pipeline.svelte');
 const loadGlitch = () => import('./glitch/Glitch.svelte');
 const loadIkclut = () => import('./ikclut/Ikclut.svelte');
 const loadIlm = () => import('./ilm/Ilm.svelte');
-const loadMstoon = () => import('./mstoon/Mstoon.svelte');
 const loadRay = () => import('./ray/Ray.svelte');
 const loadYaku = () => import('./yaku/Yaku.svelte');
 const loadMigrate = () => import('./migrate/Migrate.svelte');
@@ -118,25 +118,12 @@ export const MODULES: ModuleDef[] = [
       { id: 'pairing', label: '配对检查', hint: '对着材质文件核一遍', load: loadIlm }
     ]
   },
-  {
-    id: 'mstoon',
-    no: '④',
-    name: 'msToon 贴图',
-    desc: '选游戏、丢一张 lightmap，出 msToon 要的那张控制图；也能自己画 ShadowRate、SubLightRate、EdgeRate、FaceSDF 四张。',
-    job: '这一页出 msToon 要的控制图：选游戏、丢一张 lightmap 就出。',
-    group: 'texture',
-    icon: 'leaf.mstoon',
-    ready: true,
-    panel: 'pack',
-    order: 3,
-    panels: [
-      { id: 'pack', label: 'lightmap 打包', hint: '选游戏，丢一张就出', load: loadMstoon },
-      { id: 'shadowrate', label: 'ShadowRate', hint: 'R 基础 G 高光 B 阴影', load: loadMstoon },
-      { id: 'sublight', label: 'SubLightRate', hint: 'R 副光1 G 副光2 B 取消', load: loadMstoon },
-      { id: 'edge', label: 'EdgeRate', hint: 'R 描边强度', load: loadMstoon },
-      { id: 'facesdf', label: 'FaceSDF', hint: '取通道，或交界线转距离场', load: loadMstoon }
-    ]
-  },
+  /* ④ msToon 贴图**整个模块已删**（2026-09-26 用户："删除 MSToon 贴图绘制功能"）。
+     号留着不补，跟 ⑧ 一样 —— 文档和用户还在按 ①②③… 指模块。
+     删掉的是：Mstoon.svelte / mstoon/ops.ts / mstoon/params.svelte.ts，以及它在设置里
+     那一行"msToon 控制图模板目录"。
+     **⑦ 里那三条 msToon 控制图模板（`mstoon-gi/hsr/zzz`，住在 `channels/ops.ts` 的 GAMES）
+     不跟着删** —— 那是"贴图通道处理"自己的打包模板，不走 ④ 这条路。 */
 
   /* ---------------- 调色 ---------------- */
   {

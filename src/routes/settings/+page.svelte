@@ -5,12 +5,12 @@
 
   onMount(() => setChrome('设置', '路径 · 外观 · 备份'));
 
-  /** 每个渲染包都靠一个特征文件辨认，指错目录会被拦住 */
+  /** 每个渲染包都靠一个特征文件辨认，指错目录会被拦住。
+      **msToon 那一行已删**（2026-09-26：④ 整个模块删了，留个模板目录没人用）。 */
   const packs = [
     { k: 'Ray 渲染包', need: 'ray.conf', desc: 'ray-mmd 的根目录' },
     { k: '养乐多渲染包', need: 'mat_body.fx', desc: 'mat_body / face / hair 所在目录' },
-    { k: 'ikClut', need: 'ikClut.fx', desc: 'ikClut 控制器与 LUT 目录' },
-    { k: 'msToon', need: 'ShadowRate.png', desc: 'msToon 控制图模板目录' }
+    { k: 'ikClut', need: 'ikClut.fx', desc: 'ikClut 控制器与 LUT 目录' }
   ];
 
   const rows = [
