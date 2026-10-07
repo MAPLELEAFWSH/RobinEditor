@@ -29,9 +29,7 @@ const 页表 = [
   ['/tools/mstoon', '④ msToon'],
   ['/tools/ilm?panel=pack', '⑤ ILM'],
   ['/tools/yaku?panel=apply', '养乐多写入'],
-  ['/tools/channels?panel=split', '⑦ 分离'],
-  ['/tools/recent', '最近工程'],
-  ['/tools/quick', '快捷动作']
+  ['/tools/channels?panel=split', '⑦ 分离']
 ];
 
 const 桩 = `

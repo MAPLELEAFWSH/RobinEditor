@@ -14,8 +14,8 @@ import type { GroupDef, ModuleDef } from './types';
 /* 各功能的实际界面。一个模块一个组件，组件内部按 panelId 切分区 ——
    分区 Tab 仍然由注册表驱动，组件只负责画内容。
  *
- * **这里不 import 组件本体，只写加载器。** 注册表被侧栏、首页、快捷动作一起读，
- * 顶层 import 会把七个功能的代码全并进首屏那个 chunk：实测首屏 642 KB / 全部 671 KB，
+ * **这里不 import 组件本体，只写加载器。** 注册表被侧栏、首页、功能页一起读，
+ * 顶层 import 会把功能的代码全并进首屏那个 chunk：实测首屏 642 KB / 全部 671 KB，
  * 所有模块一个不落。改成 `() => import(...)` 之后 Rollup 才拆得开，
  * 打开哪个功能才拉哪个。`load` 存的是函数，`[id]/+page.svelte` 负责 await 它。 */
 const loadChannels = () => import('./channels/Channels.svelte');
@@ -27,8 +27,6 @@ const loadIlm = () => import('./ilm/Ilm.svelte');
 const loadRay = () => import('./ray/Ray.svelte');
 const loadYaku = () => import('./yaku/Yaku.svelte');
 const loadMigrate = () => import('./migrate/Migrate.svelte');
-const loadRecent = () => import('./work/Recent.svelte');
-const loadQuick = () => import('./work/Quick.svelte');
 
 export const GROUPS: GroupDef[] = [
   { id: 'work', label: '工作区', icon: 'group.work', order: 0 },
@@ -41,41 +39,18 @@ export const GROUPS: GroupDef[] = [
 
 export const MODULES: ModuleDef[] = [
   /* ---------------- 工作区 ---------------- */
+  /* 「最近工程」与「快捷动作」两页 2026-10-07 删了（用户："舍弃最近功能和快捷功能的选择保留总览"）。
+     `recent.svelte.ts` **留着** —— 顶栏/状态栏那颗"当前工程"、⑨ 的报工程都读它，
+     删的是"把记录当一页摆出来"这件事。`quick.svelte.ts` 跟着页面一起删了（只有那一页用它）。 */
   {
     id: 'overview',
     name: '总览',
-    desc: '三步走、快捷动作、环境状态。',
-    job: '这一页是入口：挑一个功能开工，或者接着上次的工程做。',
+    desc: '三步走，加一条进各功能的路。',
+    job: '这一页是入口：挑一个功能开工。',
     group: 'work',
     icon: 'leaf.overview',
     ready: true,
     order: 0
-  },
-  {
-    id: 'recent',
-    name: '最近工程',
-    desc: '打开过的模型文件夹会记在这里，点一下接着做。',
-    job: '这一页记着你打开过的工程：点一下接着做。',
-    group: 'work',
-    icon: 'leaf.recent',
-    ready: true,
-    order: 1,
-    panel: 'list',
-    panels: [{ id: 'list', label: '记录', hint: '选过的目录 + 当时在干什么', load: loadRecent }]
-  },
-  {
-    id: 'quick',
-    name: '快捷动作',
-    desc: '不走功能页，直接把常用操作拖出来当按钮用。',
-    job: '这一页把你常用的动作钉成按钮：点一下就执行。',
-    group: 'work',
-    icon: 'leaf.quick',
-    ready: true,
-    order: 2,
-    panel: 'pin',
-    panels: [
-      { id: 'pin', label: '固定', hint: '点一下就执行', load: loadQuick }
-    ]
   },
 
   /* ---------------- 贴图（v1 主战场） ---------------- */
@@ -282,11 +257,11 @@ export function modulesByState() {
   return { done, todo };
 }
 
-/** 底部固定两项。形制和分组一样，但不参与折叠。 */
-export const NAV_FOOT = [
-  { id: 'settings', label: '设置', icon: 'nav.settings', href: '/settings' },
-  { id: 'about', label: '关于', icon: 'nav.about', href: '/about' }
-];
+/** 底部固定项。形制和分组一样，但不参与折叠。
+    原来这里还有一条「设置」→ `/settings`：那一页是占位（渲染包路径四条全是"未载入"+禁用按钮、
+    运行设置四行写死、外观只有两个不动的标签），用户 2026-10-07 说"左侧的设置选项没有意义需要删除"。
+    真正能调的（主题色相、壁纸、各层不透明度、动效）在顶栏那颗齿轮打开的面板里，不在这一页。 */
+export const NAV_FOOT = [{ id: 'about', label: '关于', icon: 'nav.about', href: '/about' }];
 
 /** 三步走，所有功能共用这一条流程 */
 export const STEPS = [

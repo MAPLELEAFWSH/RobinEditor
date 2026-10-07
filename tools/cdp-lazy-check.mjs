@@ -25,8 +25,6 @@ const base = process.argv[2] ?? 'http://localhost:1420';
  *  都是被各自模块顶层 import 的，跟着一起下来才对）；别的模块的顶层组件不该出现。 */
 const ROUTES = [
   { url: '/', 名字: '总览', 该拉: [] },
-  { url: '/tools/quick?panel=pin', 名字: '快捷动作', 该拉: ['work/Quick.svelte'] },
-  { url: '/tools/recent?panel=list', 名字: '最近工程', 该拉: ['work/Recent.svelte'] },
   {
     url: '/tools/channels?panel=layers',
     名字: '⑦ 图层与蒙版',
@@ -41,7 +39,6 @@ const ROUTES = [
   { url: '/tools/glitch?panel=fix', 名字: '① 乱码', 该拉: ['glitch/Glitch.svelte'] },
   { url: '/tools/ray?panel=conf', 名字: '③ Ray', 该拉: ['ray/Ray.svelte', 'ray/Row.svelte'] },
   { url: '/tools/yaku?panel=match', 名字: '⑥ 养乐多', 该拉: ['yaku/Yaku.svelte'] },
-  { url: '/settings', 名字: '设置', 该拉: [] },
   { url: '/about', 名字: '关于', 该拉: [] },
   { url: '/welcome', 名字: '欢迎页', 该拉: [] }
 ];

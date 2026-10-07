@@ -4,7 +4,7 @@
   import { STEPS, getModule, moduleTitle } from '$lib/modules/registry';
   import Icon from '$lib/components/Icon.svelte';
 
-  onMount(() => setChrome('工作区', '总览 · 最近工程 · 环境状态'));
+  onMount(() => setChrome('工作区', '总览'));
 
   /* 用户 2026-09-26：「简化工作区模块内容」——
      这一页原来有两块**写死的假数据**：
@@ -12,7 +12,8 @@
        · 「环境与路径」四条永远显示"未载入"（真的载没载在 `prefs` 里，这一页根本没读）。
      跟顶栏那个写死的"未打开工程"是同一类毛病，一起删了。
      也删了 hero 里那两颗按钮：「选择文件夹」**连 onclick 都没有**（点了什么都不发生），
-     「直接进通道处理」跟左边侧栏的 ⑦ 是同一个去处。 */
+     「直接进通道处理」跟左边侧栏的 ⑦ 是同一个去处。
+     2026-10-07：工作区那两页（最近工程 / 快捷动作）也删了，这一页成了工作区里唯一的一页。 */
   const quickIds = ['channels', 'ilm', 'glitch'];
   const quick = quickIds.map((id) => getModule(id)!).filter(Boolean);
 </script>
@@ -52,7 +53,7 @@
       {/each}
     </div>
     <p class="mut" style="margin-top:12px">
-      左边导航里是全部模块。「最近工程」那一页记着你开过的目录，点一下接着做。
+      左边导航里是全部功能。顶栏那颗「当前工程」记着你手上这个目录是哪个，切页也不会变。
     </p>
   </section>
 </div>

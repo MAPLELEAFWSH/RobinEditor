@@ -11,9 +11,6 @@ const PORT = process.env.CDP_PORT ?? '9222';
 /** 要过的路由。`?panel=` 带上，才能把每个分区都渲染一遍 */
 const ROUTES = [
   '/',
-  '/tools/recent',
-  '/tools/quick',
-  '/tools/channels?panel=region',
   '/tools/channels?panel=extract',
   '/tools/channels?panel=pipeline',
   '/tools/channels?panel=layers',
@@ -37,7 +34,6 @@ const ROUTES = [
   '/tools/ray?panel=material',
   '/tools/yaku?panel=match',
   '/tools/yaku?panel=apply',
-  '/settings',
   '/about',
   '/welcome'
 ];

@@ -64,8 +64,6 @@ const 查 = `(async () => {
 })()`;
 
 const 页表 = [
-  ['/tools/recent?panel=list', '最近工程'],
-  ['/tools/quick?panel=pin', '快捷动作'],
   ['/tools/channels?panel=extract', '⑦通道提取'],
   ['/tools/channels?panel=pipeline', '⑦批量提取'],
   ['/tools/channels?panel=layers', '⑦图层与蒙版'],

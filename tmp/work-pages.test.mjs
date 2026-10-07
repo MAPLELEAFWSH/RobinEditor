@@ -1,19 +1,17 @@
 /**
- * 最近工程 / 快捷动作的自检。
+ * 「最近工程」那套记录逻辑的自检（`src/lib/recent.svelte.ts`）。
  *
  * 只测纯逻辑那一半 —— 存放状态那半边用了 Svelte 的 rune，Node 里跑不了，
  * 那部分在真界面里验。这里盯的是最容易悄悄坏、界面上又看不出来的几件事：
- * 去重、保旧字段、截断上限、把指向已删动作的固定项丢掉。
+ * 去重、保旧字段、截断上限、手改过 localStorage 也扛得住。
  *
- * **下面第一行 import 的顺序是刻意的，别改。** 注册表和 quick.svelte.ts 互相引用，
- * 谁先求值决定了会不会踩到暂时性死区。应用里是注册表先（侧栏先引它），
- * 所以测试也照这个顺序引 —— 否则测试能过、应用白屏，那种 bug 就抓不住。
+ * **那一页（`/tools/recent`）2026-10-07 删了，这套逻辑留着** ——
+ * 顶栏/状态栏那颗"当前工程"、⑨ 的报工程都读它。文件名叫 work-pages 是历史，
+ * 别照着名字去找"工作区那两页"。
  *
  * 跑：node --import ./tmp/register-loader.mjs tmp/work-pages.test.mjs
  */
-import { MODULES } from '../src/lib/modules/registry.ts';
 import { upsert, sanitize, relTime } from '../src/lib/recent.svelte.ts';
-import { allActions, ensurePinnedLoaded, pinned, sanitizePinned } from '../src/lib/quick.svelte.ts';
 
 let pass = 0;
 let fail = 0;
@@ -132,87 +130,9 @@ section('最近工程：相对时间');
   eq(relTime(0), '', '没时间戳就不显示');
 }
 
-section('快捷动作：固定列表的清洗');
-
-{
-  const known = (id) => ['a', 'b', 'c'].includes(id);
-
-  eq(sanitizePinned(null, known), null, '没存过 → null（调用方去用默认）');
-  eq(sanitizePinned(undefined, known), null, 'undefined 同理');
-  eq(sanitizePinned('不是数组', known), null, '坏了 → null 回退默认');
-  eq(sanitizePinned([], known).length, 0, '存过空列表 → 就用空的（用户故意全取消）');
-
-  const s = sanitizePinned(['a', 'a', 'zzz', 'b', 42, '', 'c'], known);
-  eq(s.join(','), 'a,b,c', '去重 + 丢掉已不存在的动作 + 丢掉非字符串');
-  eq(sanitizePinned(['zzz'], known).length, 0, '全是不存在的 → 空列表而不是 null');
-}
-
-section('快捷动作：默认固定项都得是真动作');
-
-{
-  // 默认列表里写错一个 id，第一次进页面就会少一个按钮，而且不报错
-  const { allActions } = await import('../src/lib/quick.svelte.ts');
-  const ids = new Set(allActions().map((a) => a.id));
-  for (const want of ['channels/pipeline', 'channels/extract', 'ilm/pack', 'glitch/batch', 'app.theme']) {
-    ok(ids.has(want), `默认固定项 ${want} 是真动作`);
-  }
-}
-
-section('快捷动作：装初值这一步别写出循环引用');
-
-{
-  // 这一段就是刚才真出过的那个 bug：app 里是注册表先求值，
-  // quick.svelte.ts 顶层就地读 localStorage 的话会撞上
-  // "Cannot access 'MODULES' before initialization"，整页白屏。
-  // 现在初值靠 ensurePinnedLoaded() 在组件实例化时补，这里手动走一遍那条路。
-  eq(pinned.length, 0, '模块刚求值完时固定列表还是空的');
-  ensurePinnedLoaded();
-  ok(pinned.length > 0, `装完初值有内容（实得 ${pinned.length}）`);
-  ok(pinned.every((id) => allActions().some((a) => a.id === id)), '装进来的都是真动作');
-
-  // 再调一次不该翻倍
-  const n = pinned.length;
-  ensurePinnedLoaded();
-  eq(pinned.length, n, '重复调用不会越装越多');
-}
-
-section('快捷动作：动作表从注册表派生');
-
-{
-  const list = allActions();
-  const byId = new Map(list.map((a) => [a.id, a]));
-
-  ok(list.length > 20, `动作数量够多（实得 ${list.length}）`);
-  eq(new Set(list.map((a) => a.id)).size, list.length, 'id 不重复');
-
-  // 每个「功能 · 分区」都该有一个动作
-  let missing = [];
-  for (const m of MODULES) {
-    for (const p of m.panels ?? []) {
-      if (!p.load) continue;
-      if (!byId.has(`${m.id}/${p.id}`)) missing.push(`${m.id}/${p.id}`);
-    }
-  }
-  ok(missing.length === 0, '所有带组件的分区都有对应动作', missing.join(', '));
-
-  // 每个动作要么能跳转、要么能执行，不能两个都没有
-  const dead = list.filter((a) => !a.href && !a.run).map((a) => a.id);
-  ok(dead.length === 0, '没有点不动的动作', dead.join(', '));
-
-  // 跳转类的 href 得是站内路径
-  const badHref = list.filter((a) => a.href && !a.href.startsWith('/')).map((a) => a.id);
-  ok(badHref.length === 0, 'href 都是站内路径', badHref.join(', '));
-
-  // 带 ?panel= 的那些，panel 得真的是那个模块的分区
-  const badPanel = [];
-  for (const a of list) {
-    const m = /^\/tools\/([^?]+)\?panel=(.+)$/.exec(a.href ?? '');
-    if (!m) continue;
-    const mod = MODULES.find((x) => x.id === m[1]);
-    if (!mod || !(mod.panels ?? []).some((p) => p.id === m[2])) badPanel.push(a.id);
-  }
-  ok(badPanel.length === 0, '深链的 panel 参数都对得上', badPanel.join(', '));
-}
+/* 快捷动作那四节（固定列表清洗、默认项、装初值、动作表派生）2026-10-07 随页面一起删了 ——
+   `src/lib/quick.svelte.ts` 不存在了。动作表那节守的"每个带组件的分区都能深链"
+   现在由 `tmp/panel-ids.test.mjs` 从注册表那一侧钉着。 */
 
 console.log(`\n${pass} 通过 / ${fail} 失败`);
 process.exit(fail ? 1 : 0);

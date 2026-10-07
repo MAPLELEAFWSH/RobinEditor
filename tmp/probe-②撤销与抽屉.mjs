@@ -317,7 +317,7 @@ if (红) console.log('有红的就不是全绿 —— 别把这一条记成"验�
 /* **收尾：把自己开的抽屉关掉。**
    抽屉的开合是**按路由记在 localStorage 里**的（`side.svelte.ts` 的 `robin.wb.side.v3`），
    这个探针开了 `tools/ikclut` 那一页的抽屉就走人了 —— 下一次跑 `tools/ui-audit.mjs --all`
-   会带着"抽屉开着"进那几页，于是 `/tools/ikclut` 与 `/tools/recent` 全判 FAIL。
+   会带着"抽屉开着"进那几页，于是 `/tools/ikclut` 那一页的体检会判 FAIL。
    那次假红就是这么来的（量过：清掉那个键之后审计立刻回到 0）。
    探针自己弄脏的状态，探针自己收拾。 */
 const 清 = await 跑(`(() => {
