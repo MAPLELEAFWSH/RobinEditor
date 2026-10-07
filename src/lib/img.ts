@@ -24,7 +24,82 @@ export type ChannelSource = {
   constant: number;
   /** 反相 */
   invert: boolean;
+  /**
+   * 这一路**不从哪一路取**，而是由输出的 R、G 推出来。目前只有法线的 Z。
+   *
+   * 写在 B 那一路上的意思：`B = √(1 − x² − y²)`，x/y 取的是**同一张输出图的 R、G 两路**
+   * （它们各自的槽位、通道、反相照常起作用）。所以"X 在 A、Y 在 G"这种打包只要把
+   * R 那一路设成取 A、G 那一路设成取 G，Z 就跟着对了。
+   *
+   * 三路不是各算各的：这个模式会按法线的写法把 **R、G、B 一起重写**
+   * （x/y 从 0-255 映射到 −1~1，算完再映射回去）—— 手工拼三路做不到这一点。
+   * 依据：素材里那对 `_N` → 标准法线逐像素量出来的关系，见 `docs/产物配对实测.md` §2。
+   */
+  推导?: 'z';
+  /**
+   * 推导时的写回取整。**'floor' 是为了逐像素复现素材里那份产物**：
+   * 它走的是 float32 算完直接截断，R/G 各有 63/256 个取值会比源低 1 级 ——
+   * 拿"四舍五入"去对，那两路有 3% 的像素差 1 级。默认 'half-even'（就是不给浮点台阶）。
+   */
+  round?: 'half-even' | 'floor';
+  /** 这一路源尺寸跟目标不一致时怎么放大；不写就用 `pack` 的默认核 */
+  upscale?: ScaleMode;
 };
+
+/* ------------------------------------------------------------ 法线：由 x、y 推 z */
+
+/** float32 的四舍五入到最近的可表示值。那份产物的算式是 32 位浮点，要复现就得跟着走 */
+const f32 = Math.fround;
+
+/**
+ * 由 x、y 推 z 并写回 0-255：`n = (x, y, √(1 − x² − y²))`，x/y 是法线的读法（0-255 ↔ −1~1）。
+ *
+ * 负数开根会出 NaN，所以先把 `1 − x² − y²` 夹到 0 —— x² + y² > 1 的像素（打包数据里
+ * 边缘处常见）z 就是 0，不会炸出一片黑。
+ *
+ * **每一步都走 `Math.fround`**：这不是讲究，是不走就复现不了素材里那份产物。
+ * 实测（`tmp/normalcheck/dump-normal.mjs` 导出的真配对）：float64 + 截断时 R/G 各有
+ * 63/256 个取值差 1 级；换 float32 之后 **R、G、B 三路逐像素 100% 相同**。
+ */
+export function 法线Z(x: number, y: number, round: 'half-even' | 'floor' = 'half-even'): number {
+  const xn = f32(f32(f32(x / 255) * 2) - 1);
+  const yn = f32(f32(f32(y / 255) * 2) - 1);
+  let inner = f32(f32(1) - f32(xn * xn));
+  inner = f32(inner - f32(yn * yn));
+  if (inner < 0) inner = 0;
+  const z = f32(Math.sqrt(inner));
+  const v = f32(f32(f32(z * 0.5) + 0.5) * 255);
+  // 不写 floor 的话交给 Uint8ClampedArray 的隐式赋值 —— 那是**半偶数取整**
+  return round === 'floor' ? Math.floor(v) : v;
+}
+
+/** 0-255 的 x 走一遍 float32 往返再写回。取整跟 `法线Z` 同一档 */
+function 法线XY(v: number, round: 'half-even' | 'floor'): number {
+  const xn = f32(f32(f32(v / 255) * 2) - 1);
+  const out = f32(f32(f32(xn * 0.5) + 0.5) * 255);
+  return round === 'floor' ? Math.floor(out) : out;
+}
+
+/**
+ * 就地把三张平面按法线的写法重写：R/G 走 float32 往返，B 换成推出来的 Z。
+ *
+ * 只在"有哪一路写了 `推导: 'z'`"时调用 —— 见 `ChannelSource.推导`。
+ */
+export function 重写法线(
+  pr: Uint8ClampedArray,
+  pg: Uint8ClampedArray,
+  pb: Uint8ClampedArray,
+  round: 'half-even' | 'floor' = 'half-even'
+): void {
+  const n = pr.length;
+  for (let i = 0; i < n; i++) {
+    const x = pr[i];
+    const y = pg[i];
+    pb[i] = 法线Z(x, y, round);
+    pr[i] = 法线XY(x, round);
+    pg[i] = 法线XY(y, round);
+  }
+}
 
 export function newCanvas(w: number, h: number) {
   return new OffscreenCanvas(Math.max(1, Math.round(w)), Math.max(1, Math.round(h)));
@@ -290,7 +365,7 @@ export function resize(
 /**
  * 预览用：最长边压到 n 以内。
  *
- * **同一张源图 + 同一个边长只压一次，返回的是同一个对象。**
+ * **同一张源图 + 同一个边长 + 同一个放大核只压一次，返回的是同一个对象。**
  * 图层缓存（`LayerCache`）按源图的**对象身份**建键（`ops.ts` 的 `objId`），
  * 每次新铸一个 `ImageData` 就等于每次都换号 —— 只要贴图比预览边长，
  * 缓存一次都命中不了，面板上那个命中计数会一直是 0。
@@ -298,9 +373,9 @@ export function resize(
  * 源图在整个会话里是换引用、不改内容的（`Slots` 每次载入造新的），
  * 所以按身份记是安全的。WeakMap 不挡着源图被回收。
  */
-const previewCache = new WeakMap<ImageData, Map<number, ImageData>>();
+const previewCache = new WeakMap<ImageData, Map<string, ImageData>>();
 
-export function previewOf(src: ImageData, maxSide = 512): ImageData {
+export function previewOf(src: ImageData, maxSide = 512, mode: ScaleMode = 'bilinear'): ImageData {
   const m = Math.max(src.width, src.height);
   if (m <= maxSide) return src;
   let bySide = previewCache.get(src);
@@ -308,11 +383,14 @@ export function previewOf(src: ImageData, maxSide = 512): ImageData {
     bySide = new Map();
     previewCache.set(src, bySide);
   }
-  const hit = bySide.get(maxSide);
+  /* 键里带上放大核：数据贴图那条路（最邻近）跟照片那条路（双线性）出来的不是同一张图，
+     共用一个键的话先算哪张就一直是哪张。 */
+  const key = `${maxSide}|${mode}`;
+  const hit = bySide.get(key);
   if (hit) return hit;
   const k = maxSide / m;
-  const out = resize(src, src.width * k, src.height * k, 'bilinear');
-  bySide.set(maxSide, out);
+  const out = resize(src, src.width * k, src.height * k, mode);
+  bySide.set(key, out);
   return out;
 }
 
@@ -410,7 +488,8 @@ export function pack(
   w: number,
   h: number,
   map: PackMap,
-  sources: Map<string, ImageData>
+  sources: Map<string, ImageData>,
+  opts: { upscale?: ScaleMode } = {}
 ): ImageData {
   const out = blankImageData(w, h);
   const d = out.data;
@@ -420,21 +499,31 @@ export function pack(
   const planes: Uint8ClampedArray[] = [];
   for (const k of CHANNEL_KEYS) {
     const s = map[k];
-    if (!s || !s.slot) {
+    if (!s || (!s.slot && s.推导 !== 'z')) {
       const arr = new Uint8ClampedArray(w * h);
       arr.fill(字节值(s?.constant ?? 0));
       planes.push(arr);
       continue;
     }
-    const img = sources.get(s.slot);
+    const img = s.slot ? sources.get(s.slot) : undefined;
     if (!img) {
       const arr = new Uint8ClampedArray(w * h);
       arr.fill(字节值(s.constant ?? 0));
       planes.push(arr);
       continue;
     }
-    const use = img.width === w && img.height === h ? img : resize(img, w, h, 'bilinear');
+    /* 放大核：这一路自己指定的优先，其次整页那一档，最后才是双线性。
+       数据贴图（法线、材质 ID、遮罩）必须能用最邻近 —— 双线性会插出中间值：
+       法线插完不再是单位向量，ID 图更是凭空多出几个不存在的编号。 */
+    const mode = s.upscale ?? opts.upscale ?? 'bilinear';
+    const use = img.width === w && img.height === h ? img : resize(img, w, h, mode);
     planes.push(extractChannel(use, s.ch, s.invert));
+  }
+
+  /* 「推 Z」那一路：三路必须来自同一套 x/y，所以放在拼装之前整体重写。
+     写在 B 上的推导才生效 —— R/G 上的推导没有定义。 */
+  if (map.b?.推导 === 'z') {
+    重写法线(planes[0], planes[1], planes[2], map.b.round ?? 'half-even');
   }
 
   const [pr, pg, pb, pa] = planes;

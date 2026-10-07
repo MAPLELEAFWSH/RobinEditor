@@ -8,7 +8,15 @@
  */
 
 import { stemOf } from '$lib/io';
-import { CHANNEL_KEYS, extractChannel, grayToImageData, 字节值, type ChannelKey } from '$lib/img';
+import {
+  CHANNEL_KEYS,
+  extractChannel,
+  grayToImageData,
+  pack,
+  字节值,
+  type ChannelKey,
+  type PackMap
+} from '$lib/img';
 
 export type BatchOp =
   | 'split'
@@ -24,6 +32,9 @@ export type BatchOp =
   | 'rotate'
   | 'bgra'
   | 'invert-r'
+  | 'normal-z'
+  | 'normal-flipy'
+  | 'normal-ag'
   | 'adjust'
   | 'layers';
 
@@ -51,6 +62,9 @@ export const BATCH_OPS: BatchOpInfo[] = [
   { id: 'rotate', name: '循环位移', hint: 'R←G G←B B←A A←R', out: 1 },
   { id: 'bgra', name: '法线 B↔R', hint: '法线贴图常见的对调', out: 1 },
   { id: 'invert-r', name: 'R 反相', hint: '只动 R', out: 1 },
+  { id: 'normal-z', name: '法线·重建 Z', hint: 'X 在 R、Y 在 G，B 重算成标准蓝', out: 1 },
+  { id: 'normal-flipy', name: '法线·翻绿', hint: 'Y 反相 + 重建 Z（DirectX ↔ OpenGL）', out: 1 },
+  { id: 'normal-ag', name: 'AG 打包 → 标准蓝', hint: 'X 在 A、Y 在 G（粉色那种）', out: 1 },
   { id: 'adjust', name: '只跑调整', hint: '原样出图，只改像素', out: 1 },
   { id: 'layers', name: '套一套图层', hint: '每个文件当一格，按图层栈叠一遍再出图', out: 1 }
 ];
@@ -69,6 +83,9 @@ function tagOf(op: BatchOp): string {
   if (op === 'alpha-from-r') return 'A-from-R';
   if (op === 'bgra') return 'BGR';
   if (op === 'invert-r') return 'R-inv';
+  if (op === 'normal-z') return 'NormalZ';
+  if (op === 'normal-flipy') return 'NormalFlipY';
+  if (op === 'normal-ag') return 'NormalAG';
   if (op === 'adjust') return 'adjust';
   return op;
 }
@@ -91,8 +108,16 @@ export function batchOutNames(rel: string, op: BatchOp, suffix = ''): string[] {
    像素：批量那几种变换
    ============================================================ */
 
-/** 通道映射的一种：从源取哪一路、要不要反相、或者干脆写常量 */
-export type 通道来源 = { ch?: ChannelKey; invert?: boolean; const?: number };
+/** 通道映射的一种：从源取哪一路、要不要反相、或者干脆写常量；也可以"由 R、G 推 Z" */
+export type 通道来源 = {
+  ch?: ChannelKey;
+  invert?: boolean;
+  const?: number;
+  /** 法线的 Z：由输出的 R、G 推出来（见 `img.ts` 的 `ChannelSource.推导`） */
+  推导?: 'z';
+  /** 推导时的写回取整：'floor' = 照素材那份产物逐像素相同 */
+  round?: 'half-even' | 'floor';
+};
 
 /**
  * 「调换」那一页预设表里的通道映射 —— **一份**，两个界面共用。
@@ -100,7 +125,22 @@ export type 通道来源 = { ch?: ChannelKey; invert?: boolean; const?: number }
  * 原来「调换」有 9 条、「批量」自己实现了 5 条：用户在调换页能用的
  * `rotate` / `bgra` / `invert-r` 到批量页就找不到。现在预设表在这儿，
  * 两边的下拉都从它取（`channels/ops.ts` 的 `applyPlan` 吃的就是 `通道来源`）。
+ *
+ * 后三条是法线的：**三路必须来自同一套 x/y**，所以走"由 R、G 推 Z"那条路，
+ * 不是手工拼三路。量出来的用法：绝区零那批 `_N` 里 **93% 的 B 不是 z**
+ * （B 均值 121~125、跨度也不对），把 X/Y 当 x、y 重建一遍才是标准蓝法线；
+ * 模型库里另外那 400 张则 399 张本来就是标准蓝。数见 `docs/产物配对实测.md`。
+ *
+ * 取整给的是**截断**：这样"法线·重建 Z"跟素材里 `ZZZ_Converted_Normal` 逐像素相同
+ * （`tmp/法线转换.test.mjs` 钉着）。想要纯数学上的四舍五入，在 B 那一路切一下。
  */
+const 法线预设 = (r: 通道来源, g: 通道来源): Record<ChannelKey, 通道来源> => ({
+  r,
+  g,
+  b: { 推导: 'z', round: 'floor' },
+  a: { const: 255 }
+});
+
 export const 调换预设: { id: string; name: string; hint: string; map: Record<ChannelKey, 通道来源> }[] = [
   { id: 'identity', name: '原样', hint: '不动', map: { r: { ch: 'r' }, g: { ch: 'g' }, b: { ch: 'b' }, a: { ch: 'a' } } },
   { id: 'gray-r', name: 'R 铺满 RGB', hint: '出灰度底图', map: { r: { ch: 'r' }, g: { ch: 'r' }, b: { ch: 'r' }, a: { const: 255 } } },
@@ -110,7 +150,25 @@ export const 调换预设: { id: string; name: string; hint: string; map: Record
   { id: 'rgb-to-alpha', name: 'R 提到 A', hint: 'RGB 不动，A 换成 R', map: { r: { ch: 'r' }, g: { ch: 'g' }, b: { ch: 'b' }, a: { ch: 'r' } } },
   { id: 'rotate', name: '循环位移', hint: 'R←G G←B B←A A←R', map: { r: { ch: 'g' }, g: { ch: 'b' }, b: { ch: 'a' }, a: { ch: 'r' } } },
   { id: 'bgra', name: '法线 B↔R', hint: '法线贴图常见的对调', map: { r: { ch: 'b' }, g: { ch: 'g' }, b: { ch: 'r' }, a: { ch: 'a' } } },
-  { id: 'invert-r', name: 'R 反相', hint: '只动 R', map: { r: { ch: 'r', invert: true }, g: { ch: 'g' }, b: { ch: 'b' }, a: { ch: 'a' } } }
+  { id: 'invert-r', name: 'R 反相', hint: '只动 R', map: { r: { ch: 'r', invert: true }, g: { ch: 'g' }, b: { ch: 'b' }, a: { ch: 'a' } } },
+  {
+    id: 'normal-z',
+    name: '法线·重建 Z',
+    hint: 'X 在 R、Y 在 G，B 重算 → 标准蓝法线',
+    map: 法线预设({ ch: 'r' }, { ch: 'g' })
+  },
+  {
+    id: 'normal-flipy',
+    name: '法线·翻绿',
+    hint: 'X 在 R、Y 在 G 反相、B 重算（DirectX ↔ OpenGL）',
+    map: 法线预设({ ch: 'r' }, { ch: 'g', invert: true })
+  },
+  {
+    id: 'normal-ag',
+    name: 'AG 打包 → 标准蓝',
+    hint: 'X 在 A、Y 在 G（粉色那种），B 重算',
+    map: 法线预设({ ch: 'a' }, { ch: 'g' })
+  }
 ];
 
 /** 批量页里"铺满 / 轮换 / 反相"这三类走的都是预设表那一份 */
@@ -162,6 +220,9 @@ export function batchTransform(
     case 'rotate':
     case 'bgra':
     case 'invert-r':
+    case 'normal-z':
+    case 'normal-flipy':
+    case 'normal-ag':
       return [{ name: '', data: 按映射(src, 调换映射(op)!) }];
     case 'layers':
       return [{ name: '', data: o.叠图层(src) }];
@@ -171,25 +232,19 @@ export function batchTransform(
 }
 
 /**
- * 按通道映射拼一张图。跟 `channels/ops.ts` 的 `applyPlan` 是同一件事，
- * 但那个吃的是"计划 + 槽位表"，这里吃的是"一张源图 + 映射表"（批量每张图独立）。
+ * 按通道映射拼一张图。
+ *
+ * **就是 `img.ts` 的 `pack` 的一件事**（一张源图 + 映射表），原来这里自己又写了一遍
+ * 像素循环 —— 两份实现漂开过一次（"铺满 / 轮换 / 反相"这些在批量页能用、
+ * 在合并页不能用之类）。现在只做一层"`通道来源` → `ChannelSource`"的翻译，像素归 pack。
  */
 export function 按映射(src: ImageData, map: Record<ChannelKey, 通道来源>): ImageData {
-  const w = src.width;
-  const h = src.height;
-  const out = new ImageData(w, h);
-  const d = out.data;
-  const 偏移: Record<ChannelKey, number> = { r: 0, g: 1, b: 2, a: 3 };
+  const 表 = {} as PackMap;
   for (const k of CHANNEL_KEYS) {
     const s = map[k];
-    const off = 偏移[k];
-    if (!s.ch) {
-      const v = 字节值(s.const ?? 0);
-      for (let i = 0; i < w * h; i++) d[i * 4 + off] = v;
-      continue;
-    }
-    const plane = extractChannel(src, s.ch, s.invert ?? false);
-    for (let i = 0; i < w * h; i++) d[i * 4 + off] = plane[i];
+    表[k] = s.ch
+      ? { slot: 'src', ch: s.ch, constant: 0, invert: s.invert ?? false, 推导: s.推导, round: s.round }
+      : { slot: '', ch: 'r', constant: 字节值(s.const ?? 0), invert: false, 推导: s.推导, round: s.round };
   }
-  return out;
+  return pack(src.width, src.height, 表, new Map([['src', src]]));
 }

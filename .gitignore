@@ -30,9 +30,14 @@ vite.config.ts.timestamp-*
 #   ilmcheck/data    ⑤ 那套探针转储的原始像素（12 × 16 MB）。
 #                    **内容来自第三方素材，不许发布**；
 #                    `tmp/ilmcheck/run.mjs` 在缺 `sizes.json` 时会自己跳过这一套。
+#   normalcheck/data ⑦ 法线那对真配对的原始像素（4 × 1 MB）。
+#                    同一条规矩：**第三方素材解出来的，不许发布**；
+#                    `tmp/法线转换.test.mjs` 缺 `sizes.json` 时跳过真图那几条**并退码 1**
+#                    （缺基准 = 没验过，不许当绿）。本地要跑先 `node tmp/normalcheck/dump-normal.mjs`。
 #   其它            日志、一次性截图、诊断输出
 /tmp/chrome-audit/
 /tmp/ilmcheck/data/
+/tmp/normalcheck/data/
 /tmp/uitest/
 
 # `tmp/素材-*.png` 是从**语料复制**过来的游戏贴图（`probe-②原分辨率.mjs` 和

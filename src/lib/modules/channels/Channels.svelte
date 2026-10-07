@@ -60,6 +60,7 @@
     CHANNEL_LABEL,
     type ChannelKey,
     type ChannelSource,
+    type ScaleMode,
     bitmapToImageData,
     extractChannel,
     grayToImageData,
@@ -162,6 +163,24 @@
   let mergeOut = $state<ImageData | null>(null);
   const mergeHist = $derived(mergeOut ? histogram(mergeOut, 2) : null);
 
+  /**
+   * 源尺寸跟目标不一致时用哪个放大核。**合并与调换共用这一档。**
+   *
+   * 默认双线性（跟改之前一样）；法线、材质 ID、遮罩这类**数据贴图**要用最邻近 ——
+   * 双线性会在两个值之间插出中间值：法线插完不再是单位向量，ID 图更是凭空多出
+   * 几个不存在的编号（`readMaterialIds` 会把它们全数出来）。
+   * 这一条不是新功能，是原来写死 `bilinear` 的那一处现在能改了。
+   */
+  let packKernel = $state<ScaleMode>('bilinear');
+
+  /** 放大核那四档。文案只写"是什么、什么时候用哪个"，不写算法怎么算的 */
+  const 放大核表: { id: ScaleMode; label: string; hint: string }[] = [
+    { id: 'bilinear', label: '双线性', hint: '照片、渐变这类连续的东西：默认' },
+    { id: 'nearest', label: '最邻近', hint: '数据贴图（法线、材质 ID、遮罩）用这个：一个中间值都不造' },
+    { id: 'bicubic', label: '双三次', hint: '放大时比双线性锐一点' },
+    { id: 'lanczos', label: 'Lanczos', hint: '放大核里最锐的（绝区零 _N 那条实测用它最准）' }
+  ];
+
   $effect(() => {
     const loaded = Object.keys(mergeSlots.map)
       .map((id) => mergeSlots.get(id))
@@ -172,11 +191,12 @@
       return;
     }
     void mergeMap;
+    void packKernel;
     raf.schedule(() => {
-      const base = previewOf(loaded[0].data!, PREVIEW);
+      const base = previewOf(loaded[0].data!, PREVIEW, packKernel);
       const src = new Map<string, ImageData>();
-      for (const s of loaded) src.set(s.id, previewOf(s.data!, base.width));
-      const out = pack(base.width, base.height, mergeMap, src);
+      for (const s of loaded) src.set(s.id, previewOf(s.data!, base.width, packKernel));
+      const out = pack(base.width, base.height, mergeMap, src, { upscale: packKernel });
       mergeUrl = imageDataToUrl(out);
       mergeOut = out;
     });
@@ -197,10 +217,11 @@
   let swzOut = $state<ImageData | null>(null);
   const swzHist = $derived(swzOut ? histogram(swzOut, 2) : null);
 
-  type SwzPreset = { id: string; name: string; hint: string; map: Record<ChannelKey, { ch?: ChannelKey; invert?: boolean; const?: number }> };
   /* 预设表在 `batch.ts`（那一份两个界面共用）—— 这里原来自己抄了同样的 9 条，
      而批量页只实现了其中 5 条，用户在调换页能用的"法线 B↔R"到批量页就找不到。
-     现在两边同一个数组，加一条两边都有。 */
+     现在两边同一个数组，加一条两边都有。**类型也从它取**，别再抄一份字段表
+     （抄的话加一个字段这里就漏，Svelte 那边是运行期才发现的）。 */
+  type SwzPreset = (typeof 调换预设)[number];
   const SWZ_PRESETS = 调换预设;
 
   $effect(() => {
@@ -211,9 +232,10 @@
       return;
     }
     void swzMap;
+    void packKernel;
     raf.schedule(() => {
-      const use = previewOf(s.data!, PREVIEW);
-      const out = pack(use.width, use.height, swzMap, new Map([['src', use]]));
+      const use = previewOf(s.data!, PREVIEW, packKernel);
+      const out = pack(use.width, use.height, swzMap, new Map([['src', use]]), { upscale: packKernel });
       swzUrl = imageDataToUrl(out);
       swzOut = out;
     });
@@ -845,7 +867,7 @@
         for (const s of loaded) src.set(s.id, s.data!);
         return [
           {
-            图: pack(first.data!.width, first.data!.height, mergeMap, src),
+            图: pack(first.data!.width, first.data!.height, mergeMap, src, { upscale: packKernel }),
             名: `${stemOf(first.ref!.name)}_merged.png`
           }
         ];
@@ -860,7 +882,9 @@
         const s = 槽swz();
         return [
           {
-            图: pack(s.data!.width, s.data!.height, swzMap, new Map([['src', s.data!]])),
+            图: pack(s.data!.width, s.data!.height, swzMap, new Map([['src', s.data!]]), {
+              upscale: packKernel
+            }),
             名: `${stemOf(s.ref!.name)}_swizzled.png`
           }
         ];
@@ -989,9 +1013,11 @@
     const next = {} as Record<ChannelKey, ChannelSource>;
     for (const k of CHANNEL_KEYS) {
       const v = p.map[k];
-      next[k] = v && v.ch
-        ? { slot: 'src', ch: v.ch, constant: 0, invert: !!v.invert }
-        : { slot: '', ch: 'a', constant: v?.const ?? 0, invert: false };
+      // 「推 Z」那一路没有来源通道，槽位留着空串；取整跟着预设走
+      if (v && v.推导 === 'z')
+        next[k] = { slot: '', ch: 'b', constant: 0, invert: false, 推导: 'z', round: v.round };
+      else if (v && v.ch) next[k] = { slot: 'src', ch: v.ch, constant: 0, invert: !!v.invert };
+      else next[k] = { slot: '', ch: 'a', constant: v?.const ?? 0, invert: false };
     }
     swzMap = next;
   }
@@ -1134,10 +1160,31 @@
                 { id: 's3', label: '第三张' },
                 { id: 's4', label: '第四张' }
               ]}
+              allowDerive={k === 'b'}
               onpatch={(p) => setMerge(k, p as Partial<ChannelSource>)}
             />
           </div>
         {/each}
+      </div>
+
+      <div class="grp">
+        <h3 class="grp__t">放大核</h3>
+        <div class="pick">
+          {#each 放大核表 as k (k.id)}
+            <button
+              class="pick__b"
+              type="button"
+              title={k.hint}
+              aria-pressed={packKernel === k.id}
+              onclick={() => (packKernel = k.id)}
+            >{k.label}</button>
+          {/each}
+        </div>
+        <p class="mini" style="margin-top:8px">
+          只有"某张源图跟目标尺寸不一样"的时候才用得上。
+          <b>法线、材质 ID、遮罩这类数据贴图要用最邻近</b> —— 插值会造出中间值：
+          法线插完不再是单位向量，ID 图更是凭空多出几个不存在的编号。
+        </p>
       </div>
     </aside>
   </div>
@@ -1198,10 +1245,30 @@
             <SourcePick
               value={swzMap[k]}
               slots={[{ id: 'src', label: '源图' }]}
+              allowDerive={k === 'b'}
               onpatch={(p) => setSwz(k, p as Partial<ChannelSource>)}
             />
           </div>
         {/each}
+      </div>
+
+      <div class="grp">
+        <h3 class="grp__t">放大核</h3>
+        <div class="pick">
+          {#each 放大核表 as k (k.id)}
+            <button
+              class="pick__b"
+              type="button"
+              title={k.hint}
+              aria-pressed={packKernel === k.id}
+              onclick={() => (packKernel = k.id)}
+            >{k.label}</button>
+          {/each}
+        </div>
+        <p class="mini" style="margin-top:8px">
+          调换一般不动尺寸，这一档是万一源图跟目标不一样时用的。
+          数据贴图（法线、ID、遮罩）用最邻近，别让插值造出中间值。
+        </p>
       </div>
     </aside>
   </div>

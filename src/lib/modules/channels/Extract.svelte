@@ -26,7 +26,9 @@
   } from '$lib/img';
   import {
     type AlphaVerdict,
+    type 法线判读,
     analyzeAlpha,
+    认法线,
     glossFromAlpha,
     mapFromChannel,
     readMaterialIds,
@@ -57,6 +59,8 @@
   let verdict = $state<AlphaVerdict | null>(null);
   let glossUrl = $state<string | null>(null);
   let invert = $state(false);
+  /** 这张像不像法线、是哪种打包法。判据与实测读数见 `texops.ts` 的 `认法线` */
+  let 法线 = $state<法线判读 | null>(null);
 
   const src = $derived(slots.get('src'));
 
@@ -75,10 +79,12 @@
     if (!img) {
       verdict = null;
       glossUrl = null;
+      法线 = null;
       return;
     }
     const v = analyzeAlpha(img);
     verdict = v;
+    法线 = 认法线(img);
     // 只有真有数据才生成预览，没数据就不做了 —— 提出来是一张全白，没意义
     glossUrl = v.rich ? imageDataToUrl(glossFromAlpha(previewOf(img, PREVIEW), 反相)) : null;
   });
@@ -339,6 +345,17 @@
           </Note>
         </div>
       {/if}
+
+      {#if 法线}
+        <div class="msgwrap">
+          <Note kind={法线.重建 ? 'warn' : 'ok'}>
+            <b>法线：</b>{法线.说法}
+            {#if 法线.重建}
+              <span class="mini">（去「调换」那一页点「法线·重建 Z」；X 取 {CHANNEL_LABEL[法线.x]}、Y 取 {CHANNEL_LABEL[法线.y]}）</span>
+            {/if}
+          </Note>
+        </div>
+      {/if}
     </div>
 
     {#if src.data}
@@ -505,6 +522,19 @@
       <p class="mini" style="margin-top:8px">
         `_D` / `_D1` / `_D2` 三个变体差不多 —— <b>光看文件名判断不出哪张带数据</b>，
         所以这里一律先检测。
+      </p>
+    </div>
+
+    <div class="grp">
+      <h3 class="grp__t">法线那三种形态（自己扫的）</h3>
+      <ul class="mini ul">
+        <li>模型库 400 张法线里 <b>399 张已经是标准蓝</b>（B 均值 238~255）</li>
+        <li>绝区零人物 167 张里 <b>156 张的 B 不是 z</b>（B 均值 112~128）—— 那种要重建</li>
+        <li>AG 打包（粉色，X 在 A）与 RG 双通道（B 空）：<b>两张都没有</b></li>
+      </ul>
+      <p class="mini" style="margin-top:8px">
+        判据 = R/G 两路都是连续数据、均值都落在 118~138（实测 567 张的 5%~95% 是 124.5~128.9）。
+        量法：`tools/probe_normal_pack.py`。
       </p>
     </div>
   </aside>

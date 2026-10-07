@@ -88,6 +88,118 @@ export function richestChannel(src: ImageData): { ch: ChannelKey; stats: AlphaVe
   return best!;
 }
 
+/* ------------------------------------------------------------ 法线：打包形态 */
+
+/** 一路的读数。`analyzeChannel` 只给"有几个取值、最常见占多少"，认法线还要均值和跨度 */
+type 路读数 = { unique: number; top: number; mean: number; span: number };
+
+function 读一路(src: ImageData, ch: ChannelKey): 路读数 {
+  const off = ch === 'r' ? 0 : ch === 'g' ? 1 : ch === 'b' ? 2 : 3;
+  const hist = new Uint32Array(256);
+  const n = src.width * src.height;
+  const d = src.data;
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    const v = d[i * 4 + off];
+    hist[v]++;
+    sum += v;
+  }
+  let unique = 0;
+  let top = 0;
+  let lo = 255;
+  let hi = 0;
+  for (let v = 0; v < 256; v++) {
+    if (hist[v]) {
+      unique++;
+      if (v < lo) lo = v;
+      if (v > hi) hi = v;
+      if (hist[v] > top) top = hist[v];
+    }
+  }
+  return { unique, top: top / n, mean: sum / n, span: hi - lo };
+}
+
+export type 法线形态 = 'ag' | 'rg' | 'blue' | 'b-not-z';
+
+export type 法线判读 = {
+  形态: 法线形态;
+  /** 一句话，界面直接显示 */
+  说法: string;
+  /** X 该从哪一路取 */
+  x: ChannelKey;
+  /** Y 该从哪一路取 */
+  y: ChannelKey;
+  /** 要不要重算 Z */
+  重建: boolean;
+};
+
+/**
+ * 看这张图是不是法线、是哪种打包法。
+ *
+ * 判据是**本工程自己扫出来的**（`tools/probe_normal_pack.py`，567 张名字像法线的图：
+ * 模型库 400 张 + 绝区零人物 167 张，统计在最邻近降采样的 256 长边上做）。读数：
+ *
+ *   标准蓝（已经是 RGB 法线）   模型库 400 张里 399 张    B 均值 5%~95% = 238~255
+ *   B 不是 z（打包法线）        绝区零 167 张里 156 张   B 均值 112~128、R/G 均值 126~128
+ *   R/G 均值（法线该在的地方）  两边合起来 5%~95% = 124.5~128.9
+ *   AG 打包（粉，X 在 A）       567 张里 **0 张**   —— 门槛按公开的 DXT5nm 约定写，本库没有实例
+ *   RG 双通道（B 空，BC5）      567 张里 **0 张**   —— 同上，按公开的 BC5 约定写
+ *
+ * 所以 "R/G 都是连续数据、均值落在 118~138" 是这里"像法线"的门槛（比实测区间放宽 6 级），
+ * 再看 B：均值 ≥200 就是标准蓝（不用动）；否则要重建 Z。
+ */
+export function 认法线(src: ImageData): 法线判读 | null {
+  const R = 读一路(src, 'r');
+  const G = 读一路(src, 'g');
+  const B = 读一路(src, 'b');
+  const A = 读一路(src, 'a');
+
+  // AG 打包：R 恒定高（数据在 A），先认 —— 它的 R 均值 255，过不了下面那道"法线均值"门槛
+  const rFlatHigh = (R.unique === 1 || R.top >= 0.99) && R.mean >= 200;
+  if (rFlatHigh && A.unique >= 16 && A.top < 0.98) {
+    return {
+      形态: 'ag',
+      x: 'a',
+      y: 'g',
+      重建: true,
+      说法: 'R 是常量、数据在 A 里 —— AG 打包（DXT5nm）那种粉色法线。要标准蓝：X 取 A、Y 取 G，再重建 Z。本库 567 张法线里没量到过这种。'
+    };
+  }
+
+  // 法线的 R/G 都是连续数据，均值都在 128 附近
+  if (R.unique < 16 || G.unique < 16) return null;
+  const 位 = (m: number) => m >= 118 && m <= 138;
+  if (!位(R.mean) || !位(G.mean)) return null;
+
+  if (B.mean >= 200) {
+    return {
+      形态: 'blue',
+      x: 'r',
+      y: 'g',
+      重建: false,
+      说法: `已经是标准蓝法线（B 均值 ${B.mean.toFixed(0)}），不用动。要改方向就翻绿，别重建 Z。`
+    };
+  }
+  if (B.unique <= 2 && B.mean <= 32) {
+    return {
+      形态: 'rg',
+      x: 'r',
+      y: 'g',
+      重建: true,
+      说法: 'B 是空的 —— RG 双通道（BC5）那种法线。X 取 R、Y 取 G，再重建 Z。'
+    };
+  }
+  return {
+    形态: 'b-not-z',
+    x: 'r',
+    y: 'g',
+    重建: true,
+    说法:
+      `B 不是 z（均值 ${B.mean.toFixed(0)}、跨度 ${B.span}，标准蓝那批是 238 以上）—— ` +
+      '这是把 X/Y 打包进 RGB 的那种法线。用「法线·重建 Z」重算一遍。'
+  };
+}
+
 /**
  * 把法线贴图的 alpha 提成一张灰度图。
  *
