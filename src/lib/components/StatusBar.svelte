@@ -1,6 +1,8 @@
 <script lang="ts">
   /**
-   * 底部状态栏。左边是身份和当前页，中间是工程状态，右边是帧率与性能。
+   * 底栏。
+   *
+   * 左边是身份和当前页，中间是**工程状态**，右边是帧率与性能。
    *
    * 帧率采样只在这一栏可见、且开关打开时才跑；关掉之后这条链路完全静默，
    * 页面才能真的空闲下来（采样链路不停着，页面永远进不了空闲态）。
@@ -10,6 +12,7 @@
   import Icon from './Icon.svelte';
   import { prefs } from '$lib/prefs.svelte';
   import { perf, startMeter, resetPerf, FRAME_BUDGET_MS } from '$lib/perf.svelte';
+  import { 当前工程 } from '$lib/recent.svelte';
 
   $effect(() => {
     if (!prefs.fpsLive) return;
@@ -22,8 +25,21 @@
   let hist: number[] = Array(BARS).fill(0);
   let bars = $state<number[]>(Array(BARS).fill(0));
 
+  /** 上一次见到的「重置代数」，见下面那个 effect */
+  let 上次代数 = perf.gen;
+
   $effect(() => {
     const v = perf.frameMs || 0;
+    /* **按下「重新开始统计」要连柱子一起清。**
+       这排柱子是本组件的本地数组，`resetPerf()` 碰不到它 —— 原来只清数字，
+       柱子还留着刚才那个尖峰，而 20 根柱子是这一栏最显眼的东西，等于没重置。
+       靠 `perf.gen` 换代来通知（`resetPerf` 里 +1）。 */
+    if (perf.gen !== 上次代数) {
+      上次代数 = perf.gen;
+      hist = Array(BARS).fill(0);
+      bars = hist;
+      return;
+    }
     hist = [...hist.slice(1), Math.min(1, v / FRAME_BUDGET_MS)];
     bars = hist;
   });
@@ -52,9 +68,18 @@
   </div>
 
   <div class="sb__mid">
-    <span>就绪</span>
-    <span class="sb__sep"></span>
-    <span>工程未载入</span>
+    <!-- 中段原来是**写死的两个字**（"就绪 · 工程未载入"）—— 跟顶栏那个
+         "未打开工程"一模一样的毛病，只是位置在底部：选了工程它也不会变。
+         现在接 `当前工程`（`recent.svelte.ts`），刷新之后由 `recent[0]` 兜底，
+         跟顶栏那颗点是同一个来源。全路径在 title 里。
+         窄屏（<1180px）这一整段本来就会隐藏，那时只有顶栏显示。 -->
+    <span
+      class="sb__proj"
+      class:sb__proj--on={!!当前工程.path}
+      title={当前工程.path ? `当前工程：${当前工程.path}` : '当前工程：还没选过目录'}
+    >
+      <i class="sb__pdot"></i>{当前工程.path ? 当前工程.name : '未载入工程'}
+    </span>
     <span class="sb__sep"></span>
     <span class="sb__dim">{stamp}</span>
   </div>
@@ -138,6 +163,18 @@
     background: var(--surface-3);
   }
   .sb__view { color: var(--btn-content); font-weight: 600; }
+  /* 工程状态：没工程时是灰的（别拿主色骗人），有工程才亮 */
+  .sb__proj {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    color: var(--content-meta);
+    max-width: 18rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .sb__proj--on { color: var(--deep-text); font-weight: 600; }
+  .sb__pdot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--line-color); flex: none;
+  }
+  .sb__proj--on .sb__pdot { background: var(--primary); }
   .sb__dim { opacity: 0.7; }
   .sb__sep { width: 1px; height: 12px; background: var(--line-color); flex: none; }
   /* 数字要等宽，不然帧率一跳整行就抖。以前靠等宽字体，现在统一雅黑，

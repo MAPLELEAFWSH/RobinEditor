@@ -37,7 +37,17 @@ export const perf = $state({
   heapMB: 0,
   nodes: 0,
   subs: 0,
-  live: true
+  live: true,
+  /**
+   * 「重置代数」。`resetPerf()` 每按一次 +1。
+   *
+   * **为什么要有它**：尾栏那排帧时间柱子是 `StatusBar` 组件自己的本地数组
+   * （`hist` / `bars`），`resetPerf()` 碰不到它。原来按下「重新开始统计」只清数字，
+   * **柱子还留着刚才那个尖峰** —— 一排 20 根柱子是这一栏最显眼的东西，
+   * 它不清就等于没重置（用户 2026-10-06："状态栏的刷新重置需要考虑"）。
+   * 组件盯这个代数换代，换代就把柱子清平。
+   */
+  gen: 0
 });
 
 function loop(now: number) {
@@ -186,4 +196,7 @@ export function resetPerf() {
   perf.jsMax = 0;
   perf.frames = 0;
   perf.longTasks = 0;
+  /* 换代：尾栏那排柱子是组件本地的，得让它知道该清平了（见 `perf.gen` 的说明）。
+     `perf.nodes` / `heapMB` 不清 —— 它们 1~5 秒自己会重采，清成 0 反而显示一个假数。 */
+  perf.gen++;
 }
