@@ -1,20 +1,23 @@
 # RobinEditor — 接手须知
 
 MMD 轻量化集成处理工具（Tauri 2 + SvelteKit 2 + Svelte 5 + TS）。
-**没有 git**，没有版本控制，一切靠文档。改任何东西之前先想清楚怎么记。
+**2026-09-26 起有 git 了**（`main`，两个远端 github / gitee，**一次都没推过**）。
+但"记清楚为什么这么改"这件事还是靠文档 —— 提交信息写不下的都在这几份里。
 
 ## 接手第一步（照做，别跳）
 
-1. **读 `docs/工作交接.md`** —— 这是入口，9 节。按它第 0 节的顺序继续读。
-2. **读 `docs/整改清单.md`** —— **当前作业单**，用户 2026-09-19 提的 12 条，
-   开头写了执行顺序。里面「待办」的还没做，别当成做完了。
-3. **读 `docs/架构复查-20260919.md`** —— 34 组发现，其中 **8 条是真 bug**（A 节 + G1）。
+1. **读 `docs/交接-20261006-工程状态与拖放记工程.md`** —— **最新的那一份，先看它**。
+   里面是"到那一刻为止的事实 + 还没做的"，开头有三十秒上手和基线。
+   `docs/` 下还有更早的 `交接-*.md`，当历史看。
+2. **读 `docs/工作交接.md`** —— 老入口，9 节，讲这个工程是怎么长起来的。当背景读。
+3. **读 `docs/整改清单.md`** —— **当前作业单**。里面的账这一批已经对平过一轮
+   （§J-10 那张表：`ikclut:530` / `ikclut:867` 已修、`mstoon:1087` 作废）。
+   看的时候注意每行结尾"怎么验的"那一列 —— **没写验法的就是没验过**。
 4. **跑基线**，回到全绿再动手：
    ```powershell
-   pnpm test            # 18 套 + ilmcheck + cargo，一条命令，20 项
-   pnpm exec svelte-check --threshold warning
+   pnpm test                                    # 期望 39/39 全绿（37 套前端 + ilmcheck + cargo，cargo 137 passed）
+   pnpm exec svelte-check --threshold warning   # 期望 0 错 0 警
    ```
-   期望：`pnpm test` 20/20 通过（前端 + ilmcheck 共 1329 条断言、cargo 36 passed）、svelte-check 0 错 0 警。
    单跑一套：`node --import ./tmp/register-loader.mjs tmp\xxx.test.mjs`；
    ⑤ 那套 `node tmp/ilmcheck/run.mjs`（它自己会挂 loader，不用带 `--import`）。
    **`svelte-check` 假红**：受限沙箱下 vite 载 `vite.config.js` 要 spawn 子进程，被挡就是

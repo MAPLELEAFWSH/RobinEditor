@@ -50,9 +50,15 @@
 ### 基线
 
 ```
-pnpm test                41/41 退出码 0（含 cargo 137 passed）
+pnpm test                39/39 项 退出码 0（37 套前端 + ilmcheck + cargo 137 passed）
 pnpm exec svelte-check   0 errors / 0 warnings
 ```
+
+> **数字更正（2026-10-07）**：这一轮和上面两轮的基线我原来写的是 41/41、41/41、40/40 ——
+> **那三个数是按"套数"估的，我没读 `tools/run-tests.mjs` 最后那行汇总**。
+> 真去读它：**`汇总：39 / 39 项通过`**（37 套 `tmp/*.test.mjs` + ilmcheck + cargo）。
+> 又一次"没量就当量过了"。`AGENTS.md` / `README.md` / `CONTRIBUTING.md` /
+> `docs/开发者指南.md` / 交接文档里的期望值一并改成 39/39。
 
 ## 上一轮：拖放选目录也算"打开工程" + 交接文档
 
@@ -103,7 +109,7 @@ pnpm exec svelte-check   0 errors / 0 warnings
 ### 基线
 
 ```
-pnpm test                41/41 退出码 0（含 cargo 137 passed）
+pnpm test                39/39 项 退出码 0（37 套前端 + ilmcheck + cargo 137 passed）
 tmp/拖材质链.test.mjs     58 通过 / 0 失败（第 10 节是新加的）
 pnpm exec svelte-check   0 errors / 0 warnings
 ```
@@ -169,7 +175,7 @@ pnpm exec svelte-check   0 errors / 0 warnings
 ### 基线
 
 ```
-pnpm test                40/40 退出码 0（含 cargo 137 passed）
+pnpm test                39/39 项 退出码 0（37 套前端 + ilmcheck + cargo 137 passed）
 pnpm exec svelte-check   0 errors / 0 warnings
 ```
 

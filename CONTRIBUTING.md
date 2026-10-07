@@ -6,7 +6,7 @@
 ## 先跑基线
 
 ```powershell
-pnpm test                                    # 期望 40/40
+pnpm test                                    # 期望 39/39（37 套前端 + ilmcheck + cargo 137 passed）
 pnpm exec svelte-check --threshold warning   # 期望 0 错 0 警
 ```
 

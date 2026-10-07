@@ -34,7 +34,7 @@
 pnpm install
 pnpm dev              # 浏览器里调界面，http://127.0.0.1:1420
 pnpm tauri dev        # 真桌面窗口，能测后端
-pnpm test             # 全量：tmp/*.test.mjs + ilmcheck + cargo，期望 40/40
+pnpm test             # 全量：tmp/*.test.mjs + ilmcheck + cargo，期望 39/39
 pnpm exec svelte-check --threshold warning   # 期望 0 错 0 警
 pnpm build            # 前端出到 build\
 pnpm tauri build      # 出安装包
