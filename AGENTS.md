@@ -10,19 +10,23 @@ MMD 轻量化集成处理工具（Tauri 2 + SvelteKit 2 + Svelte 5 + TS）。
    里面是"到那一刻为止的事实 + 还没做的"，开头有三十秒上手和基线。
    `docs/` 下还有更早的 `交接-*.md`，当历史看。
 2. **读 `docs/工作交接.md`** —— 老入口，9 节，讲这个工程是怎么长起来的。当背景读。
-3. **读 `docs/整改清单.md`** —— **当前作业单**。里面的账这一批已经对平过一轮
-   （§J-10 那张表：`ikclut:530` / `ikclut:867` 已修、`mstoon:1087` 作废）。
+3. **读 `docs/整改清单.md`** —— **当前作业单**。里面的账这一批已经对平过两轮
+   （§J-10 那张表：`ikclut:530` / `ikclut:867` 已修、`mstoon:1087` 作废；§K 是 2026-10-07 那四条）。
    看的时候注意每行结尾"怎么验的"那一列 —— **没写验法的就是没验过**。
 4. **跑基线**，回到全绿再动手：
    ```powershell
-   pnpm test                                    # 期望 39/39 全绿（37 套前端 + ilmcheck + cargo，cargo 137 passed）
+   pnpm test                                    # 期望 40/40 全绿（38 套前端 + ilmcheck + cargo，cargo 137 passed）
    pnpm exec svelte-check --threshold warning   # 期望 0 错 0 警
    ```
    单跑一套：`node --import ./tmp/register-loader.mjs tmp\xxx.test.mjs`；
    ⑤ 那套 `node tmp/ilmcheck/run.mjs`（它自己会挂 loader，不用带 `--import`）。
+   **两套基准数据不在仓库里**（`tmp/ilmcheck/data`、`tmp/normalcheck/data` 都是第三方素材解出来的像素）——
+   新机器上这两套会因为缺 `sizes.json` **退码 1**，按提示先跑
+   `node tmp/ilmcheck/dump-vivian.mjs` 与 `node tmp/normalcheck/dump-normal.mjs`。
    **`svelte-check` 假红**：受限沙箱下 vite 载 `vite.config.js` 要 spawn 子进程，被挡就是
    `spawn EPERM` → 全库预处理失败 → 报「35 errors in 35 files」。**先找 `EPERM`，别当成代码坏了。**
-5. **动手前先跟用户确认。**
+5. **动手前先跟用户确认。** 用户说"别开应用窗口"时**就别开**（`pnpm tauri dev` / 截图都算）——
+   那种情况下界面的"看得见、点得动"要写成"没验过"，别含糊过去。
 
 ## 三条必须记住的
 

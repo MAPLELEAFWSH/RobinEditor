@@ -10,10 +10,15 @@
 
   const { done, todo } = modulesByState();
 
+  /* 「能力边界」= 本工程自己量出来的数，写在这里免得你以为它比实际更聪明。
+     每条都能追到出处；没量过的不写。 */
   const limits = [
     '通道含义按用户画 ILM 的做法：R Gloss / G AO / B Specular / A Line。我们主动挑的档位夹在 0.05~0.95（0 = 永久阴影、1 = 永久光照），但照着样张量出来的档位照原样写 —— 他的样张里 R 有九成是 0。游戏那张 lightmap 是另一套约定，两套别混。',
     '跨模型套用学到的规律是负收益，所以不提供「照着别的模型猜」这种按钮。',
-    'PMX 里材质级的 UV 边界反而不如按图自动分块准，所以默认不读材质划分。'
+    'PMX 里材质级的 UV 边界反而不如按图自动分块准，所以默认不读材质划分。',
+    '法线的三种打包形态是自己扫素材量出来的（567 张名字像法线的图）：模型库 400 张里 399 张本来就是标准蓝，绝区零人物 167 张里 156 张的 B 不是 z（要重建）。AG 打包（粉色，X 在 A）和 RG 双通道（B 空）在这个库里一张都没有 —— 那两条是按公开约定给的，不是量出来的覆盖率。',
+    '重建 Z 的算式（√(1 − x² − y²)）在素材那两对真配对上逐像素相同；写回取整给的是截断，跟四舍五入差在 R/G 各 63/256 个取值上。',
+    '⑦ 合并 / 调换那几页：源尺寸跟目标不一致时才谈放大核。数据贴图（法线、材质 ID、遮罩）用最邻近 —— 双线性会把 4 种材质 ID 插成 13 种，那是假编号。'
   ];
 </script>
 
@@ -22,7 +27,12 @@
     <img class="brand__mark" src="/app-icon.png" alt="" width="46" height="46" />
     <div>
       <h2>RobinEditor</h2>
-      <p class="mut">MMD 贴图与渲染包的整理工具。Tauri 2 + Svelte，装完就能用，不依赖本地开发环境。</p>
+      <p class="mut">
+        MMD 贴图与渲染包的整理工具。Tauri 2 + Svelte，装完就能用，不依赖本地开发环境。
+        左边七项功能：日文乱码修复、ikClut 调色、Ray 编辑器、绝区零贴图合成、养乐多上材质、
+        贴图通道处理、工程迁移。文档里那些圈码是需求单上的编号（①②③…），
+        其中 msToon 与 Ramp 两个已经删了，号不补。
+      </p>
     </div>
 
     <ul class="social">
@@ -59,10 +69,15 @@
         <li class="tag tag--ok"><Icon name="ui.check" size={13} />{moduleTitle(m)}</li>
       {/each}
     </ul>
-    <h3 class="mt">排在后面</h3>
-    <ul class="tags">
-      {#each todo as m (m.id)}<li class="tag">{moduleTitle(m)}</li>{/each}
-    </ul>
+    {#if todo.length}
+      <h3 class="mt">排在后面</h3>
+      <ul class="tags">
+        {#each todo as m (m.id)}<li class="tag">{moduleTitle(m)}</li>{/each}
+      </ul>
+    {:else}
+      <!-- 一个都没有的时候不再画一条空标题（原来那行"排在后面"底下是空的） -->
+      <p class="mut mt">没有排在后面的了。</p>
+    {/if}
   </div>
 
   <div class="card pad">
@@ -81,7 +96,13 @@
     只借鉴了尺寸、配色和交互这类可量化的部分，没有搬代码。
   </p>
   <p class="mut">
-    Ray、养乐多、ikClut、msToon 的版权归各自作者。本工具不含也不分发它们，只在你指定的路径上读写文件。
+    Ray、养乐多、ikClut 的版权归各自作者。本工具不含也不分发它们，只在你指定的路径上读写文件。
+  </p>
+  <p class="mut">
+    贴图那几条规格（通道排法、法线形态、B 通道窗口、放大核精度）都是自己对着素材量的 ——
+    同一目录的「输入 → 产物」逐像素比，数字与量法记在 <span class="mono">docs/产物配对实测.md</span>，
+    量具是 <span class="mono">tools/probe_normal_pack.py</span> 那几个。
+    没有从别的贴图工具里搬代码、阈值、文案或操作方式；别人的工具名在本工程里一个都没有。
   </p>
   <p class="mut">图标来自 Material Design Icons。</p>
 </section>
