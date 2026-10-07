@@ -6,7 +6,7 @@
  * 去重、保旧字段、截断上限、手改过 localStorage 也扛得住。
  *
  * **那一页（`/tools/recent`）2026-10-07 删了，这套逻辑留着** ——
- * 顶栏/状态栏那颗"当前工程"、⑨ 的报工程都读它。文件名叫 work-pages 是历史，
+ * 状态栏那条「当前工程」、⑨ 的报工程都读它。文件名叫 work-pages 是历史，
  * 别照着名字去找"工作区那两页"。
  *
  * 跑：node --import ./tmp/register-loader.mjs tmp/work-pages.test.mjs

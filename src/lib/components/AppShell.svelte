@@ -4,7 +4,6 @@
   import { rail, railMini, panel } from '$lib/ui.svelte';
   import { side, 抽屉, 开抽屉 } from '$lib/side.svelte';
   import { prefs, apply } from '$lib/prefs.svelte';
-  import { 当前工程 } from '$lib/recent.svelte';
   import { toggleTheme, originOf } from '$lib/theme';
   import { ELEMENTS } from '$lib/elements';
   import type { Snippet } from 'svelte';
@@ -131,16 +130,10 @@
     </div>
 
     <div class="bar__tools">
-      <!-- 当前工程。**这段原来是写死的"未打开工程"四个字**（用户 2026-09-26 报的
-           "打开工程了上方还显示未打开工程"）—— 没有任何一处状态接上去。
-           现在接 `当前工程`（`recent.svelte.ts` 里设：选工程目录那条路 + ⑨ 那两个文件那次）。 -->
-      <span
-        class="bar__proj"
-        class:bar__proj--on={!!当前工程.path}
-        title={当前工程.path ? `当前工程：${当前工程.path}` : '当前工程：还没选过目录'}
-      >
-        <span class="bar__dot"></span>{当前工程.path ? 当前工程.name : '未打开工程'}
-      </span>
+      <!-- 这里原来有一颗「当前工程」胶囊（2026-10-06 加的，接 `recent.svelte.ts` 的
+           `当前工程`）。**2026-10-07 用户要求删掉**："右上角也不要显示当前的过程"。
+           工程名现在只在**底部状态栏**那一条上显示（`StatusBar.svelte`，同一个来源），
+           别再往这一行加回来。 -->
 
       <div class="elems" role="group" aria-label="元素配色">
         {#each ELEMENTS as el (el.id)}
@@ -244,19 +237,6 @@
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .bar__tools { margin-left: auto; display: flex; align-items: center; gap: 14px; }
-  .bar__proj {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 5px 12px; border-radius: var(--r-full);
-    background: var(--btn-regular-bg); color: var(--btn-content);
-    font-size: var(--fs-xs); line-height: var(--lh-xs); font-weight: 600;
-    max-width: 22rem;
-  }
-  /* 开了工程就把名字露出来（太长就省略，全路径在 title 里）。
-     **别再写死"未打开工程"** —— 见上面那段注释。 */
-  .bar__proj--on { background: color-mix(in oklab, var(--primary) 14%, var(--btn-regular-bg)); }
-  .bar__proj--on > :last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .bar__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line-divider); flex: none; }
-  .bar__proj--on .bar__dot { background: var(--primary); }
 
   /* 主题切换按钮。本体只负责按下缩放，动画全在图标上 ——
      换色是 0ms 生效的（见 rules 里对 background-color 的处理），点下去立刻有反应。 */
@@ -373,7 +353,6 @@
 
   @media (max-width: 900px) {
     .bar { padding: 0 12px; }
-    .bar__proj { display: none; }
   }
   @media (max-width: 720px) {
     .elems { display: none; }

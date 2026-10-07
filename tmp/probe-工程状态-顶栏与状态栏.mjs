@@ -1,20 +1,24 @@
 /**
- * 探针：**工程状态在顶栏和状态栏上，刷新之后还在不在**（用户 2026-10-06）。
+ * 探针：**工程状态在状态栏上，刷新之后还在不在**（用户 2026-10-06）。
  *
  * 用户先问的是顶栏（"打开工程了上方还显示未打开工程"），接着补了一句
- * "而且状态栏的刷新重置需要考虑"。两处都有一份**写死的字**：
+ * "而且状态栏的刷新重置需要考虑"。两处当时都有一份**写死的字**：
  *   · 顶栏 `AppShell.svelte` —— 原来写死"未打开工程"
  *   · 状态栏 `StatusBar.svelte` 中段 —— 原来写死"就绪 · 工程未载入"
  * 上一轮只修了顶栏，没顺手看底部，所以这一套把**两处一起量**。
  *
+ * **2026-10-07：顶栏那颗胶囊删了**（用户："右上角也不要显示当前的过程"），
+ * 所以现在只量状态栏那一条，外加一条**反面**断言：顶栏那颗不许再出现
+ * （不然哪天被人加回来，这一套会白过）。
+ *
  * 量的三件事：
- *   甲 一个新用户（localStorage 里没有最近工程）进来，两处都该说"没有工程"
+ *   甲 一个新用户（localStorage 里没有最近工程）进来，状态栏该说"没有工程"
  *   乙 往 localStorage 塞一条最近工程再**真刷新**（`Page.reload`），
- *      两处都该显示那个工程名 —— 这就是"刷新"那半：刷新之后不该假装什么都没开
- *   丙 再刷新一次，还是那个名字（不是只有第一次运气好）
+ *      状态栏该显示那个工程名 —— 这就是"刷新"那半：刷新之后不该假装什么都没开
+ *   丙 切到别的功能，还是那个名字（切页不变）
  *
  * **为什么用 localStorage 而不是真去选目录**：选目录要弹系统对话框，无头里点不了。
- * 而顶栏与状态栏的初值本来就取自 `recent[0]`（`recent.svelte.ts` 里写着），
+ * 而状态栏的初值本来就取自 `recent[0]`（`recent.svelte.ts` 里写着），
  * 所以"塞一条最近工程 + 刷新"走的正是刷新那条真路 —— 量的是真代码路径，不是桩。
  *
  * **顺带量"重置"**：`resetPerf()` 换代（`perf.gen`）之后那排柱子要清平。
@@ -70,7 +74,7 @@ const 等 = (ms) => new Promise((r) => setTimeout(r, ms));
 await rpc('Page.enable');
 await rpc('Runtime.enable');
 
-/** 一次把两处读出来。**两处分开读**，因为它们可能各写各的（这一轮之前就是） */
+/** 一次把两处读出来。顶栏那颗 2026-10-07 删了，所以那边只判"在不在" */
 const 读两处 = () =>
   跑(`(() => {
     const 文 = (el) => (el && el.textContent ? el.textContent.trim() : null);
@@ -78,15 +82,12 @@ const 读两处 = () =>
     const 底 = document.querySelector('.sb__mid');
     const 底工程 = document.querySelector('.sb__proj');
     return {
-      顶栏: 文(顶),
-      顶栏亮: 顶 ? 顶.classList.contains('bar__proj--on') : null,
-      顶栏title: 顶 ? 顶.getAttribute('title') : null,
+      有没有顶栏那颗: !!顶,
       状态栏: 文(底),
       状态栏工程: 文(底工程),
       状态栏亮: 底工程 ? 底工程.classList.contains('sb__proj--on') : null,
       状态栏title: 底工程 ? 底工程.getAttribute('title') : null,
-      有没有状态栏: !!底,
-      有没有顶栏: !!顶
+      有没有状态栏: !!底
     };
   })()`);
 
@@ -95,16 +96,14 @@ await rpc('Page.navigate', { url: `${APP}/tools/channels` });
 await 等(3200);
 
 /* ---------------- 甲：干净状态（先清掉最近工程） ---------------- */
-console.log('\n==== 甲、没开过工程时，两处都该说"没有" ====');
+console.log('\n==== 甲、没开过工程时，状态栏该说"没有" ====');
 await 跑(`(() => { localStorage.removeItem('robin.recent'); return 'ok'; })()`);
 await rpc('Page.reload');
 await 等(3000);
 const 甲 = await 读两处();
 console.log(JSON.stringify(甲, null, 1));
-断言('甲：顶栏在', 甲.有没有顶栏 === true, String(甲.有没有顶栏));
+断言('甲：**顶栏那颗没有了**（2026-10-07 用户要求删）', 甲.有没有顶栏那颗 === false, String(甲.有没有顶栏那颗));
 断言('甲：状态栏在（窄屏才隐藏，1707 宽不是窄屏）', 甲.有没有状态栏 === true, String(甲.有没有状态栏));
-断言('甲：顶栏说"未打开工程"', 甲.顶栏 === '未打开工程', String(甲.顶栏));
-断言('甲：顶栏那颗点**不亮**', 甲.顶栏亮 === false, String(甲.顶栏亮));
 断言(
   '甲：状态栏中段说的是"未载入工程"，不是写死的"工程未载入"',
   甲.状态栏工程 === '未载入工程',
@@ -113,7 +112,7 @@ console.log(JSON.stringify(甲, null, 1));
 断言('甲：状态栏那颗点也不亮', 甲.状态栏亮 === false, String(甲.状态栏亮));
 
 /* ---------------- 乙：塞一条最近工程，真刷新 ---------------- */
-console.log('\n==== 乙、塞一条最近工程再**真刷新**，两处都该显示它 ====');
+console.log('\n==== 乙、塞一条最近工程再**真刷新**，状态栏该显示它 ====');
 const 假工程 = 'D:\\探针用的工程\\绝区零_测试工程';
 await 跑(`(() => {
   localStorage.setItem('robin.recent', JSON.stringify([{
@@ -130,20 +129,18 @@ await rpc('Page.reload');
 await 等(3000);
 const 乙 = await 读两处();
 console.log(JSON.stringify(乙, null, 1));
-断言('乙：刷完顶栏显示工程名', 乙.顶栏 === '绝区零_测试工程', String(乙.顶栏));
-断言('乙：顶栏那颗点亮了', 乙.顶栏亮 === true, String(乙.顶栏亮));
-断言('乙：顶栏 title 里是全路径', (乙.顶栏title || '').includes(假工程), String(乙.顶栏title));
-断言('乙：刷完**状态栏**也显示工程名', 乙.状态栏工程 === '绝区零_测试工程', String(乙.状态栏工程));
-断言('乙：状态栏那颗点也亮了', 乙.状态栏亮 === true, String(乙.状态栏亮));
-断言('乙：状态栏 title 里也是全路径', (乙.状态栏title || '').includes(假工程), String(乙.状态栏title));
+断言('乙：刷完**状态栏**显示工程名', 乙.状态栏工程 === '绝区零_测试工程', String(乙.状态栏工程));
+断言('乙：状态栏那颗点亮了', 乙.状态栏亮 === true, String(乙.状态栏亮));
+断言('乙：状态栏 title 里是全路径', (乙.状态栏title || '').includes(假工程), String(乙.状态栏title));
+断言('乙：顶栏那颗还是没有（别在别处又冒出来）', 乙.有没有顶栏那颗 === false, String(乙.有没有顶栏那颗));
 断言(
   '乙：状态栏里**没有**写死的"工程未载入"了',
   !(乙.状态栏 || '').includes('工程未载入'),
   String(乙.状态栏)
 );
 
-/* ---------------- 丙：切页 + 再刷一次 ---------------- */
-console.log('\n==== 丙、切到别的功能：两处都不该变 ====');
+/* ---------------- 丙：切页 ---------------- */
+console.log('\n==== 丙、切到别的功能：状态栏那一条不该变 ====');
 await 跑(`(() => {
   const 叶 = [...document.querySelectorAll('.side a, .side button')].find((x) => (x.textContent || '').includes('ikClut'));
   if (叶) 叶.click();
@@ -152,7 +149,6 @@ await 跑(`(() => {
 await 等(1800);
 const 丙 = await 读两处();
 console.log(JSON.stringify(丙, null, 1));
-断言('丙：切页之后顶栏还是那个工程', 丙.顶栏 === '绝区零_测试工程', String(丙.顶栏));
 断言('丙：切页之后状态栏还是那个工程', 丙.状态栏工程 === '绝区零_测试工程', String(丙.状态栏工程));
 断言('丙：落地路径真的换了（不然这一节没意义）', (await 跑('location.pathname + location.search')).includes('ikclut'), await 跑('location.pathname + location.search'));
 
