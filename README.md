@@ -173,6 +173,7 @@ src-tauri/src/
 | 想干什么 | 看这份 |
 |---|---|
 | 跑起来、改代码、加功能、发版 | `docs/开发者指南.md` |
+| **改前端**（壳 / 一页 / 动效 / 怎么验） | 技能 `robin-frontend` 那一套（装在 `~\.claude\skills\`，新开会话生效） |
 | 提改动前要守的规矩 | `CONTRIBUTING.md` |
 | 接手这个工程 | `AGENTS.md` → `docs/工作交接.md` |
 | 界面长什么样、文案怎么写 | `docs/工作区界面规范.md` |

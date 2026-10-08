@@ -51,5 +51,10 @@ MMD 轻量化集成处理工具（Tauri 2 + SvelteKit 2 + Svelte 5 + TS）。
 ## 可用工具
 
 - 技能：`codebase-design` / `domain-modeling` / `grilling`（模型可调）；`find-skills`
+- **本工程前端自己的一套技能**（2026-10-07 从代码与文档里提炼的，装在 `~\.claude\skills\`，
+  **新开会话才出现在技能目录里**）：`robin-frontend`（总入口：不变量与交付契约）
+  + `robin-frontend-shell`（壳/注册表/令牌/偏好）+ `robin-frontend-pages`（一页：槽位/落点/组件/预览预算）
+  + `robin-frontend-motion`（曲线/时长/过冲禁令/档位）+ `robin-frontend-verify`（基线/量具/探针/体检/打包核对）。
+  改界面前先加载 `robin-frontend`；它带的 `references/file-map.md` 是仓库地图与命令速查。
 - 视觉：`mcp__vision-mmd__*`（`describe_image` / `compare_images` / `vision_status`），自检 `node tools\test-vision-mcp.mjs`
 - 用户手敲的命令：`/improve-codebase-architecture`、`/handoff`
