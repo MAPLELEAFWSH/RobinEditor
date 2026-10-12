@@ -9,6 +9,9 @@
  * 二、进场观察那条 MutationObserver **不许在回调里全文档查询**。
  *     原来回调里是 `document.querySelectorAll('.reveal:not(.is-in)')`，
  *     全站任何一次 DOM 增删都触发一次整篇文档的选择器匹配。
+ *
+ * 三、版本号三处一致（package.json / tauri.conf.json / Cargo.toml）——
+ *     界面上显示的版本取自 tauri.conf.json（构建时注入），对不上就没意义了。
  */
 import { readFileSync } from 'node:fs';
 
@@ -97,6 +100,29 @@ ok(badFields.length === 0, `分区的加载字段不对：${badFields.join('；'
 const pageSrc = readFileSync('src/routes/tools/[id]/+page.svelte', 'utf8');
 ok(/panel\?\.load/.test(pageSrc), '功能页没读 panel.load');
 ok(!/panel\?\.component/.test(pageSrc), '功能页还在读 panel.component');
+
+/* ============================================================
+   一·补：版本号三处一致
+
+   `vite.config.js` 把 `src-tauri/tauri.conf.json` 的 version 注进前端
+   （`src/lib/version.ts`），底栏那颗 pill 与「关于」页都从那里取。
+   安装包文件名用 tauri.conf 的，Windows 属性看到的版本来自 Cargo.toml ——
+   三处漂开的话，界面上那个号就跟 exe 对不上了，所以在这儿钉住。
+   ============================================================ */
+const 版本 = (文件, 正则) => {
+  const m = readFileSync(文件, 'utf8').match(正则);
+  return m ? m[1] : null;
+};
+const 三处版本 = {
+  'package.json': 版本('package.json', /"version"\s*:\s*"([^"]+)"/),
+  'src-tauri/tauri.conf.json': 版本('src-tauri/tauri.conf.json', /"version"\s*:\s*"([^"]+)"/),
+  'src-tauri/Cargo.toml': 版本('src-tauri/Cargo.toml', /^version\s*=\s*"([^"]+)"/m)
+};
+const 第一处 = 三处版本['src-tauri/tauri.conf.json'];
+ok(
+  !!第一处 && Object.values(三处版本).every((v) => v === 第一处),
+  `三处版本号对不上：${JSON.stringify(三处版本)}`
+);
 
 /* ============================================================
    二、进场观察：只盯新增节点

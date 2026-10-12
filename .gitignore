@@ -21,9 +21,11 @@ vite.config.ts.timestamp-*
 
 # 打包产物：exe/msi/dll 十几 MB 且每次构建都变，不进仓库。
 # `dist/` 里的 `.txt`（说明、补充）是给用户看的文字，要留。
+# `.lnk` 是本机临时件（在资源管理器里"创建快捷方式"就落在旁边），不是发布物。
 /dist/*.exe
 /dist/*.msi
 /dist/*.dll
+/dist/*.lnk
 
 # 探针跑出来的**临时件**：
 #   chrome-audit     CDP 探针用的 Chrome 用户目录，190 MB

@@ -30,8 +30,9 @@ import { 记工程目录, isTauri, probeDir } from './io';
  *
  * 判据都在落点自己身上（`zone.记`）：没写就什么都不做 —— 导出目录那类落点不该记。
  * 跟 `pickFolder(label, href)` 报到同一处（`io.ts` 的 `folderRecorder`），
- * 所以最近工程与状态栏那条 `当前工程` 是一个来源。
- * （顶栏那颗同名胶囊 2026-10-07 删了，见 `AppShell.svelte` 里那段注释。）
+ * 所以最近工程与 `recent.svelte.ts` 的 `当前工程` 是一个来源
+ * （两者现在都不在界面上显示了 —— 顶栏那颗 2026-10-07、底栏那一条 2026-10-12，
+ * 见 `recent.svelte.ts` 顶上那段）。
  */
 function 记成工程(zone: DropZone, path: string): void {
   if (!zone.记 || !path) return;
@@ -435,7 +436,7 @@ export function bringIn(st: DragState): () => void {
               if (dir) {
                 z.onDrop({ path: dir, name: baseOfPath(dir), rel: baseOfPath(dir), ext: '', size: 0 });
                 /* **拖进来的目录也算"打开工程"**（用户 2026-09-26）。
-                   不补这一下的话：点「选目录」状态栏那条会变成那个目录名，拖同一个目录进来不变。 */
+                   不补这一下的话：点「选目录」记下的那份会变，拖同一个目录进来不变（底账对不上）。 */
                 记成工程(z, dir);
               } else {
                 st.fail('松手那一下没拿到路径，用「选目录」按钮吧');

@@ -2,7 +2,12 @@
   /**
    * 底栏。
    *
-   * 左边是身份和当前页，中间是**工程状态**，右边是帧率与性能。
+   * 左边是身份和当前页，中间只剩时间，右边是帧率与性能。
+   *
+   * **中段原来还有一条「当前工程」（`未载入工程` / 工程名）** —— 2026-10-12 用户要求删干净
+   * （"底栏显示时间处的左边打开什么工程还没删除干净"）。顶栏右上角那颗同名胶囊是 2026-10-07 删的。
+   * 记录本身还在写（`recent.svelte.ts`，⑨ 报工程、拖放那条出口都还调它），只是**界面上
+   * 一个地方都不显示了**。
    *
    * 帧率采样只在这一栏可见、且开关打开时才跑；关掉之后这条链路完全静默，
    * 页面才能真的空闲下来（采样链路不停着，页面永远进不了空闲态）。
@@ -12,7 +17,7 @@
   import Icon from './Icon.svelte';
   import { prefs } from '$lib/prefs.svelte';
   import { perf, startMeter, resetPerf, FRAME_BUDGET_MS } from '$lib/perf.svelte';
-  import { 当前工程 } from '$lib/recent.svelte';
+  import { 版本 } from '$lib/version';
 
   $effect(() => {
     if (!prefs.fpsLive) return;
@@ -62,27 +67,15 @@
 <footer class="sb glass" data-mini={railMini()}>
   <div class="sb__left">
     <span class="sb__app"><i class="sb__dot"></i>RobinEditor</span>
-    <span class="sb__pill">v1.0</span>
+    <span class="sb__pill">v{版本}</span>
     <span class="sb__sep"></span>
     <span class="sb__view">{chrome.title || '工作区'}</span>
   </div>
 
+  <!-- 中段只剩时间。原来这里还有一条「当前工程」（未载入工程 / 工程名），
+       2026-10-07 按用户要求删干净了 —— 顶栏右上角那颗也是同一天删的。
+       别再往这一段加"当前在干什么"的状态：这条栏只报身份、当前页、时间与性能。 -->
   <div class="sb__mid">
-    <!-- 中段原来是**写死的两个字**（"就绪 · 工程未载入"）—— 跟顶栏那个
-         "未打开工程"一模一样的毛病，只是位置在底部：选了工程它也不会变。
-         现在接 `当前工程`（`recent.svelte.ts`），刷新之后由 `recent[0]` 兜底。
-         全路径在 title 里。
-         **顶栏那颗同名胶囊 2026-10-07 删了**（用户："右上角也不要显示当前的过程"），
-         所以现在**只有这一条**显示工程名 —— 别把它当成"跟顶栏重复"再删一遍。
-         窄屏（<1180px）这一整段会隐藏，那时两处都不显示。 -->
-    <span
-      class="sb__proj"
-      class:sb__proj--on={!!当前工程.path}
-      title={当前工程.path ? `当前工程：${当前工程.path}` : '当前工程：还没选过目录'}
-    >
-      <i class="sb__pdot"></i>{当前工程.path ? 当前工程.name : '未载入工程'}
-    </span>
-    <span class="sb__sep"></span>
     <span class="sb__dim">{stamp}</span>
   </div>
 
@@ -165,18 +158,6 @@
     background: var(--surface-3);
   }
   .sb__view { color: var(--btn-content); font-weight: 600; }
-  /* 工程状态：没工程时是灰的（别拿主色骗人），有工程才亮 */
-  .sb__proj {
-    display: inline-flex; align-items: center; gap: 0.3rem;
-    color: var(--content-meta);
-    max-width: 18rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  }
-  .sb__proj--on { color: var(--deep-text); font-weight: 600; }
-  .sb__pdot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--line-color); flex: none;
-  }
-  .sb__proj--on .sb__pdot { background: var(--primary); }
   .sb__dim { opacity: 0.7; }
   .sb__sep { width: 1px; height: 12px; background: var(--line-color); flex: none; }
   /* 数字要等宽，不然帧率一跳整行就抖。以前靠等宽字体，现在统一雅黑，

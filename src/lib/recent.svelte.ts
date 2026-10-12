@@ -89,13 +89,15 @@ function load(): RecentEntry[] {
 export const recent = $state<RecentEntry[]>(load());
 
 /**
- * **当前工程**。底部状态栏那一条按它显示。
+ * **当前工程**。**界面上已经没有地方显示它了** —— 顶栏右上角那颗胶囊（2026-10-07）
+ * 与底栏中段那一条（2026-10-12）按用户要求先后删掉了（"右上角也不要显示当前的过程" /
+ * "底栏显示时间处的左边打开什么工程还没删除干净"）。
+ * 记录本身还在写：⑨ 报工程、拖放那条出口都还调它，留着当"用户开过哪个目录"的底账。
  *
  * 用户 2026-09-26 报的："打开工程了上方还显示未打开工程" —— 顶栏那段原来是写死的
  * 四个字（`AppShell.svelte` 里直接 `<span class="bar__dot"></span>未打开工程`），
- * 没有任何一处状态接上去，所以选了目录它也不会变。
- * （**顶栏那颗胶囊 2026-10-07 又删了** —— 用户："右上角也不要显示当前的过程"。
- * 这个状态本身留着：状态栏那一条、还有别处要问"手上是哪个工程"的都读它。）
+ * 没有任何一处状态接上去，所以选了目录它也不会变。那条在 2026-10-12 收口：
+ * 界面不再显示工程名，这个状态只剩"记着"这一个用途。
  *
  * 什么时候算"打开了工程"：**`remember()` 只在"选工程目录"那条路上被调**
  * （导出目录走的是 `pickFolder()`，它不记，见 `io.ts` 里 `setFolderRecorder` 的注释）。
@@ -108,7 +110,7 @@ export const 当前工程 = $state<{ path: string; name: string }>(
   recent[0] ? { path: recent[0].path, name: recent[0].name } : { path: '', name: '' }
 );
 
-/** 有没有工程在手（状态栏那一条看它）。`$state` 用 `const` 声明不能再整个赋值，所以改字段 */
+/** 有没有工程在手（**现在没有显示方了**，见上面那段）。`$state` 用 `const` 声明不能再整个赋值，所以改字段 */
 export function 设当前工程(path: string, name?: string): void {
   if (!path) {
     当前工程.path = '';
@@ -127,7 +129,7 @@ function save() {
   }
 }
 
-/** 记一次。同目录只留一条，更新到最前面。**顺手把「当前工程」也设上**（状态栏那一条看它） */
+/** 记一次。同目录只留一条，更新到最前面。**顺手把「当前工程」也设上**（现在没人显示它，见上） */
 export function remember(path: string, label = '', href = ''): void {
   const next = upsert(recent, path, label, href, Date.now());
   recent.length = 0;
