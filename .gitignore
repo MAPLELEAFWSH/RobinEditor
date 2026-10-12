@@ -19,10 +19,14 @@ vite.config.ts.timestamp-*
 /src-tauri/target/
 /src-tauri/gen/schemas/
 
-# 打包产物：exe/msi/dll 十几 MB 且每次构建都变，不进仓库。
-# `dist/` 里的 `.txt`（说明、补充）是给用户看的文字，要留。
+# 打包产物。**exe 进仓库**（用户 2026-10-12 要求："exe 文件也要推送"）——
+# 远端仓库里直接能下到这一版的安装包与绿色版。
+#   代价写在这儿：每次重打包这两个文件就是新的一份（现在 5.11 MB + 8.08 MB），
+#   git 里旧的那份不会消失，发几十版之后仓库会很大。真要瘦身就改走 Release 附件
+#   （Gitee 的"发行版附件"/GitHub Releases），或者定期换一个新仓库。
+# `dist/` 里的 `.txt`（说明、补充）是给用户看的文字，一直留着。
+# msi / dll 目前没有产物，先继续忽略。
 # `.lnk` 是本机临时件（在资源管理器里"创建快捷方式"就落在旁边），不是发布物。
-/dist/*.exe
 /dist/*.msi
 /dist/*.dll
 /dist/*.lnk

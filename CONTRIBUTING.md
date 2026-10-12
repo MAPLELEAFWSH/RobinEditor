@@ -50,9 +50,10 @@ cargo test --manifest-path src-tauri/Cargo.toml --lib
 类型用 `修` / `加` / `改` / `文档` / `测试` / `构建`（中文，跟这个工程的文档一致）。
 正文里如果这条改动是**量出来的**（有探针、有数字），把数字写上。
 
-**别提交构建产物**：`dist/*.exe`、`src-tauri/target/`、`tmp/chrome-audit/`、
-`tmp/ilmcheck/data/` 都在 `.gitignore` 里。`tmp/ilmcheck/data/` 的内容来自第三方素材，
-**不许发布**。
+**构建产物**：`dist/*.exe`（安装包 + 绿色版）**是进仓库的** —— 用户 2026-10-12 要求，
+远端能直接下到这一版。重打包后记得连 `dist/说明.txt` 一起提交，两个是配套的。
+`src-tauri/target/`、`tmp/chrome-audit/`、`tmp/ilmcheck/data/` 都还在 `.gitignore` 里；
+`tmp/ilmcheck/data/` 的内容来自第三方素材，**不许发布**。
 
 ## 加功能
 
