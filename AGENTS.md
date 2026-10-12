@@ -1,8 +1,15 @@
 # RobinEditor — 接手须知
 
 MMD 轻量化集成处理工具（Tauri 2 + SvelteKit 2 + Svelte 5 + TS）。
-**2026-09-26 起有 git 了**（`main`，两个远端 github / gitee，**一次都没推过**）。
+**2026-09-26 起有 git 了**（`main`，两个远端 github / gitee，2026-10-12 两个都推上去了）。
 但"记清楚为什么这么改"这件事还是靠文档 —— 提交信息写不下的都在这几份里。
+
+推的时候注意：**Gitee 直连就行，GitHub 直连会被 reset**，本机 7890 有代理，走它：
+
+```powershell
+git push gitee main
+git -c http.proxy=http://127.0.0.1:7890 -c https.proxy=http://127.0.0.1:7890 push github main
+```
 
 ## 接手第一步（照做，别跳）
 

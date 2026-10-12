@@ -154,6 +154,26 @@
 同时把「关于」页版本行里那句内部解释（"版本号取自 `src-tauri/tauri.conf.json`…"）也删了 ——
 界面上给用户看的就是版本号与构建时间。
 
+### 三·六补、推仓库（2026-10-12，用户：「更新提交github gitee的代码」）
+
+- **Gitee 直连就行**：`git push -u gitee main` → `bcfbda7..7923419  main -> main` ✓
+- **GitHub 直连不行**：`Recv failure: Connection was reset`（这是真客户端跑出来的，
+  不是 `Invoke-WebRequest` 那种探测超时 —— 别按"探测超时=不通"那条去推）。
+  本机 **7890 有代理在听**，走它一次就上去了：
+  `git -c http.proxy=http://127.0.0.1:7890 -c https.proxy=http://127.0.0.1:7890 push -u github main`
+  → 同样是 `bcfbda7..7923419`。
+- **`-c` 只作用于那一条命令**，没往全局 `http.proxy` 写东西 —— 下次推 GitHub 还得带上。
+- 两边都核对过指同一个 commit：
+
+```powershell
+git ls-remote --heads gitee  main
+git -c http.proxy=http://127.0.0.1:7890 ls-remote --heads github main
+# 79234191600554095a9ec7a48aaf97daea4d1336  refs/heads/main
+```
+
+`AGENTS.md` 开头那句"一次都没推过"改掉了，并把这两条命令写在那儿；
+交接单 §三.0（原来叫"唯一挡着的一件事：推仓库"）改成"做完了 + GitHub 要走代理"。
+
 ### 三·再补、打包这几趟（又踩了绿色版被占用那条）
 
 改源码就要重打包，这一轮打了三趟（删「最近工程/快捷操作/设置」→ ⑦ 法线 + 关于页 → 删光工程名显示）。
@@ -348,7 +368,8 @@ pnpm exec svelte-check   0 errors / 0 warnings
 
 ### 三、交接文档
 
-`docs/交接-20261006-工程状态与拖放记工程.md`：三十秒上手、基线、两个远端一次都没推、
+`docs/交接-20261006-工程状态与拖放记工程.md`：三十秒上手、基线、两个远端一次都没推
+（**这句写的时候是真的；2026-10-12 两边都推上去了，GitHub 得走本机 7890 代理 —— 见那份交接单 §三.0**）、
 本轮改了什么、上一批已收口的、**还没做的五条**（含翻页掉帧要在打包版重跑、
 `dist/` 得再打一次、整改清单对账）、硬规矩（连"别用 PowerShell 管道匹配中文""量之前先证明
 仪器能复现"这些踩过的都写进去了）、量具索引。
